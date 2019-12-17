@@ -1,0 +1,255 @@
+#regist-main {
+	width: 980px;
+	height: 0px;
+	position: relative;
+	font-size: 12px;
+}
+ol {
+	list-style: none;
+}
+#regist-main .cap {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 98px;
+	left: 300px;
+	width: 400px;
+}
+#regist-main label {
+	cursor: pointer;
+	margin-right: 1em;
+}
+#regist-main table td {
+	font-size: 19px;
+}
+#registForm {
+	height: 416px;
+	position: relative;
+	border: 1px solid #d7d7d7;
+	box-shadow: 0 0 10px #d7d7d7;
+	background-color: #fff;
+	position: absolute;
+	width: 382px;
+	top: 10px;
+	left: 300px;
+	color: #818181;
+}
+#regist-main .cap h3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+}
+#regist-main .cap a {
+	position: absolute;
+	color: #818181;
+	left: 173px;
+	top: 27px;
+}
+.cap .login-error {
+	position: absolute;
+	top: 24px;
+	left: 91px;
+}
+#regist-main a {
+	text-decoration: none;
+}
+#regist-main a:hover {
+	text-decoration: underline;
+}
+#registForm ol {
+	padding-top: 20px;
+	padding-left: 40px;
+}
+#registForm li {
+	line-height: 30px;
+}
+#registForm li input {
+	width: 295px;
+	height: 33px;
+	line-height: 33px;
+	border: 1px solid #ccd1d5;
+	display: block;
+	border-radius: 5px;
+}
+#registForm input.btn-submit-log {
+	margin:0 3%;
+	display: block;
+	overflow: hidden;
+	width: 27%;
+	height: 31px;
+	line-height: 31px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	border-radius:4px;
+	float:left;
+	background: #00aeef no-repeat 0 0;
+}
+#registForm input.btn-submit-log:hover {
+	background-position: 0 -31px;
+}
+#registForm input.btn-submit-log:active {
+	background-position: 0 -62px;
+}
+#registForm a.btn-submit-log {
+	margin:0 3%;
+	display: block;
+	overflow: hidden;
+	width: 27%;
+	height: 31px;
+	line-height: 31px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	border-radius:4px;
+	text-decoration : none;
+	float:left;
+	background: #00aeef no-repeat 0 0;
+}
+#registForm a.btn-submit-log:hover {
+	background-position: 0 -31px;
+}
+#registForm a.btn-submit-log:active {
+	background-position: 0 -62px;
+}
+#registForm input.btn-submit-reg {
+	margin:0 11.5%;
+	display: block;
+	overflow: hidden;
+	width: 27%;
+	height: 31px;
+	line-height: 31px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	border-radius:4px;
+	float:left;
+	background: #00aeef no-repeat 0 0;
+}
+#registForm input.btn-submit-reg:hover {
+	background-position: 0 -31px;
+}
+#registForm input.btn-submit-reg:active {
+	background-position: 0 -62px;
+}
+#registForm input.btn-submit-mes {
+	margin:0 30%;
+	display: block;
+	overflow: hidden;
+	width: 40%;
+	height: 31px;
+	line-height: 31px;
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	border-radius:4px;
+	float:left;
+	background: #00aeef no-repeat 0 0;
+}
+#registForm input.btn-submit-mes:hover {
+	background-position: 0 -31px;
+}
+#registForm input.btn-submit-mes:active {
+	background-position: 0 -62px;
+}
+.outer_log{
+	margin:15% auto;
+	text-align:center;
+	width:80%;
+}
+.but_log{
+	text-align:center;
+	margin:0 auto;
+	overflow:hidden;
+	display:inliine-block;
+}
+#registForm .registError {
+	position: absolute;
+	width: 298px;
+	top: 301px;
+	left: 40px;
+	color: #BF1623;
+}
+.field-validation-error {
+	color: #BF1623;
+}
+.kitjs-validator {
+	color: #BF1623;
+}
+
+body {
+	width: 980px;
+	margin: 30 auto;
+	font-family: "Î¢ÈíÑÅºÚ";
+	color: #7d7d7d;
+}
+img {
+	border: 0;
+}
+h1, h2 {
+	text-align: center;
+	position: relative;
+}
+h1 {
+	color: #0092d3;
+}
+h2 {
+	color: #53bde8;
+}
+h3, h4, h5, h6 {
+	margin: 0;
+}
+ul, ol, li {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	vertical-align: top;
+}
+li * {
+	vertical-align: middle;
+}
+a {
+	color: #7d7d7d;
+}
+a:hover {
+	color: #000;
+}
+.indent {
+	margin-left: 2em;
+}
+.footer {
+	text-align: right;
+	font-size: 12px;
+}
+h1 img {
+	vertical-align: middle;
+}
+.code {
+	margin-left: 2em;
+	background-color: #aaa;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 14px;
+	color: #fff;
+}
+
+.kitjs-validator {
+	display: none;
+	margin-left: 1em;
+}
+.validator-show {
+	display: inline;
+	-webkit-animation: validator-show-anim 300ms 1 ease-in;
+}
+@-webkit-keyframes validator-show-anim {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
