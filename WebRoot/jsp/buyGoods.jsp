@@ -27,7 +27,7 @@
 		if (scDao.payAllGoods(Integer.parseInt(uid))) {
 			response.sendRedirect("alreadyBuy.jsp");
 		} else {
-			JOptionPane.showMessageDialog(null, "购买商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "购买商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
 			response.sendRedirect(request.getContextPath() + "/" + "jsp/shoppingCart.jsp");
 		}
 	%>

@@ -52,7 +52,7 @@ public class EditInfoServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(null, "修改个人信息失败,邮箱地址已使用！", "抱歉", JOptionPane.ERROR_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "修改个人信息失败,邮箱地址已使用！", "抱歉", JOptionPane.ERROR_MESSAGE);
 		response.sendRedirect(request.getContextPath() + "/" + "jsp/showMessage.jsp");
 	}
 

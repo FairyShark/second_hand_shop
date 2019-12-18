@@ -71,7 +71,7 @@ public class EditGoodsServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(null, "修改商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "修改商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
 		response.sendRedirect(request.getContextPath() + "/" + "jsp/saleGoods.jsp");
 	}
 

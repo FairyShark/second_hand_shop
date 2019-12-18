@@ -34,11 +34,11 @@
 			if (flag) {
 				response.sendRedirect("shoppingCart.jsp");
 			} else {
-				JOptionPane.showMessageDialog(null, "添加到购物车失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
+				//JOptionPane.showMessageDialog(null, "添加到购物车失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
 				response.sendRedirect(request.getContextPath() + "/" + "jsp/index.jsp");
 		}
 		}else{
-			JOptionPane.showMessageDialog(null, "不能购买自己出售的商品，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "不能购买自己出售的商品，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
 			response.sendRedirect(request.getContextPath() + "/" + "jsp/index.jsp");
 		}
 	%>

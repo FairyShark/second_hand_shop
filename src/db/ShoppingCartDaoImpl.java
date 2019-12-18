@@ -154,7 +154,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 			}
 		}else {
 			if (this.deleteGoods(uid, gid, number)) {
-			JOptionPane.showMessageDialog(null, "购买的商品库存不足，请重新选择数量！", "抱歉", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "购买的商品库存不足，请重新选择数量！", "抱歉", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		

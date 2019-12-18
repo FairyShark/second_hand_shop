@@ -72,7 +72,7 @@ public class AddGoodsServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if (message == 0) {
-			JOptionPane.showMessageDialog(null, "发布商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "发布商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
 			response.sendRedirect(request.getContextPath() + "/" + "jsp/addGoods.jsp");
 		}else{
 			response.sendRedirect(request.getContextPath() + "/" + "jsp/addPhoto.jsp");

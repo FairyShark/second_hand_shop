@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		String truePath = request.getContextPath() + "/" + path;
-		JOptionPane.showMessageDialog(null, message);
+		//JOptionPane.showMessageDialog(null, message);
 		response.sendRedirect(truePath);
 	}
 

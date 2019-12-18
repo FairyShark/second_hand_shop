@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 		if ("".equals(message)) {
 			response.sendRedirect(truePath);
 		} else {
-			JOptionPane.showMessageDialog(null, message, "±§Ç¸", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, message, "±§Ç¸", JOptionPane.ERROR_MESSAGE);
 			response.sendRedirect(truePath);
 		}
 	}
