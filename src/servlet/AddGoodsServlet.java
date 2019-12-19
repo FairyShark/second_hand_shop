@@ -1,13 +1,13 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import bean.Goods;
 import factory.DAOFactory;
@@ -72,8 +72,28 @@ public class AddGoodsServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if (message == 0) {
-			//JOptionPane.showMessageDialog(null, "发布商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
-			response.sendRedirect(request.getContextPath() + "/" + "jsp/addGoods.jsp");
+			String truePath = request.getContextPath() + "/" + "jsp/addGoods.jsp";
+			PrintWriter out = response.getWriter();
+			out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+			out.println("<HTML>");
+			out.println("  <HEAD><TITLE>发布商品</TITLE>");
+			out.println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath
+					+ "\">");
+			out.println("</HEAD>");
+			out.println("  <BODY>");
+			out.print("<div align=\"center\">");
+			out.print("发布商品失败，请重试！");
+			out.print("<br/>");
+			out.print("将自动跳转到相应页面");
+			out.print("<br/>");
+			out.print("或点击这里：");
+			out.print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
+			out.print("</div>");
+			out.println("  </BODY>");
+			out.println("</HTML>");
+			out.flush();
+			out.close();
+
 		}else{
 			response.sendRedirect(request.getContextPath() + "/" + "jsp/addPhoto.jsp");
 		}

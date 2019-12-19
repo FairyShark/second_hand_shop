@@ -41,25 +41,22 @@ public class AddPhotoServlet  extends HttpServlet {
 		String gid = request.getParameter("Gid");
 		
 		Decoder decoder = Base64.getDecoder();
-        OutputStream out1 = null;
-        OutputStream out2 = null;
+
+        OutputStream out = null;
         
         GoodsDao goodsDao;
         try {
         	goodsDao = DAOFactory.getGoodsServiceInstance();
-        	String Path1 = "G:\\课程\\网络应用开发\\实验\\second_hand_shop\\WebRoot\\images";
-        	String Path2 = request.getSession().getServletContext().getRealPath("/images");
+        	String Path = request.getSession().getServletContext().getRealPath("/images");
         	
         	String imgName = gid + lookIndex + "." + imgFormat;
-        	String imgFilePath1 = Path1 + "\\" + imgName;
-        	String imgFilePath2 = Path2 + "\\" + imgName;
+        	String imgFilePath = Path + "\\" + imgName;
         	String partSeparator = ",";
         	String encodedImg = null;
         	if (imgBase.contains(partSeparator)){
         	  encodedImg = imgBase.split(partSeparator)[1];
         	}
-            out1 = new FileOutputStream(imgFilePath1);
-            out2 = new FileOutputStream(imgFilePath2);
+            out = new FileOutputStream(imgFilePath);
             // Base64解码
             byte[] b = decoder.decode(encodedImg);
             for (int i = 0; i < b.length; ++i) {
@@ -67,8 +64,7 @@ public class AddPhotoServlet  extends HttpServlet {
                     b[i] += 256;
                 }
             }
-            out1.write(b);
-            out2.write(b);
+            out.write(b);
             
             String Yname = goodsDao.queryPho(Integer.parseInt(gid));
             String ImgName = "nophoto.jpg";
@@ -89,10 +85,8 @@ public class AddPhotoServlet  extends HttpServlet {
 		
 			e.printStackTrace();
 		} finally {
-            out1.flush();
-            out1.close();
-            out2.flush();
-            out2.close();
+            out.flush();
+            out.close();
         }
         
         }

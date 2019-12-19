@@ -1,4 +1,3 @@
-<%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.io.IOException"%>
 <%@page import="factory.DAOFactory"%>
 <%@page import="dao.ShoppingCartDao"%>
@@ -27,8 +26,25 @@
 		if (scDao.payAllGoods(Integer.parseInt(uid))) {
 			response.sendRedirect("alreadyBuy.jsp");
 		} else {
-			//JOptionPane.showMessageDialog(null, "购买商品失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
-			response.sendRedirect(request.getContextPath() + "/" + "jsp/shoppingCart.jsp");
+			String truePath = request.getContextPath() + "/jsp/shoppingCart.jsp";
+			response.getWriter().println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+			response.getWriter().println("<HTML>");
+			response.getWriter().println("  <HEAD><TITLE>购买商品</TITLE>");
+			response.getWriter().println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath + "\">");
+			response.getWriter().println("</HEAD>");
+			response.getWriter().println("  <BODY>");
+			response.getWriter().print("<div align=\"center\">");
+			response.getWriter().print("购买商品失败，请重试！");
+			response.getWriter().print("<br/>");
+			response.getWriter().print("将自动跳转到相应页面");
+			response.getWriter().print("<br/>");
+			response.getWriter().print("或点击这里：");
+			response.getWriter().print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
+			response.getWriter().print("</div>");
+			response.getWriter().println("  </BODY>");
+			response.getWriter().println("</HTML>");
+			response.getWriter().flush();
+			response.getWriter().close();
 		}
 	%>
 </body>

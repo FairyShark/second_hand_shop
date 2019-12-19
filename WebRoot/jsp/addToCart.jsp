@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.io.IOException"%>
 <%@page import="factory.DAOFactory"%>
 <%@page import="dao.ShoppingCartDao"%>
@@ -34,12 +33,46 @@
 			if (flag) {
 				response.sendRedirect("shoppingCart.jsp");
 			} else {
-				//JOptionPane.showMessageDialog(null, "添加到购物车失败，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
-				response.sendRedirect(request.getContextPath() + "/" + "jsp/index.jsp");
+				String truePath = request.getContextPath() + "/jsp/index.jsp";
+				response.getWriter().println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+				response.getWriter().println("<HTML>");
+				response.getWriter().println("  <HEAD><TITLE>添加到购物车</TITLE>");
+				response.getWriter().println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath + "\">");
+				response.getWriter().println("</HEAD>");
+				response.getWriter().println("  <BODY>");
+				response.getWriter().print("<div align=\"center\">");
+				response.getWriter().print("添加到购物车失败，请重试！");
+				response.getWriter().print("<br/>");
+				response.getWriter().print("将自动跳转到相应页面");
+				response.getWriter().print("<br/>");
+				response.getWriter().print("或点击这里：");
+				response.getWriter().print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
+				response.getWriter().print("</div>");
+				response.getWriter().println("  </BODY>");
+				response.getWriter().println("</HTML>");
+				response.getWriter().flush();
+				response.getWriter().close();
 		}
 		}else{
-			//JOptionPane.showMessageDialog(null, "不能购买自己出售的商品，请重试！", "抱歉", JOptionPane.ERROR_MESSAGE);
-			response.sendRedirect(request.getContextPath() + "/" + "jsp/index.jsp");
+			String truePath = request.getContextPath() + "/jsp/index.jsp";
+			response.getWriter().println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+			response.getWriter().println("<HTML>");
+			response.getWriter().println("  <HEAD><TITLE>添加到购物车</TITLE>");
+			response.getWriter().println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath + "\">");
+			response.getWriter().println("</HEAD>");
+			response.getWriter().println("  <BODY>");
+			response.getWriter().print("<div align=\"center\">");
+			response.getWriter().print("不能购买自己出售的商品，请重试！");
+			response.getWriter().print("<br/>");
+			response.getWriter().print("将自动跳转到相应页面");
+			response.getWriter().print("<br/>");
+			response.getWriter().print("或点击这里：");
+			response.getWriter().print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
+			response.getWriter().print("</div>");
+			response.getWriter().println("  </BODY>");
+			response.getWriter().println("</HTML>");
+			response.getWriter().flush();
+			response.getWriter().close();
 		}
 	%>
 </body>
