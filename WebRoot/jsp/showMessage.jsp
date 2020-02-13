@@ -65,18 +65,31 @@
 				%>
 
 				<li><label for="UserName">用户名： <span
-						class="kitjs-validator" for="@UserName" rules="[{notNull:true, message:'用户名不能为空'}]"></span>
-				</label> <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span> <input id="UserName" name="UserName" type="text" value="<%=user.getUname()%>" disabled="true"></li>
+						class="kitjs-validator" for="@UserName"
+						rules="[{notNull:true, message:'用户名不能为空'}]"></span>
+				</label> <span class="field-validation-valid" data-valmsg-for="UserName"
+					data-valmsg-replace="true"></span> <input id="UserName"
+					name="UserName" type="text" value="<%=user.getUname()%>"
+					disabled="disabled"></li>
 
 				<li><label for="Email">邮箱地址： <span
-						class="kitjs-validator" for="@Email" rules="[{notNull:true, message:'电子邮件不能为空'},{isEmail:true,message:'电子邮件格式不正确'}]"></span>
-				</label> <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span> <input id="Email" name="Email" type="text" value="<%=user.getEmail()%>" disabled="true"></li>
+						class="kitjs-validator" for="@Email"
+						rules="[{notNull:true, message:'电子邮件不能为空'},{isEmail:true,message:'电子邮件格式不正确'}]"></span>
+				</label> <span class="field-validation-valid" data-valmsg-for="Email"
+					data-valmsg-replace="true"></span> <input id="Email" name="Email"
+					type="text" value="<%=user.getEmail()%>" disabled="disabled"></li>
 
 				<li><label for="Password">密码： <span
-						class="kitjs-validator" for="@Password" rules="[{notNull:true, message:'密码不能为空'},{minLength:'6',message:'密码长度最少为6位'}]"></span>
-				</label> <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span> <input id="Password" name="Password" type="password" value="<%=user.getPasswd()%>" disabled="true"></li>
+						class="kitjs-validator" for="@Password"
+						rules="[{notNull:true, message:'密码不能为空'},{minLength:'6',message:'密码长度最少为6位'}]"></span>
+				</label> <span class="field-validation-valid" data-valmsg-for="Password"
+					data-valmsg-replace="true"></span> <input id="Password"
+					name="Password" type="password" value="<%=user.getPasswd()%>"
+					disabled="disabled"></li>
 
-				<li><label for="email">上次登录时间： </label> <input id="email" name="email" type="text" value="<%=user.getLastLogin()%>" disabled="true"></li>
+				<li><label for="email">上次登录时间： </label> <input id="email"
+					name="email" type="text" value="<%=user.getLastLogin()%>"
+					disabled="disabled"></li>
 
 			</ol>
 			<div class="registError"></div>
