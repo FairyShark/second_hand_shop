@@ -53,5 +53,8 @@ public interface GoodsDao {
 	
 	// 返回指定类型的所有商品
 	public List<Goods> getUidGoodsList(int uid) throws Exception;
+		
+	// 返回指定类型的所有商品
+	public List<Goods> selectGoodsList(String type, String usage, int lowp, int highp, String gname) throws Exception;
 	
 }

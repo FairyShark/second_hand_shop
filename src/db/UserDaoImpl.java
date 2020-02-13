@@ -3,6 +3,9 @@ package db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.User;
 import dao.UserDao;
@@ -132,7 +135,7 @@ public class UserDaoImpl implements UserDao {
 			user.setEmail(email);
 			String date = rs.getDate("lastlogin").toString();
 			String time = rs.getTime("lastlogin").toString();
-			user.setLastLogin(date + "¡¡" + time);
+			user.setLastLogin(date + " " + time);
 		}
 		pstmt.close();
 		rs.close();
@@ -158,7 +161,7 @@ public class UserDaoImpl implements UserDao {
 			user.setEmail(email);
 			String date = rs.getDate("lastlogin").toString();
 			String time = rs.getTime("lastlogin").toString();
-			user.setLastLogin(date + "¡¡" + time);
+			user.setLastLogin(date + " " + time);
 		}
 		pstmt.close();
 		rs.close();
@@ -184,11 +187,68 @@ public class UserDaoImpl implements UserDao {
 			user.setEmail(email);
 			String date = rs.getDate("lastlogin").toString();
 			String time = rs.getTime("lastlogin").toString();
-			user.setLastLogin(date + "¡¡" + time);
+			user.setLastLogin(date + " " + time);
 		}
 		pstmt.close();
 		rs.close();
 		return user;
+	}
+	
+	@Override
+	public List<User> selectAllUser() throws Exception{
+		List<User> userList = new ArrayList<User>();
+		User user;
+		ResultSet rs = null;
+		Statement st = null;
+		st = (Statement) conn.createStatement();
+		String sql = "select * from users order by uid;";
+		rs = st.executeQuery(sql);
+		while (rs.next()) {
+			int uid_t= rs.getInt("uid");
+			String uname_t = rs.getString("uname");
+			String umail_t = rs.getString("email");
+			String passwd_t = rs.getString("passwd");
+			String lastlogin_t = rs.getString("lastLogin");
+			user = new User();
+			user.setUid(uid_t);
+			user.setUname(uname_t);
+			user.setPasswd(passwd_t);
+			user.setEmail(umail_t);
+			user.setLastLogin(lastlogin_t);
+			userList.add(user);
+		}
+		return userList;
+	}
+		
+	@Override
+	public List<User> selectUserList(int uid, String uname, String umail) throws Exception{
+		List<User> userList = new ArrayList<User>();
+		User user;
+		ResultSet rs = null;
+		String sql = "select * from users where if(?=-1,1=1,uid=?) and if(?='%&ALL&%',1=1,uname like ?) and if(?='%&ALL&%',1=1,email=?);";
+		pstmt = this.conn.prepareStatement(sql);
+		pstmt.setInt(1, uid);
+		pstmt.setInt(2, uid);
+		pstmt.setString(3, uname);
+		pstmt.setString(4, '%' + uname + '%');
+		pstmt.setString(5, umail);
+		pstmt.setString(6, umail);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			int uid_t= rs.getInt("uid");
+			String uname_t = rs.getString("uname");
+			String umail_t = rs.getString("email");
+			String passwd_t = rs.getString("passwd");
+			String lastlogin_t = rs.getString("lastlogin");
+			user = new User();
+			user.setUid(uid_t);
+			user.setUname(uname_t);
+			user.setPasswd(passwd_t);
+			user.setEmail(umail_t);
+			user.setLastLogin(lastlogin_t);
+			userList.add(user);
+		}
+		return userList;
 	}
 
 }

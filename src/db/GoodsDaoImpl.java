@@ -376,4 +376,40 @@ public class GoodsDaoImpl implements GoodsDao {
 		}
 		return goodsList;
 	}
+	
+	@Override
+	public List<Goods> selectGoodsList(String type, String usage, int lowp, int highp, String gname) throws Exception{
+		List<Goods> goodsList = new ArrayList<Goods>();
+		Goods goods;
+		ResultSet rs = null;
+		String sql = "select * from goods where if(?='全部',1=1,types=?) and if(?='全部',1=1,gusage=?) and if(?='%&ALL&%',1=1,gname like ?) and (price between ? and ?);";
+		pstmt = this.conn.prepareStatement(sql);
+		pstmt.setString(1, type);
+		pstmt.setString(2, type);
+		pstmt.setString(3, usage);
+		pstmt.setString(4, usage);
+		pstmt.setString(5, gname);
+		pstmt.setString(6, '%' + gname + '%');
+		pstmt.setInt(7, lowp);
+		pstmt.setInt(8, highp);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			int gid = rs.getInt("gid");
+			int uid = rs.getInt("uid");
+			String gname_t = rs.getString("gname");
+			int number = rs.getInt("number");
+			String photo = rs.getString("gphoto");
+			String type_t = rs.getString("types");
+			String usage_t = rs.getString("gusage");
+			float price = rs.getFloat("price");
+			float carriage = rs.getFloat("carriage");
+			String pdate = rs.getDate("pdate").toString();
+			String paddress = rs.getString("paddress");
+			String described = rs.getString("described");
+			goods = new Goods(uid, gname_t, number, photo, type_t, usage_t, price, carriage, pdate, paddress, described);
+			goods.setGid(gid);
+			goodsList.add(goods);
+		}
+		return goodsList;
+	}
 }

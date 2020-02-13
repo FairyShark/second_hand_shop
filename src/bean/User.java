@@ -1,11 +1,5 @@
 package bean;
 
-import java.util.Date; 
-import java.util.Calendar; 
-import java.text.ParseException; 
-import java.text.SimpleDateFormat; 
-
-
 public class User {
 
 	// Ö÷¼ü
@@ -52,23 +46,11 @@ public class User {
 	}
 
 	public String getLastLogin() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd¡¡HH:mm:ss");
-		Date date = null;
-		try {
-			date = sdf.parse(lastLogin.toString());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		Calendar c = Calendar.getInstance();  
-        c.setTime(date);
-        c.add(Calendar.HOUR, 16);
-        date = c.getTime(); 
-        lastLogin = sdf.format(date);
-		return lastLogin;
+        return lastLogin;
 	}
 
 	public void setLastLogin(String lastLogin) {
-		this.lastLogin = lastLogin;
+        this.lastLogin = lastLogin;
 	}
 
 }

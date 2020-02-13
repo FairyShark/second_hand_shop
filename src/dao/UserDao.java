@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import bean.User;
 
 public interface UserDao {
@@ -8,8 +10,7 @@ public interface UserDao {
 	public boolean addUser(User user) throws Exception;
 
 	// 修改邮箱
-	public boolean editEmail(int uid, String email)
-			throws Exception;
+	public boolean editEmail(int uid, String email) throws Exception;
 
 	// 修改密码
 	public boolean editPasswd(int uid, String passwd) throws Exception;
@@ -31,5 +32,11 @@ public interface UserDao {
 
 	// 通过email查找用户
 	public User queryByEmail(String email) throws Exception;
+	
+	// 查找所有用户
+	public List<User> selectAllUser() throws Exception;
+	
+	// 搜索用户
+	public List<User> selectUserList(int uid, String uname, String umail) throws Exception;
 
 }

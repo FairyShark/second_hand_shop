@@ -20,7 +20,7 @@ public class Goods {
 	private float price;
 	// 运费
 	private float carriage;
-	// 生产日期
+	// 发布日期
 	private String pdate;
 	// 发货地
 	private String paddress;

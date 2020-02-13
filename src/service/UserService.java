@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import bean.User;
 import dao.UserDao;
 import db.DBConnection;
@@ -90,6 +92,16 @@ public class UserService implements UserDao {
 		return null;
 	}
 
+	@Override
+	public List<User> selectAllUser() throws Exception{
+		return this.dao.selectAllUser();
+	}
+	
+	@Override
+	public List<User> selectUserList(int uid, String uname, String umail) throws Exception{
+		return this.dao.selectUserList(uid, uname, umail);
+	}
+	
 	public boolean isInt(int index) {
 		if (index == 0) {
 			return false;

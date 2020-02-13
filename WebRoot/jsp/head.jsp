@@ -56,7 +56,7 @@
 						<%
 							if (uname != null) {
 								out.print("<a>" + uname + ",欢迎登录" + "</a>");
-								out.print("<a href=\"jsp/showMessage.jsp\" target=\"_blank\">" + "个人信息" + "</a>");
+								out.print("<a href=\"jsp/showMessage.jsp?uid=" + uid + "\" target=\"_blank\">" + "个人信息" + "</a>");
 								out.print("<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">" + "注销" + "</a>");
 							} else {
 								out.print("<a href=\"jsp/login.jsp\">请  登录</a>");

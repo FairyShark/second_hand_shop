@@ -39,6 +39,10 @@ a {
 	background-color: transparent;
 }
 
+a_active {
+	color:black;
+}
+
 a:active, a:hover {
 	outline: 0;
 }
@@ -9654,4 +9658,139 @@ ul.memenu.skyblue {
 
 #salegoods:hover {
 	background-image: url(../images/sale_ac.png);
+}
+#searchgoods {
+	width: 60px;
+	height: 60px;
+	margin-bottom:20px;
+	background-image: url(../images/search.png);
+}
+
+#searchgoods:hover {
+	background-image: url(../images/search_ac.png);
+}
+.sear_w{
+	text-align: center;
+	margin:50px 0;
+}
+.bottter{
+	width:60%;
+	margin:0 auto;
+	text-align: center;
+	font-size: 15px;
+}
+.search_1 label{
+	line-height:30px;
+	margin:50px 0;
+}
+.typ_5 button{
+	height:30px;
+	width:80px;
+	color:#ffffff;
+	border-radius:8px;
+	background-color:#00aeef;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.typ_5 button:hover{
+	background:#cae7eb;
+}
+.typ_9 button{
+	height:30px;
+	width:80px;
+	color:#ffffff;
+	border-radius:8px;
+	background-color:#00aeef;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.typ_9 button:hover{
+	background:#cae7eb;
+}
+.typ_1 select{
+	line-height:30px;
+	height:30px;
+}
+.typ_2 select{
+	line-height:30px;
+	height:30px;
+}
+.typ_1{
+	height:30px;
+	float:left;
+	margin:0 15px;
+}
+.typ_2{
+	height:30px;
+	float:left;
+	margin:0 15px;
+}
+.typ_3{
+	height:30px;
+	float:left;
+	margin:0 15px;
+}
+.typ_4{
+	height:30px;
+	float:left;
+	margin:0 15px;
+}
+.typ_5{
+	height:30px;
+	float:left;
+	margin:0 15px;
+}
+.typ_6{
+	height:30px;
+	float:left;
+	margin:0 20px;
+}
+.typ_7{
+	height:30px;
+	float:left;
+	margin:0 20px;
+}
+.typ_8{
+	height:30px;
+	float:left;
+	margin:0 20px;
+}
+.typ_9{
+	height:30px;
+	float:left;
+	margin:0 20px;
+}
+.inp_1{
+	width:60px;
+	height:30px;
+	margin-right:10px;
+}
+.inp_2{
+	width:60px;
+	height:30px;
+	margin-left:10px;
+}
+.inp_3{
+	width:180px;
+	height:30px;
+}
+.inp_4{
+	width:80px;
+	height:30px;
+}
+.inp_5{
+	width:180px;
+	height:30px;
+}
+.inp_6{
+	width:220px;
+	height:30px;
+}
+.tempmess{
+	margin: 20px auto;
+	text-align: center;
+	font-size: 16px;
+	color:#ff4848;
 }

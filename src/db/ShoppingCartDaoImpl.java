@@ -20,7 +20,6 @@ import com.sun.mail.util.MailSSLSocketFactory;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.swing.JOptionPane;
 
 import java.security.GeneralSecurityException;
 import java.util.Properties;

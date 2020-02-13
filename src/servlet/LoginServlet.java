@@ -48,7 +48,11 @@ public class LoginServlet extends HttpServlet {
 							String.valueOf(user.getUid()));
 					request.getSession().setAttribute("lastLoginTime",
 							lastLoginTime);
-					path = "jsp/index.jsp";
+					if(user.getUname().equals("admin")) {
+						path = "jsp/adminUser.jsp";
+					}else {
+						path = "jsp/index.jsp";
+					}
 				} else {
 					message = "ÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë";
 				}

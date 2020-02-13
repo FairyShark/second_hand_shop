@@ -115,6 +115,7 @@
 		</div>
 	</div>
 	<div class="bottom_tools">
+	<a id="searchgoods" href="jsp/searchGoods.jsp" title="搜索">搜索</a>
 		<a id="salegoods" href="jsp/saleGoods.jsp" title="出售二手">出售二手</a> <a
 			id="feedback" href="jsp/shoppingCart.jsp" title="购物车">购物车</a> <a
 			id="scrollUp" href="javascript:;" title="回到顶部"></a>
