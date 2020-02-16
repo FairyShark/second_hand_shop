@@ -37,7 +37,7 @@ public class GoodsService implements GoodsDao {
 	
 	@Override
 	public boolean addPho(int gid, String pname) throws Exception {
-		if (isInt(gid)&&pname !=null) {
+		if (isInt(gid) && pname !=null) {
 			return this.dao.addPho(gid, pname);
 		}
 		return false;
@@ -45,7 +45,7 @@ public class GoodsService implements GoodsDao {
 
 	@Override
 	public boolean deleteGoods(int gid) throws Exception {
-		if (this.dao.queryById(gid) != null & isInt(gid)) {
+		if (this.dao.queryById(gid) != null && isInt(gid)) {
 			return this.dao.deleteGoods(gid);
 		}
 		return false;

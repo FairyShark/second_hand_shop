@@ -20,9 +20,17 @@ public class AlreadyBuyService implements AlreadyBuyDao {
 	}
 
 	@Override
-	public boolean addBuyGoods(int uid, int gid, int number) throws Exception {
-		if (isInt(uid) && isInt(gid) && isInt(number)) {
-			return this.dao.addBuyGoods(uid, gid, number);
+	public boolean addBuyGoods(int uid, String sale_name, int gid, int number) throws Exception {
+		if (isInt(uid) && sale_name!=null && isInt(gid) && isInt(number)) {
+			return this.dao.addBuyGoods(uid, sale_name, gid, number);
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean deleteBuyGoods(int gid) throws Exception {
+		if (isInt(gid)) {
+			return this.dao.deleteBuyGoods(gid);
 		}
 		return false;
 	}

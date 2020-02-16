@@ -20,14 +20,29 @@ public class AlreadyBuyDaoImpl implements AlreadyBuyDao {
 	}
 
 	@Override
-	public boolean addBuyGoods(int uid, int gid, int number) throws Exception {
+	public boolean addBuyGoods(int uid, String sale_name, int gid, int number) throws Exception {
 		pstmt = null;
-		String sql = "insert into alreadybuy(uid,gid,number,buytime)value(?,?,?,now());";
+		String sql = "insert into alreadybuy(uid,sale_name,gid,number,buytime)value(?,?,?,?,now());";
 		int result = 0;
 		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, uid);
-		pstmt.setInt(2, gid);
-		pstmt.setInt(3, number);
+		pstmt.setString(2, sale_name);
+		pstmt.setInt(3, gid);
+		pstmt.setInt(4, number);
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		if (result == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean deleteBuyGoods(int gid) throws Exception {
+		String sql = "delete from alreadyBuy where gid=?";
+		int result = 0;
+		pstmt = this.conn.prepareStatement(sql);
+		pstmt.setInt(1, gid);
 		result = pstmt.executeUpdate();
 		pstmt.close();
 		if (result == 1) {

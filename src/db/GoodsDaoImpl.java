@@ -223,29 +223,17 @@ public class GoodsDaoImpl implements GoodsDao {
 
 	@Override
 	public String queryUName(int gid) throws Exception {
-		int uid=0;
-		ResultSet rs1 = null;
-		String sql1 = "select uid from goods where gid=?";
-		pstmt = this.conn.prepareStatement(sql1);
+		String uname = null;
+		ResultSet rs = null;
+		String sql = "select uname from goods where gid=?";
+		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, gid);
-		rs1 = pstmt.executeQuery();
-		if (rs1.next()) {
-			uid = rs1.getInt("uid");
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			uname = rs.getString("uname");
 		}
 		pstmt.close();
-		rs1.close();
-		
-		String uname="";
-		ResultSet rs2 = null;
-		String sql2 = "select uname from users where uid=?";
-		pstmt = this.conn.prepareStatement(sql2);
-		pstmt.setInt(1, uid);
-		rs2 = pstmt.executeQuery();
-		if (rs2.next()) {
-			uname = rs2.getString("uname");
-		}		
-		pstmt.close();
-		rs2.close();
+		rs.close();
 		return uname;
 	}
 	

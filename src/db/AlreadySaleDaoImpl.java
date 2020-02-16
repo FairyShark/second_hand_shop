@@ -21,15 +21,30 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
 	}
 	
 	@Override
-	public boolean addSaleGoods(int uid, int buy_uid, int gid, int number) throws Exception {
+	public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, int number) throws Exception {
 		pstmt = null;
-		String sql = "insert into alreadysale(uid,buy_uid,gid,number,saletime)value(?,?,?,?,now());";
+		String sql = "insert into alreadysale(uid,buy_uid,buy_name,gid,number,saletime)value(?,?,?,?,?,now());";
 		int result = 0;
 		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, uid);
 		pstmt.setInt(2, buy_uid);
-		pstmt.setInt(3, gid);
-		pstmt.setInt(4, number);
+		pstmt.setString(3, buy_name);
+		pstmt.setInt(4, gid);
+		pstmt.setInt(5, number);
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		if (result == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean deleteSaleGoods(int gid) throws Exception {
+		String sql = "delete from alreadySale where gid=?";
+		int result = 0;
+		pstmt = this.conn.prepareStatement(sql);
+		pstmt.setInt(1, gid);
 		result = pstmt.executeUpdate();
 		pstmt.close();
 		if (result == 1) {

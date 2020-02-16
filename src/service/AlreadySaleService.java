@@ -20,9 +20,17 @@ public class AlreadySaleService implements AlreadySaleDao {
 	}
 
 	@Override
-	public boolean addSaleGoods(int uid, int buy_uid, int gid, int number) throws Exception {
-		if (isInt(uid) && isInt(buy_uid) && isInt(gid) && isInt(number)) {
-			return this.dao.addSaleGoods(uid, buy_uid, gid, number);
+	public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, int number) throws Exception {
+		if (isInt(uid) && isInt(buy_uid) && buy_name!=null && isInt(gid) && isInt(number)) {
+			return this.dao.addSaleGoods(uid, buy_uid, buy_name, gid, number);
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean deleteSaleGoods(int gid) throws Exception {
+		if (isInt(gid)) {
+			return this.dao.deleteSaleGoods(gid);
 		}
 		return false;
 	}

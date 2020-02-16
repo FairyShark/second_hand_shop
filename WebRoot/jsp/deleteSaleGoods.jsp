@@ -1,5 +1,7 @@
 <%@page import="factory.DAOFactory"%>
 <%@page import="dao.GoodsDao"%>
+<%@page import="dao.AlreadyBuyDao"%>
+<%@page import="dao.AlreadySaleDao"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -23,11 +25,15 @@
 <body>
 	<%
 		GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-		if (goodsDao.deleteGoods(gid)) {
+	    AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
+	    AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
+		if (goodsDao.deleteGoods(gid) && abDao.deleteBuyGoods(gid) && asDao.deleteSaleGoods(gid)) {
 			response.sendRedirect("saleGoods.jsp");
 		} else {
 	%>
+	<div align="center"><br/>
 	删除商品失败，请重试。
+	</div>
 	<%
 		}
 	%>

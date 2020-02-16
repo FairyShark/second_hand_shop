@@ -16,6 +16,8 @@ public class AlreadySale {
 	private int uid;
 	// 买家id
 	private int buy_uid;
+	// 买家名字
+	private String buy_name;
 	// 商品id
 	private int gid;
 	// 销售的商品数量
@@ -46,6 +48,14 @@ public class AlreadySale {
 	public void setBUid(int buy_uid) {
 		this.buy_uid = buy_uid;
 	}
+	
+	public String getBName() {
+		return buy_name;
+	}
+
+	public void setBName(String buy_name) {
+		this.buy_name = buy_name;
+	}
 
 	public int getGid() {
 		return gid;
@@ -64,18 +74,6 @@ public class AlreadySale {
 	}
 
 	public String getSaleTime() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = null;
-		try {
-			date = sdf.parse(saleTime.toString());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		Calendar c = Calendar.getInstance();  
-        c.setTime(date);
-        c.add(Calendar.HOUR, 16);
-        date = c.getTime(); 
-        saleTime = sdf.format(date);
 		return saleTime;
 	}
 	

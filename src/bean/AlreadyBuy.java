@@ -1,10 +1,5 @@
 package bean;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 /*
  * 已经购买的商品
  */
@@ -14,6 +9,8 @@ public class AlreadyBuy {
 	private int aid;
 	// 用户id
 	private int uid;
+	// 用户名字
+	private String sale_name;
 	// 商品id
 	private int gid;
 	// 购买的商品数量
@@ -36,6 +33,14 @@ public class AlreadyBuy {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
+	
+	public String getSName() {
+		return sale_name;
+	}
+	
+	public void setSName(String sale_name) {
+		this.sale_name = sale_name;
+	}
 
 	public int getGid() {
 		return gid;
@@ -54,18 +59,6 @@ public class AlreadyBuy {
 	}
 
 	public String getBuyTime() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = null;
-		try {
-			date = sdf.parse(buyTime.toString());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		Calendar c = Calendar.getInstance();  
-        c.setTime(date);
-        c.add(Calendar.HOUR, 16);
-        date = c.getTime(); 
-        buyTime = sdf.format(date);
 		return buyTime;
 	}
 
