@@ -38,12 +38,14 @@ public class LandMessageDaoImpl implements LandMessageDao{
 
 	//添加退出时间
 	@Override
-	public boolean addCancelTimeMes(int uid) throws Exception{
+	public boolean addCancelTimeMes(int uid, String userip, String landtime) throws Exception{
 		pstmt = null;
-		String sql = "update landmessage set cancentime=now() where uid=? ORDER lmid DESC LIMIT 1;";
+		String sql = "update landmessage set cancentime=now() where uid=? and userip=? and landtime=?;";
 		int result = 0;
 		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, uid);
+		pstmt.setString(2, userip);
+		pstmt.setString(3, landtime);
 		result = pstmt.executeUpdate();
 		pstmt.close();
 		if (result == 1) {

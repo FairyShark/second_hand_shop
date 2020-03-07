@@ -10,7 +10,7 @@ public interface LandMessageDao {
 	public boolean addLandTimeMes(int uid, String userip) throws Exception;
 
 	//添加退出时间
-	public boolean addCancelTimeMes(int uid) throws Exception;
+	public boolean addCancelTimeMes(int uid, String userip, String landtime) throws Exception;
 	
 	//查询登陆信息
 	public List<LandMessage> getLandMessage(int uid, String userip) throws Exception;

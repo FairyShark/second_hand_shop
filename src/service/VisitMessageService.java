@@ -36,6 +36,15 @@ public class VisitMessageService implements VisitMessageDao{
 		}
 		return false;
 	}
+	
+	//查询登陆时间
+	@Override
+	public String getVisitlandtime(int uid, int gid) throws Exception{
+		if (isInt(uid) && isInt(gid)) {
+			return this.dao.getVisitlandtime(uid, gid);
+		}
+		return null;
+	}
 			
 	//查询登陆信息
 	@Override

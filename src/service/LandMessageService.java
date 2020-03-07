@@ -29,9 +29,9 @@ public class LandMessageService implements LandMessageDao{
 
 	//添加退出时间
 	@Override
-	public boolean addCancelTimeMes(int uid) throws Exception{
-		if (isInt(uid)) {
-			return this.dao.addCancelTimeMes(uid);
+	public boolean addCancelTimeMes(int uid, String userip, String landtime) throws Exception{
+		if (isInt(uid) && userip!=null && landtime!=null) {
+			return this.dao.addCancelTimeMes(uid, userip, landtime);
 		}
 		return false;
 	}
