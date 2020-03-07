@@ -40,6 +40,7 @@ public class VisitMessageDaoImpl implements VisitMessageDao{
 	@Override
 	public boolean addCancelTimeMes(int uid, int gid, String landtime) throws Exception{
 		String lasttime = null;
+		
 		pstmt = null;
 		String sql = "update visitmessage set canceltime=now(),lasttime=?  where uid=? and gid=? and landtime=?;";
 		int result = 0;
