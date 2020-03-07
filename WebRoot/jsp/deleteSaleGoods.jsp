@@ -27,7 +27,9 @@
 		GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
 	    AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
 	    AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
-		if (goodsDao.deleteGoods(gid) && abDao.deleteBuyGoods(gid) && asDao.deleteSaleGoods(gid)) {
+	    abDao.deleteBuyGoods(gid);
+	    asDao.deleteSaleGoods(gid);
+		if (goodsDao.deleteGoods(gid)) {
 			response.sendRedirect("saleGoods.jsp");
 		} else {
 	%>

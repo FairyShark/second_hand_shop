@@ -22,32 +22,22 @@ public class GoodsDaoImpl implements GoodsDao {
 	}
 
 	@Override
-	public boolean addGoods(Goods goods) throws Exception {
-		System.out.println(goods.getUid());
-		System.out.println(goods.getGname());
-		System.out.println(goods.getPhoto());
-		System.out.println(goods.getType());
-		System.out.println(goods.getUsage());
-		System.out.println(goods.getPrice());
-		System.out.println(goods.getCarriage());
-		System.out.println(goods.getPaddress());
-		System.out.println(goods.getDescribed());
-		System.out.println(goods.getNumber());
-		
+	public boolean addGoods(Goods goods) throws Exception {		
 		pstmt = null;
-		String sql = "insert into goods(uid,gname,gphoto,types,gusage,price,carriage,paddress,described,number,pdate)value(?,?,?,?,?,?,?,?,?,?,sysdate())";
+		String sql = "insert into goods(uid,uname,gname,gphoto,types,gusage,price,carriage,paddress,described,number,pdate)value(?,?,?,?,?,?,?,?,?,?,?,sysdate())";
 		int result = 0;
 		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, goods.getUid());
-		pstmt.setString(2, goods.getGname());
-		pstmt.setString(3, goods.getPhoto());
-		pstmt.setString(4, goods.getType());
-		pstmt.setString(5, goods.getUsage());
-		pstmt.setFloat(6, goods.getPrice());
-		pstmt.setFloat(7, goods.getCarriage());
-		pstmt.setString(8, goods.getPaddress());
-		pstmt.setString(9, goods.getDescribed());
-		pstmt.setInt(10, goods.getNumber());
+		pstmt.setString(2, goods.getUname());
+		pstmt.setString(3, goods.getGname());
+		pstmt.setString(4, goods.getPhoto());
+		pstmt.setString(5, goods.getType());
+		pstmt.setString(6, goods.getUsage());
+		pstmt.setFloat(7, goods.getPrice());
+		pstmt.setFloat(8, goods.getCarriage());
+		pstmt.setString(9, goods.getPaddress());
+		pstmt.setString(10, goods.getDescribed());
+		pstmt.setInt(11, goods.getNumber());
 		result = pstmt.executeUpdate();
 		pstmt.close();
 		if (result == 1) {
@@ -286,6 +276,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		while (rs.next()) {
 			int gid = rs.getInt("gid");
 			int uid = rs.getInt("uid");
+			String uname = rs.getString("uname");
 			String gname = rs.getString("gname");
 			int number = rs.getInt("number");
 			String photo = rs.getString("gphoto");
@@ -296,7 +287,7 @@ public class GoodsDaoImpl implements GoodsDao {
 			String pdate = rs.getDate("pdate").toString();
 			String paddress = rs.getString("paddress");
 			String described = rs.getString("described");
-			goods = new Goods(uid, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
+			goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
 			goods.setGid(gid);
 			goodsList.add(goods);
 		}
@@ -348,6 +339,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
 			int gid = rs.getInt("gid");
+			String uname = rs.getString("uname");
 			String gname = rs.getString("gname");
 			int number = rs.getInt("number");
 			String photo = rs.getString("gphoto");
@@ -358,7 +350,7 @@ public class GoodsDaoImpl implements GoodsDao {
 			String pdate = rs.getDate("pdate").toString();
 			String paddress = rs.getString("paddress");
 			String described = rs.getString("described");
-			goods = new Goods(uid, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
+			goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
 			goods.setGid(gid);
 			goodsList.add(goods);
 		}
@@ -384,6 +376,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		while (rs.next()) {
 			int gid = rs.getInt("gid");
 			int uid = rs.getInt("uid");
+			String uname = rs.getString("uname");
 			String gname_t = rs.getString("gname");
 			int number = rs.getInt("number");
 			String photo = rs.getString("gphoto");
@@ -394,7 +387,7 @@ public class GoodsDaoImpl implements GoodsDao {
 			String pdate = rs.getDate("pdate").toString();
 			String paddress = rs.getString("paddress");
 			String described = rs.getString("described");
-			goods = new Goods(uid, gname_t, number, photo, type_t, usage_t, price, carriage, pdate, paddress, described);
+			goods = new Goods(uid, uname, gname_t, number, photo, type_t, usage_t, price, carriage, pdate, paddress, described);
 			goods.setGid(gid);
 			goodsList.add(goods);
 		}

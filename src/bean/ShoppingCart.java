@@ -1,10 +1,5 @@
 package bean;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class ShoppingCart {
 
 	// Ö÷¼ü
@@ -51,18 +46,6 @@ public class ShoppingCart {
 	}
 
 	public String getSdate() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = null;
-		try {
-			date = sdf.parse(sdate.toString());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		Calendar c = Calendar.getInstance();  
-        c.setTime(date);
-        c.add(Calendar.HOUR, 16);
-        date = c.getTime(); 
-        sdate = sdf.format(date);
 		return sdate;
 	}
 

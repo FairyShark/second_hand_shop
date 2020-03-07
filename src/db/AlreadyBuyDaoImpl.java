@@ -22,7 +22,7 @@ public class AlreadyBuyDaoImpl implements AlreadyBuyDao {
 	@Override
 	public boolean addBuyGoods(int uid, String sale_name, int gid, int number) throws Exception {
 		pstmt = null;
-		String sql = "insert into alreadybuy(uid,sale_name,gid,number,buytime)value(?,?,?,?,now());";
+		String sql = "insert into alreadybuy(uid,sale_name,gid,number,buytime) value(?,?,?,?,now());";
 		int result = 0;
 		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, uid);

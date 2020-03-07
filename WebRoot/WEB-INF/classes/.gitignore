@@ -1,8 +1,5 @@
 /bean/
 /dao/
 /db/
-/factory/
-/filter/
 /service/
-/servlet/
-/util/
+/factory/

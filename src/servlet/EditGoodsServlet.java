@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.Goods;
 import dao.GoodsDao;
+import dao.UserDao;
 import factory.DAOFactory;
 
 public class EditGoodsServlet extends HttpServlet {
@@ -61,7 +62,9 @@ public class EditGoodsServlet extends HttpServlet {
 
 		GoodsDao goodsDao;
 		try {
-			Goods goods = new Goods(Integer.parseInt(gid), Integer.parseInt(uid),gname,Integer.parseInt(number),type,usage,Float.parseFloat(price),Float.parseFloat(carriage),paddress,described);
+			UserDao userDao = DAOFactory.getUserServiceInstance();
+			String uname = userDao.queryUName(Integer.parseInt(uid));
+			Goods goods = new Goods(Integer.parseInt(gid), Integer.parseInt(uid), uname,gname,Integer.parseInt(number),type,usage,Float.parseFloat(price),Float.parseFloat(carriage),paddress,described);
 			goodsDao = DAOFactory.getGoodsServiceInstance();
 			if (goodsDao.editInfo(goods)) {
 				response.sendRedirect(request.getContextPath() + "/jsp/saleGoods.jsp");

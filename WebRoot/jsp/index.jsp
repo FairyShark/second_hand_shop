@@ -15,6 +15,7 @@
     }
     int uid = 0;
 	if(guid==null){uid = 0;}else{uid = Integer.parseInt(guid);}
+	if(uid==8)response.sendRedirect("jsp/adminUser.jsp");
 %>
 <!DOCTYPE html>
 <html>

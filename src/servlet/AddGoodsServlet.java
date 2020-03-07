@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Goods;
+import dao.UserDao;
 import factory.DAOFactory;
 
 public class AddGoodsServlet extends HttpServlet {
@@ -56,14 +57,16 @@ public class AddGoodsServlet extends HttpServlet {
 			paddress = "未知";
 		if (described == "" || described == null)
 			described = "暂无详细信息";
-
+		
 		int message = 0;
 
 		try {
-			if (addgoods(Integer.parseInt(uid), gname, Integer.parseInt(number), photo, type, usage,
+			UserDao userDao = DAOFactory.getUserServiceInstance();
+			String uname = userDao.queryUName(Integer.parseInt(uid));
+			if (addgoods(Integer.parseInt(uid), uname, gname, Integer.parseInt(number), photo, type, usage,
 					Float.parseFloat(price), Float.parseFloat(carriage), paddress, described)) {
 				message = 1;
-				int gid = qugid(Integer.parseInt(uid), gname, Integer.parseInt(number), photo, type, usage,
+				int gid = qugid(Integer.parseInt(uid), uname, gname, Integer.parseInt(number), photo, type, usage,
 						Float.parseFloat(price), Float.parseFloat(carriage), paddress, described);
 				request.getSession().setAttribute("uid", uid);
 				request.getSession().setAttribute("gid", gid);
@@ -104,15 +107,15 @@ public class AddGoodsServlet extends HttpServlet {
 
 	}
 
-	public boolean addgoods(int uid, String gname, int number, String photo, String type, String usage, float price,
+	public boolean addgoods(int uid, String uname, String gname, int number, String photo, String type, String usage, float price,
 			float carriage, String paddress, String described) throws Exception {
-		Goods goods = new Goods(uid, gname, number, photo, type, usage, price, carriage, paddress, described);
+		Goods goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, paddress, described);
 		return DAOFactory.getGoodsServiceInstance().addGoods(goods);
 	}
 
-	public int qugid(int uid, String gname, int number, String photo, String type, String usage, float price,
+	public int qugid(int uid, String uname, String gname, int number, String photo, String type, String usage, float price,
 			float carriage, String paddress, String described) throws Exception {
-		Goods goods = new Goods(uid, gname, number, photo, type, usage, price, carriage, paddress, described);
+		Goods goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, paddress, described);
 		return DAOFactory.getGoodsServiceInstance().queryGid(goods);
 	}
 

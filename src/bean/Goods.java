@@ -6,6 +6,8 @@ public class Goods {
 	private int gid;
 	// 用户id
 	private int uid;
+	// 用户名字
+	private String uname;
 	// 商品名
 	private String gname;
 	// 现有商品数量
@@ -31,10 +33,11 @@ public class Goods {
 
 	}
 
-	public Goods(int uid, String gname, int number, String photo, String type,
+	public Goods(int uid, String uname, String gname, int number, String photo, String type,
 			String usage, float price, float carriage,
 			String paddress, String described) {
 		this.uid = uid;
+		this.uname = uname;
 		this.gname = gname;
 		this.number = number;
 		this.photo = photo;
@@ -46,10 +49,11 @@ public class Goods {
 		this.described = described;
 	}
 	
-	public Goods(int uid, String gname, int number, String photo, String type,
+	public Goods(int uid, String uname, String gname, int number, String photo, String type,
 			String usage, float price, float carriage,String pdate,
 			String paddress, String described) {
 		this.uid = uid;
+		this.uname = uname;
 		this.gname = gname;
 		this.number = number;
 		this.photo = photo;
@@ -62,11 +66,12 @@ public class Goods {
 		this.described = described;
 	}
 	
-	public Goods(int gid, int uid, String gname, int number, String photo, String type,
+	public Goods(int gid, int uid, String uname, String gname, int number, String photo, String type,
 			String usage, float price, float carriage,
 			String paddress, String described) {
 		this.gid = gid;
 		this.uid = uid;
+		this.uname = uname;
 		this.gname = gname;
 		this.number = number;
 		this.photo = photo;
@@ -78,11 +83,12 @@ public class Goods {
 		this.described = described;
 	}
 	
-	public Goods(int gid, int uid, String gname, int number, String type,
+	public Goods(int gid, int uid, String uname, String gname, int number, String type,
 			String usage, float price, float carriage,
 			String paddress, String described) {
 		this.gid = gid;
 		this.uid = uid;
+		this.uname = uname;
 		this.gname = gname;
 		this.number = number;
 		this.type = type;
@@ -107,6 +113,14 @@ public class Goods {
 
 	public void setUid(int uid) {
 		this.uid = uid;
+	}
+	
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
 	public String getGname() {
