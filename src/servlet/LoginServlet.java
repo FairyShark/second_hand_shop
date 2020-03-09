@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.User;
+import dao.LandMessageDao;
 import dao.UserDao;
 import factory.DAOFactory;
 
@@ -35,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String passwd = request.getParameter("passwd");
 		User user = null;
+		int uid = 0;
 		String message = "";
 		String path = "jsp/login.jsp";
 		try {
@@ -48,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 							String.valueOf(user.getUid()));
 					request.getSession().setAttribute("lastLoginTime",
 							lastLoginTime);
+					uid = user.getUid();
 					if(user.getUname().equals("admin")) {
 						path = "jsp/adminUser.jsp";
 					}else {
@@ -64,6 +70,15 @@ public class LoginServlet extends HttpServlet {
 		}
 		String truePath = request.getContextPath() + "/" + path;
 		if ("".equals(message)) {
+			try {
+				InetAddress ip4 = Inet4Address.getLocalHost();
+				String userip = ip4.getHostAddress();
+				LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
+				lmdao.addLandTimeMes(uid, userip);
+				request.getSession().setAttribute("landtime", lmdao.getLandtime(uid, userip));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
 			response.sendRedirect(truePath);
 		} else {
 			PrintWriter out = response.getWriter();

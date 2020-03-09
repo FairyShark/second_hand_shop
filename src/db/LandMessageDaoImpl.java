@@ -9,8 +9,8 @@ import java.util.List;
 import bean.LandMessage;
 import dao.LandMessageDao;
 
-public class LandMessageDaoImpl implements LandMessageDao{
-	
+public class LandMessageDaoImpl implements LandMessageDao {
+
 	private Connection conn = null;
 
 	private PreparedStatement pstmt = null;
@@ -19,9 +19,9 @@ public class LandMessageDaoImpl implements LandMessageDao{
 		this.conn = conn;
 	}
 
-	//添加登陆时间
+	// 添加登陆时间
 	@Override
-	public boolean addLandTimeMes(int uid, String userip) throws Exception{
+	public boolean addLandTimeMes(int uid, String userip) throws Exception {
 		pstmt = null;
 		String sql = "insert into landmessage(uid,userip,landtime) value(?,?,now());";
 		int result = 0;
@@ -36,11 +36,11 @@ public class LandMessageDaoImpl implements LandMessageDao{
 		return false;
 	}
 
-	//添加退出时间
+	// 添加退出时间
 	@Override
-	public boolean addCancelTimeMes(int uid, String userip, String landtime) throws Exception{
+	public boolean addCancelTimeMes(int uid, String userip, String landtime) throws Exception {
 		pstmt = null;
-		String sql = "update landmessage set cancentime=now() where uid=? and userip=? and landtime=?;";
+		String sql = "update landmessage set canceltime=now() where uid=? and userip=? and landtime=?;";
 		int result = 0;
 		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, uid);
@@ -53,10 +53,25 @@ public class LandMessageDaoImpl implements LandMessageDao{
 		}
 		return false;
 	}
-		
-	//查询登陆信息
+
+	// 查询登陆信息
 	@Override
-	public List<LandMessage> getLandMessage(int uid, String userip) throws Exception{
+	public String getLandtime(int uid, String userip) throws Exception {
+		String landtime = null;
+		ResultSet rs = null;
+		String sql = "select * from landmessage where uid=? and userip=? order by lmid desc limit 1;";
+		pstmt = this.conn.prepareStatement(sql);
+		pstmt.setInt(1, uid);
+		pstmt.setString(2, userip);
+		rs = pstmt.executeQuery();
+		rs.next();
+		landtime = rs.getString("landtime");
+		return landtime;
+	}
+
+	// 查询登陆信息
+	@Override
+	public List<LandMessage> getLandMessage(int uid, String userip) throws Exception {
 		List<LandMessage> landmessageList = new ArrayList<LandMessage>();
 		LandMessage landmessage = null;
 		ResultSet rs = null;

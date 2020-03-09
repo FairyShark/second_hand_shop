@@ -94,7 +94,7 @@ public class VisitMessageDaoImpl implements VisitMessageDao{
 		return false;
 	}
 	
-	//查询登陆信息
+	//查询登陆时间
 	@Override
 	public String getVisitlandtime(int uid, int gid) throws Exception{
 		String landtime = null;
