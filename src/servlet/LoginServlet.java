@@ -2,9 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		String uname = request.getParameter("uname");
 		String passwd = request.getParameter("passwd");
+		String userip = request.getParameter("userip");
 		User user = null;
 		int uid = 0;
 		String message = "";
@@ -71,11 +69,11 @@ public class LoginServlet extends HttpServlet {
 		String truePath = request.getContextPath() + "/" + path;
 		if ("".equals(message)) {
 			try {
-				InetAddress ip4 = Inet4Address.getLocalHost();
-				String userip = ip4.getHostAddress();
 				LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
 				lmdao.addLandTimeMes(uid, userip);
-				request.getSession().setAttribute("landtime", lmdao.getLandtime(uid, userip));
+				String landtime = lmdao.getLandtime(uid, userip);
+				request.getSession().setAttribute("userip", userip);
+				request.getSession().setAttribute("landtime", landtime);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}		

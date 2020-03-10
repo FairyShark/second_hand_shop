@@ -293,6 +293,22 @@ public class GoodsDaoImpl implements GoodsDao {
 		}
 		return goodsList;
 	}
+	
+	@Override
+	public String queryTypesByGid(int gid) throws Exception {
+		ResultSet rs = null;
+		String sql = "select types from goods where gid =?";
+		String gtype = null;
+		pstmt = this.conn.prepareStatement(sql);
+		pstmt.setInt(1, gid);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			gtype = rs.getString("types");
+		}
+		pstmt.close();
+		rs.close();
+		return gtype;
+	}
 
 	@Override
 	public String[] queryTypes() throws Exception {

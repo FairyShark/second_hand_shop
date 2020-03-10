@@ -1,8 +1,14 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
+<%@ page import="dao.LandMessageDao"%>
+<%@ page import="factory.DAOFactory"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();	
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -45,6 +51,7 @@
 	<h1>登录</h1>
 	<div id="regist-main">
 		<form id="registForm" action="servlet/LoginServlet" method="post">
+		<input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
 			<ol>
 				<li><label for="uname"> </label><li>
 				<label for="uname"> </label>

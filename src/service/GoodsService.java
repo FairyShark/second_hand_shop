@@ -119,6 +119,14 @@ public class GoodsService implements GoodsDao {
 		}
 		return null;
 	}
+	
+	@Override
+	public String queryTypesByGid(int gid) throws Exception {
+		if (isInt(gid)) {
+			return this.dao.queryTypesByGid(gid);
+		}
+		return null;
+	}
 
 	@Override
 	public String[] queryTypes() throws Exception {

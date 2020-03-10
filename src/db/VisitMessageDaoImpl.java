@@ -71,7 +71,7 @@ public class VisitMessageDaoImpl implements VisitMessageDao{
 			try {
 				date1 = sdf.parse(landtime.toString());
 				date2 = sdf.parse(canceltime.toString());
-				lasttime = Integer.parseInt(String.valueOf((date1.getTime() - date2.getTime())/1000));
+				lasttime = Integer.parseInt(String.valueOf((date2.getTime() - date1.getTime())/1000));
 				
 				pstmt = null;
 				sql = "update visitmessage set lasttime=?  where uid=? and gid=? and landtime=?;";

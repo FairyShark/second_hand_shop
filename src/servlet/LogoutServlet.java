@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.net.Inet4Address;
-import java.net.InetAddress;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,12 +32,13 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		int uid = Integer.parseInt(String.valueOf(request.getSession().getAttribute("uid")));
+		String userip = String.valueOf(request.getSession().getAttribute("userip"));
 		String landtime = String.valueOf(request.getSession().getAttribute("landtime"));
 		request.getSession().removeAttribute("uname");
 		request.getSession().removeAttribute("uid");
+		request.getSession().removeAttribute("userip");
+		request.getSession().removeAttribute("landtime");
 		try {
-			InetAddress ip4 = Inet4Address.getLocalHost();
-			String userip = ip4.getHostAddress();
 			LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
 			lmdao.addCancelTimeMes(uid, userip, landtime);
 		} catch (Exception e) {

@@ -42,6 +42,9 @@ public interface GoodsDao {
 	// 查询指定id的商品的图片
 	public String queryPho(int gid) throws Exception;
 	
+	// 查询指定id的商品的类型
+	public String queryTypesByGid(int gid) throws Exception;
+	
 	// 返回所有商品的类型
 	public String[] queryTypes() throws Exception;
 	

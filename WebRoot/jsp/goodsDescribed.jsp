@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="dao.GoodsDao"%>
+<%@ page import="dao.VisitMessageDao"%>
 <%@ page import="bean.Goods"%>
 <%@ page import="java.util.List"%>
 <%@ page import="factory.DAOFactory"%>
@@ -32,6 +33,12 @@
 	String paddress = goods.getPaddress();
 	String described = goods.getDescribed();
 	int sale_uid = goods.getUid();
+	String goodslandtime;
+	GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
+	VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
+	String gtype = gdao.queryTypesByGid(gid);
+	vmdao.addLandTimeMes(uid, gid, gtype);
+	goodslandtime = vmdao.getVisitlandtime(uid, gid);
 %>
 <!DOCTYPE html>
 <html>
@@ -143,6 +150,11 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
+	window.onbeforeunload= function(event) { 
+		location.href="<%=basePath%>/VisitGCancelTServlet?uid=<%=uid%>&gid=<%=gid%>&landtime=<%=goodslandtime%>";
+		}
+	
 		$(document).ready(function() {
 			$(".memenu").memenu();
 		});
