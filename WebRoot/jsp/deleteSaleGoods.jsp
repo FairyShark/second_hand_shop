@@ -2,12 +2,18 @@
 <%@page import="dao.GoodsDao"%>
 <%@page import="dao.AlreadyBuyDao"%>
 <%@page import="dao.AlreadySaleDao"%>
+<%@page import="dao.OperationMesDao"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();
 %>
 <%
 	String uid = String.valueOf(session.getAttribute("uid"));
@@ -30,7 +36,14 @@
 	    abDao.deleteBuyGoods(gid);
 	    asDao.deleteSaleGoods(gid);
 		if (goodsDao.deleteGoods(gid)) {
-			response.sendRedirect("saleGoods.jsp");
+			String opcontent = "删除商品:商品ID（" + gid + "）";
+			OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+			omdao.addOperationMes(Integer.parseInt(uid), userip, opcontent);
+			if(Integer.parseInt(uid)==8){
+				response.sendRedirect("adminGoods.jsp");
+			}else{
+				response.sendRedirect("saleGoods.jsp");
+			}
 		} else {
 	%>
 	<div align="center"><br/>

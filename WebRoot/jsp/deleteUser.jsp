@@ -4,12 +4,18 @@
 <%@page import="dao.GoodsDao"%>
 <%@page import="dao.AlreadyBuyDao"%>
 <%@page import="dao.AlreadySaleDao"%>
+<%@page import="dao.OperationMesDao"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();
 %>
 <%
 	int uid = Integer.parseInt(request.getParameter("uid"));
@@ -42,6 +48,9 @@
 			}
 		}
 		if (userDao.deleteUser(uid)) {
+			String opcontent = "删除会员及其所有商品:会员ID（" + uid + "）";
+			OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+			omdao.addOperationMes(8, userip, opcontent);
 			response.sendRedirect("adminUser.jsp");
 		} else {
 	%>

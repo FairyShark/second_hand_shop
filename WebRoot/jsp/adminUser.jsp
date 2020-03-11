@@ -3,11 +3,16 @@
 <%@page import="java.util.List"%>
 <%@page import="factory.DAOFactory"%>
 <%@page import="dao.UserDao"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%@ page language="java" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();
 %>
 <%
 	String uid = String.valueOf(session.getAttribute("uid"));
@@ -152,7 +157,8 @@
 		<a id="scrollUp" href="javascript:;" title="回到顶部"></a>
 	</div>
 	</div>
-	<script>
+	<script type="text/javascript">
+	
 		function confirmDelete() {
 			return confirm("确认删除该会员吗，同时会清空该会员的售卖商品？");
 		}
@@ -165,6 +171,7 @@
 				pager : true,
 			});
 		});
+		
 		function showtime() {
 			var myDate = new Date();
 			document.getElementById("time").innerHTML = myDate.getHours() + "时"
@@ -232,6 +239,7 @@
 					url : 'SelectUserServlet',
 					type : 'GET',
 					data : {
+						Userip : <%=userip%>,
 						UserID : UserID,
 						UserName : UserName,
 						UserMail : UserMail,

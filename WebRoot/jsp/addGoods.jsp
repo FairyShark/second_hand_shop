@@ -1,8 +1,13 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();	
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -42,6 +47,7 @@
 	<h1>发布二手商品</h1>
 	<div id="regist-main">
 		<form id="registForm" action="servlet/AddGoodsServlet" method="post">
+		<input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
 			<div class="pub_1">
 				<div class="pub_2">
 					<div class="pub_3">

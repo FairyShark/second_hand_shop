@@ -2,11 +2,16 @@
 <%@page import="factory.DAOFactory"%>
 <%@page import="dao.UserDao"%>
 <%@page import="service.UserService"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%@ page language="java" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();	
 %>
 <%
 	String uname = (String) session.getAttribute("uname");
@@ -55,6 +60,8 @@
 	<h1>个人信息</h1>
 	<div id="regist-main">
 		<form id="registForm" action="servlet/EditInfoServlet" method="get">
+		<input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
+		<input id="userid" name="userid" value="<%=uid%>" type="hidden"/>
 			<ol>
 				<%
 					UserDao dao = DAOFactory.getUserServiceInstance();

@@ -2,12 +2,17 @@
 <%@ page import="dao.GoodsDao"%>
 <%@ page import="bean.Goods"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%@ page import="factory.DAOFactory"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	int gid = Integer.parseInt(request.getParameter("gid"));
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();	
 %>
 <%
 	GoodsDao dao = DAOFactory.getGoodsServiceInstance();
@@ -68,6 +73,7 @@
 	<h1>修改商品信息</h1>
 	<div id="regist-main">
 		<form id="registForm" action="servlet/EditGoodsServlet" method="post" onsubmit="return submit_sure()">
+		<input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
 		<input type="hidden" value="<%=gid%>" name="Gid" id="Gid"/>
 			<div class="pub_1">
 				<div class="pub_2">

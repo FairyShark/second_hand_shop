@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.User;
+import dao.OperationMesDao;
+import dao.UserDao;
 import factory.DAOFactory;
 
 public class RegisterServlet extends HttpServlet {
@@ -33,6 +35,7 @@ public class RegisterServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
+		String userip = request.getParameter("userip");
 		String uname = request.getParameter("uname");
 		String passwd = request.getParameter("passwd");
 		String email = request.getParameter("Email");
@@ -42,6 +45,16 @@ public class RegisterServlet extends HttpServlet {
 			if (resister(uname, passwd, email)) {
 				message = "注册成功";
 				path = "jsp/login.jsp";
+				try {
+					UserDao udao = DAOFactory.getUserServiceInstance();
+					User user = new User();
+					user = udao.queryByEmail(email);
+					String opcontent = "注册会员信息:名字（" + uname + "）,邮箱（" + email + "）,密码（" + passwd + "）" ;
+					OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+					omdao.addOperationMes(user.getUid(), userip, opcontent);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

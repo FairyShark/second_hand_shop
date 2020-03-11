@@ -3,11 +3,16 @@
 <%@ page import="dao.GoodsDao"%>
 <%@ page import="bean.Goods"%>
 <%@ page import="factory.DAOFactory"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%@ page import="java.util.List"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();
 %>
 <%
 	String guid = null;
@@ -203,7 +208,8 @@
 	<div class="bottom_tools">
 		<a id="scrollUp" href="javascript:;" title="回到顶部"></a>
 	</div>
-	<script>
+	<script type="text/javascript">
+	
 		function confirmDelete() {
 			return confirm("确认删除该商品吗");
 		}
@@ -216,6 +222,7 @@
 				pager : true,
 			});
 		});
+		
 		function showtime() {
 			var myDate = new Date();
 			document.getElementById("time").innerHTML = myDate.getHours() + "时"
@@ -286,6 +293,7 @@
 					url : 'SelectGoodsServlet',
 					type : 'GET',
 					data : {
+						Userip : <%=userip%>,
 						Uid : <%=uid%>,
 						GoodsType : GoodsType,
 						GoodsUsage : GoodsUsage,
@@ -375,6 +383,7 @@
 				});
 			}
 		}
+		
 		document.onkeydown = function(event) {
 			e = event ? event : (window.event ? window.event : null);
 			if (e.keyCode == 13) {

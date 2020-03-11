@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.Goods;
 import dao.GoodsDao;
+import dao.OperationMesDao;
 import dao.UserDao;
 import factory.DAOFactory;
 
@@ -37,6 +38,9 @@ public class EditGoodsServlet extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String uid = String.valueOf(session.getAttribute("uid"));
+		
+		String userip = request.getParameter("userip");
+		
 		String gid = request.getParameter("Gid");
 		String gname = request.getParameter("Gname");
 		String number = request.getParameter("Number");
@@ -67,9 +71,19 @@ public class EditGoodsServlet extends HttpServlet {
 			Goods goods = new Goods(Integer.parseInt(gid), Integer.parseInt(uid), uname,gname,Integer.parseInt(number),type,usage,Float.parseFloat(price),Float.parseFloat(carriage),paddress,described);
 			goodsDao = DAOFactory.getGoodsServiceInstance();
 			if (goodsDao.editInfo(goods)) {
-				response.sendRedirect(request.getContextPath() + "/jsp/saleGoods.jsp");
+				try {
+					String opcontent = "修改商品:商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（"+ usage + "）,发货地（"+ paddress + "）,描述（"+ described + "）" ;
+					OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+					omdao.addOperationMes(Integer.parseInt(uid), userip, opcontent);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if(Integer.parseInt(uid)==8) {
+					response.sendRedirect(request.getContextPath() + "/jsp/adminGoods.jsp");
+				}else {
+				    response.sendRedirect(request.getContextPath() + "/jsp/saleGoods.jsp");
+				}
 				return;
-			
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

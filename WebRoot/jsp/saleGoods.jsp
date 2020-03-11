@@ -133,9 +133,7 @@
 					<a
 						href="jsp/editGoods.jsp?gid=<%=gid%>">修改</a></td>
 					<td>
-					<a
-						href="jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
-						onclick="return confirmDelete()">删除</a></td>
+					<a href="jsp/deleteSaleGoods.jsp?gid=<%=gid%>" onclick="return confirmDelete()">删除</a></td>
 				</tr>
 				<%
 					}

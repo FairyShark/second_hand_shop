@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.alibaba.fastjson.JSON;
 
 import bean.User;
+import dao.OperationMesDao;
 import dao.UserDao;
 import factory.DAOFactory;
 
@@ -44,6 +45,12 @@ public class SelectUserServlet extends HttpServlet {
 		UserDao goodsDao;
 		List<User> list;
 		try {
+			if(uid==8) {
+				String userip=request.getParameter("Userip");
+				String opcontent = "查询会员：会员ID（" + uid + "）,名字（" + uname + "）,邮箱（" + umail +"）" ;
+				OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+				omdao.addOperationMes(uid, userip, opcontent);
+			}
 			goodsDao = DAOFactory.getUserServiceInstance();
 			list = goodsDao.selectUserList(uid,uname,umail);
 			PrintWriter out=response.getWriter();

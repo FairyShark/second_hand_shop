@@ -1,9 +1,14 @@
 <%@ page language="java" pageEncoding="utf-8"%>
+<%@ page import="java.net.Inet4Address"%>
+<%@ page import="java.net.InetAddress"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	
+	InetAddress ip4 = Inet4Address.getLocalHost();
+	String userip = ip4.getHostAddress();	
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -41,6 +46,7 @@
 	<h1>注册</h1>
 	<div id="regist-main">
 		<form id="registForm" action="servlet/RegisterServlet" method="post">
+		<input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
 			<ol>
 				<li><label for="uname">用户名： <span
 						class="kitjs-validator" for="@uname"

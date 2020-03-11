@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Goods;
+import dao.OperationMesDao;
 import dao.UserDao;
 import factory.DAOFactory;
 
@@ -34,6 +35,8 @@ public class AddGoodsServlet extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String uid = String.valueOf(session.getAttribute("uid"));
+		
+		String userip = request.getParameter("userip");
 
 		String gname = request.getParameter("Gname");
 		String price = request.getParameter("Price");
@@ -98,6 +101,13 @@ public class AddGoodsServlet extends HttpServlet {
 			out.close();
 
 		}else{
+			try {
+				String opcontent = "添加商品:商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（"+ usage + "）,发货地（"+ paddress + "）,描述（"+ described + "）" ;
+				OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+				omdao.addOperationMes(Integer.parseInt(uid), userip, opcontent);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			response.sendRedirect(request.getContextPath() + "/" + "jsp/addPhoto.jsp");
 		}
 	
