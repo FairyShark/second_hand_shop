@@ -286,6 +286,7 @@
 					url : 'SelectGoodsServlet',
 					type : 'GET',
 					data : {
+						Uid : <%=uid%>,
 						GoodsType : GoodsType,
 						GoodsUsage : GoodsUsage,
 						GoodsLowP : GoodsLowP,
@@ -310,7 +311,7 @@
 							var td1 = $("<td/>");
 							td1.addClass("ring-in");
 							var a1 = $("<a/>");
-							a1.attr("herf", "jsp/goodsDescribed.jsp?gid="
+							a1.attr("href", "jsp/goodsDescribed.jsp?gid="
 									+ val.gid);
 							a1.addClass("at-in");
 							var img1 = $("<img/>");

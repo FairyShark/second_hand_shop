@@ -230,6 +230,7 @@
 					url : 'SelectGoodsServlet',
 					type : 'GET',
 					data : {
+						Uid : 8,
 						GoodsType : GoodsType,
 						GoodsUsage : GoodsUsage,
 						GoodsLowP : GoodsLowP,
@@ -241,20 +242,20 @@
 						$("#resultTable").empty();
 						var tr = $("<tr/>");
 						$("<th/>").html("商品").appendTo(tr);
-						$("<th/>").html("卖家").appendTo(tr);
+						$("<th/>").html("发货地").appendTo(tr);
 						$("<th/>").html("库存").appendTo(tr);
 						$("<th/>").html("价格").appendTo(tr);
 						$("<th/>").html("运费").appendTo(tr);
 						$("<th/>").html("类型").appendTo(tr);
 						$("<th/>").html("使用情况").appendTo(tr);
 						$("#resultTable").append(tr);
-						var temp=0;
+						var temp = 0;
 						$.each(json, function(i, val) {
 							var tr = $("<tr/>");
 							var td1 = $("<td/>");
 							td1.addClass("ring-in");
 							var a1 = $("<a/>");
-							a1.attr("herf", "jsp/goodsDescribed.jsp?gid="
+							a1.attr("href", "jsp/goodsDescribed.jsp?gid="
 									+ val.gid);
 							a1.addClass("at-in");
 							var img1 = $("<img/>");
@@ -265,11 +266,9 @@
 							img1.appendTo(a1);
 							var div1 = $("<div/>");
 							div1.addClass("sed");
-							$("<h5/>").html("商品名：" + val.gname).appendTo(
-									div1);
+							$("<h5/>").html("商品名：" + val.gname).appendTo(div1);
 							$("<br/>").appendTo(div1);
-							$("<p/>").html("发布时间：" + val.pdate).appendTo(
-									div1);
+							$("<p/>").html("发布时间：" + val.pdate).appendTo(div1);
 							var div2 = $("<div/>");
 							div2.addClass("clearfix");
 							a1.appendTo(td1);
@@ -285,14 +284,14 @@
 							$("#resultTable").append(tr);
 							temp++;
 						})
-						if(temp==0){
+						if (temp == 0) {
 							$("#resultTable").empty();
 							$("#tempP").empty();
 							var p2 = $("<p/>");
 							p2.addClass("tempmess");
 							p2.html("暂时没有该类型的商品，换一个试试！").appendTo(p2);
 							$("#tempP").append(p2);
-						}else{
+						} else {
 							$("#tempP").empty();
 							var p3 = $("<p/>");
 							p3.addClass("tempmess");
@@ -303,11 +302,11 @@
 					error : function() {
 						$("#test").append("条件查询错误！");
 					}
-					
+
 				});
 			}
 		}
-		
+
 		document.onkeydown = function(event) {
 			e = event ? event : (window.event ? window.event : null);
 			if (e.keyCode == 13) {

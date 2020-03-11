@@ -150,8 +150,9 @@ public class GoodsService implements GoodsDao {
 	}
 	
 	@Override
-	public List<Goods> selectGoodsList(String type, String usage, int lowp, int highp, String gname) throws Exception{
-		return this.dao.selectGoodsList(type, usage, lowp, highp, gname);
+	public List<Goods> selectGoodsList(int uid, String type, String usage, int lowp, int highp, String gname) throws Exception{
+		return this.dao.selectGoodsList(uid, type, usage, lowp, highp, gname);
+
 	}
 	
 	public boolean isInt(int index) {

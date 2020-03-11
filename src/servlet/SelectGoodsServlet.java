@@ -36,17 +36,17 @@ public class SelectGoodsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		int uid=Integer.parseInt(request.getParameter("Uid"));
 		String gtype=request.getParameter("GoodsType");
 		String usage=request.getParameter("GoodsUsage");
 		int lowp=Integer.parseInt(request.getParameter("GoodsLowP"));
 		int highp=Integer.parseInt(request.getParameter("GoodsHighP"));
 		String gname=request.getParameter("GoodsName");
-	
 		GoodsDao goodsDao;
 		List<Goods> list;
 		try {
 			goodsDao = DAOFactory.getGoodsServiceInstance();
-			list = goodsDao.selectGoodsList(gtype,usage,lowp,highp,gname);
+			list = goodsDao.selectGoodsList(uid,gtype,usage,lowp,highp,gname);
 			PrintWriter out=response.getWriter();
 			out.write(JSON.toJSONString(list));
 		} catch (Exception e) {

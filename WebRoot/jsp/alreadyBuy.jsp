@@ -134,6 +134,106 @@
 			});
 	});
 	
+	function clickSearch() {
+		var GoodsType = $("#Types").val();
+		var GoodsUsage = $("#Usage").val();
+		var GoodsLowP = $("#low_pr").val();
+		var GoodsHighP = $("#high_pr").val();
+		var GoodsName = $("#main_w").val();
+		if (GoodsType == "全部" && GoodsUsage == "全部"
+				&& (GoodsLowP == null || GoodsLowP == "")
+				&& (GoodsHighP == null || GoodsHighP == "")
+				&& (GoodsName == null || GoodsName == "")) {
+			window.location.reload();
+		} else {
+			if (GoodsLowP == null || GoodsLowP == "")
+				GoodsLowP = 0;
+			if (GoodsHighP == null || GoodsHighP == "")
+				GoodsHighP = 214748364;
+			if (GoodsName == null || GoodsName == "")
+				GoodsName = "%&ALL&%";
+			$.ajax({
+				url : 'SelectGoodsServlet',
+				type : 'GET',
+				data : {
+					GoodsType : GoodsType,
+					GoodsUsage : GoodsUsage,
+					GoodsLowP : GoodsLowP,
+					GoodsHighP : GoodsHighP,
+					GoodsName : GoodsName
+				},
+				dataType : 'json',
+				success : function(json) {
+					$("#resultTable").empty();
+					var tr = $("<tr/>");
+					$("<th/>").html("商品").appendTo(tr);
+					$("<th/>").html("卖家").appendTo(tr);
+					$("<th/>").html("库存").appendTo(tr);
+					$("<th/>").html("价格").appendTo(tr);
+					$("<th/>").html("运费").appendTo(tr);
+					$("<th/>").html("类型").appendTo(tr);
+					$("<th/>").html("使用情况").appendTo(tr);
+					$("#resultTable").append(tr);
+					var temp=0;
+					$.each(json, function(i, val) {
+						var tr = $("<tr/>");
+						var td1 = $("<td/>");
+						td1.addClass("ring-in");
+						var a1 = $("<a/>");
+						a1.attr("herf", "jsp/goodsDescribed.jsp?gid="
+								+ val.gid);
+						a1.addClass("at-in");
+						var img1 = $("<img/>");
+						var image1 = new Array();
+						image1 = val.photo.split("&");
+						img1.attr("src", "images/" + image1[0]);
+						img1.addClass("img-responsive");
+						img1.appendTo(a1);
+						var div1 = $("<div/>");
+						div1.addClass("sed");
+						$("<h5/>").html("商品名：" + val.gname).appendTo(
+								div1);
+						$("<br/>").appendTo(div1);
+						$("<p/>").html("发布时间：" + val.pdate).appendTo(
+								div1);
+						var div2 = $("<div/>");
+						div2.addClass("clearfix");
+						a1.appendTo(td1);
+						div1.appendTo(td1);
+						div2.appendTo(td1);
+						td1.appendTo(tr);
+						$("<td/>").html(val.paddress).appendTo(tr);
+						$("<td/>").html(val.number).appendTo(tr);
+						$("<td/>").html(val.price).appendTo(tr);
+						$("<td/>").html(val.carriage).appendTo(tr);
+						$("<td/>").html(val.type).appendTo(tr);
+						$("<td/>").html(val.usage).appendTo(tr);
+						$("#resultTable").append(tr);
+						temp++;
+					})
+					if(temp==0){
+						$("#resultTable").empty();
+						$("#tempP").empty();
+						var p2 = $("<p/>");
+						p2.addClass("tempmess");
+						p2.html("暂时没有该类型的商品，换一个试试！").appendTo(p2);
+						$("#tempP").append(p2);
+					}else{
+						$("#tempP").empty();
+						var p3 = $("<p/>");
+						p3.addClass("tempmess");
+						p3.html("共找到" + temp + "个该类型的商品！").appendTo(p3);
+						$("#tempP").append(p3);
+					}
+				},
+				error : function() {
+					$("#test").append("条件查询错误！");
+				}
+				
+			});
+		}
+	}
+	
 </script>
 </body>
 </html>

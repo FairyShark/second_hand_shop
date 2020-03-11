@@ -17,5 +17,5 @@ public interface AlreadySaleDao {
 	
 	// 获取指定商品记录
 	public List<AlreadySale> getAllSaleGoodsByGid(int gid) throws Exception;
-
+	
 }
