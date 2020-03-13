@@ -165,12 +165,6 @@
 			pager : true,
 		});
 	});
-	function showtime() {
-		var myDate = new Date();
-		document.getElementById("time").innerHTML = myDate.getHours() + "时"
-				+ myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
-		setTimeout("showtime()", 1000);
-	}
 	
 	$(function(){
 		var $body = $(document.body);;

@@ -42,6 +42,10 @@
 				+ myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
 		setTimeout("showtime()", 1000);
 	}
+	
+	function confirmDelete() {
+		return confirm("确认删除该会员吗，同时会清空该会员的售卖商品？");
+	}
 </script>
 </head>
 <body>
@@ -158,10 +162,6 @@
 	</div>
 	</div>
 	<script type="text/javascript">
-	
-		function confirmDelete() {
-			return confirm("确认删除该会员吗，同时会清空该会员的售卖商品？");
-		}
 		
 		$(function() {
 			$("#slider").responsiveSlides({
@@ -171,13 +171,6 @@
 				pager : true,
 			});
 		});
-		
-		function showtime() {
-			var myDate = new Date();
-			document.getElementById("time").innerHTML = myDate.getHours() + "时"
-					+ myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
-			setTimeout("showtime()", 1000);
-		}
 
 		$(function() {
 			var $body = $(document.body);
@@ -239,7 +232,7 @@
 					url : 'SelectUserServlet',
 					type : 'GET',
 					data : {
-						Userip : <%=userip%>,
+						Userip : '<%=userip%>',
 						UserID : UserID,
 						UserName : UserName,
 						UserMail : UserMail,

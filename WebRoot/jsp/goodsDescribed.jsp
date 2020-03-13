@@ -33,12 +33,13 @@
 	String paddress = goods.getPaddress();
 	String described = goods.getDescribed();
 	int sale_uid = goods.getUid();
-	String goodslandtime;
+	String goodslandtime = null;
 	GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
 	VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
 	String gtype = gdao.queryTypesByGid(gid);
 	vmdao.addLandTimeMes(uid, gid, gtype);
 	goodslandtime = vmdao.getVisitlandtime(uid, gid);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -150,10 +151,10 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	
-	window.onbeforeunload= function(event) { 
+	window.onbeforeunload = function(){
 		location.href="<%=basePath%>/VisitGCancelTServlet?uid=<%=uid%>&gid=<%=gid%>&landtime=<%=goodslandtime%>";
-		}
+		return "你确定要离开吗";
+	}
 	
 		$(document).ready(function() {
 			$(".memenu").memenu();
@@ -186,9 +187,7 @@
 
 		function editHref() {
 			var number = document.getElementById("buyNumber").value;
-			if (number >
-	<%=number%>
-		) {
+			if (number > <%=number%>) {
 				alert("要购买的数量大于库存，请重新选择");
 				return false;
 			}

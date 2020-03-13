@@ -38,7 +38,7 @@
 <script type="text/javascript" src="js/responsiveslides.min.js"></script>
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-<script>
+<script type="text/javascript">
 	$(document).ready(function() {
 		$(".memenu").memenu();
 	});
@@ -52,6 +52,10 @@
 		document.getElementById("time").innerHTML = myDate.getHours() + "点"
 				+ myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
 		setTimeout("showtime()", 1000);
+	}
+	
+	function confirmDelete() {
+		return confirm("确认删除该商品吗");
 	}
 </script>
 </head>
@@ -209,10 +213,6 @@
 		<a id="scrollUp" href="javascript:;" title="回到顶部"></a>
 	</div>
 	<script type="text/javascript">
-	
-		function confirmDelete() {
-			return confirm("确认删除该商品吗");
-		}
 
 		$(function() {
 			$("#slider").responsiveSlides({
@@ -222,13 +222,6 @@
 				pager : true,
 			});
 		});
-		
-		function showtime() {
-			var myDate = new Date();
-			document.getElementById("time").innerHTML = myDate.getHours() + "时"
-					+ myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
-			setTimeout("showtime()", 1000);
-		}
 
 		$(function() {
 			var $body = $(document.body);
@@ -293,7 +286,7 @@
 					url : 'SelectGoodsServlet',
 					type : 'GET',
 					data : {
-						Userip : <%=userip%>,
+						Userip : '<%=userip%>',
 						Uid : <%=uid%>,
 						GoodsType : GoodsType,
 						GoodsUsage : GoodsUsage,

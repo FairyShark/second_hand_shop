@@ -35,9 +35,8 @@ public class VisitGCancelTServlet extends HttpServlet {
 		String landtime = request.getParameter("landtime");
 		try {
 			VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
-			vmdao.addCancelTimeMes(uid, gid, landtime);			
+			vmdao.addCancelTimeMes(uid, gid, landtime);
 		} catch (Exception e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 	}
