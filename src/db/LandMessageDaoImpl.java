@@ -23,7 +23,7 @@ public class LandMessageDaoImpl implements LandMessageDao {
 	@Override
 	public boolean addLandTimeMes(int uid, String userip) throws Exception {
 		pstmt = null;
-		String sql = "insert into landmessage(uid,userip,landtime) value(?,?,now());";
+		String sql = "insert into landmessage(uid,userip,landtime,canceltime) value(?,?,now(),now());";
 		int result = 0;
 		pstmt = this.conn.prepareStatement(sql);
 		pstmt.setInt(1, uid);

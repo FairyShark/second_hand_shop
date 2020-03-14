@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component jdk="1.8" jdk_type="JavaSDK">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="fastjson-1.2.59.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/fastjson-1.2.59.jar!/"/>
+	</lib>
+	<lib name="javax.servlet.jsp.jstl-1.2.5.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.5.jar!/"/>
+	</lib>
+	<lib name="javax.servlet.jsp.jstl-api-1.2.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/javax.servlet.jsp.jstl-api-1.2.2.jar!/"/>
+	</lib>
+	<lib name="activation.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/activation.jar!/"/>
+	</lib>
+	<lib name="mail.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/mail.jar!/"/>
+	</lib>
+	<lib name="javax.mail-1.6.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/javax.mail-1.6.2.jar!/"/>
+	</lib>
+	<lib name="mysql-connector-java-8.0.16.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/mysql-connector-java-8.0.16.jar!/"/>
+	</lib>
+	<lib name="Tomcat 9.0.29" scope="PROVIDED"/>
+	<levels>
+		<level name="Tomcat 9.0.29" value="application_server_libraries"/>
+		<level name="lib" value="project"/>
+	</levels>
+</component>

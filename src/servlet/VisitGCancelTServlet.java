@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.VisitMessageDao;
 import factory.DAOFactory;
 
-/**
- * Servlet implementation class VisitGCancelTServlet
- */
+
 @WebServlet("/VisitGCancelTServlet")
 public class VisitGCancelTServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
