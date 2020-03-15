@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <%@ page import="dao.GoodsDao" %>
 <%@ page import="dao.VisitMessageDao" %>
 <%@ page import="bean.Goods" %>
@@ -19,27 +19,28 @@
     }
 %>
 <%
-    GoodsDao dao = DAOFactory.getGoodsServiceInstance();
-    Goods goods = dao.queryById(gid);
-    String name = goods.getGname();
-    int number = goods.getNumber();
-    String[] photo = goods.getPhoto().split("&");
-    String type = goods.getType();
-    String uname = dao.queryUName(gid);
-    String usage = goods.getUsage();
-    float price = goods.getPrice();
-    float carriage = goods.getCarriage();
-    String pdate = goods.getPdate();
-    String paddress = goods.getPaddress();
-    String described = goods.getDescribed();
-    int sale_uid = goods.getUid();
-    String goodslandtime = null;
-    GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
-    VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
-    String gtype = gdao.queryTypesByGid(gid);
-    vmdao.addLandTimeMes(uid, gid, gtype);
-    goodslandtime = vmdao.getVisitlandtime(uid, gid);
-
+    try {
+        GoodsDao dao = null;
+        String goodslandtime = null;
+        dao = DAOFactory.getGoodsServiceInstance();
+        Goods goods = dao.queryById(gid);
+        String name = goods.getGname();
+        int number = goods.getNumber();
+        String[] photo = goods.getPhoto().split("&");
+        String type = goods.getType();
+        String uname = dao.queryUName(gid);
+        String usage = goods.getUsage();
+        float price = goods.getPrice();
+        float carriage = goods.getCarriage();
+        String pdate = goods.getPdate();
+        String paddress = goods.getPaddress();
+        String described = goods.getDescribed();
+        int sale_uid = goods.getUid();
+        GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
+        VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
+        String gtype = gdao.queryTypesByGid(gid);
+        vmdao.addLandTimeMes(uid, gid, gtype);
+        goodslandtime = vmdao.getVisitlandtime(uid, gid);
 %>
 <!DOCTYPE html>
 <html>
@@ -64,13 +65,13 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <%
-                            if (photo != null & photo.length > 0) {
-                                for (int i = 0; i < photo.length; i++) {
+                                if (photo.length > 0) {
+                                    for (int i = 0; i < photo.length; i++) {
                         %>
-                        <li data-thumb="images/<%=photo[i]%>">
+                        <li data-thumb="<%=basePath%>/images/<%=photo[i]%>">
                             <div class="thumb-image">
                                 <img src="images/<%=photo[i]%>" data-imagezoom="true"
-                                     class="img-responsive">
+                                     class="img-responsive" alt="商品图片">
                             </div>
                         </li>
                         <%
@@ -102,7 +103,7 @@
                     <%
                         if (sale_uid == uid) {
                     %>
-                    <a id="carthref" href="jsp/editGoods.jsp?gid=<%=gid%>"
+                    <a id="carthref" href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>"
                        class="cart item_add">修改商品</a>
                     <%
                     } else {
@@ -112,7 +113,7 @@
                         <input id="buyNumber" name="buyNumber" type="number" min="1"
                                max=<%=number%> value="1"/>
                     </div>
-                    <a id="carthref" href="jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
+                    <a id="carthref" href="<%=basePath%>/jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
                        class="cart item_add" onclick="return editHref()">加入购物车</a>
                     <%
                         }
@@ -128,29 +129,29 @@
                     if (latestGoods != null & latestGoods.size() > 0) {
                         for (int i = 0; i < latestGoods.size(); i++) {
                             String goodsName = latestGoods.get(i).getGname();
-                            String goodsHref = "jsp/goodsDescribed.jsp?gid=" + latestGoods.get(i).getGid();
+                            String goodsHref = basePath + "/jsp/goodsDescribed.jsp?gid=" + latestGoods.get(i).getGid();
                             String[] newest_photo = latestGoods.get(i).getPhoto().split("&");
-                            String goodsPhoto = "images/" + newest_photo[0];
+                            String goodsPhoto = basePath + "/images/" + newest_photo[0];
                             float goodsPrice = latestGoods.get(i).getPrice();
                 %>
                 <div class="product-go">
                     <div class=" fashion-grid">
-                        <a href=<%=goodsHref%> target="_blank"> <img
-                                class="img-responsive " src=<%=goodsPhoto%> alt=""></a>
+                        <a href="<%=goodsHref%>" target="_blank"> <img
+                                class="img-responsive " src="<%=goodsPhoto%>" alt="商品图片"/></a>
                     </div>
                     <div class=" fashion-grid1">
                         <h6 class="best2">
-                            <a href=<%=goodsHref%> target="_blank"><%=goodsName%>
+                            <a href="<%=goodsHref%>" target="_blank"><%=goodsName%>
                             </a>
                         </h6>
-                        <span class=" price-in1"> <%=goodsPrice%>元
+                        <span class="price-in1"> <%=goodsPrice%>元
 							</span>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <%
+                            }
                         }
-                    }
                 %>
             </div>
         </div>
@@ -178,7 +179,7 @@
     });
 
     $(function () {
-        var menu_ul = $('.menu-drop > li > ul'), menu_a = $('.menu-drop > li > a');
+        const menu_ul = $('.menu-drop > li > ul'), menu_a = $('.menu-drop > li > a');
         menu_ul.hide();
         menu_a.click(function (e) {
             e.preventDefault();
@@ -196,7 +197,7 @@
     });
 
     function editHref() {
-        var number = document.getElementById("buyNumber").value;
+        const number = document.getElementById("buyNumber").value;
         if (number > <%=number%>) {
             alert("要购买的数量大于库存，请重新选择");
             return false;
@@ -205,5 +206,10 @@
         car.href = car.href + number;
     }
 </script>
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
 </body>
 </html>

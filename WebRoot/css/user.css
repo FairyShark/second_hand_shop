@@ -34,6 +34,7 @@ ol {
 	left: 300px;
 	color: #818181;
 }
+
 #regist-main .cap h3 {
 	position: absolute;
 	top: 0;
@@ -64,7 +65,12 @@ ol {
 	padding-top: 20px;
 	padding-left: 40px;
 }
-#registForm li {
+.re_li0 {
+	padding-top: 15%;
+	line-height: 30px;
+}
+.re_li{
+	padding-top: 10px;
 	line-height: 30px;
 }
 #registForm li input {
@@ -156,11 +162,19 @@ ol {
 #registForm input.btn-submit-mes:active {
 	background-position: 0 -62px;
 }
+
 .outer_log{
 	margin:15% auto;
 	text-align:center;
 	width:80%;
 }
+
+.outer_log0{
+	margin:10% auto;
+	text-align:center;
+	width:80%;
+}
+
 .but_log{
 	text-align:center;
 	margin:0 auto;
@@ -168,6 +182,13 @@ ol {
 	display:inliine-block;
 }
 #registForm .registError {
+	position: absolute;
+	width: 298px;
+	top: 301px;
+	left: 40px;
+	color: #BF1623;
+}
+#registForm_s .registError {
 	position: absolute;
 	width: 298px;
 	top: 301px;

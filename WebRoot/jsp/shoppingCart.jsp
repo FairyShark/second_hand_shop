@@ -1,11 +1,10 @@
-<%@page import="bean.Goods" %>
-<%@page import="dao.GoodsDao" %>
-<%@page import="service.GoodsService" %>
-<%@page import="bean.ShoppingCart" %>
-<%@page import="java.util.List" %>
-<%@page import="factory.DAOFactory" %>
-<%@page import="dao.ShoppingCartDao" %>
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
+<%@ page import="bean.Goods" %>
+<%@ page import="bean.ShoppingCart" %>
+<%@ page import="dao.GoodsDao" %>
+<%@ page import="dao.ShoppingCartDao" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page import="java.util.List" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -42,34 +41,36 @@
                 if (strUid != null) {
                     uid = Integer.parseInt(strUid);
                 }
-                ShoppingCartDao dao = DAOFactory.getShoppingCartServiceInstance();
-                GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-                List<ShoppingCart> cartList = dao.getAllGoods(uid);
-                float allTotalPrice = 0;
-                if (cartList != null & cartList.size() > 0) {
-                    ShoppingCart cart;
-                    Goods goods;
-                    String photoPath;
-                    int number;
-                    float price;
-                    float totalPrice;
-                    int gid;
-                    for (int i = 0; i < cartList.size(); i++) {
-                        cart = cartList.get(i);
-                        goods = goodsDao.queryById(cart.getGid());
-                        String[] Gphoto = goods.getPhoto().split("&");
-                        photoPath = "images/" + Gphoto[0];
-                        number = cart.getNumber();
-                        price = goods.getPrice();
-                        gid = goods.getGid();
-                        totalPrice = number * price + goods.getCarriage();
-                        allTotalPrice = allTotalPrice + totalPrice;
+                ShoppingCartDao dao = null;
+                try {
+                    dao = DAOFactory.getShoppingCartServiceInstance();
+                    GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
+                    List<ShoppingCart> cartList = dao.getAllGoods(uid);
+                    float allTotalPrice = 0;
+                    if (cartList != null & cartList.size() > 0) {
+                        ShoppingCart cart;
+                        Goods goods;
+                        String photoPath;
+                        int number;
+                        float price;
+                        float totalPrice;
+                        int gid;
+                        for (int i = 0; i < cartList.size(); i++) {
+                            cart = cartList.get(i);
+                            goods = goodsDao.queryById(cart.getGid());
+                            String[] Gphoto = goods.getPhoto().split("&");
+                            photoPath = "images/" + Gphoto[0];
+                            number = cart.getNumber();
+                            price = goods.getPrice();
+                            gid = goods.getGid();
+                            totalPrice = number * price + goods.getCarriage();
+                            allTotalPrice = allTotalPrice + totalPrice;
             %>
             <tr>
                 <td class="ring-in"><a
-                        href="jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
-                        class="at-in"> <img src="<%=photoPath%>"
-                                            class="img-responsive" alt="">
+                        href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                        class="at-in" target="_blank"> <img src="<%=photoPath%>"
+                                            class="img-responsive" alt="商品图片">
                 </a>
                     <div class="sed">
                         <h5>
@@ -88,7 +89,7 @@
                 <td><%=goods.getCarriage()%>元</td>
                 <td><%=totalPrice%>元</td>
                 <td><a
-                        href="jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>"
+                        href="<%=basePath%>/jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>"
                         onclick="return confirmDelete()">删除</a></td>
             </tr>
             <%
@@ -101,7 +102,7 @@
         <%
             if (cartList != null & cartList.size() > 0) {
         %>
-        <a href="jsp/buyGoods.jsp" class="to-buy"
+        <a href="<%=basePath%>/jsp/buyGoods.jsp" class="to-buy"
            onclick="return confirmBuy()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
         <%
         } else {
@@ -109,12 +110,15 @@
         <a class="to-buy">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
         <%
             }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         %>
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="salegoods" href="jsp/saleGoods.jsp" title="出售二手">出售二手</a>
-    <a id="feedback" href="jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="salegoods" href="<%=basePath%>/jsp/saleGoods.jsp" title="出售二手">出售二手</a>
+    <a id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a>
     <a id="scrollUp" href="javascript:;" title="回到顶部"></a>
 </div>
 
@@ -129,7 +133,6 @@
 
     $(function () {
         var $body = $(document.body);
-        ;
         var $bottomTools = $('.bottom_tools');
         var $qrTools = $('.qr_tool');
         var qrImg = $('.qr_img');

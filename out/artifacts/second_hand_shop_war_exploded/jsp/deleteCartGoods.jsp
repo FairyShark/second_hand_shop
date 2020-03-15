@@ -1,6 +1,6 @@
-<%@page import="factory.DAOFactory" %>
-<%@page import="dao.ShoppingCartDao" %>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page import="dao.ShoppingCartDao" %>
+<%@ page import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -23,13 +23,18 @@
 </head>
 <body>
 <%
-    ShoppingCartDao scDao = DAOFactory.getShoppingCartServiceInstance();
-    if (scDao.deleteGoods(Integer.parseInt(uid), gid, number)) {
-        response.sendRedirect("shoppingCart.jsp");
-    } else {
+    ShoppingCartDao scDao = null;
+    try {
+        scDao = DAOFactory.getShoppingCartServiceInstance();
+        if (scDao.deleteGoods(Integer.parseInt(uid), gid, number)) {
+            response.sendRedirect("shoppingCart.jsp");
+        } else {
 %>
 删除订单失败，请重试。
 <%
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 %>
 </body>

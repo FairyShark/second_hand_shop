@@ -1,14 +1,11 @@
-<%@page import="bean.AlreadySale" %>
-<%@page import="dao.AlreadySaleDao" %>
-<%@page import="bean.Goods" %>
-<%@page import="dao.GoodsDao" %>
-<%@page import="dao.UserDao" %>
-<%@page import="service.GoodsService" %>
-<%@page import="bean.ShoppingCart" %>
-<%@page import="java.util.List" %>
-<%@page import="factory.DAOFactory" %>
-<%@page import="dao.ShoppingCartDao" %>
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page import="bean.AlreadySale" %>
+<%@ page import="bean.Goods" %>
+<%@ page import="dao.AlreadySaleDao" %>
+<%@ page import="dao.GoodsDao" %>
+<%@ page import="dao.UserDao" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page import="java.util.List" %>
+<%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -21,22 +18,21 @@
     <title>销售记录</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/memenu.js"></script>
-    <script type="text/javascript" src="js/simpleCart.min.js"></script>
+    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/js/simpleCart.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            var $body = $(document.body);
-            ;
-            var $bottomTools = $('.bottom_tools');
-            var $qrTools = $('.qr_tool');
-            var qrImg = $('.qr_img');
+            const $body = $(document.body);
+            const $bottomTools = $('.bottom_tools');
+            const $qrTools = $('.qr_tool');
+            const qrImg = $('.qr_img');
             $(window).scroll(function () {
-                var scrollHeight = $(document).height();
-                var scrollTop = $(window).scrollTop();
-                var $footerHeight = $('.page-footer').outerHeight(true);
-                var $windowHeight = $(window).innerHeight();
+                const scrollHeight = $(document).height();
+                const scrollTop = $(window).scrollTop();
+                const $footerHeight = $('.page-footer').outerHeight(true);
+                const $windowHeight = $(window).innerHeight();
                 scrollTop > 50 ? $("#scrollUp").fadeIn(200).css("display", "block") : $("#scrollUp").fadeOut(200);
                 $bottomTools.css("bottom", scrollHeight - scrollTop - $footerHeight > $windowHeight ? 40 : $windowHeight + scrollTop + $footerHeight + 40 - scrollHeight);
             });
@@ -73,7 +69,9 @@
                 if (strUid != null) {
                     uid = Integer.parseInt(strUid);
                 }
-                AlreadySaleDao dao = DAOFactory.getAlreadySaleServiceInstance();
+                AlreadySaleDao dao = null;
+                try {
+                    dao = DAOFactory.getAlreadySaleServiceInstance();
                 List<AlreadySale> asList = dao.getAllSaleGoods(uid);
                 if (asList != null & asList.size() > 0) {
                     UserDao userDao = DAOFactory.getUserServiceInstance();
@@ -104,8 +102,8 @@
             %>
             <tr>
                 <td class="ring-in"><a
-                        href="jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
-                        class="at-in"> <img src="<%=photoPath%>"
+                        href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                        class="at-in" target="_blank"> <img src="<%=photoPath%>"
                                             class="img-responsive" alt="">
                 </a>
                     <div class="sed">
@@ -130,6 +128,9 @@
             </tr>
             <%
                     }
+                }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             %>
         </table>

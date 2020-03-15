@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <%@ page import="dao.GoodsDao" %>
 <%@ page import="bean.Goods" %>
 <%@ page import="factory.DAOFactory" %>
@@ -13,7 +13,7 @@
     if (session.getAttribute("uid") != null) {
         guid = String.valueOf(session.getAttribute("uid"));
     }
-    int uid = 0;
+    int uid;
     if (guid == null) {
         uid = 0;
     } else {
@@ -41,10 +41,10 @@
         <div class="slider">
             <div class="callbacks_container">
                 <ul class="rslides" id="slider">
-                    <li><img src="images/bj1.png" alt=""></li>
-                    <li><img src="images/bj2.png" alt=""></li>
-                    <li><img src="images/bj3.png" alt=""></li>
-                    <li><img src="images/bj4.png" alt=""></li>
+                    <li><img src="<%=basePath%>/images/bj1.png" alt=""></li>
+                    <li><img src="<%=basePath%>/images/bj2.png" alt=""></li>
+                    <li><img src="<%=basePath%>/images/bj3.png" alt=""></li>
+                    <li><img src="<%=basePath%>/images/bj4.png" alt=""></li>
                 </ul>
             </div>
         </div>
@@ -60,11 +60,13 @@
     <div class="container">
         <div class="content-top">
             <%
-                GoodsDao dao = DAOFactory.getGoodsServiceInstance();
-                List<Goods> goodsList = dao.getAllGoods();
-                if (goodsList != null && goodsList.size() > 0) {
-                    for (int i = 0; i < goodsList.size(); i++) {
-                        if (i % 4 == 0) {
+                GoodsDao dao = null;
+                try {
+                    dao = DAOFactory.getGoodsServiceInstance();
+                    List<Goods> goodsList = dao.getAllGoods();
+                    if (goodsList != null && goodsList.size() > 0) {
+                        for (int i = 0; i < goodsList.size(); i++) {
+                            if (i % 4 == 0) {
             %>
             <div class="content-top1">
                 <%
@@ -73,15 +75,17 @@
                 <div class="col-md-3 col-md2">
                     <div class="col-md1 simpleCart_shelfItem">
                         <a
-                                href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>"
-                                target="_blank"><%
+                                href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>"
+                                target="_blank">
+                            <%
                             String[] photo = goodsList.get(i).getPhoto().split("&");
-                            String photoPath = "images/" + photo[0];
-                        %> <img class="img-responsive" src=<%=photoPath%> alt="图片"/>
+                            String photoPath = basePath + "/images/" + photo[0];
+                        %>
+                            <img class="img-responsive" src="<%=photoPath%>" alt="图片"/>
                         </a>
                         <h3>
                             <a
-                                    href="jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>"
+                                    href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>"
                                     target="_blank"><%=goodsList.get(i).getGname()%>
                             </a>
                         </h3>
@@ -94,13 +98,13 @@
                                 if (sale_uid == uid) {
                             %>
                             <a
-                                    href="jsp/editGoods.jsp?gid=<%=goodsList.get(i).getGid()%>"
-                                    class="item_add">修改商品</a>
+                                    href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=goodsList.get(i).getGid()%>"
+                                    class="item_add" target="_blank">修改商品</a>
                             <%
                             } else {
                             %>
                             <a
-                                    href="jsp/addToCart.jsp?gid=<%=goodsList.get(i).getGid()%>&buyNumber=1"
+                                    href="<%=basePath%>/jsp/addToCart.jsp?gid=<%=goodsList.get(i).getGid()%>&buyNumber=1"
                                     class="item_add">加入购物车</a>
                             <%} %>
                             <div class="clearfix"></div>
@@ -116,15 +120,18 @@
                         }
                     }
                 }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             %>
         </div>
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="searchgoods" href="jsp/searchGoods.jsp" title="搜索">搜索</a>
-    <a id="salegoods" href="jsp/saleGoods.jsp" title="出售二手">出售二手</a> <a
-        id="feedback" href="jsp/shoppingCart.jsp" title="购物车">购物车</a> <a
-        id="scrollUp" href="javascript:;" title="回到顶部"></a>
+    <a id="searchgoods" href="<%=basePath%>/jsp/searchGoods.jsp" title="搜索">搜索</a>
+    <a id="salegoods" href="<%=basePath%>/jsp/saleGoods.jsp" title="出售二手">出售二手</a> <a
+        id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a> <a
+        id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 <script>
     $(function () {
@@ -137,26 +144,25 @@
     });
 
     function showtime() {
-        var myDate = new Date();
+        const myDate = new Date();
         document.getElementById("time").innerHTML = myDate.getHours() + "时"
             + myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
         setTimeout("showtime()", 1000);
     }
 
     $(function () {
-        var $body = $(document.body);
-        ;
-        var $bottomTools = $('.bottom_tools');
-        var $qrTools = $('.qr_tool');
-        var qrImg = $('.qr_img');
+        const $body = $(document.body);
+        const $bottomTools = $('.bottom_tools');
+        const $qrTools = $('.qr_tool');
+        const qrImg = $('.qr_img');
         $(window)
             .scroll(
                 function () {
-                    var scrollHeight = $(document).height();
-                    var scrollTop = $(window).scrollTop();
-                    var $footerHeight = $('.page-footer')
+                    const scrollHeight = $(document).height();
+                    const scrollTop = $(window).scrollTop();
+                    const $footerHeight = $('.page-footer')
                         .outerHeight(true);
-                    var $windowHeight = $(window).innerHeight();
+                    const $windowHeight = $(window).innerHeight();
                     scrollTop > 50 ? $("#scrollUp").fadeIn(200)
                         .css("display", "block") : $(
                         "#scrollUp").fadeOut(200);
@@ -183,8 +189,7 @@
             qrImg.fadeOut();
         });
     });
-</script>
-<script type="text/javascript">
+
     window.onunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");
     }

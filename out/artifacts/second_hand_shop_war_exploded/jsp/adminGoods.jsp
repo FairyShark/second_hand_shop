@@ -1,5 +1,5 @@
-<%@ page language="java" pageEncoding="utf-8" %>
-<%@page import="util.OnlineCounter" %>
+<%@ page pageEncoding="utf-8" %>
+<%@ page import="util.OnlineCounter" %>
 <%@ page import="dao.GoodsDao" %>
 <%@ page import="bean.Goods" %>
 <%@ page import="factory.DAOFactory" %>
@@ -68,7 +68,7 @@
             </ul>
         </div>
         <div class="col-sm-4 logo">
-            <a href="jsp/index.jsp"><img src="images/logo.png" alt=""></a>
+            <a href="<%=basePath%>/jsp/index.jsp"><img src="<%=basePath%>/images/logo.png" alt=""></a>
         </div>
         <div class="col-sm-4 header-left">
             <p class="log">
@@ -92,9 +92,9 @@
     <div class="head-top">
         <div class="col-sm-8 h_menu4">
             <ul class="memenu skyblue">
-                <li class=" grid"><a href="jsp/adminUser.jsp" class="a_active">会员管理</a></li>
-                <li><a href="jsp/adminGoods.jsp">商品管理</a></li>
-                <li><a href="jsp/adminData.jsp">数据统计</a></li>
+                <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
+                <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
+                <li><a href="<%=basePath%>/jsp/adminData.jsp">数据统计</a></li>
             </ul>
         </div>
     </div>
@@ -154,31 +154,33 @@
                     <th>使用情况</th>
                 </tr>
                 <%
-                    GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-                    List<Goods> GoodsList = goodsDao.getAllGoods();
-                    float allTotalPrice = 0;
-                    if (GoodsList != null & GoodsList.size() > 0) {
-                        Goods goods;
-                        String photoPath;
-                        String salename;
-                        String gtype;
-                        String gusage;
-                        int number;
-                        float price;
-                        float totalPrice;
-                        int gid;
-                        for (int i = 0; i < GoodsList.size(); i++) {
-                            goods = GoodsList.get(i);
-                            String[] photo = goods.getPhoto().split("&");
-                            photoPath = "images/" + photo[0];
-                            number = goods.getNumber();
-                            price = goods.getPrice();
-                            gid = goods.getGid();
-                            salename = goods.getUname();
-                            gtype = goods.getType();
-                            gusage = goods.getUsage();
-                            totalPrice = number * price;
-                            allTotalPrice = allTotalPrice + totalPrice;
+                    GoodsDao goodsDao = null;
+                    try {
+                        goodsDao = DAOFactory.getGoodsServiceInstance();
+                        List<Goods> GoodsList = goodsDao.getAllGoods();
+                        float allTotalPrice = 0;
+                        if (GoodsList != null & GoodsList.size() > 0) {
+                            Goods goods;
+                            String photoPath;
+                            String salename;
+                            String gtype;
+                            String gusage;
+                            int number;
+                            float price;
+                            float totalPrice;
+                            int gid;
+                            for (int i = 0; i < GoodsList.size(); i++) {
+                                goods = GoodsList.get(i);
+                                String[] photo = goods.getPhoto().split("&");
+                                photoPath = "images/" + photo[0];
+                                number = goods.getNumber();
+                                price = goods.getPrice();
+                                gid = goods.getGid();
+                                salename = goods.getUname();
+                                gtype = goods.getType();
+                                gusage = goods.getUsage();
+                                totalPrice = number * price;
+                                allTotalPrice = allTotalPrice + totalPrice;
                 %>
                 <tr>
                     <td class="ring-in"><a
@@ -206,8 +208,9 @@
                     </td>
                     <td><%=gusage%>
                     </td>
-                    <td><a href="jsp/editGoods.jsp?gid=<%=gid%>" target="_blank">修改</a></td>
-                    <td><a href="jsp/deleteSaleGoods.jsp?gid=<%=gid%>" onclick="return confirmDelete()">删除</a></td>
+                    <td><a href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>" target="_blank">修改</a></td>
+                    <td><a href="<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
+                           onclick="return confirmDelete()">删除</a></td>
                 </tr>
                 <%
                         }
@@ -219,7 +222,7 @@
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="scrollUp" href="javascript:;" title="回到顶部"></a>
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 <script type="text/javascript">
 
@@ -233,19 +236,18 @@
     });
 
     $(function () {
-        var $body = $(document.body);
-        ;
-        var $bottomTools = $('.bottom_tools');
-        var $qrTools = $('.qr_tool');
-        var qrImg = $('.qr_img');
+        const $body = $(document.body);
+        const $bottomTools = $('.bottom_tools');
+        const $qrTools = $('.qr_tool');
+        const qrImg = $('.qr_img');
         $(window)
             .scroll(
                 function () {
-                    var scrollHeight = $(document).height();
-                    var scrollTop = $(window).scrollTop();
-                    var $footerHeight = $('.page-footer')
+                    const scrollHeight = $(document).height();
+                    const scrollTop = $(window).scrollTop();
+                    const $footerHeight = $('.page-footer')
                         .outerHeight(true);
-                    var $windowHeight = $(window).innerHeight();
+                    const $windowHeight = $(window).innerHeight();
                     scrollTop > 50 ? $("#scrollUp").fadeIn(200)
                         .css("display", "block") : $(
                         "#scrollUp").fadeOut(200);
@@ -274,22 +276,22 @@
     });
 
     function clickSearch() {
-        var GoodsType = $("#Types").val();
-        var GoodsUsage = $("#Usage").val();
-        var GoodsLowP = $("#low_pr").val();
-        var GoodsHighP = $("#high_pr").val();
-        var GoodsName = $("#main_w").val();
-        if (GoodsType == "全部" && GoodsUsage == "全部"
-            && (GoodsLowP == null || GoodsLowP == "")
-            && (GoodsHighP == null || GoodsHighP == "")
-            && (GoodsName == null || GoodsName == "")) {
+        const GoodsType = $("#Types").val();
+        const GoodsUsage = $("#Usage").val();
+        let GoodsLowP = $("#low_pr").val();
+        let GoodsHighP = $("#high_pr").val();
+        let GoodsName = $("#main_w").val();
+        if (GoodsType === "全部" && GoodsUsage === "全部"
+            && (GoodsLowP == null || GoodsLowP === "")
+            && (GoodsHighP == null || GoodsHighP === "")
+            && (GoodsName == null || GoodsName === "")) {
             window.location.reload();
         } else {
-            if (GoodsLowP == null || GoodsLowP == "")
+            if (GoodsLowP == null || GoodsLowP === "")
                 GoodsLowP = 0;
-            if (GoodsHighP == null || GoodsHighP == "")
+            if (GoodsHighP == null || GoodsHighP === "")
                 GoodsHighP = 214748364;
-            if (GoodsName == null || GoodsName == "")
+            if (GoodsName == null || GoodsName === "")
                 GoodsName = "%&ALL&%";
             $.ajax({
                 url: 'SelectGoodsServlet',
@@ -306,7 +308,7 @@
                 dataType: 'json',
                 success: function (json) {
                     $("#resultTable").empty();
-                    var tr = $("<tr/>");
+                    const tr = $("<tr/>");
                     $("<th/>").html("商品").appendTo(tr);
                     $("<th/>").html("卖家").appendTo(tr);
                     $("<th/>").html("库存").appendTo(tr);
@@ -315,27 +317,27 @@
                     $("<th/>").html("类型").appendTo(tr);
                     $("<th/>").html("使用情况").appendTo(tr);
                     $("#resultTable").append(tr);
-                    var temp = 0;
+                    let temp = 0;
                     $.each(json, function (i, val) {
-                        var tr = $("<tr/>");
-                        var td1 = $("<td/>");
+                        const tr = $("<tr/>");
+                        const td1 = $("<td/>");
                         td1.addClass("ring-in");
-                        var a1 = $("<a/>");
+                        const a1 = $("<a/>");
                         a1.addClass("at-in");
-                        var img1 = $("<img/>");
-                        var image1 = new Array();
+                        const img1 = $("<img/>");
+                        let image1 = new Array();
                         image1 = val.photo.split("&");
-                        img1.attr("src", "images/" + image1[0]);
+                        img1.attr("src", "<%=basePath%>/images/" + image1[0]);
                         img1.addClass("img-responsive");
                         img1.appendTo(a1);
-                        var div1 = $("<div/>");
+                        const div1 = $("<div/>");
                         div1.addClass("sed");
                         $("<h5/>").html("商品名：" + val.gname).appendTo(
                             div1);
                         $("<br/>").appendTo(div1);
                         $("<p/>").html("发布时间：" + val.pdate).appendTo(
                             div1);
-                        var div2 = $("<div/>");
+                        const div2 = $("<div/>");
                         div2.addClass("clearfix");
                         a1.appendTo(td1);
                         div1.appendTo(td1);
@@ -347,31 +349,31 @@
                         $("<td/>").html(val.carriage).appendTo(tr);
                         $("<td/>").html(val.type).appendTo(tr);
                         $("<td/>").html(val.usage).appendTo(tr);
-                        var td2 = $("<td/>");
-                        var a2 = $("<a/>");
-                        a2.attr("href", "jsp/editGoods.jsp?gid=" + val.gid);
+                        const td2 = $("<td/>");
+                        const a2 = $("<a/>");
+                        a2.attr("href", "<%=basePath%>/jsp/editGoods.jsp?gid=" + val.gid);
                         a2.attr("target", "_blank");
                         a2.html("修改").appendTo(td2);
                         td2.appendTo(tr);
-                        var td3 = $("<td/>");
-                        var a3 = $("<a/>");
-                        a3.attr("href", "jsp/deleteSaleGoods.jsp?gid=" + val.gid);
+                        const td3 = $("<td/>");
+                        const a3 = $("<a/>");
+                        a3.attr("href", "<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=" + val.gid);
                         a3.attr("onclick", "return confirmDelete()");
                         a3.html("删除").appendTo(td3);
                         td3.appendTo(tr);
                         $("#resultTable").append(tr);
                         temp++;
-                    })
+                    });
                     if (temp == 0) {
                         $("#resultTable").empty();
                         $("#tempP").empty();
-                        var p2 = $("<p/>");
+                        const p2 = $("<p/>");
                         p2.addClass("tempmess");
                         p2.html("暂时没有该类型的商品，换一个试试！").appendTo(p2);
                         $("#tempP").append(p2);
                     } else {
                         $("#tempP").empty();
-                        var p3 = $("<p/>");
+                        const p3 = $("<p/>");
                         p3.addClass("tempmess");
                         p3.html("共找到" + temp + "个该类型的商品！").appendTo(p3);
                         $("#tempP").append(p3);
@@ -392,6 +394,11 @@
         }
     };
 </script>
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
 <script type="text/javascript">
     window.onunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");

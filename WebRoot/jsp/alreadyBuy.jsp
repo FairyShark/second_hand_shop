@@ -1,13 +1,10 @@
-<%@page import="bean.AlreadyBuy" %>
-<%@page import="dao.AlreadyBuyDao" %>
-<%@page import="bean.Goods" %>
-<%@page import="dao.GoodsDao" %>
-<%@page import="service.GoodsService" %>
-<%@page import="bean.ShoppingCart" %>
-<%@page import="java.util.List" %>
-<%@page import="factory.DAOFactory" %>
-<%@page import="dao.ShoppingCartDao" %>
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page import="bean.AlreadyBuy" %>
+<%@ page import="bean.Goods" %>
+<%@ page import="dao.AlreadyBuyDao" %>
+<%@ page import="dao.GoodsDao" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page import="java.util.List" %>
+<%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -45,7 +42,9 @@
                 if (strUid != null) {
                     uid = Integer.parseInt(strUid);
                 }
-                AlreadyBuyDao dao = DAOFactory.getAlreadyBuyServiceInstance();
+                AlreadyBuyDao dao = null;
+                try {
+                    dao = DAOFactory.getAlreadyBuyServiceInstance();
                 List<AlreadyBuy> abList = dao.getAllBuyGoods(uid);
                 if (abList != null & abList.size() > 0) {
                     GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
@@ -72,8 +71,8 @@
             %>
             <tr>
                 <td class="ring-in"><a
-                        href="jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
-                        class="at-in"> <img src="<%=photoPath%>"
+                        href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                        class="at-in" target="_blank"> <img src="<%=photoPath%>"
                                             class="img-responsive" alt="">
                 </a>
                     <div class="sed">
@@ -99,15 +98,18 @@
             <%
                     }
                 }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             %>
         </table>
     </div>
 </div>
 
 <div class="bottom_tools">
-    <a id="salegoods" href="jsp/saleGoods.jsp" title="出售二手">出售二手</a>
-    <a id="feedback" href="jsp/shoppingCart.jsp" title="购物车">购物车</a>
-    <a id="scrollUp" href="javascript:;" title="回到顶部"></a>
+    <a id="salegoods" href="<%=basePath%>/jsp/saleGoods.jsp" title="出售二手">出售二手</a>
+    <a id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 
 <script type="text/javascript">
@@ -116,16 +118,15 @@
     }
 
     $(function () {
-        var $body = $(document.body);
-        ;
-        var $bottomTools = $('.bottom_tools');
-        var $qrTools = $('.qr_tool');
-        var qrImg = $('.qr_img');
+        const $body = $(document.body);
+        const $bottomTools = $('.bottom_tools');
+        const $qrTools = $('.qr_tool');
+        const qrImg = $('.qr_img');
         $(window).scroll(function () {
-            var scrollHeight = $(document).height();
-            var scrollTop = $(window).scrollTop();
-            var $footerHeight = $('.page-footer').outerHeight(true);
-            var $windowHeight = $(window).innerHeight();
+            const scrollHeight = $(document).height();
+            const scrollTop = $(window).scrollTop();
+            const $footerHeight = $('.page-footer').outerHeight(true);
+            const $windowHeight = $(window).innerHeight();
             scrollTop > 50 ? $("#scrollUp").fadeIn(200).css("display", "block") : $("#scrollUp").fadeOut(200);
             $bottomTools.css("bottom", scrollHeight - scrollTop - $footerHeight > $windowHeight ? 40 : $windowHeight + scrollTop + $footerHeight + 40 - scrollHeight);
         });
@@ -139,107 +140,6 @@
             qrImg.fadeOut();
         });
     });
-
-    function clickSearch() {
-        var GoodsType = $("#Types").val();
-        var GoodsUsage = $("#Usage").val();
-        var GoodsLowP = $("#low_pr").val();
-        var GoodsHighP = $("#high_pr").val();
-        var GoodsName = $("#main_w").val();
-        if (GoodsType == "全部" && GoodsUsage == "全部"
-            && (GoodsLowP == null || GoodsLowP == "")
-            && (GoodsHighP == null || GoodsHighP == "")
-            && (GoodsName == null || GoodsName == "")) {
-            window.location.reload();
-        } else {
-            if (GoodsLowP == null || GoodsLowP == "")
-                GoodsLowP = 0;
-            if (GoodsHighP == null || GoodsHighP == "")
-                GoodsHighP = 214748364;
-            if (GoodsName == null || GoodsName == "")
-                GoodsName = "%&ALL&%";
-            $.ajax({
-                url: 'SelectGoodsServlet',
-                type: 'GET',
-                data: {
-                    GoodsType: GoodsType,
-                    GoodsUsage: GoodsUsage,
-                    GoodsLowP: GoodsLowP,
-                    GoodsHighP: GoodsHighP,
-                    GoodsName: GoodsName
-                },
-                dataType: 'json',
-                success: function (json) {
-                    $("#resultTable").empty();
-                    var tr = $("<tr/>");
-                    $("<th/>").html("商品").appendTo(tr);
-                    $("<th/>").html("卖家").appendTo(tr);
-                    $("<th/>").html("库存").appendTo(tr);
-                    $("<th/>").html("价格").appendTo(tr);
-                    $("<th/>").html("运费").appendTo(tr);
-                    $("<th/>").html("类型").appendTo(tr);
-                    $("<th/>").html("使用情况").appendTo(tr);
-                    $("#resultTable").append(tr);
-                    var temp = 0;
-                    $.each(json, function (i, val) {
-                        var tr = $("<tr/>");
-                        var td1 = $("<td/>");
-                        td1.addClass("ring-in");
-                        var a1 = $("<a/>");
-                        a1.attr("herf", "jsp/goodsDescribed.jsp?gid="
-                            + val.gid);
-                        a1.addClass("at-in");
-                        var img1 = $("<img/>");
-                        var image1 = new Array();
-                        image1 = val.photo.split("&");
-                        img1.attr("src", "images/" + image1[0]);
-                        img1.addClass("img-responsive");
-                        img1.appendTo(a1);
-                        var div1 = $("<div/>");
-                        div1.addClass("sed");
-                        $("<h5/>").html("商品名：" + val.gname).appendTo(
-                            div1);
-                        $("<br/>").appendTo(div1);
-                        $("<p/>").html("发布时间：" + val.pdate).appendTo(
-                            div1);
-                        var div2 = $("<div/>");
-                        div2.addClass("clearfix");
-                        a1.appendTo(td1);
-                        div1.appendTo(td1);
-                        div2.appendTo(td1);
-                        td1.appendTo(tr);
-                        $("<td/>").html(val.paddress).appendTo(tr);
-                        $("<td/>").html(val.number).appendTo(tr);
-                        $("<td/>").html(val.price).appendTo(tr);
-                        $("<td/>").html(val.carriage).appendTo(tr);
-                        $("<td/>").html(val.type).appendTo(tr);
-                        $("<td/>").html(val.usage).appendTo(tr);
-                        $("#resultTable").append(tr);
-                        temp++;
-                    })
-                    if (temp == 0) {
-                        $("#resultTable").empty();
-                        $("#tempP").empty();
-                        var p2 = $("<p/>");
-                        p2.addClass("tempmess");
-                        p2.html("暂时没有该类型的商品，换一个试试！").appendTo(p2);
-                        $("#tempP").append(p2);
-                    } else {
-                        $("#tempP").empty();
-                        var p3 = $("<p/>");
-                        p3.addClass("tempmess");
-                        p3.html("共找到" + temp + "个该类型的商品！").appendTo(p3);
-                        $("#tempP").append(p3);
-                    }
-                },
-                error: function () {
-                    $("#test").append("条件查询错误！");
-                }
-
-            });
-        }
-    }
-
 </script>
 <script type="text/javascript">
     window.onunload = function () {

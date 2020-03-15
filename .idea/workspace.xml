@@ -6,237 +6,97 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a72f6ea3-cc90-47f6-a687-29fd0b06cdd2" name="默认更改列表" comment="commit">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/00a392ef2f67e4a3c4f2eabfcf0a0686b41754d2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/0643657fc9cfbd22e2857eb21cd0f35811c30946" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/8/0805930ca67062ae84fb806141c5d2aa881917c8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f729bd157e62dd275b85702a11ee764f11f412" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/19370fe8d1c4901014d3c32425bdd11c2dff18b1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e49924c3d6d739935aaafcdbc1baeb0fbb62ff3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e64663afd23b57f52b47448b699d8e9242db34d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/354079a72b91a4280407c16a36f47d1986fd85a5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/355347b5585183febf9281a70d262ae807a7d59d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/b/3bab54cf52b4c7e8052f5fac1c796e70c3d8dcbe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cda34b5b41aa854312f1425a963696f4a4629a9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cee21066b4da5e76fa8bd19af0c3337d69a6f99" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d8c4196f740e20d96227e0a513c50c2c11c50f8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41089351ab302d4f6b15eabcaa8d71c29b39092c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/518968ea03a39f3106e284edef5ce126aa547eb7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/563a23e064e6fdd2d09bd0c2d99ef456aff71a31" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a4fce85b7c95071b827aee8efca55a6805182c4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cc2b729bb85279830fdda3fa076fa6feae08824" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5ff067e647301697d8b572104e227c2550f18012" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/66e9f1c4edab4cf0b75e7f40c8f0aba66358d274" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/6858a8bad8dadc73f5e001359fc048dd2b307ab9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8237477ae7d694190c8c0b77fa303150f95b83e8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c31d804aadeb904c94c494939483ce7485ce8f9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98df6ba5858a7211754dd6e698e5b289fa7e7d59" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0831b7ff5d17fa396bcc57d0fb7f7709c6bf01d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a335a9b7244efe1077ad1d3d333712f17b0a49b7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4adfa6a315eaad757903f2668c1f20bb92a55ed" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b821b0d57fd072c34c06de9e48f2b195c8d7c5cb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca7bbaef44ecfa476fbab5fec9b87bc79752cd74" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/b/cb1ce2eb192bdabe84add5777ea612f407301da9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/f/cf4e4348bcea25ba32bb7cfd6cae3e4054a6ff81" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1ee52a5be20bd6af32f6d5aa5fd19bfa68d8e16" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6046b88189c6f6e07b072219d47450d654323c3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dc569796a1d270d0397c8e0b80e0f65021d187a5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df8529f63face049498d0dbd57e12644ae342520" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0e94a2659e42a2066b60394799b7a8e0e8a4758" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e603cb6073f9898b9e02aec791690e542840d587" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f0f0fbf20ba502e80b9b93e95d91fc67866c6fea" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/META-INF/second_hand_shop.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/AlreadyBuy.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/AlreadySale.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/Goods.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/LandMessage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/OperationMes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/ShoppingCart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/VisitMessage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/AlreadyBuyDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/AlreadySaleDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/DBConnection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/GoodsDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/LandMessageDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/OperationMesDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/ShoppingCartDaoImpl$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/ShoppingCartDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/UserDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/VisitMessageDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/AlreadyBuyService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/AlreadySaleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/GoodsService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/LandMessageService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/OperationMesService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/ShoppingCartService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/VisitMessageService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/META-INF/context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/META-INF/second_hand_shop.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/AlreadyBuy.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/AlreadySale.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/Goods.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/LandMessage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/OperationMes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/ShoppingCart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/bean/VisitMessage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/AlreadyBuyDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/AlreadySaleDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/DBConnection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/GoodsDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/LandMessageDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/OperationMesDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/ShoppingCartDaoImpl$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/ShoppingCartDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/UserDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/VisitMessageDaoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/filter/EncodingFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/filter/LoginFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/AlreadyBuyService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/AlreadySaleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/GoodsService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/LandMessageService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/OperationMesService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/ShoppingCartService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/VisitMessageService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/util/OnlineCounter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/util/OnlineCounterListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/lib/activation.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/lib/fastjson-1.2.59.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/lib/javax.mail-1.6.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/lib/javax.servlet.jsp.jstl-api-1.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/lib/mail.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/lib/mysql-connector-java-8.0.16.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/addphoto.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/box.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/chart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/goods.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/publish.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/user.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/100.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/101.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/102.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/110.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/111.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/112.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/120.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/121.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/122.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/130.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/131.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/132.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/140.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/141.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/150.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/151.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/152.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/160.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/161.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/162.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/170.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/171.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/172.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/180.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/181.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/182.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/190.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/200.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/201.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/21.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/30.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/31.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/40.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/51.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/52.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/60.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/61.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/70.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/71.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/80.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/81.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/90.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/91.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/92.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/bj1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/bj2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/bj3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/bj4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/gwc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/nophoto.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/quxian.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/quxian_ac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/sale.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/sale_ac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/search_ac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/images/top.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/Chart.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/addphoto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/autowired.validator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/canvas.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/dom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/form.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/imagezoom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/jquery-migrate-1.2.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/jquery.flexslider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/jquery.magnific-popup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/kit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/memenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/responsiveslides.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/saleChart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/simpleCart.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/js/validator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/addGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/addPhoto.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/addToCart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminData.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminUser.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/alreadyBuy.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/alreadySale.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/buyGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteCartGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteSaleGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteUser.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/editGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/goodsDescribed.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/head.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/register.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleChart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/searchGoods.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/shoppingCart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/showMessage.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/second_hand_shop.eml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servlet/LogCancelTServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+    <list default="true" id="a72f6ea3-cc90-47f6-a687-29fd0b06cdd2" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/3/03d200cb2d17e1df1fc6105705aa79eb521c5ec9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/049a89e0874a74563dedd39354350350a46141c7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0d181982e45748e718782ecc64228b96e1288b4c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/f/0fe24a8e3800cee8b007214eeee0ac2d78734ec1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/1/11af022d061755778c3943a4cac9fb201f0c02ff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a0c42e459ac7a0b1d087ff869f1fc124f5eab28" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1dfa845de964f4a4ddd194a0cc32763fda21b317" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27fa6a300b1f078ff93e3db7075e98df09661c64" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2ba1f169ad977eb8bf4decf96c8d2c273837638d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/d/2dc01b2a7dd3fc8cd10872466ccf263fd3a3b756" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2ff4cf57dfdf708782f56826953ebf8abb0175d7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32bd19e1a34b965eacf770b50d01c6f749826115" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/7/374c474d2da5be766069368a7439b63ca6e70b73" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3dfd3ebeb5f6d16c3272573c12b0d93eb40ed4d7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42ed53ff1b851e1c7d14261c97b5b53de854544f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/464a7f1ad93263164251b1f02bc3ec07e1e0d56f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/46a43a6e61f9ac158233b3febf1a723cb68d3bbb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/46d3e8ad035db57de441be0d949fe311928fd307" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/476368d7cabd62710c198238fd9e3acf97be1eba" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48279a1a13f093db3486f84e23257385456b900e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/496a238a6afa168dbaf6efd37bb459331589579c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4f7a5d17827e04a27d8bffc0e04a4d44351ae84b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/5120c7810fe53daaae19de8cca6d87734749fec6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/566a3cebd4cc6f422c4a600c8e3ace6227b0c978" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/9/59390f141efa3d23b4585a144d49f4f1c0fa28aa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5bd2aa5277a6919781a5480c6ca44989b187c8d3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/e/5e63024b473bccaae5bb9f9fb843f62f75521351" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/1/617841de1b0a8b0a1a46dc58dc678bd65b387750" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/66b73570d6bb99db4a51961532e1e428fc254980" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/a/6ab5650f2f39289045ba911e4332988dc07e8cb1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/a/6ae54538bd78dee907b264a7cf4bbd3369c5c1e5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e820c47599d8e539fa96110e8b00e8f305c47db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6f4f7adcc85aac21fe2c57413afb58144a7e9aae" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/77252ccd022fd10e8bd4975ddfe15b02c6484fdd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7f7fe83e50e0989a0ab3abcf66fad8f3147e2143" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/90215ef81d7462f17c7cb0eec208d5ce341ba8fa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/956243b68c4ed30a12ddd589e1285d8d1ae5bb70" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/959599b11f3f2bd6bbe689ef8fe64b4e8c28410b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/982bf30c34e8ec4ddc5db09a7e443d6caeb634e4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b7d67b726534888714c92c2c0f5a619bcdc63f9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c1000cf51cd3a98f29e31dc7881d097e61c9fa1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6be03055219c6c8703cd9cfb3797b6d8b31c290" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b5e3a80ee4a75c865bec8034ce990f4a48bed557" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/4/c457b8d8d32929b3edac3a9056998d621a8afe08" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/4/c4df1655ee2b64b2cff602fbba7297fff62a4934" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/c/cc9a698ddd001a83cf46281f79005cd3c89cfad5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d2320af0a253215043951c9fa5fb6ac9b2ed0048" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dc387ec816e5457d1855d220ab1003462be2eb0c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e23317d50524d627550b61e6e86d5619895dc544" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e243a25367cc8b35876ab1e31e5baa202a584c96" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/9/e91e61e54db4c4269e553e290ed3a63caa372d90" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb202f32d944a50514b3d1dbc11dc652daeb5da4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/ee4c949fb7599f87c16eebfacc410978fec607e1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/ee92324c5d8ea358c7a9a5e76cf421ca7ab11c9b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/ee9a30d96aba14e14448e0f77df5439f9d0fb67e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/b/fbca719a58d15bbba9987909042b90332fa67574" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe9e704027b7821f474848e8ac370d57cdba884b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/00a392ef2f67e4a3c4f2eabfcf0a0686b41754d2" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/00a392ef2f67e4a3c4f2eabfcf0a0686b41754d2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/0643657fc9cfbd22e2857eb21cd0f35811c30946" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/0643657fc9cfbd22e2857eb21cd0f35811c30946" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f729bd157e62dd275b85702a11ee764f11f412" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f729bd157e62dd275b85702a11ee764f11f412" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e49924c3d6d739935aaafcdbc1baeb0fbb62ff3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e49924c3d6d739935aaafcdbc1baeb0fbb62ff3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/b/3bab54cf52b4c7e8052f5fac1c796e70c3d8dcbe" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/b/3bab54cf52b4c7e8052f5fac1c796e70c3d8dcbe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cda34b5b41aa854312f1425a963696f4a4629a9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cda34b5b41aa854312f1425a963696f4a4629a9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cee21066b4da5e76fa8bd19af0c3337d69a6f99" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cee21066b4da5e76fa8bd19af0c3337d69a6f99" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d8c4196f740e20d96227e0a513c50c2c11c50f8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d8c4196f740e20d96227e0a513c50c2c11c50f8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41089351ab302d4f6b15eabcaa8d71c29b39092c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41089351ab302d4f6b15eabcaa8d71c29b39092c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a4fce85b7c95071b827aee8efca55a6805182c4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a4fce85b7c95071b827aee8efca55a6805182c4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cc2b729bb85279830fdda3fa076fa6feae08824" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cc2b729bb85279830fdda3fa076fa6feae08824" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5ff067e647301697d8b572104e227c2550f18012" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5ff067e647301697d8b572104e227c2550f18012" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/6858a8bad8dadc73f5e001359fc048dd2b307ab9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/6858a8bad8dadc73f5e001359fc048dd2b307ab9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c31d804aadeb904c94c494939483ce7485ce8f9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c31d804aadeb904c94c494939483ce7485ce8f9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98df6ba5858a7211754dd6e698e5b289fa7e7d59" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98df6ba5858a7211754dd6e698e5b289fa7e7d59" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a335a9b7244efe1077ad1d3d333712f17b0a49b7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a335a9b7244efe1077ad1d3d333712f17b0a49b7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4adfa6a315eaad757903f2668c1f20bb92a55ed" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a4adfa6a315eaad757903f2668c1f20bb92a55ed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b821b0d57fd072c34c06de9e48f2b195c8d7c5cb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b821b0d57fd072c34c06de9e48f2b195c8d7c5cb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca7bbaef44ecfa476fbab5fec9b87bc79752cd74" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca7bbaef44ecfa476fbab5fec9b87bc79752cd74" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/b/cb1ce2eb192bdabe84add5777ea612f407301da9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/b/cb1ce2eb192bdabe84add5777ea612f407301da9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/f/cf4e4348bcea25ba32bb7cfd6cae3e4054a6ff81" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/f/cf4e4348bcea25ba32bb7cfd6cae3e4054a6ff81" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1ee52a5be20bd6af32f6d5aa5fd19bfa68d8e16" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1ee52a5be20bd6af32f6d5aa5fd19bfa68d8e16" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dc569796a1d270d0397c8e0b80e0f65021d187a5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dc569796a1d270d0397c8e0b80e0f65021d187a5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df8529f63face049498d0dbd57e12644ae342520" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df8529f63face049498d0dbd57e12644ae342520" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e603cb6073f9898b9e02aec791690e542840d587" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e603cb6073f9898b9e02aec791690e542840d587" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f0f0fbf20ba502e80b9b93e95d91fc67866c6fea" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f0f0fbf20ba502e80b9b93e95d91fc67866c6fea" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/addGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/addGoods.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/addPhoto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/addPhoto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/css/user.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebRoot/jsp/addToCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/addToCart.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebRoot/jsp/adminGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/adminGoods.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebRoot/jsp/adminUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/adminUser.jsp" afterDir="false" />
@@ -257,13 +117,47 @@
       <change beforePath="$PROJECT_DIR$/WebRoot/jsp/searchGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/searchGoods.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebRoot/jsp/shoppingCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/shoppingCart.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebRoot/jsp/showMessage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/showMessage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/LandMessageDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/LandMessageDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlet/VisitGCancelTServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/VisitGCancelTServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/addToCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/addToCart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/alreadyBuy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/alreadyBuy.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/alreadySale.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/alreadySale.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/buyGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/buyGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteCartGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteCartGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteSaleGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteSaleGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/deleteUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/editGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/editGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/goodsDescribed.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/goodsDescribed.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/head.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleChart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleChart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/searchGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/searchGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/shoppingCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/shoppingCart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/showMessage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/showMessage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -293,6 +187,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -492,7 +387,8 @@
       <workItem from="1584154024359" duration="34000" />
       <workItem from="1584154100681" duration="6991000" />
       <workItem from="1584163437081" duration="5092000" />
-      <workItem from="1584182340496" duration="10845000" />
+      <workItem from="1584182340496" duration="14619000" />
+      <workItem from="1584243102334" duration="11910000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1584091990833</created>
@@ -515,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584102898678</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <created>1584193950890</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1584193950890</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,10 +442,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="198" key="#Tomcat_Server/0.0.1920.1080@0.0.1920.1080" timestamp="1584099330379" />
-    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584102273936">
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584254452599">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584102273936" />
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584254452599" />
     <state x="585" y="335" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1584100011396">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -555,10 +458,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="198" key="#项目结构/0.0.1920.1080@0.0.1920.1080" timestamp="1584101031994" />
-    <state x="309" y="124" key="CommitChangelistDialog2" timestamp="1584193226173">
+    <state x="309" y="124" key="CommitChangelistDialog2" timestamp="1584193941639">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="309" y="124" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584193226173" />
+    <state x="309" y="124" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584193941639" />
     <state x="609" y="295" key="DetectedRootsChooserDialog" timestamp="1584100514073">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -571,78 +474,82 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="654" y="453" key="Github.ShareDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584079026472" />
-    <state width="468" height="275" key="GridCell.Tab.0.bottom" timestamp="1584193778443">
+    <state width="1293" height="275" key="GridCell.Tab.0.bottom" timestamp="1584255590404">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778443" />
-    <state width="468" height="275" key="GridCell.Tab.0.center" timestamp="1584193778443">
+    <state width="1293" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590404" />
+    <state width="1293" height="275" key="GridCell.Tab.0.center" timestamp="1584255590403">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778443" />
-    <state width="468" height="275" key="GridCell.Tab.0.left" timestamp="1584193778443">
+    <state width="1293" height="275" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590403" />
+    <state width="1293" height="275" key="GridCell.Tab.0.left" timestamp="1584255590403">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778443" />
-    <state width="468" height="275" key="GridCell.Tab.0.right" timestamp="1584193778443">
+    <state width="1293" height="275" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590403" />
+    <state width="1293" height="275" key="GridCell.Tab.0.right" timestamp="1584255590404">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778443" />
-    <state width="468" height="275" key="GridCell.Tab.1.bottom" timestamp="1584193778331">
+    <state width="1293" height="275" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590404" />
+    <state width="1293" height="275" key="GridCell.Tab.1.bottom" timestamp="1584255590405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778331" />
-    <state width="468" height="275" key="GridCell.Tab.1.center" timestamp="1584193778331">
+    <state width="1293" height="275" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590405" />
+    <state width="1293" height="275" key="GridCell.Tab.1.center" timestamp="1584255590405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778331" />
-    <state width="468" height="275" key="GridCell.Tab.1.left" timestamp="1584193778331">
+    <state width="1293" height="275" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590405" />
+    <state width="1293" height="275" key="GridCell.Tab.1.left" timestamp="1584255590404">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778331" />
-    <state width="468" height="275" key="GridCell.Tab.1.right" timestamp="1584193778331">
+    <state width="1293" height="275" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590404" />
+    <state width="1293" height="275" key="GridCell.Tab.1.right" timestamp="1584255590405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778331" />
-    <state width="468" height="275" key="GridCell.Tab.2.bottom" timestamp="1584193778330">
+    <state width="1293" height="275" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590405" />
+    <state width="1293" height="275" key="GridCell.Tab.2.bottom" timestamp="1584255590405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778330" />
-    <state width="468" height="275" key="GridCell.Tab.2.center" timestamp="1584193778330">
+    <state width="1293" height="275" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590405" />
+    <state width="1293" height="275" key="GridCell.Tab.2.center" timestamp="1584255590405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778330" />
-    <state width="468" height="275" key="GridCell.Tab.2.left" timestamp="1584193778330">
+    <state width="1293" height="275" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590405" />
+    <state width="1293" height="275" key="GridCell.Tab.2.left" timestamp="1584255590405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778330" />
-    <state width="468" height="275" key="GridCell.Tab.2.right" timestamp="1584193778330">
+    <state width="1293" height="275" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590405" />
+    <state width="1293" height="275" key="GridCell.Tab.2.right" timestamp="1584255590405">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="468" height="275" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584193778330" />
-    <state width="1293" height="229" key="GridCell.Tab.3.bottom" timestamp="1584158922786">
+    <state width="1293" height="275" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584255590405" />
+    <state width="1293" height="275" key="GridCell.Tab.3.bottom" timestamp="1584255299517">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.3.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584158922786" />
-    <state width="1293" height="229" key="GridCell.Tab.3.center" timestamp="1584158922785">
+    <state width="1293" height="275" key="GridCell.Tab.3.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1584255299517" />
+    <state width="1293" height="275" key="GridCell.Tab.3.center" timestamp="1584255299516">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.3.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584158922785" />
-    <state width="1293" height="229" key="GridCell.Tab.3.left" timestamp="1584158922785">
+    <state width="1293" height="275" key="GridCell.Tab.3.center/0.0.1920.1080@0.0.1920.1080" timestamp="1584255299516" />
+    <state width="1293" height="275" key="GridCell.Tab.3.left" timestamp="1584255299516">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.3.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584158922785" />
-    <state width="1293" height="229" key="GridCell.Tab.3.right" timestamp="1584158922785">
+    <state width="1293" height="275" key="GridCell.Tab.3.left/0.0.1920.1080@0.0.1920.1080" timestamp="1584255299516" />
+    <state width="1293" height="275" key="GridCell.Tab.3.right" timestamp="1584255299516">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584158922785" />
+    <state width="1293" height="275" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584255299516" />
+    <state width="220" height="477" key="HiddenNamespacesPopup" timestamp="1584254459860">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1584254459860" />
     <state x="335" y="155" key="SettingsEditor" timestamp="1584157172695">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="335" y="155" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584157172695" />
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1584093749602">
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1584193974151">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584093749602" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584193974151" />
     <state x="553" y="474" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584100695196">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -651,5 +558,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="635" y="331" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584079779376" />
+    <state x="574" y="240" width="672" height="678" key="search.everywhere.popup" timestamp="1584249541046">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="574" y="240" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1584249541046" />
   </component>
 </project>

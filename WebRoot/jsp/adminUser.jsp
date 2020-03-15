@@ -1,11 +1,11 @@
-<%@page import="util.OnlineCounter" %>
-<%@page import="bean.User" %>
-<%@page import="java.util.List" %>
-<%@page import="factory.DAOFactory" %>
-<%@page import="dao.UserDao" %>
+<%@ page import="util.OnlineCounter" %>
+<%@ page import="bean.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page import="dao.UserDao" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -37,7 +37,7 @@
         }
 
         function showtime() {
-            var myDate = new Date();
+            const myDate = new Date();
             document.getElementById("time").innerHTML = myDate.getHours() + "点"
                 + myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
             setTimeout("showtime()", 1000);
@@ -58,7 +58,7 @@
                 </ul>
             </div>
             <div class="col-sm-4 logo">
-                <a href="jsp/index.jsp"><img src="images/logo.png" alt=""></a>
+                <a href="<%=basePath%>/jsp/index.jsp"><img src="<%=basePath%>/images/logo.png" alt=""></a>
             </div>
             <div class="col-sm-4 header-left">
                 <p class="log">
@@ -82,9 +82,9 @@
         <div class="head-top">
             <div class="col-sm-8 h_menu4">
                 <ul class="memenu skyblue">
-                    <li class=" grid"><a href="jsp/adminUser.jsp" class="a_active">会员管理</a></li>
-                    <li><a href="jsp/adminGoods.jsp">商品管理</a></li>
-                    <li><a href="jsp/adminData.jsp">数据统计</a></li>
+                    <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminData.jsp">数据统计</a></li>
                 </ul>
             </div>
         </div>
@@ -123,7 +123,9 @@
                         <th>最后登录时间</th>
                     </tr>
                     <%
-                        UserDao userDao = DAOFactory.getUserServiceInstance();
+                        UserDao userDao = null;
+                        try {
+                            userDao = DAOFactory.getUserServiceInstance();
                         List<User> UsersList = userDao.selectAllUser();
                         if (UsersList != null & UsersList.size() > 0) {
                             User user;
@@ -151,8 +153,8 @@
                         </td>
                         <td><%=lastlogin_t%>
                         </td>
-                        <td><a href="jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
-                        <td><a href="jsp/deleteUser.jsp?uid=<%=uid_t%>"
+                        <td><a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
+                        <td><a href="<%=basePath%>/jsp/deleteUser.jsp?uid=<%=uid_t%>"
                                onclick="return confirmDelete()">删除</a></td>
                     </tr>
                     <%
@@ -165,7 +167,7 @@
         </div>
     </div>
     <div class="bottom_tools">
-        <a id="scrollUp" href="javascript:;" title="回到顶部"></a>
+        <a id="scrollUp" href="javascript:" title="回到顶部"></a>
     </div>
 </div>
 <script type="text/javascript">
@@ -180,19 +182,18 @@
     });
 
     $(function () {
-        var $body = $(document.body);
-        ;
-        var $bottomTools = $('.bottom_tools');
-        var $qrTools = $('.qr_tool');
-        var qrImg = $('.qr_img');
+        const $body = $(document.body);
+        const $bottomTools = $('.bottom_tools');
+        const $qrTools = $('.qr_tool');
+        const qrImg = $('.qr_img');
         $(window)
             .scroll(
                 function () {
-                    var scrollHeight = $(document).height();
-                    var scrollTop = $(window).scrollTop();
-                    var $footerHeight = $('.page-footer')
+                    const scrollHeight = $(document).height();
+                    const scrollTop = $(window).scrollTop();
+                    const $footerHeight = $('.page-footer')
                         .outerHeight(true);
-                    var $windowHeight = $(window).innerHeight();
+                    const $windowHeight = $(window).innerHeight();
                     scrollTop > 50 ? $("#scrollUp").fadeIn(200)
                         .css("display", "block") : $(
                         "#scrollUp").fadeOut(200);
@@ -221,19 +222,19 @@
     });
 
     function clickSearch() {
-        var UserID = $("#user_id").val();
-        var UserName = $("#user_name").val();
-        var UserMail = $("#user_mail").val();
-        if ((UserID == null || UserID == "")
-            && (UserName == null || UserName == "")
-            && (UserMail == null || UserMail == "")) {
+        let UserID = $("#user_id").val();
+        let UserName = $("#user_name").val();
+        let UserMail = $("#user_mail").val();
+        if ((UserID == null || UserID === "")
+            && (UserName == null || UserName === "")
+            && (UserMail == null || UserMail === "")) {
             window.location.reload();
         } else {
-            if (UserID == null || UserID == "")
+            if (UserID == null || UserID === "")
                 UserID = -1;
-            if (UserName == null || UserName == "")
+            if (UserName == null || UserName === "")
                 UserName = "%&ALL&%";
-            if (UserMail == null || UserMail == "")
+            if (UserMail == null || UserMail === "")
                 UserMail = "%&ALL&%";
             $.ajax({
                 url: 'SelectUserServlet',
@@ -247,48 +248,48 @@
                 dataType: 'json',
                 success: function (json) {
                     $("#resultTable").empty();
-                    var tr = $("<tr/>");
+                    const tr = $("<tr/>");
                     $("<th/>").html("序号").appendTo(tr);
                     $("<th/>").html("会员ID").appendTo(tr);
                     $("<th/>").html("会员名").appendTo(tr);
                     $("<th/>").html("邮箱").appendTo(tr);
                     $("<th/>").html("最后登陆时间").appendTo(tr);
                     $("#resultTable").append(tr);
-                    var temp = 0;
+                    let temp = 0;
                     $.each(json, function (i, val) {
                         if (val.uid != "8") {
                             temp++;
-                            var tr = $("<tr/>");
+                            const tr = $("<tr/>");
                             $("<td/>").html(temp + ".").appendTo(tr);
                             $("<td/>").html(val.uid).appendTo(tr);
                             $("<td/>").html(val.uname).appendTo(tr);
                             $("<td/>").html(val.email).appendTo(tr);
                             $("<td/>").html(val.lastLogin).appendTo(tr);
-                            var td1 = $("<td/>");
-                            var a1 = $("<a/>");
-                            a1.attr("href", "jsp/showMessage.jsp?uid=" + val.uid);
+                            const td1 = $("<td/>");
+                            const a1 = $("<a/>");
+                            a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
                             a1.attr("target", "_blank");
                             a1.html("查看").appendTo(td1);
                             td1.appendTo(tr);
-                            var td2 = $("<td/>");
-                            var a2 = $("<a/>");
-                            a2.attr("href", "jsp/deleteUser.jsp?uid=" + val.uid);
+                            const td2 = $("<td/>");
+                            const a2 = $("<a/>");
+                            a2.attr("href", "<%=basePath%>/jsp/deleteUser.jsp?uid=" + val.uid);
                             a2.attr("onclick", "return confirmDelete()");
                             a2.html("删除").appendTo(td2);
                             td2.appendTo(tr);
                             $("#resultTable").append(tr);
                         }
-                    })
+                    });
                     if (temp == 0) {
                         $("#resultTable").empty();
                         $("#tempP").empty();
-                        var p2 = $("<p/>");
+                        const p2 = $("<p/>");
                         p2.addClass("tempmess");
                         p2.html("暂时没有该类型的会员，换一个试试！").appendTo(p2);
                         $("#tempP").append(p2);
                     } else {
                         $("#tempP").empty();
-                        var p3 = $("<p/>");
+                        const p3 = $("<p/>");
                         p3.addClass("tempmess");
                         p3.html("共找到" + temp + "个该类型的会员！").appendTo(p3);
                         $("#tempP").append(p3);
@@ -304,11 +305,16 @@
 
     document.onkeydown = function (event) {
         e = event ? event : (window.event ? window.event : null);
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             clickSearch();
         }
     };
 </script>
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
 <script type="text/javascript">
     window.onunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");

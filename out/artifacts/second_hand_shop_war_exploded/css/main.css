@@ -266,14 +266,6 @@ td, th {
 
 @font-face {
 	font-family: 'Glyphicons Halflings';
-	src: url('../fonts/glyphicons-halflings-regular.eot');
-	src: url('../fonts/glyphicons-halflings-regular.eot?#iefix')
-		format('embedded-opentype'),
-		url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'),
-		url('../fonts/glyphicons-halflings-regular.woff') format('woff'),
-		url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-		url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular')
-		format('svg');
 }
 
 .glyphicon {
@@ -5419,8 +5411,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 	color: #843534;
 }
 
-@
--webkit-keyframes progress-bar-stripes {from { background-position:40px0;
+@-webkit-keyframes progress-bar-stripes {from { background-position:40px 0;
 	
 }
 
@@ -5429,8 +5420,7 @@ to {
 }
 
 }
-@
--o-keyframes progress-bar-stripes {from { background-position:40px0;
+@-o-keyframes progress-bar-stripes {from { background-position:40px 0;
 	
 }
 
@@ -5439,15 +5429,13 @@ to {
 }
 
 }
-@
-keyframes progress-bar-stripes {from { background-position:40px0;
-	
+@keyframes progress-bar-stripes {
+	from {
+		background-position:40px 0;
 }
-
-to {
+	to {
 	background-position: 0 0;
 }
-
 }
 .progress {
 	height: 20px;
@@ -6698,8 +6686,8 @@ button.close {
 		transition: transform .6s ease-in-out;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
-		-webkit-perspective: 1000;
-		perspective: 1000;
+		-webkit-perspective: 1000px;
+		perspective: 1000px;
 	}
 	.carousel-inner>.item.next, .carousel-inner>.item.active.right {
 		left: 0;
@@ -6981,9 +6969,8 @@ button.close {
 	position: fixed;
 }
 
-@
--ms-viewport {
-	width: device-width;
+@-ms-viewport {
+	width: 100%;
 }
 
 .visible-xs, .visible-sm, .visible-md, .visible-lg {
@@ -7210,12 +7197,10 @@ button.close {
 /*# sourceMappingURL=bootstrap.css.map */
 @font-face {
 	font-family: 'OleoScript-Regular';
-	src: url(../fonts/OleoScript-Regular.ttf) format('truetype');
 }
 
 @font-face {
 	font-family: 'Roboto-Regular';
-	src: url(../fonts/Roboto-Regular.ttf) format('truetype');
 }
 
 body a {
@@ -7486,7 +7471,7 @@ a.item_add {
 }
 
 .callbacks_tabs a:after {
-	content: "\f111"; x
+	content: "\f111";
 	font-size: 0;
 	font-family: FontAwesome;
 	visibility: visible;
@@ -7989,7 +7974,6 @@ a.forgot {
 
 .checkbox input+i:after {
 	content: '';
-	background: url("../images/tick1.png") no-repeat 1px 2px;
 	top: -1px;
 	left: -1px;
 	width: 15px;

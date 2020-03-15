@@ -1,10 +1,9 @@
-<%@ page language="java" pageEncoding="utf-8" %>
-<%@ page import="dao.GoodsDao" %>
+<%@ page pageEncoding="utf-8" %>
 <%@ page import="bean.Goods" %>
-<%@ page import="java.util.List" %>
+<%@ page import="dao.GoodsDao" %>
+<%@ page import="factory.DAOFactory" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
-<%@ page import="factory.DAOFactory" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -15,18 +14,19 @@
     String userip = ip4.getHostAddress();
 %>
 <%
-    GoodsDao dao = DAOFactory.getGoodsServiceInstance();
-    Goods goods = dao.queryById(gid);
-    String name = goods.getGname();
-    int number = goods.getNumber();
-    String[] photo = goods.getPhoto().split("&");
-    String type = goods.getType();
-    String usage = goods.getUsage();
-    float price = goods.getPrice();
-    float carriage = goods.getCarriage();
-    String pdate = goods.getPdate();
-    String paddress = goods.getPaddress();
-    String described = goods.getDescribed();
+    try {
+        GoodsDao dao = DAOFactory.getGoodsServiceInstance();
+        Goods goods = dao.queryById(gid);
+        String name = goods.getGname();
+        int number = goods.getNumber();
+        String[] photo = goods.getPhoto().split("&");
+        String type = goods.getType();
+        String usage = goods.getUsage();
+        float price = goods.getPrice();
+        float carriage = goods.getCarriage();
+        String pdate = goods.getPdate();
+        String paddress = goods.getPaddress();
+        String described = goods.getDescribed();
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -48,24 +48,16 @@
             var ga = document.createElement('script');
             ga.type = 'text/javascript';
             ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+            ga.src = ('https:' === document.location.protocol ? 'https://ssl'
                 : 'http://www')
                 + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
 
-        function goback() {
-            window.history.back(-1);
-        }
-
         function submit_sure() {
-            var gnl = confirm("确定修改吗?");
-            if (gnl == true) {
-                return true;
-            } else {
-                return false;
-            }
+            const gnl = confirm("确定修改吗?");
+            return gnl === true;
         }
     </script>
 </head>
@@ -198,7 +190,16 @@
         </div>
     </form>
 </div>
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
 <script type="text/javascript">
+    function goback() {
+        location.href = document.referrer;
+    }
+
     window.onunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");
     }

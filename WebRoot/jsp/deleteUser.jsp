@@ -1,13 +1,13 @@
-<%@page import="factory.DAOFactory" %>
-<%@page import="dao.UserDao" %>
-<%@page import="bean.Goods" %>
-<%@page import="dao.GoodsDao" %>
-<%@page import="dao.AlreadyBuyDao" %>
-<%@page import="dao.AlreadySaleDao" %>
-<%@page import="dao.OperationMesDao" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page import="dao.UserDao" %>
+<%@ page import="bean.Goods" %>
+<%@ page import="dao.GoodsDao" %>
+<%@ page import="dao.AlreadyBuyDao" %>
+<%@ page import="dao.AlreadySaleDao" %>
+<%@ page import="dao.OperationMesDao" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -31,33 +31,38 @@
 </head>
 <body>
 <%
-    UserDao userDao = DAOFactory.getUserServiceInstance();
-    GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-    AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
-    AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
-    List<Goods> uidGoodsList = goodsDao.getUidGoodsList(uid);
-    if (uidGoodsList != null & uidGoodsList.size() > 0) {
-        Goods goods;
-        int gid;
-        for (int i = 0; i < uidGoodsList.size(); i++) {
-            goods = uidGoodsList.get(i);
-            gid = goods.getGid();
-            goodsDao.deleteGoods(gid);
-            abDao.deleteBuyGoods(gid);
-            asDao.deleteSaleGoods(gid);
+    UserDao userDao = null;
+    try {
+        userDao = DAOFactory.getUserServiceInstance();
+        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
+        AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
+        AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
+        List<Goods> uidGoodsList = goodsDao.getUidGoodsList(uid);
+        if (uidGoodsList != null & uidGoodsList.size() > 0) {
+            Goods goods;
+            int gid;
+            for (int i = 0; i < uidGoodsList.size(); i++) {
+                goods = uidGoodsList.get(i);
+                gid = goods.getGid();
+                goodsDao.deleteGoods(gid);
+                abDao.deleteBuyGoods(gid);
+                asDao.deleteSaleGoods(gid);
+            }
         }
-    }
-    if (userDao.deleteUser(uid)) {
-        String opcontent = "删除会员及其所有商品:会员ID（" + uid + "）";
-        OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-        omdao.addOperationMes(8, userip, opcontent);
-        response.sendRedirect("adminUser.jsp");
-    } else {
+        if (userDao.deleteUser(uid)) {
+            String opcontent = "删除会员及其所有商品:会员ID（" + uid + "）";
+            OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+            omdao.addOperationMes(8, userip, opcontent);
+            response.sendRedirect("adminUser.jsp");
+        } else {
 %>
 <div align="center"><br/>
     删除会员失败，请重试。
 </div>
 <%
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 %>
 </body>

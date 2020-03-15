@@ -1,0 +1,11 @@
+
+t
+java:S2293K"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹ÊÉŠüÿÿÿÿ
+\
+java:S1126!"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+\
+java:S11263"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+b
+java:S2095B"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ðî½•ÿÿÿÿÿ
+b
+java:S2095T"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ðî½•ÿÿÿÿÿ
