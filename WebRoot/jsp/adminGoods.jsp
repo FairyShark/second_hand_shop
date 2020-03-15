@@ -222,8 +222,6 @@
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="salegoods"  title="出售二手">出售二手</a>
-    <a id="feedback"  title="购物车">购物车</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 </div>
