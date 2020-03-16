@@ -21,9 +21,9 @@ public class VisitMessageService implements VisitMessageDao{
 	
 	//添加打开时间
 	@Override
-	public boolean addLandTimeMes(int uid, int gid, String gtype) throws Exception{			
-		if (isInt(uid) && isInt(gid) && gtype!=null) {
-			return this.dao.addLandTimeMes(uid, gid, gtype);
+	public boolean addLandTimeMes(int uid, int gid, String uname, String gname, String gtype) throws Exception{			
+		if (isInt(uid) && isInt(gid) && uname!=null && gname!=null && gtype!=null) {
+			return this.dao.addLandTimeMes(uid, gid, uname, gname, gtype);
 		}
 		return false;
 	}
@@ -45,14 +45,17 @@ public class VisitMessageService implements VisitMessageDao{
 		}
 		return null;
 	}
+
+	// 查询所有浏览信息
+	@Override
+	public List<VisitMessage> getAllVisitMessage() throws Exception {
+		return this.dao.getAllVisitMessage();
+	}
 			
 	//查询登陆信息
 	@Override
-	public List<VisitMessage> getVisitMessage(int uid, int gid) throws Exception{
-		if (isInt(uid) && isInt(gid)) {
-			return this.dao.getVisitMessage(uid, gid);
-		}
-		return null;
+	public List<VisitMessage> getVisitMessage(int uid, int gid, String uname, String gname, String gtype, String landtime) throws Exception{
+			return this.dao.getVisitMessage(uid, gid, uname, gname, gtype, landtime);
 	}
 	
 	public boolean isInt(int index) {

@@ -1,11 +1,25 @@
 
-\
-java:S11264"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
-t
-java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹ÊÉŠüÿÿÿÿ
-b
-java:S2095Y"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
-\
-java:S1126""AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
-b
-java:S2095C"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+d
+java:S2095R"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(«Ä¶Ø8êÄ.
+{
+java:S2293i"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹ÊÉŠüÿÿÿÿ8êÄ.
+k
+java:S1192G"IDefine a constant instead of duplicating this literal "landtime" 3 times.(ƒË­ùÿÿÿÿ8êÄ.
+i
+java:S2095E"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ8êÄ.
+c
+java:S11266"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ8êÄ.
+m	java:S117Z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„äêû8êÄ.
+c
+java:S1126$"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ8êÄ.
+m	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±¿×ó8êÄ.
+i
+java:S2095{"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ8êÄ.
+r	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ½¸²ûÿÿÿÿ8êÄ.
+r	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´£¼Ëşÿÿÿÿ8êÄ.
+m	java:S117X"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹©íÛ8êÄ.
+i
+java:S2095Q"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ù³–—üÿÿÿÿ8êÄ.
+r	java:S117U"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹ğŞûÿÿÿÿ8êÄ.
+N
+java:S1905Q",Remove this unnecessary cast to "Statement".(Ù³–—üÿÿÿÿ8êÄ.

@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8" %>
+<%@ page import="dao.UserDao" %>
 <%@ page import="dao.GoodsDao" %>
 <%@ page import="dao.VisitMessageDao" %>
 <%@ page import="bean.Goods" %>
@@ -36,10 +37,10 @@
         String paddress = goods.getPaddress();
         String described = goods.getDescribed();
         int sale_uid = goods.getUid();
-        GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
         VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
-        String gtype = gdao.queryTypesByGid(gid);
-        vmdao.addLandTimeMes(uid, gid, gtype);
+        UserDao udao = DAOFactory.getUserServiceInstance();
+        String uname_t = udao.queryUName(uid);
+        vmdao.addLandTimeMes(uid, gid, uname_t, name, type);
         goodslandtime = vmdao.getVisitlandtime(uid, gid);
 %>
 <!DOCTYPE html>

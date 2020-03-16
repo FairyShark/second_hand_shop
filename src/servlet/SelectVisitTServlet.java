@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.LandMessage;
+import bean.VisitMessage;
 import com.alibaba.fastjson.JSON;
 
-import dao.LandMessageDao;
+import dao.VisitMessageDao;
 import factory.DAOFactory;
 
-@WebServlet("/SelectLandTServlet")
-public class SelectLandTServlet  extends HttpServlet {
+@WebServlet("/SelectVisitTServlet")
+public class SelectVisitTServlet  extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectLandTServlet() {
+    public SelectVisitTServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,12 +36,14 @@ public class SelectLandTServlet  extends HttpServlet {
 
         int uid = Integer.parseInt(request.getParameter("UserID"));
         String uname = request.getParameter("UserName");
-        String userip = request.getParameter("UserIP");
+        int gid = Integer.parseInt(request.getParameter("GoodsID"));
+        String gname = request.getParameter("GoodsName");
+        String gtype = request.getParameter("Gtype");
         String landtime = request.getParameter("LandTime");
 
         try {
-            LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
-            List<LandMessage> list = lmdao.getLandMessage(uid,uname,userip,landtime);
+            VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
+            List<VisitMessage> list = vmdao.getVisitMessage(uid,gid,uname,gname,gtype,landtime);
             PrintWriter out=response.getWriter();
             out.write(JSON.toJSONString(list));
         } catch (Exception e) {

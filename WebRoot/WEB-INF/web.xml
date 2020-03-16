@@ -79,6 +79,12 @@
     <servlet-name>SelectLandTServlet</servlet-name>
     <servlet-class>servlet.SelectLandTServlet</servlet-class>
   </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>SelectVisitTServlet</servlet-name>
+        <servlet-class>servlet.SelectVisitTServlet</servlet-class>
+    </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
@@ -130,6 +136,10 @@
     <servlet-name>SelectLandTServlet</servlet-name>
     <url-pattern>/servlet/SelectLandTServlet</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectVisitTServlet</servlet-name>
+        <url-pattern>/servlet/SelectVisitTServlet</url-pattern>
+    </servlet-mapping>
   <servlet-mapping>
     <servlet-name>VisitGCancelTServlet</servlet-name>
     <url-pattern>/servlet/VisitGCancelTServlet</url-pattern>

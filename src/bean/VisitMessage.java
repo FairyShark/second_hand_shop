@@ -8,6 +8,10 @@ public class VisitMessage {
 	private int uid;
 	//商品ID
 	private int gid;
+	//用户名
+	private String uname;
+	//商品名
+	private String gname;
 	//商品类型
 	private String types;
 	//打开时间
@@ -36,6 +40,20 @@ public class VisitMessage {
 	}
 	public int getGid() {
 		return gid;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public String getUname() {
+		return uname;
+	}
+
+	public void setGname(String gname) {
+		this.gname = gname;
+	}
+	public String getGname() {
+		return gname;
 	}
 	
 	public void setTypes(String types) {

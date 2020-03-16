@@ -1,8 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="util.OnlineCounter" %>
-<%@ page import="bean.LandMessage" %>
+<%@ page import="bean.VisitMessage" %>
 <%@ page import="java.util.List" %>
 <%@ page import="factory.DAOFactory" %>
-<%@ page import="dao.LandMessageDao" %>
+<%@ page import="dao.VisitMessageDao" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
 <%@ page pageEncoding="utf-8" %>
@@ -20,7 +21,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>登陆信息</title>
+    <title>浏览记录</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
@@ -90,21 +91,35 @@
 
     <div class="content goods_show">
         <div class="sear_w">
-            <h2>登 陆 信 息</h2>
+            <h2>浏 览 记 录</h2>
         </div>
         <div class="bottter">
             <div class="seach_1">
-                <div class="typ_10">
+                <div class="typ_14">
                     <label>会员ID：</label><input id="user_id" class="inp_7">
                 </div>
-                <div class="typ_11">
+                <div class="typ_14">
+                    <label>商品ID：</label><input id="goods_id" class="inp_7">
+                </div>
+                <div class="typ_14">
                     <label>会员名：</label><input id="user_name" class="inp_8">
                 </div>
-                <div class="typ_12">
-                    <label>登陆IP：</label><input id="user_ip" class="inp_9">
+                <div class="typ_14">
+                    <label>商品名：</label><input id="goods_name" class="inp_8">
                 </div>
-                <div class="typ_13">
-                    <label>登陆时间：</label><input id="land_time" class="inp_10" placeholder="格式：yyyy-mm-dd">
+                <div class="typ_1">
+                    <label>商品类型：</label> <select id="goods_type" name="Types">
+                    <option value="文具">文具</option>
+                    <option value="书籍">书籍</option>
+                    <option value="食品">食品</option>
+                    <option value="日用品">日用品</option>
+                    <option value="电子产品">电子产品</option>
+                    <option value="其他">其他</option>
+                    <option value="全部" selected="selected">全部</option>
+                </select>
+                </div>
+                <div class="typ_14">
+                    <label>时间：</label><input id="goods_time" class="inp_10" placeholder="格式：yyyy-mm-dd">
                 </div>
                 <div class="typ_9">
                     <button class="but_1" onclick="clickSearch()">搜索</button>
@@ -120,30 +135,36 @@
                         <th>序号</th>
                         <th>会员ID</th>
                         <th>会员名</th>
-                        <th>登陆IP地址</th>
-                        <th>登录时间</th>
-                        <th>退出时间</th>
+                        <th>商品ID</th>
+                        <th>商品名</th>
+                        <th>商品类型</th>
+                        <th>浏览时间</th>
+                        <th>持续时间</th>
                     </tr>
                     <%
                         try {
-                            LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
-                            List<LandMessage> LMList = lmdao.getAllLandMessage();
-                            if (LMList != null) {
-                                if (LMList.size() > 0) {
-                                    LandMessage landmessage;
+                            VisitMessageDao lmdao = DAOFactory.getVisitMessageServiceInstance();
+                            List<VisitMessage> VMList = lmdao.getAllVisitMessage();
+                            if (VMList != null) {
+                                if (VMList.size() > 0) {
+                                    VisitMessage visitmessage;
                                     int num = 0;
                                     int uid_t;
+                                    int gid_t;
                                     String uname_t;
-                                    String userip_t;
+                                    String gname_t;
+                                    String gtype_t;
                                     String landtime_t;
-                                    String canceltime_t;
-                                    for (int i = 0; i < LMList.size(); i++) {
-                                        landmessage = LMList.get(i);
-                                        uid_t = landmessage.getUid();
-                                        uname_t = landmessage.getUname();
-                                        userip_t = landmessage.getUserip();
-                                        landtime_t = landmessage.getLandtime();
-                                        canceltime_t = landmessage.getCanceltime();
+                                    int lasttime_t;
+                                    for (int i = 0; i < VMList.size(); i++) {
+                                        visitmessage = VMList.get(i);
+                                        uid_t = visitmessage.getUid();
+                                        gid_t = visitmessage.getGid();
+                                        uname_t = visitmessage.getUname();
+                                        gname_t = visitmessage.getGname();
+                                        gtype_t = visitmessage.getTypes();
+                                        landtime_t = visitmessage.getLandtime();
+                                        lasttime_t = visitmessage.getLasttime();
                                         num++;
                     %>
                     <tr>
@@ -153,11 +174,16 @@
                         <td><a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%>
                         </a>
                         </td>
-                        <td><%=userip_t%>
+                        <td><%=gid_t%>
+                        </td>
+                        <td><a href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=gid_t%>" target="_blank"><%=gname_t%>
+                        </a>
+                        </td>
+                        <td><%=gtype_t%>
                         </td>
                         <td><%=landtime_t%>
                         </td>
-                        <td><%=canceltime_t%>
+                        <td><%=lasttime_t%>秒
                         </td>
                     </tr>
                     <%
@@ -228,8 +254,10 @@
     function clickSearch() {
         let UserID = $("#user_id").val();
         let UserName = $("#user_name").val();
-        let UserIP = $("#user_ip").val();
-        let LandTime = $("#land_time").val();
+        let GoodsID = $("#goods_id").val();
+        let GoodsName = $("#goods_name").val();
+        let Gtype = $("#goods_type").val();
+        let LandTime = $("#goods_time").val();
         let c = 0;
         if (LandTime == null || LandTime === "") {
             c = 1;
@@ -252,7 +280,9 @@
         if (c == 1) {
             if ((UserID == null || UserID === "")
                 && (UserName == null || UserName === "")
-                && (UserIP == null || UserIP === "")
+                && (GoodsID == null || GoodsID === "")
+                && (GoodsName == null || GoodsName === "")
+                && (Gtype=== "全部")
                 && (LandTime == null || LandTime === "")) {
                 window.location.reload();
             } else {
@@ -260,17 +290,21 @@
                     UserID = -1;
                 if (UserName == null || UserName === "")
                     UserName = "%&ALL&%";
-                if (UserIP == null || UserIP === "")
-                    UserIP = "%&ALL&%";
+                if (GoodsID == null || GoodsID === "")
+                    GoodsID = -1;
+                if (GoodsName == null || GoodsName === "")
+                    GoodsName = "%&ALL&%";
                 if (LandTime == null || LandTime === "")
                     LandTime = "%&ALL&%";
                 $.ajax({
-                    url: 'SelectLandTServlet',
+                    url: 'SelectVisitTServlet',
                     type: 'GET',
                     data: {
-                        UserIP: UserIP,
                         UserID: UserID,
                         UserName: UserName,
+                        GoodsID: GoodsID,
+                        GoodsName: GoodsName,
+                        Gtype: Gtype,
                         LandTime: LandTime,
                     },
                     dataType: 'json',
@@ -280,9 +314,11 @@
                         $("<th/>").html("序号").appendTo(tr);
                         $("<th/>").html("会员ID").appendTo(tr);
                         $("<th/>").html("会员名").appendTo(tr);
-                        $("<th/>").html("登陆IP地址").appendTo(tr);
-                        $("<th/>").html("登陆时间").appendTo(tr);
-                        $("<th/>").html("退出时间").appendTo(tr);
+                        $("<th/>").html("商品ID").appendTo(tr);
+                        $("<th/>").html("商品名").appendTo(tr);
+                        $("<th/>").html("商品类型").appendTo(tr);
+                        $("<th/>").html("浏览时间").appendTo(tr);
+                        $("<th/>").html("持续时间").appendTo(tr);
                         $("#resultTable").append(tr);
                         let temp = 0;
                         $.each(json, function (i, val) {
@@ -296,9 +332,16 @@
                             a1.attr("target", "_blank");
                             a1.html(val.uname).appendTo(td1);
                             td1.appendTo(tr);
-                            $("<td/>").html(val.userip).appendTo(tr);
+                            $("<td/>").html(val.gid).appendTo(tr);
+                            const td2 = $("<td/>");
+                            const a2 = $("<a/>");
+                            a2.attr("href", "<%=basePath%>/jsp/goodsDescribed.jsp?gid=" + val.gid);
+                            a2.attr("target", "_blank");
+                            a2.html(val.gname).appendTo(td2);
+                            td2.appendTo(tr);
+                            $("<td/>").html(val.types).appendTo(tr);
                             $("<td/>").html(val.landtime).appendTo(tr);
-                            $("<td/>").html(val.canceltime).appendTo(tr);
+                            $("<td/>").html(val.lasttime + "秒").appendTo(tr);
                             $("#resultTable").append(tr);
 
                         });
@@ -307,13 +350,13 @@
                             $("#tempP").empty();
                             const p2 = $("<p/>");
                             p2.addClass("tempmess");
-                            p2.html("暂时没有该类型的信息，换一个试试！").appendTo(p2);
+                            p2.html("暂时没有该类型的记录，换一个试试！").appendTo(p2);
                             $("#tempP").append(p2);
                         } else {
                             $("#tempP").empty();
                             const p3 = $("<p/>");
                             p3.addClass("tempmess");
-                            p3.html("共找到" + temp + "个该类型的信息！").appendTo(p3);
+                            p3.html("共找到" + temp + "个该类型的记录！").appendTo(p3);
                             $("#tempP").append(p3);
                         }
                     },
