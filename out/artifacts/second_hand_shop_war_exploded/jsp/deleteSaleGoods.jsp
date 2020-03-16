@@ -1,11 +1,8 @@
 <%@ page import="factory.DAOFactory" %>
-<%@ page import="dao.GoodsDao" %>
-<%@ page import="dao.AlreadyBuyDao" %>
-<%@ page import="dao.AlreadySaleDao" %>
-<%@ page import="dao.OperationMesDao" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
 <%@ page import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="dao.*" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -40,7 +37,9 @@
         if (goodsDao.deleteGoods(gid)) {
             String opcontent = "删除商品:商品ID（" + gid + "）";
             OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-            omdao.addOperationMes(Integer.parseInt(uid), userip, opcontent);
+            UserDao udao = DAOFactory.getUserServiceInstance();
+            String uname = udao.queryUName(Integer.parseInt(uid));
+            omdao.addOperationMes(Integer.parseInt(uid), uname, userip, "删除", opcontent);
             if (Integer.parseInt(uid) == 8) {
                 response.sendRedirect("adminGoods.jsp");
             } else {

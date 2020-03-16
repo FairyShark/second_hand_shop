@@ -116,7 +116,7 @@
                     <td class="ring-in"><a
                             href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                             class="at-in" target="_blank"> <img src="<%=photoPath%>"
-                                                class="img-responsive" alt="">
+                                                                class="img-responsive" alt="">
                     </a>
                         <div class="sed">
                             <h5>
@@ -141,7 +141,8 @@
                         <a
                                 href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>">修改</a></td>
                     <td>
-                        <a href="<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=<%=gid%>" onclick="return confirmDelete()">删除</a></td>
+                        <a href="<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
+                           onclick="return confirmDelete()">删除</a></td>
                 </tr>
                 <%
                         }

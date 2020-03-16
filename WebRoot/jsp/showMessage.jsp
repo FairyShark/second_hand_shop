@@ -97,9 +97,9 @@
                                                                      disabled="disabled"></li>
 
             <li class="re_li"><label for="lasttime">上次登录时间： </label> <input id="lasttime"
-                                                              name="lasttime" type="text"
-                                                              value="<%=user.getLastLogin()%>"
-                                                              disabled="disabled"></li>
+                                                                            name="lasttime" type="text"
+                                                                            value="<%=user.getLastLogin()%>"
+                                                                            disabled="disabled"></li>
             <%
                     }
                 } catch (Exception e) {

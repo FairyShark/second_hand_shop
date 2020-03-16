@@ -66,8 +66,8 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <%
-                                if (photo.length > 0) {
-                                    for (int i = 0; i < photo.length; i++) {
+                            if (photo.length > 0) {
+                                for (int i = 0; i < photo.length; i++) {
                         %>
                         <li data-thumb="<%=basePath%>/images/<%=photo[i]%>">
                             <div class="thumb-image">
@@ -107,7 +107,7 @@
                     <a id="carthref" href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>"
                        class="cart item_add">修改商品</a>
                     <%
-                    } else {
+                    } else if (uid != 8) {
                     %>
                     <div class="available">
                         <h6>购买数量 :</h6>
@@ -122,6 +122,9 @@
                 </div>
             </div>
         </div>
+        <%
+            if (uid != 8) {
+        %>
         <div class="col-md-3 product-bottom">
             <div class="product-bottom">
                 <h3 class="cate">最新商品</h3>
@@ -151,11 +154,14 @@
                     <div class="clearfix"></div>
                 </div>
                 <%
-                            }
                         }
+                    }
                 %>
             </div>
         </div>
+        <%
+            }
+        %>
         <div class="clearfix"></div>
     </div>
 </div>

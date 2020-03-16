@@ -102,9 +102,11 @@ public class AddGoodsServlet extends HttpServlet {
 
 		}else{
 			try {
-				String opcontent = "添加商品:商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（"+ usage + "）,发货地（"+ paddress + "）,描述（"+ described + "）" ;
+				UserDao udao = DAOFactory.getUserServiceInstance();
+				String uname = udao.queryUName(Integer.parseInt(uid));
+				String opcontent = "添加商品：商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（"+ usage + "）,发货地（"+ paddress + "）,描述（"+ described + "）" ;
 				OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-				omdao.addOperationMes(Integer.parseInt(uid), userip, opcontent);
+				omdao.addOperationMes(Integer.parseInt(uid), uname, userip, "添加", opcontent);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

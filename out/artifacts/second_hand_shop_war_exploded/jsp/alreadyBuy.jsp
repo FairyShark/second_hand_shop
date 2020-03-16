@@ -45,35 +45,35 @@
                 AlreadyBuyDao dao = null;
                 try {
                     dao = DAOFactory.getAlreadyBuyServiceInstance();
-                List<AlreadyBuy> abList = dao.getAllBuyGoods(uid);
-                if (abList != null & abList.size() > 0) {
-                    GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-                    Goods goods;
-                    AlreadyBuy ab;
-                    int gid;
-                    int number;
-                    String saleUname;
-                    String buyTime;
-                    String photoPath;
-                    float price;
-                    float totalPrice;
-                    for (int i = 0; i < abList.size(); i++) {
-                        ab = abList.get(i);
-                        gid = ab.getGid();
-                        number = ab.getNumber();
-                        buyTime = ab.getBuyTime();
-                        goods = goodsDao.queryById(gid);
-                        String[] Gphoto = goods.getPhoto().split("&");
-                        photoPath = "images/" + Gphoto[0];
-                        price = goods.getPrice();
-                        totalPrice = number * price + goods.getCarriage();
-                        saleUname = goodsDao.queryUName(gid);
+                    List<AlreadyBuy> abList = dao.getAllBuyGoods(uid);
+                    if (abList != null & abList.size() > 0) {
+                        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
+                        Goods goods;
+                        AlreadyBuy ab;
+                        int gid;
+                        int number;
+                        String saleUname;
+                        String buyTime;
+                        String photoPath;
+                        float price;
+                        float totalPrice;
+                        for (int i = 0; i < abList.size(); i++) {
+                            ab = abList.get(i);
+                            gid = ab.getGid();
+                            number = ab.getNumber();
+                            buyTime = ab.getBuyTime();
+                            goods = goodsDao.queryById(gid);
+                            String[] Gphoto = goods.getPhoto().split("&");
+                            photoPath = "images/" + Gphoto[0];
+                            price = goods.getPrice();
+                            totalPrice = number * price + goods.getCarriage();
+                            saleUname = goodsDao.queryUName(gid);
             %>
             <tr>
                 <td class="ring-in"><a
                         href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                         class="at-in" target="_blank"> <img src="<%=photoPath%>"
-                                            class="img-responsive" alt="">
+                                                            class="img-responsive" alt="">
                 </a>
                     <div class="sed">
                         <h5>
@@ -96,8 +96,8 @@
                 </td>
             </tr>
             <%
+                        }
                     }
-                }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

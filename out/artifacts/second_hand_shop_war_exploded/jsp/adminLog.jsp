@@ -45,135 +45,103 @@
     </script>
 </head>
 <body>
-<div class="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="col-sm-4 world">
-                <ul>
-                    <li></li>
-                </ul>
+<jsp:include page="head.jsp"></jsp:include>
+<div class="content goods_show">
+    <div class="sear_w">
+        <h2>登 陆 信 息</h2>
+    </div>
+    <div class="bottter">
+        <div class="seach_1">
+            <div class="typ_10">
+                <label>会员ID：</label><input id="user_id" class="inp_7">
             </div>
-            <div class="col-sm-4 logo">
-                <a href="<%=basePath%>/jsp/index.jsp"><img src="<%=basePath%>/images/logo.png" alt=""></a>
+            <div class="typ_11">
+                <label>会员名：</label><input id="user_name" class="inp_8">
             </div>
-            <div class="col-sm-4 header-left">
-                <p class="log">
-                    <%
-                        out.print("<a>" + "你好管理员,欢迎登录" + "</a>");
-                        out.print("<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">" + "注销" + "</a>");
-                    %>
-                    <a id="time">
-                        <script type="text/javascript">
-                            showtime();
-                        </script>
-                    </a> <a>在线人数:<%=OnlineCounter.getOnline()%>
-                </a>
-                </p>
-
+            <div class="typ_12">
+                <label>登陆IP：</label><input id="user_ip" class="inp_9">
+            </div>
+            <div class="typ_13">
+                <label>登陆时间：</label><input id="land_time" class="inp_10" placeholder="格式：yyyy-mm-dd">
+            </div>
+            <div class="typ_9">
+                <button class="but_1" onclick="clickSearch()">搜索</button>
             </div>
         </div>
+
     </div>
 
     <div class="container">
-        <div class="head-top">
-            <div class="col-sm-8 h_menu4">
-                <ul class="memenu skyblue">
-                    <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="content goods_show">
-        <div class="sear_w">
-            <h2>登 陆 信 息</h2>
-        </div>
-        <div class="bottter">
-            <div class="seach_1">
-                <div class="typ_10">
-                    <label>会员ID：</label><input id="user_id" class="inp_7">
-                </div>
-                <div class="typ_11">
-                    <label>会员名：</label><input id="user_name" class="inp_8">
-                </div>
-                <div class="typ_12">
-                    <label>登陆IP：</label><input id="user_ip" class="inp_9">
-                </div>
-                <div class="typ_13">
-                    <label>登陆时间：</label><input id="land_time" class="inp_10" placeholder="格式：yyyy-mm-dd">
-                </div>
-                <div class="typ_9">
-                    <button class="but_1" onclick="clickSearch()">搜索</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container">
-            <div class="content-top">
-                <table id="resultTable">
-                    <tr>
-                        <th>序号</th>
-                        <th>会员ID</th>
-                        <th>会员名</th>
-                        <th>登陆IP地址</th>
-                        <th>登录时间</th>
-                        <th>退出时间</th>
-                    </tr>
-                    <%
-                        try {
-                            LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
-                            List<LandMessage> LMList = lmdao.getAllLandMessage();
-                            if (LMList != null) {
-                                if (LMList.size() > 0) {
-                                    LandMessage landmessage;
-                                    int num = 0;
-                                    int uid_t;
-                                    String uname_t;
-                                    String userip_t;
-                                    String landtime_t;
-                                    String canceltime_t;
-                                    for (int i = 0; i < LMList.size(); i++) {
-                                        landmessage = LMList.get(i);
-                                        uid_t = landmessage.getUid();
-                                        uname_t = landmessage.getUname();
-                                        userip_t = landmessage.getUserip();
-                                        landtime_t = landmessage.getLandtime();
-                                        canceltime_t = landmessage.getCanceltime();
-                                        num++;
-                    %>
-                    <tr>
-                        <td><%=num%>.</td>
-                        <td><%=uid_t%>
-                        </td>
-                        <td><a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%>
-                        </a>
-                        </td>
-                        <td><%=userip_t%>
-                        </td>
-                        <td><%=landtime_t%>
-                        </td>
-                        <td><%=canceltime_t%>
-                        </td>
-                    </tr>
-                    <%
-                                }
+        <div class="content-top">
+            <table id="resultTable">
+                <tr>
+                    <th>序号</th>
+                    <th>会员ID</th>
+                    <th>会员名</th>
+                    <th>登陆IP地址</th>
+                    <th>登录时间</th>
+                    <th>退出时间</th>
+                </tr>
+                <%
+                    try {
+                        LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
+                        List<LandMessage> LMList = lmdao.getAllLandMessage();
+                        if (LMList != null) {
+                            if (LMList.size() > 0) {
+                                LandMessage landmessage;
+                                int num = 0;
+                                int uid_t;
+                                String uname_t;
+                                String userip_t;
+                                String landtime_t;
+                                String canceltime_t;
+                                for (int i = 0; i < LMList.size(); i++) {
+                                    landmessage = LMList.get(i);
+                                    uid_t = landmessage.getUid();
+                                    uname_t = landmessage.getUname();
+                                    userip_t = landmessage.getUserip();
+                                    landtime_t = landmessage.getLandtime();
+                                    canceltime_t = landmessage.getCanceltime();
+                                    num++;
+                %>
+                <tr>
+                    <td><%=num%>.</td>
+                    <td><%=uid_t%>
+                    </td>
+                    <td>
+                        <%
+                            if(uid_t != 8){
+                        %>
+                        <a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%></a>
+                        <%
+                            }else{
+                        %>
+                       admin
+                        <%
+                            }
+                        %>
+                    </td>
+                    <td><%=userip_t%>
+                    </td>
+                    <td><%=landtime_t%>
+                    </td>
+                    <td><%=canceltime_t%>
+                    </td>
+                </tr>
+                <%
                             }
                         }
-                    %>
-                </table>
-                <div id="tempP"></div>
-            </div>
+                    }
+                %>
+            </table>
+            <div id="tempP"></div>
         </div>
     </div>
-    <div class="bottom_tools">
-        <a id="scrollUp" href="javascript:" title="回到顶部"></a>
-    </div>
 </div>
+<div class="bottom_tools">
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
+</div>
+
 <script type="text/javascript">
 
     $(function () {
@@ -237,13 +205,13 @@
             const bagin_r = LandTime.match(/^(\d{4})(-)(\d{2})(-)(\d{2})$/);
             if (bagin_r == null) {
                 alert("日期格式不对，必须为“yyyy-mm-dd”，请重新输入！");
-                $("#land_time").value="";
+                $("#land_time").value = "";
             } else {
                 const b_d = new Date(bagin_r[1], bagin_r[3] - 1, bagin_r[5]);
                 const b_num = (b_d.getFullYear() == bagin_r[1] && (b_d.getMonth() + 1) == bagin_r[3] && b_d.getDate() == bagin_r[5]);
                 if (b_num == 0) {
                     alert("时间不合法,请输入正确的时间！");
-                    $("#land_time").value="";
+                    $("#land_time").value = "";
                 } else {
                     c = 1;
                 }
@@ -268,6 +236,7 @@
                     url: 'SelectLandTServlet',
                     type: 'GET',
                     data: {
+                        Userip: <%=userip%>,
                         UserIP: UserIP,
                         UserID: UserID,
                         UserName: UserName,
@@ -290,12 +259,16 @@
                             const tr = $("<tr/>");
                             $("<td/>").html(temp + ".").appendTo(tr);
                             $("<td/>").html(val.uid).appendTo(tr);
-                            const td1 = $("<td/>");
-                            const a1 = $("<a/>");
-                            a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
-                            a1.attr("target", "_blank");
-                            a1.html(val.uname).appendTo(td1);
-                            td1.appendTo(tr);
+                            if(val.uid == 8){
+                                $("<td/>").html(val.uname).appendTo(tr);
+                            }else {
+                                const td1 = $("<td/>");
+                                const a1 = $("<a/>");
+                                a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
+                                a1.attr("target", "_blank");
+                                a1.html(val.uname).appendTo(td1);
+                                td1.appendTo(tr);
+                            }
                             $("<td/>").html(val.userip).appendTo(tr);
                             $("<td/>").html(val.landtime).appendTo(tr);
                             $("<td/>").html(val.canceltime).appendTo(tr);

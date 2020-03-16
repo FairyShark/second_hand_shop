@@ -19,7 +19,7 @@
     if (session.getAttribute("uid") != null) {
         guid = String.valueOf(session.getAttribute("uid"));
     }
-    int uid = 0;
+    int uid;
     if (guid == null) {
         uid = 0;
     } else {
@@ -36,12 +36,12 @@
     <link href="<%=basePath%>/css/box.css" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-  <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
     <script type="text/javascript">
-    $(document).ready(function () {
-        $(".memenu").memenu();
-    });
-    
+        $(document).ready(function () {
+            $(".memenu").memenu();
+        });
+
         function key() {
             return confirm("确定退出吗？");
         }
@@ -55,49 +55,7 @@
     </script>
 </head>
 <body>
-<div class="header">
-<div class="header-top">
-    <div class="container">
-        <div class="col-sm-4 world">
-            <ul>
-                <li></li>
-            </ul>
-        </div>
-        <div class="col-sm-4 logo">
-            <a href="<%=basePath%>/jsp/index.jsp"><img src="<%=basePath%>/images/logo.png" alt=""></a>
-        </div>
-        <div class="col-sm-4 header-left">
-            <p class="log">
-                <%
-                    out.print("<a>" + "你好管理员,欢迎登录" + "</a>");
-                    out.print("<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">" + "注销" + "</a>");
-                %>
-                <a id="time">
-                    <script type="text/javascript">
-                        showtime();
-                    </script>
-                </a> <a>在线人数:<%=OnlineCounter.getOnline()%>
-            </a>
-            </p>
-
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="head-top">
-        <div class="col-sm-8 h_menu4">
-            <ul class="memenu skyblue">
-                <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
-                <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
-                <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
-                <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
+<jsp:include page="head.jsp"></jsp:include>
 
 <div class="content goods_show">
     <div class="sear_w">
@@ -182,9 +140,9 @@
                                 allTotalPrice = allTotalPrice + totalPrice;
                 %>
                 <tr>
-                    <td class="ring-in"><a
-                            class="at-in"> <img src="<%=photoPath%>"
-                                                class="img-responsive" alt="">
+                    <td class="ring-in"><a href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                                           class="at-in" target="_blank"> <img src="<%=photoPath%>"
+                                                                               class="img-responsive" alt="">
                     </a>
                         <div class="sed">
                             <h5>
@@ -212,8 +170,8 @@
                            onclick="return confirmDelete()">删除</a></td>
                 </tr>
                 <%
+                            }
                         }
-                    }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -226,7 +184,7 @@
 <div class="bottom_tools">
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
-</div>
+
 <script type="text/javascript">
 
     $(function () {
@@ -327,6 +285,8 @@
                         const td1 = $("<td/>");
                         td1.addClass("ring-in");
                         const a1 = $("<a/>");
+                        a1.attr("href", "<%=basePath%>/jsp/goodsDescribed.jsp?gid=" + val.gid);
+                        a1.attr("target", "_blank");
                         a1.addClass("at-in");
                         const img1 = $("<img/>");
                         let image1 = new Array();
@@ -369,14 +329,14 @@
                         temp++;
                     });
                     if (temp == 0) {
-                    	$("#resultTable").empty();
+                        $("#resultTable").empty();
                         $("#tempP").empty();
                         const p2 = $("<p/>");
                         p2.addClass("tempmess");
                         p2.html("暂时没有该类型的商品，换一个试试！").appendTo(p2);
                         $("#tempP").append(p2);
                     } else {
-                    	$("#tempP").empty();
+                        $("#tempP").empty();
                         const p3 = $("<p/>");
                         p3.addClass("tempmess");
                         p3.html("共找到" + temp + "个该类型的商品！").appendTo(p3);
@@ -397,7 +357,7 @@
             clickSearch();
         }
     };
-    
+
     function confirmDelete() {
         return confirm("确认删除该商品吗");
     }

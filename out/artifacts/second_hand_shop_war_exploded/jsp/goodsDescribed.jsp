@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8" %>
+<%@ page import="dao.UserDao" %>
 <%@ page import="dao.GoodsDao" %>
 <%@ page import="dao.VisitMessageDao" %>
 <%@ page import="bean.Goods" %>
@@ -36,10 +37,10 @@
         String paddress = goods.getPaddress();
         String described = goods.getDescribed();
         int sale_uid = goods.getUid();
-        GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
         VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
-        String gtype = gdao.queryTypesByGid(gid);
-        vmdao.addLandTimeMes(uid, gid, gtype);
+        UserDao udao = DAOFactory.getUserServiceInstance();
+        String uname_t = udao.queryUName(uid);
+        vmdao.addLandTimeMes(uid, gid, uname_t, name, type);
         goodslandtime = vmdao.getVisitlandtime(uid, gid);
 %>
 <!DOCTYPE html>
@@ -65,8 +66,8 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <%
-                                if (photo.length > 0) {
-                                    for (int i = 0; i < photo.length; i++) {
+                            if (photo.length > 0) {
+                                for (int i = 0; i < photo.length; i++) {
                         %>
                         <li data-thumb="<%=basePath%>/images/<%=photo[i]%>">
                             <div class="thumb-image">
@@ -106,7 +107,7 @@
                     <a id="carthref" href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>"
                        class="cart item_add">修改商品</a>
                     <%
-                    } else {
+                    } else if (uid != 8) {
                     %>
                     <div class="available">
                         <h6>购买数量 :</h6>
@@ -121,6 +122,9 @@
                 </div>
             </div>
         </div>
+        <%
+            if (uid != 8) {
+        %>
         <div class="col-md-3 product-bottom">
             <div class="product-bottom">
                 <h3 class="cate">最新商品</h3>
@@ -150,11 +154,14 @@
                     <div class="clearfix"></div>
                 </div>
                 <%
-                            }
                         }
+                    }
                 %>
             </div>
         </div>
+        <%
+            }
+        %>
         <div class="clearfix"></div>
     </div>
 </div>

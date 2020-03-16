@@ -48,10 +48,10 @@ public class EditInfoServlet extends HttpServlet {
 			if (userDao.editEmail(Integer.parseInt(uid), email)
 					&& userDao.editPasswd(Integer.parseInt(uid), passwd)) {
 				try {
-					String uname = userDao.queryUName(Integer.parseInt(uid));
-					String opcontent = "修改会员信息:名字（" + uname + "）,邮箱（" + email + "）,密码（" + passwd + "）" ;
+					String uname = userDao.queryUName(Integer.parseInt(String.valueOf(session.getAttribute("uid"))));
+					String opcontent = "修改会员信息：名字（" + userDao.queryUName(Integer.parseInt(uid)) + "）,邮箱（" + email + "）,密码（" + passwd + "）" ;
 					OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-					omdao.addOperationMes(Integer.parseInt(String.valueOf(session.getAttribute("uid"))), userip, opcontent);
+					omdao.addOperationMes(Integer.parseInt(String.valueOf(session.getAttribute("uid"))), uname, userip, "修改", opcontent);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

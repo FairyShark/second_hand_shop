@@ -21,20 +21,23 @@ public class OperationMesService implements OperationMesDao{
 	
 	//添加操作信息
 	@Override
-	public boolean addOperationMes(int uid, String userip, String opcontent) throws Exception{
-		if (isInt(uid) && userip!=null && opcontent!=null) {
-			return this.dao.addOperationMes(uid, userip, opcontent);
+	public boolean addOperationMes(int uid, String uname, String userip, String otype, String opcontent) throws Exception{
+		if (isInt(uid) && uname!=null && userip!=null && otype!=null && opcontent!=null) {
+			return this.dao.addOperationMes(uid, uname, userip, otype, opcontent);
 		}
 		return false;
 	}
-				
+
+	//查询操作日志
+	@Override
+	public List<OperationMes> getAllOperationMes() throws Exception{
+		return this.dao.getAllOperationMes();
+	}
+
 	//查询浏览信息
 	@Override
-	public List<OperationMes> getOperationMes(int uid, String userip) throws Exception{
-		if (isInt(uid) && userip!=null) {
-			return this.dao.getOperationMes(uid, userip);
-		}
-		return null;
+	public List<OperationMes> getOperationMes(int uid, String uname, String userip, String otype, String landtime) throws Exception{
+		return this.dao.getOperationMes(uid, uname, userip, otype, landtime);
 	}
 	
 	public boolean isInt(int index) {

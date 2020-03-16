@@ -49,129 +49,88 @@
     </script>
 </head>
 <body>
-<div class="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="col-sm-4 world">
-                <ul>
-                    <li></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 logo">
-                <a href="<%=basePath%>/jsp/index.jsp"><img src="<%=basePath%>/images/logo.png" alt=""></a>
-            </div>
-            <div class="col-sm-4 header-left">
-                <p class="log">
-                    <%
-                        out.print("<a>" + "你好管理员,欢迎登录" + "</a>");
-                        out.print("<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">" + "注销" + "</a>");
-                    %>
-                    <a id="time">
-                        <script type="text/javascript">
-                            showtime();
-                        </script>
-                    </a> <a>在线人数:<%=OnlineCounter.getOnline()%>
-                </a>
-                </p>
+<jsp:include page="head.jsp"></jsp:include>
 
+<div class="content goods_show">
+    <div class="sear_w">
+        <h2>会 员 管 理</h2>
+    </div>
+    <div class="bottter">
+        <div class="seach_1">
+            <div class="typ_6">
+                <label>会员ID：</label><input id="user_id" class="inp_4">
+            </div>
+            <div class="typ_7">
+                <label>会员名：</label><input id="user_name" class="inp_5">
+            </div>
+            <div class="typ_8">
+                <label>邮箱：</label><input id="user_mail" class="inp_6">
+            </div>
+            <div class="typ_9">
+                <button class="but_1" onclick="clickSearch()">搜索</button>
             </div>
         </div>
+
     </div>
 
     <div class="container">
-        <div class="head-top">
-            <div class="col-sm-8 h_menu4">
-                <ul class="memenu skyblue">
-                    <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="content goods_show">
-        <div class="sear_w">
-            <h2>会 员 管 理</h2>
-        </div>
-        <div class="bottter">
-            <div class="seach_1">
-                <div class="typ_6">
-                    <label>会员ID：</label><input id="user_id" class="inp_4">
-                </div>
-                <div class="typ_7">
-                    <label>会员名：</label><input id="user_name" class="inp_5">
-                </div>
-                <div class="typ_8">
-                    <label>邮箱：</label><input id="user_mail" class="inp_6">
-                </div>
-                <div class="typ_9">
-                    <button class="but_1" onclick="clickSearch()">搜索</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container">
-            <div class="content-top">
-                <table id="resultTable">
-                    <tr>
-                        <th>序号</th>
-                        <th>会员ID</th>
-                        <th>会员名</th>
-                        <th>邮箱</th>
-                        <th>最后登录时间</th>
-                    </tr>
-                    <%
-                        try {
-                            UserDao userDao = null;
-                            userDao = DAOFactory.getUserServiceInstance();
-                            List<User> UsersList = userDao.selectAllUser();
-                            if (UsersList != null & UsersList.size() > 0) {
-                                User user;
-                                int num = 0;
-                                int uid_t;
-                                String uname_t;
-                                String umail_t;
-                                String lastlogin_t;
-                                for (int i = 0; i < UsersList.size(); i++) {
-                                    user = UsersList.get(i);
-                                    if (user.getUid() == 8) continue;
-                                    uid_t = user.getUid();
-                                    uname_t = user.getUname();
-                                    umail_t = user.getEmail();
-                                    lastlogin_t = user.getLastLogin();
-                                    num++;
-                    %>
-                    <tr>
-                        <td><%=num%>.</td>
-                        <td><%=uid_t%>
-                        </td>
-                        <td><%=uname_t%>
-                        </td>
-                        <td><%=umail_t%>
-                        </td>
-                        <td><%=lastlogin_t%>
-                        </td>
-                        <td><a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
-                        <td><a href="<%=basePath%>/jsp/deleteUser.jsp?uid=<%=uid_t%>"
-                               onclick="return confirmDelete()">删除</a></td>
-                    </tr>
-                    <%
-                            }
+        <div class="content-top">
+            <table id="resultTable">
+                <tr>
+                    <th>序号</th>
+                    <th>会员ID</th>
+                    <th>会员名</th>
+                    <th>邮箱</th>
+                    <th>最后登录时间</th>
+                </tr>
+                <%
+                    try {
+                        UserDao userDao = null;
+                        userDao = DAOFactory.getUserServiceInstance();
+                        List<User> UsersList = userDao.selectAllUser();
+                        if (UsersList != null & UsersList.size() > 0) {
+                            User user;
+                            int num = 0;
+                            int uid_t;
+                            String uname_t;
+                            String umail_t;
+                            String lastlogin_t;
+                            for (int i = 0; i < UsersList.size(); i++) {
+                                user = UsersList.get(i);
+                                if (user.getUid() == 8) continue;
+                                uid_t = user.getUid();
+                                uname_t = user.getUname();
+                                umail_t = user.getEmail();
+                                lastlogin_t = user.getLastLogin();
+                                num++;
+                %>
+                <tr>
+                    <td><%=num%>.</td>
+                    <td><%=uid_t%>
+                    </td>
+                    <td><%=uname_t%>
+                    </td>
+                    <td><%=umail_t%>
+                    </td>
+                    <td><%=lastlogin_t%>
+                    </td>
+                    <td><a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
+                    <td><a href="<%=basePath%>/jsp/deleteUser.jsp?uid=<%=uid_t%>"
+                           onclick="return confirmDelete()">删除</a></td>
+                </tr>
+                <%
                         }
-                    %>
-                </table>
-                <div id="tempP"></div>
-            </div>
+                    }
+                %>
+            </table>
+            <div id="tempP"></div>
         </div>
-    </div>
-    <div class="bottom_tools">
-        <a id="scrollUp" href="javascript:" title="回到顶部"></a>
     </div>
 </div>
+<div class="bottom_tools">
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
+</div>
+
 <script type="text/javascript">
 
     $(function () {

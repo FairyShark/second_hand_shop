@@ -122,7 +122,7 @@
                     <td class="ring-in"><a
                             href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                             class="at-in" target="_blank"> <img src="<%=photoPath%>"
-                                                class="img-responsive" alt="">
+                                                                class="img-responsive" alt="">
                     </a>
                         <div class="sed">
                             <h5>
@@ -147,8 +147,8 @@
                     </td>
                 </tr>
                 <%
+                            }
                         }
-                    }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

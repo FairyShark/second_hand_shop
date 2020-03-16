@@ -46,160 +46,128 @@
     </script>
 </head>
 <body>
-<div class="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="col-sm-4 world">
-                <ul>
-                    <li></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 logo">
-                <a href="<%=basePath%>/jsp/index.jsp"><img src="<%=basePath%>/images/logo.png" alt=""></a>
-            </div>
-            <div class="col-sm-4 header-left">
-                <p class="log">
-                    <%
-                        out.print("<a>" + "你好管理员,欢迎登录" + "</a>");
-                        out.print("<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">" + "注销" + "</a>");
-                    %>
-                    <a id="time">
-                        <script type="text/javascript">
-                            showtime();
-                        </script>
-                    </a> <a>在线人数:<%=OnlineCounter.getOnline()%>
-                </a>
-                </p>
+<jsp:include page="head.jsp"></jsp:include>
 
+<div class="content goods_show">
+    <div class="sear_w">
+        <h2>浏 览 记 录</h2>
+    </div>
+    <div class="bottter_1">
+        <div class="seach_1">
+            <div class="typ_14">
+                <label>会员ID：</label><input id="user_id" class="inp_11">
+            </div>
+            <div class="typ_15">
+                <label>商品ID：</label><input id="goods_id" class="inp_12">
+            </div>
+            <div class="typ_16">
+                <label>会员名：</label><input id="user_name" class="inp_13">
+            </div>
+            <div class="typ_17">
+                <label>商品名：</label><input id="goods_name" class="inp_14">
+            </div>
+            <div class="typ_18">
+                <label>商品类型：</label> <select id="goods_type" name="Types">
+                <option value="文具">文具</option>
+                <option value="书籍">书籍</option>
+                <option value="食品">食品</option>
+                <option value="日用品">日用品</option>
+                <option value="电子产品">电子产品</option>
+                <option value="其他">其他</option>
+                <option value="全部" selected="selected">全部</option>
+            </select>
+            </div>
+            <div class="typ_19">
+                <label>时间：</label><input id="goods_time" class="inp_15" placeholder="格式：yyyy-mm-dd">
+            </div>
+            <div class="typ_9">
+                <button class="but_1" onclick="clickSearch()">搜索</button>
             </div>
         </div>
+
     </div>
 
     <div class="container">
-        <div class="head-top">
-            <div class="col-sm-8 h_menu4">
-                <ul class="memenu skyblue">
-                    <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="content goods_show">
-        <div class="sear_w">
-            <h2>浏 览 记 录</h2>
-        </div>
-        <div class="bottter_1">
-            <div class="seach_1">
-                <div class="typ_14">
-                    <label>会员ID：</label><input id="user_id" class="inp_11">
-                </div>
-                <div class="typ_15">
-                    <label>商品ID：</label><input id="goods_id" class="inp_12">
-                </div>
-                <div class="typ_16">
-                    <label>会员名：</label><input id="user_name" class="inp_13">
-                </div>
-                <div class="typ_17">
-                    <label>商品名：</label><input id="goods_name" class="inp_14">
-                </div>
-                <div class="typ_18">
-                    <label>商品类型：</label> <select id="goods_type" name="Types">
-                    <option value="文具">文具</option>
-                    <option value="书籍">书籍</option>
-                    <option value="食品">食品</option>
-                    <option value="日用品">日用品</option>
-                    <option value="电子产品">电子产品</option>
-                    <option value="其他">其他</option>
-                    <option value="全部" selected="selected">全部</option>
-                </select>
-                </div>
-                <div class="typ_19">
-                    <label>时间：</label><input id="goods_time" class="inp_15" placeholder="格式：yyyy-mm-dd">
-                </div>
-                <div class="typ_9">
-                    <button class="but_1" onclick="clickSearch()">搜索</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container">
-            <div class="content-top">
-                <table id="resultTable">
-                    <tr>
-                        <th>序号</th>
-                        <th>会员ID</th>
-                        <th>会员名</th>
-                        <th>商品ID</th>
-                        <th>商品名</th>
-                        <th>商品类型</th>
-                        <th>浏览时间</th>
-                        <th>持续时间</th>
-                    </tr>
-                    <%
-                        try {
-                            VisitMessageDao lmdao = DAOFactory.getVisitMessageServiceInstance();
-                            List<VisitMessage> VMList = lmdao.getAllVisitMessage();
-                            if (VMList != null) {
-                                if (VMList.size() > 0) {
-                                    VisitMessage visitmessage;
-                                    int num = 0;
-                                    int uid_t;
-                                    int gid_t;
-                                    String uname_t;
-                                    String gname_t;
-                                    String gtype_t;
-                                    String landtime_t;
-                                    int lasttime_t;
-                                    for (int i = 0; i < VMList.size(); i++) {
-                                        visitmessage = VMList.get(i);
-                                        uid_t = visitmessage.getUid();
-                                        gid_t = visitmessage.getGid();
-                                        uname_t = visitmessage.getUname();
-                                        gname_t = visitmessage.getGname();
-                                        gtype_t = visitmessage.getTypes();
-                                        landtime_t = visitmessage.getLandtime();
-                                        lasttime_t = visitmessage.getLasttime();
-                                        num++;
+        <div class="content-top">
+            <table id="resultTable">
+                <tr>
+                    <th>序号</th>
+                    <th>会员ID</th>
+                    <th>会员名</th>
+                    <th>商品ID</th>
+                    <th>商品名</th>
+                    <th>商品类型</th>
+                    <th>浏览时间</th>
+                    <th>持续时间</th>
+                </tr>
+                <%
+                    try {
+                        VisitMessageDao lmdao = DAOFactory.getVisitMessageServiceInstance();
+                        List<VisitMessage> VMList = lmdao.getAllVisitMessage();
+                        if (VMList != null) {
+                            if (VMList.size() > 0) {
+                                VisitMessage visitmessage;
+                                int num = 0;
+                                int uid_t;
+                                int gid_t;
+                                String uname_t;
+                                String gname_t;
+                                String gtype_t;
+                                String landtime_t;
+                                int lasttime_t;
+                                for (int i = 0; i < VMList.size(); i++) {
+                                    visitmessage = VMList.get(i);
+                                    uid_t = visitmessage.getUid();
+                                    gid_t = visitmessage.getGid();
+                                    uname_t = visitmessage.getUname();
+                                    gname_t = visitmessage.getGname();
+                                    gtype_t = visitmessage.getTypes();
+                                    landtime_t = visitmessage.getLandtime();
+                                    lasttime_t = visitmessage.getLasttime();
+                                    num++;
+                %>
+                <tr>
+                    <td><%=num%>.</td>
+                    <td><%=uid_t%>
+                    </td>
+                    <td><%
+                        if(uid_t != 8){
                     %>
-                    <tr>
-                        <td><%=num%>.</td>
-                        <td><%=uid_t%>
-                        </td>
-                        <td><a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%>
-                        </a>
-                        </td>
-                        <td><%=gid_t%>
-                        </td>
-                        <td><a href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=gid_t%>" target="_blank"><%=gname_t%>
-                        </a>
-                        </td>
-                        <td><%=gtype_t%>
-                        </td>
-                        <td><%=landtime_t%>
-                        </td>
-                        <td><%=lasttime_t%>秒
-                        </td>
-                    </tr>
-                    <%
-                                }
+                        <a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%></a>
+                        <%
+                        }else{
+                        %>
+                        admin
+                        <%
+                            }
+                        %>
+                    </td>
+                    <td><%=gid_t%>
+                    </td>
+                    <td><a href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=gid_t%>" target="_blank"><%=gname_t%>
+                    </a>
+                    </td>
+                    <td><%=gtype_t%>
+                    </td>
+                    <td><%=landtime_t%>
+                    </td>
+                    <td><%=lasttime_t%>秒
+                    </td>
+                </tr>
+                <%
                             }
                         }
-                    %>
-                </table>
-                <div id="tempP"></div>
-            </div>
+                    }
+                %>
+            </table>
+            <div id="tempP"></div>
         </div>
     </div>
-    <div class="bottom_tools">
-        <a id="scrollUp" href="javascript:" title="回到顶部"></a>
-    </div>
 </div>
+<div class="bottom_tools">
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
+</div>
+
 <script type="text/javascript">
 
     $(function () {
@@ -265,13 +233,13 @@
             const bagin_r = LandTime.match(/^(\d{4})(-)(\d{2})(-)(\d{2})$/);
             if (bagin_r == null) {
                 alert("日期格式不对，必须为“yyyy-mm-dd”，请重新输入！");
-                $("#land_time").value="";
+                $("#land_time").value = "";
             } else {
                 const b_d = new Date(bagin_r[1], bagin_r[3] - 1, bagin_r[5]);
                 const b_num = (b_d.getFullYear() == bagin_r[1] && (b_d.getMonth() + 1) == bagin_r[3] && b_d.getDate() == bagin_r[5]);
                 if (b_num == 0) {
                     alert("时间不合法,请输入正确的时间！");
-                    $("#land_time").value="";
+                    $("#land_time").value = "";
                 } else {
                     c = 1;
                 }
@@ -282,7 +250,7 @@
                 && (UserName == null || UserName === "")
                 && (GoodsID == null || GoodsID === "")
                 && (GoodsName == null || GoodsName === "")
-                && (Gtype=== "全部")
+                && (Gtype === "全部")
                 && (LandTime == null || LandTime === "")) {
                 window.location.reload();
             } else {
@@ -300,6 +268,7 @@
                     url: 'SelectVisitTServlet',
                     type: 'GET',
                     data: {
+                        Userip: <%=userip%>,
                         UserID: UserID,
                         UserName: UserName,
                         GoodsID: GoodsID,
@@ -326,12 +295,16 @@
                             const tr = $("<tr/>");
                             $("<td/>").html(temp + ".").appendTo(tr);
                             $("<td/>").html(val.uid).appendTo(tr);
-                            const td1 = $("<td/>");
-                            const a1 = $("<a/>");
-                            a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
-                            a1.attr("target", "_blank");
-                            a1.html(val.uname).appendTo(td1);
-                            td1.appendTo(tr);
+                            if(val.uid == 8){
+                                $("<td/>").html(val.uname).appendTo(tr);
+                            }else {
+                                const td1 = $("<td/>");
+                                const a1 = $("<a/>");
+                                a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
+                                a1.attr("target", "_blank");
+                                a1.html(val.uname).appendTo(td1);
+                                td1.appendTo(tr);
+                            }
                             $("<td/>").html(val.gid).appendTo(tr);
                             const td2 = $("<td/>");
                             const a2 = $("<a/>");

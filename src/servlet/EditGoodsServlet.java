@@ -67,14 +67,15 @@ public class EditGoodsServlet extends HttpServlet {
 		GoodsDao goodsDao;
 		try {
 			UserDao userDao = DAOFactory.getUserServiceInstance();
-			String uname = userDao.queryUName(Integer.parseInt(uid));
-			Goods goods = new Goods(Integer.parseInt(gid), Integer.parseInt(uid), uname,gname,Integer.parseInt(number),type,usage,Float.parseFloat(price),Float.parseFloat(carriage),paddress,described);
 			goodsDao = DAOFactory.getGoodsServiceInstance();
+			String uname = goodsDao.queryById(Integer.parseInt(gid)).getUname();
+			Goods goods = new Goods(Integer.parseInt(gid), Integer.parseInt(uid), uname,gname,Integer.parseInt(number),type,usage,Float.parseFloat(price),Float.parseFloat(carriage),paddress,described);
 			if (goodsDao.editInfo(goods)) {
 				try {
-					String opcontent = "修改商品:商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（"+ usage + "）,发货地（"+ paddress + "）,描述（"+ described + "）" ;
+					String uname_t = userDao.queryUName(Integer.parseInt(uid));
+					String opcontent = "修改商品：商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（"+ usage + "）,发货地（"+ paddress + "）,描述（"+ described + "）" ;
 					OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-					omdao.addOperationMes(Integer.parseInt(uid), userip, opcontent);
+					omdao.addOperationMes(Integer.parseInt(uid), uname_t, userip, "修改", opcontent);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

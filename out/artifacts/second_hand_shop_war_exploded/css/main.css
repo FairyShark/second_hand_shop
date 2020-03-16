@@ -9663,6 +9663,12 @@ ul.memenu.skyblue {
 	text-align: center;
 	font-size: 15px;
 }
+.bottter_1{
+	width:73%;
+	margin:0 auto;
+	text-align: center;
+	font-size: 15px;
+}
 .search_1 label{
 	line-height:30px;
 	margin:50px 0;
@@ -9769,6 +9775,40 @@ ul.memenu.skyblue {
 .typ_14{
 	height:30px;
 	float:left;
+	margin:0 10px;
+}
+.typ_15{
+	height:30px;
+	float:left;
+	margin:0 10px;
+}
+.typ_16{
+	height:30px;
+	float:left;
+	margin:0 10px;
+}
+.typ_17{
+	height:30px;
+	float:left;
+	margin:0 10px;
+}
+.typ_18{
+	height:30px;
+	float:left;
+	margin:0 10px;
+}
+.typ_18 select{
+	line-height:30px;
+	height:30px;
+}
+.typ_19{
+	height:30px;
+	float:left;
+	margin:0 10px;
+}
+.typ_20{
+	height:30px;
+	float:left;
 	margin:0 5px;
 }
 
@@ -9811,6 +9851,26 @@ ul.memenu.skyblue {
 	height:30px;
 }
 .inp_10{
+	width:150px;
+	height:30px;
+}
+.inp_11{
+	width:50px;
+	height:30px;
+}
+.inp_12{
+	width:50px;
+	height:30px;
+}
+.inp_13{
+	width:140px;
+	height:30px;
+}
+.inp_14{
+	width:140px;
+	height:30px;
+}
+.inp_15{
 	width:150px;
 	height:30px;
 }

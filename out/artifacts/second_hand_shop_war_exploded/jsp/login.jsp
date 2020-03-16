@@ -1,4 +1,4 @@
-<%@ page  pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
 <%
@@ -44,7 +44,7 @@
         <input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
         <ol>
             <li class="re_li0"><label for="uname">用户名： <span class="kitjs-validator" for="@uname"
-                                              rules="[{notNull:true, message:'用户名不能为空'}]"></span></label>
+                                                             rules="[{notNull:true, message:'用户名不能为空'}]"></span></label>
                 <span class="field-validation-valid" data-valmsg-for="uname" data-valmsg-replace="true"></span>
                 <input id="uname" name="uname" type="text" value=""/>
             </li>

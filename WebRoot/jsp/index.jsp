@@ -78,9 +78,9 @@
                                 href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goodsList.get(i).getGid()%>"
                                 target="_blank">
                             <%
-                            String[] photo = goodsList.get(i).getPhoto().split("&");
-                            String photoPath = basePath + "/images/" + photo[0];
-                        %>
+                                String[] photo = goodsList.get(i).getPhoto().split("&");
+                                String photoPath = basePath + "/images/" + photo[0];
+                            %>
                             <img class="img-responsive" src="<%=photoPath%>" alt="图片"/>
                         </a>
                         <h3>
@@ -117,9 +117,9 @@
                 <div class="clearfix"></div>
             </div>
             <%
+                            }
                         }
                     }
-                }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

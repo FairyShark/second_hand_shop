@@ -49,9 +49,9 @@ public class RegisterServlet extends HttpServlet {
 					UserDao udao = DAOFactory.getUserServiceInstance();
 					User user = new User();
 					user = udao.queryByEmail(email);
-					String opcontent = "注册会员信息:名字（" + uname + "）,邮箱（" + email + "）,密码（" + passwd + "）" ;
+					String opcontent = "注册会员信息：名字（" + uname + "）,邮箱（" + email + "）,密码（" + passwd + "）" ;
 					OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-					omdao.addOperationMes(user.getUid(), userip, opcontent);
+					omdao.addOperationMes(user.getUid(), user.getUname(), userip, "注册", opcontent);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

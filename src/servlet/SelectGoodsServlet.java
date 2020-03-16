@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Goods;
+import dao.UserDao;
 import factory.DAOFactory;
 import dao.GoodsDao;
 import dao.OperationMesDao;
@@ -50,7 +51,9 @@ public class SelectGoodsServlet extends HttpServlet {
 				String userip=request.getParameter("Userip");
 				String opcontent = "查询商品：类型（" + gtype + "）,使用情况（" + usage + "）,价格（" + lowp + "~" + highp + "），关键词（" + gname +"）" ;
 				OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-				omdao.addOperationMes(uid, userip, opcontent);
+				UserDao udao = DAOFactory.getUserServiceInstance();
+				String uname = udao.queryUName(uid);
+				omdao.addOperationMes(uid, uname, userip, "查询", opcontent);
 			}
 			goodsDao = DAOFactory.getGoodsServiceInstance();
 			list = goodsDao.selectGoodsList(uid,gtype,usage,lowp,highp,gname);

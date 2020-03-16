@@ -12,6 +12,16 @@
 <%
     String uname = (String) session.getAttribute("uname");
     String uid = String.valueOf(session.getAttribute("uid"));
+    int c = 0;
+    if (session.getAttribute("uid") != null) {
+        if (String.valueOf(session.getAttribute("uid")) != null) {
+            if (Integer.parseInt(uid) != 8) {
+                c = 1;
+            }
+        }
+    } else {
+        c = 1;
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -22,7 +32,7 @@
     <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
-    <script  type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function () {
             $(".memenu").memenu();
         });
@@ -55,8 +65,12 @@
                 <p class="log">
                     <%
                         if (uname != null) {
-                            out.print("<a>" + uname + ",欢迎登录" + "</a>");
-                            out.print("<a href=\"" + basePath +"/jsp/showMessage.jsp?uid=" + uid + "\" target=\"_blank\">" + "个人信息" + "</a>");
+                            if (c == 1) {
+                                out.print("<a>" + uname + ",欢迎登录" + "</a>");
+                                out.print("<a href=\"" + basePath + "/jsp/showMessage.jsp?uid=" + uid + "\" target=\"_blank\">" + "个人信息" + "</a>");
+                            } else {
+                                out.print("<a>" + "你好管理员,欢迎登录" + "</a>");
+                            }
                             out.print("<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">" + "注销" + "</a>");
                         } else {
                             out.print("<a href=\"" + basePath + "/jsp/login.jsp\">请  登录</a>");
@@ -79,6 +93,9 @@
         <div class="head-top">
             <div class="col-sm-8 h_menu4">
                 <ul class="memenu skyblue">
+                    <%
+                        if (c == 1) {
+                    %>
                     <li class=" grid"><a href="<%=basePath%>/jsp/index.jsp">首页</a></li>
                     <li><a>分类</a>
                         <div class="mepanel">
@@ -133,6 +150,17 @@
                     <li><a href="<%=basePath%>/jsp/shoppingCart.jsp">购物车</a></li>
                     <li><a href="<%=basePath%>/jsp/alreadyBuy.jsp">购买记录</a></li>
                     <li><a href="<%=basePath%>/jsp/alreadySale.jsp">销售记录</a></li>
+                    <%
+                    } else {
+                    %>
+                    <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
+                    <%
+                        }
+                    %>
                 </ul>
             </div>
         </div>

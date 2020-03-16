@@ -70,7 +70,7 @@
                 <td class="ring-in"><a
                         href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                         class="at-in" target="_blank"> <img src="<%=photoPath%>"
-                                            class="img-responsive" alt="商品图片">
+                                                            class="img-responsive" alt="商品图片">
                 </a>
                     <div class="sed">
                         <h5>
@@ -109,7 +109,7 @@
         %>
         <a class="to-buy">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
         <%
-            }
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
