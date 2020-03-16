@@ -52,8 +52,6 @@
         if (userDao.deleteUser(uid)) {
             String opcontent = "删除会员及其所有商品:会员ID（" + uid + "）";
             OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-            UserDao udao = DAOFactory.getUserServiceInstance();
-            String uname = udao.queryUName(Integer.parseInt(uid));
             omdao.addOperationMes(8, "admin", userip, "删除", opcontent);
             response.sendRedirect("adminUser.jsp");
         } else {

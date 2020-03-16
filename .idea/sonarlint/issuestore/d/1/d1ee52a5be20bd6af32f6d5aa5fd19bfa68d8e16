@@ -1,25 +1,25 @@
 
-œ
-java:S1186i"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¡’…ùüÿÿÿÿ
-U
-java:S1161!":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ
 P
 java:S1161":Add the "@Override" annotation above this method signature(‚“¶î
-i
-java:S1989P"SHandle the following exception that could be thrown by "sendRedirect": IOException.(âè“á
-P
-java:S1161":Add the "@Override" annotation above this method signature(ÅµÄè
-k
-java:S1989R"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
->
-java:S1148C"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-<
-java:S1075E"&Remove this hard-coded path-delimiter.(Š€¤Ü
-U
-java:S1161i":Add the "@Override" annotation above this method signature(¡’…ùüÿÿÿÿ
->
-java:S1148N"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 >
 java:S1185"(Remove this method to simply inherit it.(‚“¶î
 {
 java:S1989"`Handle the following exceptions that could be thrown by "doPost": ServletException, IOException.(ã÷éíùÿÿÿÿ
+>
+java:S1148N"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148C"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+œ
+java:S1186i"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¡’…ùüÿÿÿÿ
+k
+java:S1989R"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
+U
+java:S1161i":Add the "@Override" annotation above this method signature(¡’…ùüÿÿÿÿ
+U
+java:S1161!":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ
+P
+java:S1161":Add the "@Override" annotation above this method signature(ÅµÄè
+<
+java:S1075E"&Remove this hard-coded path-delimiter.(Š€¤Ü
+i
+java:S1989P"SHandle the following exception that could be thrown by "sendRedirect": IOException.(âè“á
