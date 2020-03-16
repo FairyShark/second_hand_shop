@@ -6,6 +6,8 @@ public class LandMessage {
 	private int lmid;
 	//用户ID
 	private int uid;
+	//用户名
+	private String uname;
 	//IP地址
 	private String userip;
 	//登陆时间
@@ -19,12 +21,19 @@ public class LandMessage {
 	public int getLmid() {
 		return this.lmid;
 	}
-	
+
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
 	public int getUid() {
 		return this.uid;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public String getUname() {
+		return this.uname;
 	}
 	
 	public void setUserip(String userip) {

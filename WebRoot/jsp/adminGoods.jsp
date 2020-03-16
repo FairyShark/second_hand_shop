@@ -90,7 +90,9 @@
             <ul class="memenu skyblue">
                 <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
                 <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                <li><a href="<%=basePath%>/jsp/adminData.jsp">数据统计</a></li>
+                <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
+                <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
+                <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
             </ul>
         </div>
     </div>

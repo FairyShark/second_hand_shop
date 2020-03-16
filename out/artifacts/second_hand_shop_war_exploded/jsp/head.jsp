@@ -22,7 +22,7 @@
     <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
-    <script>
+    <script  type="text/javascript">
         $(document).ready(function () {
             $(".memenu").memenu();
         });

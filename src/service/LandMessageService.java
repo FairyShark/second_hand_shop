@@ -20,9 +20,9 @@ public class LandMessageService implements LandMessageDao {
 
 	// 添加登陆时间
 	@Override
-	public boolean addLandTimeMes(int uid, String userip) throws Exception {
-		if (isInt(uid) && userip != null) {
-			return this.dao.addLandTimeMes(uid, userip);
+	public boolean addLandTimeMes(int uid, String uname, String userip) throws Exception {
+		if (isInt(uid) && uname!=null && userip != null) {
+			return this.dao.addLandTimeMes(uid, uname, userip);
 		}
 		return false;
 	}
@@ -45,13 +45,16 @@ public class LandMessageService implements LandMessageDao {
 		return null;
 	}
 
+	// 查询所有登陆信息
+	@Override
+	public List<LandMessage> getAllLandMessage() throws Exception {
+		return this.dao.getAllLandMessage();
+	}
+
 	// 查询登陆信息
 	@Override
-	public List<LandMessage> getLandMessage(int uid, String userip) throws Exception {
-		if (isInt(uid) && userip != null) {
-			return this.dao.getLandMessage(uid, userip);
-		}
-		return null;
+	public List<LandMessage> getLandMessage(int uid, String uname, String userip, String landtime) throws Exception {
+		return this.dao.getLandMessage(uid, uname, userip, landtime);
 	}
 
 	public boolean isInt(int index) {

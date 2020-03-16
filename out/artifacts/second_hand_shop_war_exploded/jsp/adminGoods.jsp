@@ -36,13 +36,12 @@
     <link href="<%=basePath%>/css/box.css" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-    <script type="text/javascript"
-            src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+  <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $(".memenu").memenu();
-        });
-
+    $(document).ready(function () {
+        $(".memenu").memenu();
+    });
+    
         function key() {
             return confirm("确定退出吗？");
         }
@@ -53,13 +52,10 @@
                 + myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
             setTimeout("showtime()", 1000);
         }
-
-        function confirmDelete() {
-            return confirm("确认删除该商品吗");
-        }
     </script>
 </head>
 <body>
+<div class="header">
 <div class="header-top">
     <div class="container">
         <div class="col-sm-4 world">
@@ -94,11 +90,14 @@
             <ul class="memenu skyblue">
                 <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
                 <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                <li><a href="<%=basePath%>/jsp/adminData.jsp">数据统计</a></li>
+                <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
+                <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
+                <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
             </ul>
         </div>
     </div>
 </div>
+
 
 <div class="content goods_show">
     <div class="sear_w">
@@ -215,6 +214,9 @@
                 <%
                         }
                     }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 %>
             </table>
             <div id="tempP"></div>
@@ -223,6 +225,7 @@
 </div>
 <div class="bottom_tools">
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
+</div>
 </div>
 <script type="text/javascript">
 
@@ -268,6 +271,7 @@
                 scrollTop: 0
             });
         });
+
         $qrTools.hover(function () {
             qrImg.fadeIn();
         }, function () {
@@ -343,7 +347,7 @@
                         div1.appendTo(td1);
                         div2.appendTo(td1);
                         td1.appendTo(tr);
-                        $("<td/>").html(val.paddress).appendTo(tr);
+                        $("<td/>").html(val.uname).appendTo(tr);
                         $("<td/>").html(val.number).appendTo(tr);
                         $("<td/>").html(val.price).appendTo(tr);
                         $("<td/>").html(val.carriage).appendTo(tr);
@@ -365,14 +369,14 @@
                         temp++;
                     });
                     if (temp == 0) {
-                        $("#resultTable").empty();
+                    	$("#resultTable").empty();
                         $("#tempP").empty();
                         const p2 = $("<p/>");
                         p2.addClass("tempmess");
                         p2.html("暂时没有该类型的商品，换一个试试！").appendTo(p2);
                         $("#tempP").append(p2);
                     } else {
-                        $("#tempP").empty();
+                    	$("#tempP").empty();
                         const p3 = $("<p/>");
                         p3.addClass("tempmess");
                         p3.html("共找到" + temp + "个该类型的商品！").appendTo(p3);
@@ -393,12 +397,11 @@
             clickSearch();
         }
     };
-</script>
-<%
-    } catch (Exception e) {
-        e.printStackTrace();
+    
+    function confirmDelete() {
+        return confirm("确认删除该商品吗");
     }
-%>
+</script>
 <script type="text/javascript">
     window.onunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");

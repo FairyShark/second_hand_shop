@@ -1,3 +1,8 @@
 /servlet/
 /dao/
 /factory/
+/bean/
+/db/
+/filter/
+/service/
+/util/

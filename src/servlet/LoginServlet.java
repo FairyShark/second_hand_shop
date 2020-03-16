@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
 		if ("".equals(message)) {
 			try {
 				LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
-				lmdao.addLandTimeMes(uid, userip);
+				lmdao.addLandTimeMes(uid, uname, userip);
 				String landtime = lmdao.getLandtime(uid, userip);
 				request.getSession().setAttribute("userip", userip);
 				request.getSession().setAttribute("landtime", landtime);

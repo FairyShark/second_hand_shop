@@ -163,7 +163,7 @@
     <a id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
-<script>
+<script type="text/javascript">
     $(function () {
         $("#slider").responsiveSlides({
             auto: true,
@@ -206,6 +206,7 @@
                 scrollTop: 0
             });
         });
+
         $qrTools.hover(function () {
             qrImg.fadeIn();
         }, function () {

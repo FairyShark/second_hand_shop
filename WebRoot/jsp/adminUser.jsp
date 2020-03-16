@@ -84,7 +84,9 @@
                 <ul class="memenu skyblue">
                     <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
                     <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminData.jsp">数据统计</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
+                    <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
                 </ul>
             </div>
         </div>
@@ -123,25 +125,25 @@
                         <th>最后登录时间</th>
                     </tr>
                     <%
-                        UserDao userDao = null;
                         try {
+                            UserDao userDao = null;
                             userDao = DAOFactory.getUserServiceInstance();
-                        List<User> UsersList = userDao.selectAllUser();
-                        if (UsersList != null & UsersList.size() > 0) {
-                            User user;
-                            int num = 0;
-                            int uid_t;
-                            String uname_t;
-                            String umail_t;
-                            String lastlogin_t;
-                            for (int i = 0; i < UsersList.size(); i++) {
-                                user = UsersList.get(i);
-                                if (user.getUid() == 8) continue;
-                                uid_t = user.getUid();
-                                uname_t = user.getUname();
-                                umail_t = user.getEmail();
-                                lastlogin_t = user.getLastLogin();
-                                num++;
+                            List<User> UsersList = userDao.selectAllUser();
+                            if (UsersList != null & UsersList.size() > 0) {
+                                User user;
+                                int num = 0;
+                                int uid_t;
+                                String uname_t;
+                                String umail_t;
+                                String lastlogin_t;
+                                for (int i = 0; i < UsersList.size(); i++) {
+                                    user = UsersList.get(i);
+                                    if (user.getUid() == 8) continue;
+                                    uid_t = user.getUid();
+                                    uname_t = user.getUname();
+                                    umail_t = user.getEmail();
+                                    lastlogin_t = user.getLastLogin();
+                                    num++;
                     %>
                     <tr>
                         <td><%=num%>.</td>
