@@ -1,3 +1,4 @@
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, code, del, dfn, em, img, strong, dd, dl, dt, li, ol, ul, fieldset, form, label, button, input, table, caption, tbody, tfoot, thead, tr, th, td, menu {
 	margin:0;
 	padding:0;
@@ -12,7 +13,7 @@ audio, canvas, video {
 }
 audio:not([controls]) {
 display:none
-}
+}/* 代码整理：懒人之家 www.lanrenzhijia.com */
 table {
 	border-collapse:collapse;
 	border-spacing:0;
@@ -99,9 +100,10 @@ body, button, input, select, textarea, code {
 	font-family:microsoft yahei;
 	color: #444;
 }
+/*window*/
 
 
-
+/* input */
 .ipt {
 	border: solid 1px #d2d2d2;
 	border-left-color: #ccc;
@@ -124,18 +126,17 @@ body, button, input, select, textarea, code {
 	border-color: #95C8F1;
 	box-shadow: 0 0 4px #95C8F1;
 }
-
+/* btn */
 .btn {
-	margin:28px 130px;
-
+	position: relative;
 	cursor: pointer;
 	display: inline-block;
 	vertical-align: middle;
 	font-size: 12px;
 	font-weight: bold;
-	height: 30px;
-	line-height: 30px;
-	min-width: 70px;
+	height: 27px;
+	line-height: 27px;
+	min-width: 52px;
 	padding: 0 12px;
 	text-align: center;
 	text-decoration: none;
@@ -191,8 +192,7 @@ input.btn {
 	border-color:#4d90fe;
 	outline:none
 }
-
-
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
 .theme-buy {
 	margin-top:10%;
 	text-align: center;
@@ -308,7 +308,7 @@ input.btn {
 	color:#fff;
 	line-height:42px;
 	margin-top:10px;
-    display:;
+display:;
 	font-size: 14px;
 }
 .dform-tip-errer {
@@ -331,7 +331,7 @@ input.btn {
 	margin-top: -180px;
 }
 .theme-signin {
-	margin: -50px 80px -50px 90px;
+	margin: -50px -20px -50px 90px;
 	text-align:left;
 	font-size: 14px;
 }
@@ -346,8 +346,9 @@ input.btn {
 	margin-bottom: 15px;
 }
 .theme-signin li strong {
+	float: left;
 	margin-left: -80px;
-	width: 100px;
+	width: 80px;
 	text-align: right;
 	line-height: 32px;
 }
@@ -361,3 +362,4 @@ input.btn {
 .theme-desc, .theme-version {
 	padding-top: 0
 }
+/* 代码整理：懒人之家 www.lanrenzhijia.com */

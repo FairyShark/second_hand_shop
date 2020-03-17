@@ -236,7 +236,7 @@
                     url: 'SelectLandTServlet',
                     type: 'GET',
                     data: {
-                        Userip: <%=userip%>,
+                        Userip: '<%=userip%>',
                         UserIP: UserIP,
                         UserID: UserID,
                         UserName: UserName,

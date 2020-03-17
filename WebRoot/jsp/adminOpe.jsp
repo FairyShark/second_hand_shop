@@ -28,34 +28,29 @@
     <link href="<%=basePath%>/css/popup.css" rel="stylesheet" type="text/css" media="all"/>
     <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
-    <script>
+    <script type="text/javascript">
         jQuery(document).ready(function($) {
-            $('.theme-login').click(function(){
-                $('.theme-popover-mask').fadeIn(100);
-                $('.theme-popover').slideDown(200);
-            })
+        
             $('.theme-poptit .close').click(function(){
                 $('.theme-popover-mask').fadeOut(100);
                 $('.theme-popover').slideUp(200);
-            })
+            });
 
         });
-
-        $(document).ready(function () {
-            $(".memenu").memenu();
-        });
-
-        function key() {
-            return confirm("确定退出吗？");
+        
+        function loginclick(name,content,time){
+        	 $('.theme-popover-mask').fadeIn(100);
+             $('.theme-popover').slideDown(200);
+             $('#htitle').html("查看 " + name + " 的操作内容");
+             $('#ocontent').html(content);
+             $('#htime').html("操作时间： " + time);
         }
+        
+        function closeclick(){
+        	$('.theme-popover-mask').fadeOut(100);
+            $('.theme-popover').slideUp(200);
+       }
 
-        function showtime() {
-            const myDate = new Date();
-            document.getElementById("time").innerHTML = myDate.getHours() + "点"
-                + myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
-            setTimeout("showtime()", 1000);
-        }
     </script>
 </head>
 <body>
@@ -156,12 +151,12 @@
                     <%
                         if (opcontent_t.length() < 23) {
                     %>
-                    <td><a class="theme-login" href="javascript:"><%=opcontent_t%>
+                    <td><a class="theme-login" href="javascript:void(0)" onclick="return loginclick('<%=uname_t%>','<%=opcontent_t%>','<%=landtime_t%>')"><%=opcontent_t%>
                     </a></td>
                     <%
                     } else {
                     %>
-                    <td><a class="theme-login" href="javascript:"><%=opcontent_t.substring(0, 20)%>···</a></td>
+                    <td><a class="theme-login" href="javascript:void(0)" onclick="return loginclick('<%=uname_t%>','<%=opcontent_t%>','<%=landtime_t%>')"><%=opcontent_t.substring(0, 20)%>···</a></td>
                     <%
                         }
                     %>
@@ -181,18 +176,17 @@
 
 <div class="theme-popover">
     <div class="theme-poptit">
-        <a href="javascript:;" title="关闭" class="close">×</a>
-        <h3>登录 是一种态度</h3>
+        <a href="javascript:" title="关闭" class="close">×</a>
+        <h3 id="htitle"></h3>
     </div>
     <div class="theme-popbod dform">
-        <form class="theme-signin" name="loginform" action="" method="post">
+        <div class="theme-signin" id="loginform">
             <ol>
-                <li><h4>你必须先登录！</h4></li>
-                <li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="lanrenzhijia" size="20" /></li>
-                <li><strong>密码：</strong><input class="ipt" type="password" name="pwd" value="***" size="20" /></li>
-                <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
+                <li><h4 id="htime"></h4></li>
+                <li><strong id="ocontent"></strong></li>
             </ol>
-        </form>
+            <button class="btn btn-primary" onclick="return closeclick()">确  定</button>
+        </div>
     </div>
 </div>
 <div class="theme-popover-mask"></div>
@@ -297,7 +291,7 @@
                     url: 'SelectOperationTServlet',
                     type: 'GET',
                     data: {
-                        Userip: <%=userip%>,
+                        Userip: '<%=userip%>',
                         UserID: UserID,
                         UserName: UserName,
                         UserIP: UserIP,
@@ -336,8 +330,9 @@
                             $("<td/>").html(val.otype).appendTo(tr);
                             const td2 = $("<td/>");
                             const a2 = $("<a/>");
-                            a2.addClass("theme-login");
-                            a2.attr("href", "javascript:");
+                            a2.attr("class", "theme-login");
+                            a2.attr("href", "javascript:void(0)");
+                            a2.attr("onclick", "return loginclick('" + val.uname + "','" + val.opcontent + "','" + val.operationtime + "')");
                             if (val.opcontent.length < 23) {
                                 a2.html(val.opcontent).appendTo(td2);
                             } else {

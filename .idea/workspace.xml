@@ -7,16 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72f6ea3-cc90-47f6-a687-29fd0b06cdd2" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/00a392ef2f67e4a3c4f2eabfcf0a0686b41754d2" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/00a392ef2f67e4a3c4f2eabfcf0a0686b41754d2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f729bd157e62dd275b85702a11ee764f11f412" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f729bd157e62dd275b85702a11ee764f11f412" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cc2b729bb85279830fdda3fa076fa6feae08824" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cc2b729bb85279830fdda3fa076fa6feae08824" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6be03055219c6c8703cd9cfb3797b6d8b31c290" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6be03055219c6c8703cd9cfb3797b6d8b31c290" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/OperationMes.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/bean/OperationMes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/OperationMesDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/OperationMesDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/OperationMesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/OperationMesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/AddGoodsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/AddGoodsServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/EditGoodsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/EditGoodsServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/EditInfoServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/EditInfoServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/RegisterServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/SelectGoodsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/SelectGoodsServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/SelectUserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/servlet/SelectUserServlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,11 +251,6 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="运行" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
             </expand>
             <select />
           </treeState>
@@ -294,6 +284,9 @@
       <workItem from="1584328982590" duration="9449000" />
       <workItem from="1584341222547" duration="5301000" />
       <workItem from="1584353034101" duration="15720000" />
+      <workItem from="1584372796996" duration="588000" />
+      <workItem from="1584413500261" duration="21000" />
+      <workItem from="1584413942730" duration="191000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1584091990833</created>
@@ -337,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584372418788</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commit">
+      <created>1584372858436</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1584372858436</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,10 +503,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="335" y="155" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584157172695" />
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1584372441322">
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1584373392874">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584372441322" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584373392874" />
     <state x="553" y="474" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584100695196">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
