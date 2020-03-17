@@ -1,0 +1,49 @@
+
+[
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(‹ˆÕ‹
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(Àˆ»êùÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+]
+java:S1192"JDefine a constant instead of duplicating this literal "lastlogin" 7 times.(Ö°Û3
+`
+java:S1192"GDefine a constant instead of duplicating this literal "passwd" 5 times.(¢ò™êùÿÿÿÿ
+Y
+java:S1192"FDefine a constant instead of duplicating this literal "uname" 5 times.(¨ĞÌ?
+_
+java:S1192"FDefine a constant instead of duplicating this literal "email" 4 times.(¬äÂøÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´£¼Ëşÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ½¸²ûÿÿÿÿ
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğî™
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óàê…
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎîÓùÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´£¼Ëşÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ½¸²ûÿÿÿÿ
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğî™
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óàê…
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï„Ç»ÿÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+r
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ì¯–úÿÿÿÿ
+E
+java:S1905",Remove this unnecessary cast to "Statement".(Àˆ»êùÿÿÿÿ
+r
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ì¯–úÿÿÿÿ

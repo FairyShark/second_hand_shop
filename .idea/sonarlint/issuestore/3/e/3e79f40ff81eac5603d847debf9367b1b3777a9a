@@ -1,0 +1,22 @@
+
+t
+java:S2293M"YReplace the type specification in this constructor call with the diamond operator ("<>").(”éé‡şÿÿÿÿ
+b
+java:S2095a"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+i
+java:S20953"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ù³–—üÿÿÿÿ8¬“›.
+d
+java:S20954"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(«Ä¶Ø8¬“›.
+\
+java:S1126'"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+r	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´£¼Ëşÿÿÿÿ8¬“›.
+K
+java:S1128".Remove this unused import 'bean.VisitMessage'.(Çëßï8§ı•›.
+m	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹©íÛ8¬“›.
+N
+java:S19053",Remove this unnecessary cast to "Statement".(Ù³–—üÿÿÿÿ8¬“›.
+r	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ½¸²ûÿÿÿÿ8¬“›.
+r	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞÉàçıÿÿÿÿ8¬“›.
+m	java:S117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆŞ¥Š8¬“›.
+m	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿëÍ¾8ÅË››.
+r	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úÁ“ÿÿÿÿÿ8¬“›.

@@ -1,0 +1,17 @@
+
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+<
+java:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+d	java:S116"QRename this field "Driver" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç«‡Å
+a	java:S116"NRename this field "URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç´î¨
+g	java:S116"ORename this field "USER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ­èëüÿÿÿÿ
+k	java:S116"SRename this field "PASSWORD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü‰åûÿÿÿÿ
+5
+java:S1170"!Make this final field static too.(ç«‡Å
+5
+java:S1170"!Make this final field static too.(Ç´î¨
+:
+java:S1170"!Make this final field static too.(õ­èëüÿÿÿÿ
+:
+java:S1170"!Make this final field static too.(Ü‰åûÿÿÿÿ

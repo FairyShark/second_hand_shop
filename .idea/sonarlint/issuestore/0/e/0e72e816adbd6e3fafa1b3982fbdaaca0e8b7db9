@@ -1,0 +1,46 @@
+
+{
+java:S1989!"`Handle the following exceptions that could be thrown by "doPost": ServletException, IOException.(ã÷éíùÿÿÿÿ
+N
+java:S4973:"9Use the "equals" method if value comparison was intended.(Úµ¸I
+T
+java:S4973<"9Use the "equals" method if value comparison was intended.(‹˜¹Îÿÿÿÿÿ
+k
+java:S1989]"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
+>
+java:S1185"(Remove this method to simply inherit it.(‚“¶î
+œ
+java:S1186s"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¡’…ùüÿÿÿÿ
+U
+java:S1161s":Add the "@Override" annotation above this method signature(¡’…ùüÿÿÿÿ
+O
+java:S4973>"9Use the "equals" method if value comparison was intended.(¤Óâ½
+T
+java:S4973@"9Use the "equals" method if value comparison was intended.(‘Ž íøÿÿÿÿ
+O
+java:S49736"9Use the "equals" method if value comparison was intended.(þð•Æ
+P
+java:S1161":Add the "@Override" annotation above this method signature(ÅµÄè
+T
+java:S49738"9Use the "equals" method if value comparison was intended.(Ð„Ô™þÿÿÿÿ
+U
+java:S1161$":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ
+m	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïƒö°8È‚£Ž.
+P
+java:S1161":Add the "@Override" annotation above this method signature(‚“¶î
+m
+java:S3776$"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÂÍ¡‘úÿÿÿÿ
+P
+java:S1141J"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+o
+java:S1989R"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(ñã˜¸
+i
+java:S1989S"SHandle the following exception that could be thrown by "sendRedirect": IOException.(â¢éú
+i
+java:S1989U"SHandle the following exception that could be thrown by "sendRedirect": IOException.(¦ü‘æ
+>
+java:S1148Z"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+<
+java:S1075\"&Remove this hard-coded path-delimiter.(×²¸¦
+>
+java:S1148P"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ

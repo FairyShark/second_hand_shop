@@ -1,0 +1,82 @@
+
+_
+java:S1192"FDefine a constant instead of duplicating this literal "types" 7 times.(£³í°ùÿÿÿÿ
+Y
+java:S1192"FDefine a constant instead of duplicating this literal "uname" 4 times.(¨ĞÌ?
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßÁ–½ûÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨óäÿÿÿÿÿ
+d	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’„Ãª
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+^
+java:S1192"JDefine a constant instead of duplicating this literal "described" 5 times.(Ëìğƒ
+_
+java:S1192"FDefine a constant instead of duplicating this literal "price" 6 times.(ªêöşÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(Àˆ»êùÿÿÿÿ
+m
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°ÓÜÕ
+[
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(‹ˆÕ‹
+`
+java:S1192"GDefine a constant instead of duplicating this literal "gusage" 5 times.(À—Ñÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+b
+java:S1192"IDefine a constant instead of duplicating this literal "carriage" 5 times.(¶¯×íÿÿÿÿÿ
+m
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°ÓÜÕ
+Z
+java:S1192"FDefine a constant instead of duplicating this literal "pdate" 5 times.(ïœ¶Ê
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+[
+java:S1192"GDefine a constant instead of duplicating this literal "gphoto" 7 times.(Öµá
+_
+java:S1192"FDefine a constant instead of duplicating this literal "gname" 7 times.(Éğã¹øÿÿÿÿ
+[
+java:S1192"GDefine a constant instead of duplicating this literal "number" 6 times.(ÂÑò
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+]
+java:S1192"IDefine a constant instead of duplicating this literal "paddress" 5 times.(ƒßÖÑ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+E
+java:S1905",Remove this unnecessary cast to "Statement".(Àˆ»êùÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+[
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(‹ˆÕ‹
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØÃò½şÿÿÿÿ
+Z
+java:S1126"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+m
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°ÓÜÕ
+m
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°ÓÜÕ
+E
+java:S1905",Remove this unnecessary cast to "Statement".(Àˆ»êùÿÿÿÿ
+i	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´£¼Ëşÿÿÿÿ
+`
+java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(Àˆ»êùÿÿÿÿ
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°ÓÜÕ8ş×¬.

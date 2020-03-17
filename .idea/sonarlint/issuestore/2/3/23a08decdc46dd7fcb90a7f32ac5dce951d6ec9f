@@ -1,0 +1,40 @@
+
+\
+java:S1126Z"AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+p
+java:S2293™"YReplace the type specification in this constructor call with the diamond operator ("<>").(ı­¯ 
+n	java:S117€"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ŞË8êÍë‘.
+m	java:S117~"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•¾ÒÕ8çàò‘.
+b
+java:S2095C"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+\
+java:S1126("AReplace this if-then-else statement by a single return statement.(™¦Ôêøÿÿÿÿ
+s	java:S117‚"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨óäÿÿÿÿÿ8ÎÆõ‘.
+i
+java:S2095z"GUse try-with-resources or close this "Statement" in a "finally" clause.(Ù³–—üÿÿÿÿ8êÍë‘.
+d
+java:S2095{"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(«Ä¶Ø8êÍë‘.
+f
+java:S1858L"K"landtime" is already a string, there's no need to call "toString()" on it.(óıİşÿÿÿÿ
+U
+java:S1854R":Remove this useless assignment to local variable "result".(üø¤ğùÿÿÿÿ
+c
+java:S1858M"M"canceltime" is already a string, there's no need to call "toString()" on it.(¥ç Ë
+k
+java:S1192p"IDefine a constant instead of duplicating this literal "landtime" 3 times.(ƒË­ùÿÿÿÿ8êÍë‘.
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´£¼Ëşÿÿÿÿ8çàò‘.
+c
+java:S2095°"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+>
+java:S1148_"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+n	java:S117…"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„äêû8£”ö‘.
+s	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ½¸²ûÿÿÿÿ8™´ó‘.
+N
+java:S1905z",Remove this unnecessary cast to "Statement".(Ù³–—üÿÿÿÿ8êÍë‘.
+s	java:S117ƒ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å° •ùÿÿÿÿ8êÍë‘.
+b
+java:S2095n"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Ğî½•ÿÿÿÿÿ
+n	java:S117„"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±¿×ó8êÍë‘.
+h
+java:S1192E"KDefine a constant instead of duplicating this literal "canceltime" 3 times.(Ó¶İŞ8êÍë‘.
+s	java:S117†"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÙüõùÿÿÿÿ8¡´›.

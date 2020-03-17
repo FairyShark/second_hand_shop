@@ -1,0 +1,27 @@
+
+U
+java:S1161"":Add the "@Override" annotation above this method signature(ÂÍ¡‘úÿÿÿÿ
+P
+java:S1161":Add the "@Override" annotation above this method signature(‚“¶î
+{
+java:S1989"`Handle the following exceptions that could be thrown by "doPost": ServletException, IOException.(ã÷éíùÿÿÿÿ
+<
+java:S1075="&Remove this hard-coded path-delimiter.(…¬¨Ã
+P
+java:S1161":Add the "@Override" annotation above this method signature(ÅµÄè
+i
+java:S1989:"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ØúŽ©
+>
+java:S11488"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+>
+java:S1148T"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+œ
+java:S1186X"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¡’…ùüÿÿÿÿ
+k
+java:S1989>"PHandle the following exception that could be thrown by "getWriter": IOException.(ïô†úÿÿÿÿ
+P
+java:S11412"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+U
+java:S1161X":Add the "@Override" annotation above this method signature(¡’…ùüÿÿÿÿ
+>
+java:S1185"(Remove this method to simply inherit it.(‚“¶î
