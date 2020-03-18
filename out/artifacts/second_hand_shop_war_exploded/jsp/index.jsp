@@ -188,8 +188,9 @@
         });
     });
 
-    window.onunload = function () {
+    window.onbeforeunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");
+        return "确定要退出吗？";
     }
 </script>
 </body>
