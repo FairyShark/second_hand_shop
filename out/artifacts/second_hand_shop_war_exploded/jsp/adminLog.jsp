@@ -1,10 +1,9 @@
-<%@ page import="util.OnlineCounter" %>
 <%@ page import="bean.LandMessage" %>
-<%@ page import="java.util.List" %>
-<%@ page import="factory.DAOFactory" %>
 <%@ page import="dao.LandMessageDao" %>
+<%@ page import="factory.DAOFactory" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
+<%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
@@ -15,7 +14,16 @@
     String userip = ip4.getHostAddress();
 %>
 <%
-    String uid = String.valueOf(session.getAttribute("uid"));
+    String guid = null;
+    if (session.getAttribute("uid") != null) {
+        guid = String.valueOf(session.getAttribute("uid"));
+    }
+    int uid;
+    if (guid == null) {
+        uid = 0;
+    } else {
+        uid = Integer.parseInt(guid);
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -23,10 +31,10 @@
     <title>登陆信息</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
     <script>
         $(document).ready(function () {
             $(".memenu").memenu();
@@ -108,19 +116,20 @@
                     <td><%=num%>.</td>
                     <td><%=uid_t%>
                     </td>
-                    <td>
-                        <%
-                            if(uid_t != 8){
-                        %>
-                        <a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%></a>
-                        <%
-                            }else{
-                        %>
-                       admin
-                        <%
-                            }
-                        %>
-                    </td>
+
+                    <%
+                        if (uid_t != 8) {
+                    %>
+                    <td><a href="<%=basePath%>jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%>
+                    </a></td>
+                    <%
+                    } else {
+                    %>
+                    <td>admin</td>
+                    <%
+                        }
+                    %>
+
                     <td><%=userip_t%>
                     </td>
                     <td><%=landtime_t%>
@@ -237,6 +246,7 @@
                     type: 'GET',
                     data: {
                         Userip: '<%=userip%>',
+                        Uid: <%=uid%>,
                         UserIP: UserIP,
                         UserID: UserID,
                         UserName: UserName,
@@ -259,12 +269,12 @@
                             const tr = $("<tr/>");
                             $("<td/>").html(temp + ".").appendTo(tr);
                             $("<td/>").html(val.uid).appendTo(tr);
-                            if(val.uid == 8){
+                            if (val.uid == 8) {
                                 $("<td/>").html(val.uname).appendTo(tr);
-                            }else {
+                            } else {
                                 const td1 = $("<td/>");
                                 const a1 = $("<a/>");
-                                a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
+                                a1.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
                                 a1.attr("target", "_blank");
                                 a1.html(val.uname).appendTo(td1);
                                 td1.appendTo(tr);

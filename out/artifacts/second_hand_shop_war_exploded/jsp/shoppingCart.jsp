@@ -17,10 +17,10 @@
     <title>购物车</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/simpleCart.min.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/simpleCart.min.js"></script>
 </head>
 <body>
 <jsp:include page="head.jsp"></jsp:include>
@@ -59,7 +59,7 @@
                             cart = cartList.get(i);
                             goods = goodsDao.queryById(cart.getGid());
                             String[] Gphoto = goods.getPhoto().split("&");
-                            photoPath = "images/" + Gphoto[0];
+                            photoPath = basePath + "images/" + Gphoto[0];
                             number = cart.getNumber();
                             price = goods.getPrice();
                             gid = goods.getGid();
@@ -68,7 +68,7 @@
             %>
             <tr>
                 <td class="ring-in"><a
-                        href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                        href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=gid%>"
                         class="at-in" target="_blank"> <img src="<%=photoPath%>"
                                                             class="img-responsive" alt="商品图片">
                 </a>
@@ -89,7 +89,7 @@
                 <td><%=goods.getCarriage()%>元</td>
                 <td><%=totalPrice%>元</td>
                 <td><a
-                        href="<%=basePath%>/jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>"
+                        href="<%=basePath%>jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>"
                         onclick="return confirmDelete()">删除</a></td>
             </tr>
             <%
@@ -98,11 +98,11 @@
             %>
         </table>
         <a>总计：<%=allTotalPrice%>元
-        </a> &nbsp;&nbsp;&nbsp;
+        </a>
         <%
-            if (cartList != null & cartList.size() > 0) {
+            if (cartList.size() > 0) {
         %>
-        <a href="<%=basePath%>/jsp/buyGoods.jsp" class="to-buy"
+        <a href="<%=basePath%>jsp/buyGoods.jsp" class="to-buy"
            onclick="return confirmBuy()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
         <%
         } else {
@@ -117,9 +117,9 @@
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="salegoods" href="<%=basePath%>/jsp/saleGoods.jsp" title="出售二手">出售二手</a>
-    <a id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a>
-    <a id="scrollUp" href="javascript:;" title="回到顶部"></a>
+    <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a>
+    <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 
 <script type="text/javascript">

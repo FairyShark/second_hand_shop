@@ -18,7 +18,16 @@
     String userip = ip4.getHostAddress();
 %>
 <%
-    String uid = String.valueOf(session.getAttribute("uid"));
+    String guid = null;
+    if (session.getAttribute("uid") != null) {
+        guid = String.valueOf(session.getAttribute("uid"));
+    }
+    int uid;
+    if (guid == null) {
+        uid = 0;
+    } else {
+        uid = Integer.parseInt(guid);
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -272,6 +281,7 @@
                     type: 'GET',
                     data: {
                         Userip: '<%=userip%>',
+                        Uid: <%=uid%>,
                         UserID: UserID,
                         UserName: UserName,
                         GoodsID: GoodsID,

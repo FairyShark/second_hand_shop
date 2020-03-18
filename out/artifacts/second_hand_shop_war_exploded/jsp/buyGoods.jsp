@@ -22,8 +22,7 @@
 <body>
 <%
     try {
-        ShoppingCartDao scDao = null;
-        scDao = DAOFactory.getShoppingCartServiceInstance();
+        ShoppingCartDao scDao = DAOFactory.getShoppingCartServiceInstance();
         if (scDao.payAllGoods(Integer.parseInt(uid))) {
             response.sendRedirect("alreadyBuy.jsp");
         } else {

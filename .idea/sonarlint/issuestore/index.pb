@@ -250,3 +250,5 @@ X
 (src/servlet/SelectOperationTServlet.java,4\0\40ce64b9345a14de9283d8bb666c975a033ca9ef
 E
 WebRoot/css/popup.css,7\4\74e7f7d06343779bf1057c3c9679d7beca4f47e7
+H
+src/bean/AlreadyBuy.java,5\9\592cf656e51e3c448f89b83bf047787cedf8d82b

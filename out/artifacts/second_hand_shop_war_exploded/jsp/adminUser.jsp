@@ -1,10 +1,9 @@
-<%@ page import="util.OnlineCounter" %>
 <%@ page import="bean.User" %>
-<%@ page import="java.util.List" %>
-<%@ page import="factory.DAOFactory" %>
 <%@ page import="dao.UserDao" %>
+<%@ page import="factory.DAOFactory" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
+<%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
@@ -15,7 +14,16 @@
     String userip = ip4.getHostAddress();
 %>
 <%
-    String uid = String.valueOf(session.getAttribute("uid"));
+    String guid = null;
+    if (session.getAttribute("uid") != null) {
+        guid = String.valueOf(session.getAttribute("uid"));
+    }
+    int uid;
+    if (guid == null) {
+        uid = 0;
+    } else {
+        uid = Integer.parseInt(guid);
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -23,10 +31,10 @@
     <title>会员管理</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
     <script>
         $(document).ready(function () {
             $(".memenu").memenu();
@@ -88,21 +96,22 @@
                         UserDao userDao = null;
                         userDao = DAOFactory.getUserServiceInstance();
                         List<User> UsersList = userDao.selectAllUser();
-                        if (UsersList != null & UsersList.size() > 0) {
-                            User user;
-                            int num = 0;
-                            int uid_t;
-                            String uname_t;
-                            String umail_t;
-                            String lastlogin_t;
-                            for (int i = 0; i < UsersList.size(); i++) {
-                                user = UsersList.get(i);
-                                if (user.getUid() == 8) continue;
-                                uid_t = user.getUid();
-                                uname_t = user.getUname();
-                                umail_t = user.getEmail();
-                                lastlogin_t = user.getLastLogin();
-                                num++;
+                        if (UsersList != null) {
+                            if (UsersList.size() > 0) {
+                                User user;
+                                int num = 0;
+                                int uid_t;
+                                String uname_t;
+                                String umail_t;
+                                String lastlogin_t;
+                                for (int i = 0; i < UsersList.size(); i++) {
+                                    user = UsersList.get(i);
+                                    if (user.getUid() == 8) continue;
+                                    uid_t = user.getUid();
+                                    uname_t = user.getUname();
+                                    umail_t = user.getEmail();
+                                    lastlogin_t = user.getLastLogin();
+                                    num++;
                 %>
                 <tr>
                     <td><%=num%>.</td>
@@ -114,11 +123,12 @@
                     </td>
                     <td><%=lastlogin_t%>
                     </td>
-                    <td><a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
-                    <td><a href="<%=basePath%>/jsp/deleteUser.jsp?uid=<%=uid_t%>"
+                    <td><a href="<%=basePath%>jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
+                    <td><a href="<%=basePath%>jsp/deleteUser.jsp?uid=<%=uid_t%>"
                            onclick="return confirmDelete()">删除</a></td>
                 </tr>
                 <%
+                            }
                         }
                     }
                 %>
@@ -202,6 +212,7 @@
                 type: 'GET',
                 data: {
                     Userip: '<%=userip%>',
+                    Uid: <%=uid%>,
                     UserID: UserID,
                     UserName: UserName,
                     UserMail: UserMail,
@@ -228,13 +239,13 @@
                             $("<td/>").html(val.lastLogin).appendTo(tr);
                             const td1 = $("<td/>");
                             const a1 = $("<a/>");
-                            a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
+                            a1.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
                             a1.attr("target", "_blank");
                             a1.html("查看").appendTo(td1);
                             td1.appendTo(tr);
                             const td2 = $("<td/>");
                             const a2 = $("<a/>");
-                            a2.attr("href", "<%=basePath%>/jsp/deleteUser.jsp?uid=" + val.uid);
+                            a2.attr("href", "<%=basePath%>jsp/deleteUser.jsp?uid=" + val.uid);
                             a2.attr("onclick", "return confirmDelete()");
                             a2.html("删除").appendTo(td2);
                             td2.appendTo(tr);

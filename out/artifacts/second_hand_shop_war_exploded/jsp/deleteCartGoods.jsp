@@ -1,6 +1,6 @@
-<%@ page import="factory.DAOFactory" %>
 <%@ page import="dao.ShoppingCartDao" %>
-<%@ page import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -17,20 +17,22 @@
 <head>
     <base href="<%=basePath%>">
     <title>删除订单</title>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
 </head>
 <body>
 <%
-    ShoppingCartDao scDao = null;
     try {
-        scDao = DAOFactory.getShoppingCartServiceInstance();
+        ShoppingCartDao scDao = DAOFactory.getShoppingCartServiceInstance();
         if (scDao.deleteGoods(Integer.parseInt(uid), gid, number)) {
             response.sendRedirect("shoppingCart.jsp");
         } else {
 %>
-删除订单失败，请重试。
+<div class="delete_1"><br/>
+    删除订单失败，请关闭重试！
+</div>
 <%
         }
     } catch (Exception e) {

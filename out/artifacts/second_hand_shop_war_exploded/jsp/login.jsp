@@ -14,13 +14,13 @@
     <base href="<%=basePath%>">
     <title>用户登录</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="<%=basePath%>/css/user.css"/>
-    <script src="<%=basePath%>/js/kit.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/dom.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/form.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/validator.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/autowired.validator.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>css/user.css"/>
+    <script src="<%=basePath%>js/kit.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/dom.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/form.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/validator.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/autowired.validator.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
     <script type="text/javascript">
         const _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-30210234-1']);
@@ -59,7 +59,7 @@
         <div class="outer_log">
             <div class="but_log">
                 <input type="submit" value="登录" class="btn-submit-log"/>
-                <a type="button" class="btn-submit-log" href="<%=basePath%>/jsp/register.jsp">注册</a>
+                <a type="button" class="btn-submit-log" href="<%=basePath%>jsp/register.jsp">注册</a>
                 <input type="button" value="取消" class="btn-submit-log" onclick="goback()"/>
             </div>
         </div>
@@ -67,11 +67,11 @@
 </div>
 <script type="text/javascript">
     function goregister() {
-        window.location.href = "<%=basePath%>/jsp/register.jsp";
+        window.location.href = "<%=basePath%>jsp/register.jsp";
     }
 
     function goback() {
-        window.location.href = "<%=basePath%>/jsp/index.jsp";
+        window.location.href = "<%=basePath%>jsp/index.jsp";
     }
 </script>
 </body>

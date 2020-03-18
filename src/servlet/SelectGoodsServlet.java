@@ -38,7 +38,7 @@ public class SelectGoodsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
-        int uid = Integer.parseInt(request.getParameter("Uid"));
+        int opuid = Integer.parseInt(request.getParameter("Uid"));
         String gtype = request.getParameter("GoodsType");
         String usage = request.getParameter("GoodsUsage");
         int lowp = Integer.parseInt(request.getParameter("GoodsLowP"));
@@ -47,16 +47,16 @@ public class SelectGoodsServlet extends HttpServlet {
         GoodsDao goodsDao;
         List<Goods> list;
         try {
-            if (uid == 8) {
+            if (opuid == 8 || request.getParameter("OPT") != null) {
                 String userip = request.getParameter("Userip");
-                String opcontent = "查询商品：类型（" + gtype + "）,使用情况（" + usage + "）,价格（" + lowp + "~" + highp + "），关键词（" + gname + "）";
+                String opcontent = "查询商品信息：类型（" + gtype + "）,使用情况（" + usage + "）,价格（" + lowp + "~" + highp + "），关键词（" + gname + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 UserDao udao = DAOFactory.getUserServiceInstance();
-                String uname = udao.queryUName(uid);
-                omdao.addOperationMes(uid, uname, userip, "查询", opcontent);
+                String opuname = udao.queryUName(opuid);
+                omdao.addOperationMes(opuid, opuname, userip, "查询", opcontent);
             }
             goodsDao = DAOFactory.getGoodsServiceInstance();
-            list = goodsDao.selectGoodsList(uid, gtype, usage, lowp, highp, gname);
+            list = goodsDao.selectGoodsList(opuid, gtype, usage, lowp, highp, gname);
             PrintWriter out = response.getWriter();
             out.write(JSON.toJSONString(list));
         } catch (Exception e) {

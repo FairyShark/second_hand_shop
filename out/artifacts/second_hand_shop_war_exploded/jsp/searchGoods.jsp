@@ -8,28 +8,16 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
 %>
-<%
-    String guid = null;
-    if (session.getAttribute("uid") != null) {
-        guid = String.valueOf(session.getAttribute("uid"));
-    }
-    int uid;
-    if (guid == null) {
-        uid = 0;
-    } else {
-        uid = Integer.parseInt(guid);
-    }
-%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>搜索商品</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<%=basePath%>/css/box.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<%=basePath%>css/box.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/responsiveslides.min.js"></script>
     <script type="text/javascript"
             src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 </head>
@@ -90,37 +78,37 @@
                     <th>使用情况</th>
                 </tr>
                 <%
-                    GoodsDao goodsDao = null;
                     try {
-                        goodsDao = DAOFactory.getGoodsServiceInstance();
+                        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
                         List<Goods> GoodsList = goodsDao.getAllGoods();
                         float allTotalPrice = 0;
-                        if (GoodsList != null & GoodsList.size() > 0) {
-                            Goods goods;
-                            String photoPath;
-                            String gAdress;
-                            String gtype;
-                            String gusage;
-                            int number;
-                            float price;
-                            float totalPrice;
-                            int gid;
-                            for (int i = 0; i < GoodsList.size(); i++) {
-                                goods = GoodsList.get(i);
-                                String[] photo = goods.getPhoto().split("&");
-                                photoPath = "images/" + photo[0];
-                                number = goods.getNumber();
-                                price = goods.getPrice();
-                                gid = goods.getGid();
-                                gAdress = goods.getPaddress();
-                                gtype = goods.getType();
-                                gusage = goods.getUsage();
-                                totalPrice = number * price;
-                                allTotalPrice = allTotalPrice + totalPrice;
+                        if (GoodsList != null) {
+                            if (GoodsList.size() > 0) {
+                                Goods goods;
+                                String photoPath;
+                                String gAdress;
+                                String gtype;
+                                String gusage;
+                                int number;
+                                float price;
+                                float totalPrice;
+                                int gid;
+                                for (int i = 0; i < GoodsList.size(); i++) {
+                                    goods = GoodsList.get(i);
+                                    String[] photo = goods.getPhoto().split("&");
+                                    photoPath = basePath + "images/" + photo[0];
+                                    number = goods.getNumber();
+                                    price = goods.getPrice();
+                                    gid = goods.getGid();
+                                    gAdress = goods.getPaddress();
+                                    gtype = goods.getType();
+                                    gusage = goods.getUsage();
+                                    totalPrice = number * price;
+                                    allTotalPrice = allTotalPrice + totalPrice;
                 %>
                 <tr>
                     <td class="ring-in"><a
-                            href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                            href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=gid%>"
                             class="at-in" target="_blank"> <img src="<%=photoPath%>"
                                                                 class="img-responsive" alt="">
                     </a>
@@ -147,6 +135,7 @@
                     </td>
                 </tr>
                 <%
+                                }
                             }
                         }
                     } catch (Exception e) {
@@ -159,8 +148,8 @@
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="salegoods" href="<%=basePath%>/jsp/saleGoods.jsp" title="出售二手">出售二手</a>
-    <a id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a>
+    <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 <script type="text/javascript">
@@ -261,14 +250,14 @@
                         const td1 = $("<td/>");
                         td1.addClass("ring-in");
                         const a1 = $("<a/>");
-                        a1.attr("href", "<%=basePath%>/jsp/goodsDescribed.jsp?gid="
+                        a1.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid="
                             + val.gid);
                         a1.attr("target", "_blank");
                         a1.addClass("at-in");
                         const img1 = $("<img/>");
                         let image1 = new Array();
                         image1 = val.photo.split("&");
-                        img1.attr("src", "<%=basePath%>/images/" + image1[0]);
+                        img1.attr("src", "<%=basePath%>images/" + image1[0]);
                         img1.addClass("img-responsive");
                         img1.appendTo(a1);
                         const div1 = $("<div/>");

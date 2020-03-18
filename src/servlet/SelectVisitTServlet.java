@@ -14,6 +14,7 @@ import bean.VisitMessage;
 import com.alibaba.fastjson.JSON;
 
 import dao.OperationMesDao;
+import dao.UserDao;
 import dao.VisitMessageDao;
 import factory.DAOFactory;
 
@@ -26,16 +27,15 @@ public class SelectVisitTServlet extends HttpServlet {
      */
     public SelectVisitTServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
 
         int uid = Integer.parseInt(request.getParameter("UserID"));
+        int opuid = Integer.parseInt(request.getParameter("Uid"));
         String uname = request.getParameter("UserName");
         int gid = Integer.parseInt(request.getParameter("GoodsID"));
         String gname = request.getParameter("GoodsName");
@@ -43,11 +43,13 @@ public class SelectVisitTServlet extends HttpServlet {
         String landtime = request.getParameter("LandTime");
 
         try {
-            if (uid == 8) {
+            if (opuid == 8) {
                 String userip = request.getParameter("Userip");
-                String opcontent = "查询操作日志：会员ID（" + uid + "）,会员名（" + uname + "）,商品ID（" + gid + "）,商品名（" + gname + "）,IP地址（" + userip + "）,操作类型（" + gtype + "）,操作时间（" + landtime + "）";
+                String opcontent = "查询浏览记录：会员ID（" + uid + "）,会员名（" + uname + "）,商品ID（" + gid + "）,商品名（" + gname + "）,IP地址（" + userip + "）,操作类型（" + gtype + "）,操作时间（" + landtime + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-                omdao.addOperationMes(uid, uname, userip, "查询", opcontent);
+                UserDao udao = DAOFactory.getUserServiceInstance();
+                String opuname = udao.queryUName(opuid);
+                omdao.addOperationMes(opuid, opuname, userip, "查询", opcontent);
             }
             VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
             List<VisitMessage> list = vmdao.getVisitMessage(uid, gid, uname, gname, gtype, landtime);
@@ -62,7 +64,7 @@ public class SelectVisitTServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+
         doGet(request, response);
     }
 

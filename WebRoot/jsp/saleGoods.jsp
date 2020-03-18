@@ -2,12 +2,17 @@
 <%@ page import="dao.GoodsDao" %>
 <%@ page import="factory.DAOFactory" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.net.Inet4Address" %>
+<%@ page import="java.net.InetAddress" %>
 <%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
             + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+
+    InetAddress ip4 = Inet4Address.getLocalHost();
+    String userip = ip4.getHostAddress();
 
     String strUid = (String) session.getAttribute("uid");
     int uid = 0;
@@ -221,11 +226,13 @@
                 type: 'GET',
                 data: {
                     Uid: <%=uid%>,
+                    Userip: '<%=userip%>',
                     GoodsType: GoodsType,
                     GoodsUsage: GoodsUsage,
                     GoodsLowP: GoodsLowP,
                     GoodsHighP: GoodsHighP,
-                    GoodsName: GoodsName
+                    GoodsName: GoodsName,
+                    OPT: '1'
                 },
                 dataType: 'json',
                 success: function (json) {

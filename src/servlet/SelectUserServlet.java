@@ -29,30 +29,30 @@ public class SelectUserServlet extends HttpServlet {
      */
     public SelectUserServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
 
         String umail = request.getParameter("UserMail");
         String uname = request.getParameter("UserName");
         int uid = Integer.parseInt(request.getParameter("UserID"));
+        int opuid = Integer.parseInt(request.getParameter("Uid"));
 
-        UserDao goodsDao;
+        UserDao udao;
         List<User> list;
         try {
-            if (uid == 8) {
+            udao = DAOFactory.getUserServiceInstance();
+            if (opuid == 8) {
                 String userip = request.getParameter("Userip");
-                String opcontent = "查询会员：会员ID（" + uid + "）,名字（" + uname + "）,邮箱（" + umail + "）";
+                String opcontent = "查询会员信息：会员ID（" + uid + "）,名字（" + uname + "）,邮箱（" + umail + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-                omdao.addOperationMes(uid, uname, userip, "查询", opcontent);
+                String opuname = udao.queryUName(opuid);
+                omdao.addOperationMes(opuid, opuname, userip, "查询", opcontent);
             }
-            goodsDao = DAOFactory.getUserServiceInstance();
-            list = goodsDao.selectUserList(uid, uname, umail);
+            list = udao.selectUserList(uid, uname, umail);
             PrintWriter out = response.getWriter();
             out.write(JSON.toJSONString(list));
         } catch (Exception e) {
@@ -64,7 +64,6 @@ public class SelectUserServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
         doGet(request, response);
     }
 

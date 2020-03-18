@@ -1,18 +1,20 @@
 
-W
-java:S1161>":Add the "@Override" annotation above this method signature(‹¨¯¿8ùéöš.
 E
-java:S11487"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ùéöš.
-
-java:S1989@"_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(®Ó‘ûÿÿÿÿÿ8ùéöš.
-v
-java:S1989%"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Áşàç8ùéöš.
+java:S1148;"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ùéöš.
 T
-java:S1135"2Complete the task associated to this TODO comment.(ƒŠ® úÿÿÿÿ8ùéöš.
-r	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼¸Ù¾úÿÿÿÿ8£í.
+java:S1135"2Complete the task associated to this TODO comment.(ƒŠ® úÿÿÿÿ8ùéöš.
 \
-java:S1161"":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ8ùéöš.
+java:S1161#":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ8ùéöš.
+r	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼¸Ù¾úÿÿÿÿ8£í.
+W
+java:S1161B":Add the "@Override" annotation above this method signature(‹¨¯¿8ùéöš.
+
+java:S1989D"_Handle the following exceptions that could be thrown by "doGet": ServletException, IOException.(®Ó‘ûÿÿÿÿÿ8ùéöš.
+v
+java:S1989&"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Áşàç8ùéöš.
 T
-java:S1135?"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ8ùéöš.
+java:S1135$"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ8ùéöš.
 T
-java:S1135#"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ8ùéöš.
+java:S1135C"2Complete the task associated to this TODO comment.(» æÿÿÿÿÿ8ùéöš.
+v
+java:S1989'"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(£ñÂÁ8ë—¾á.

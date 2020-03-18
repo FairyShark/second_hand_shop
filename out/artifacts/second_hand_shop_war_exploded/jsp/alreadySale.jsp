@@ -18,10 +18,10 @@
     <title>销售记录</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/simpleCart.min.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/simpleCart.min.js"></script>
     <script type="text/javascript">
         $(function () {
             const $body = $(document.body);
@@ -69,40 +69,40 @@
                 if (strUid != null) {
                     uid = Integer.parseInt(strUid);
                 }
-                AlreadySaleDao dao = null;
                 try {
-                    dao = DAOFactory.getAlreadySaleServiceInstance();
+                    AlreadySaleDao dao = DAOFactory.getAlreadySaleServiceInstance();
                     List<AlreadySale> asList = dao.getAllSaleGoods(uid);
-                    if (asList != null & asList.size() > 0) {
-                        UserDao userDao = DAOFactory.getUserServiceInstance();
-                        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-                        Goods goods;
-                        AlreadySale as;
-                        int gid;
-                        int buy_uid;
-                        int number;
-                        String buyUname;
-                        String saleTime;
-                        String photoPath;
-                        float price;
-                        float totalPrice;
-                        for (int i = 0; i < asList.size(); i++) {
-                            as = asList.get(i);
-                            gid = as.getGid();
-                            buy_uid = as.getBUid();
-                            number = as.getNumber();
-                            buyUname = userDao.queryUName(buy_uid);
-                            saleTime = as.getSaleTime();
-                            goods = goodsDao.queryById(gid);
-                            photoPath = "images/" + goods.getPhoto().split("&")[0];
-                            price = goods.getPrice();
-                            totalPrice = number * price + goods.getCarriage();
+                    if (asList != null) {
+                        if (asList.size() > 0) {
+                            UserDao userDao = DAOFactory.getUserServiceInstance();
+                            GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
+                            Goods goods;
+                            AlreadySale as;
+                            int gid;
+                            int buy_uid;
+                            int number;
+                            String buyUname;
+                            String saleTime;
+                            String photoPath;
+                            float price;
+                            float totalPrice;
+                            for (int i = 0; i < asList.size(); i++) {
+                                as = asList.get(i);
+                                gid = as.getGid();
+                                buy_uid = as.getBUid();
+                                number = as.getNumber();
+                                buyUname = userDao.queryUName(buy_uid);
+                                saleTime = as.getSaleTime();
+                                goods = goodsDao.queryById(gid);
+                                photoPath = basePath + "images/" + goods.getPhoto().split("&")[0];
+                                price = goods.getPrice();
+                                totalPrice = number * price + goods.getCarriage();
 
 
             %>
             <tr>
                 <td class="ring-in"><a
-                        href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                        href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                         class="at-in" target="_blank"> <img src="<%=photoPath%>"
                                                             class="img-responsive" alt="">
                 </a>
@@ -127,6 +127,7 @@
                 </td>
             </tr>
             <%
+                            }
                         }
                     }
                 } catch (Exception e) {
@@ -137,10 +138,10 @@
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="quxian" href="<%=basePath%>/jsp/saleChart.jsp" title="销售报表" target="_blank">销售报表</a>
-    <a id="salegoods" href="<%=basePath%>/jsp/saleGoods.jsp" title="出售二手">出售二手</a>
-    <a id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a>
-    <a id="scrollUp" href="<%=basePath%>/javascript:;" title="回到顶部"></a>
+    <a id="quxian" href="<%=basePath%>jsp/saleChart.jsp" title="销售报表" target="_blank">销售报表</a>
+    <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a>
+    <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 <script type="text/javascript">
     window.onunload = function () {

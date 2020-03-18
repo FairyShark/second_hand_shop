@@ -17,12 +17,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <link rel="stylesheet" href="<%=basePath%>/css/publish.css"/>
-    <script src="<%=basePath%>/js/kit.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/dom.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/form.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/validator.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/autowired.validator.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<%=basePath%>css/publish.css"/>
+    <script src="<%=basePath%>js/kit.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/dom.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/form.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/validator.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/autowired.validator.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         const _gaq = _gaq || [];
