@@ -18,7 +18,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <link rel="stylesheet" href="<%=basePath%>/css/chart.css"/>
+    <link rel="stylesheet" href="<%=basePath%>css/chart.css"/>
 </head>
 <body>
 <h1>销售报表</h1>
@@ -29,75 +29,75 @@
         if (strUid != null) {
             uid = Integer.parseInt(strUid);
         }
-        AlreadySaleDao dao = null;
         try {
-            dao = DAOFactory.getAlreadySaleServiceInstance();
+            AlreadySaleDao dao = DAOFactory.getAlreadySaleServiceInstance();
             List<AlreadySale> asList = dao.getAllSaleGoods(uid);
-            if (asList != null & asList.size() > 0) {
-                GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-                Goods goods;
-                AlreadySale as;
-                int gid;
-                int number;
-                int smonth;
-                float price;
-                float[] monPrice = new float[12];
-                int[] type_n = new int[6];
-                for (int i = 0; i < 12; i++) {
-                    monPrice[i] = 0;
-                }
-                for (int i = 0; i < 6; i++) {
-                    type_n[i] = 0;
-                }
-                for (int i = 0; i < asList.size(); i++) {
-                    as = asList.get(i);
-                    gid = as.getGid();
-                    number = as.getNumber();
-                    smonth = as.getMonth();
-                    goods = goodsDao.queryById(gid);
-                    price = goods.getPrice();
-                    String stype = goods.getType();
+            if (asList != null) {
+                if (asList.size() > 0) {
+                    GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
+                    Goods goods;
+                    AlreadySale as;
+                    int gid;
+                    int number;
+                    int smonth;
+                    float price;
+                    float[] monPrice = new float[12];
+                    int[] type_n = new int[6];
+                    for (int i = 0; i < 12; i++) {
+                        monPrice[i] = 0;
+                    }
+                    for (int i = 0; i < 6; i++) {
+                        type_n[i] = 0;
+                    }
+                    for (int i = 0; i < asList.size(); i++) {
+                        as = asList.get(i);
+                        gid = as.getGid();
+                        number = as.getNumber();
+                        smonth = as.getMonth();
+                        goods = goodsDao.queryById(gid);
+                        price = goods.getPrice();
+                        String stype = goods.getType();
 
-                    if (smonth == 1) {
-                        monPrice[0] = number * price;
-                    } else if (smonth == 2) {
-                        monPrice[1] += number * price;
-                    } else if (smonth == 3) {
-                        monPrice[2] += number * price;
-                    } else if (smonth == 4) {
-                        monPrice[3] += number * price;
-                    } else if (smonth == 5) {
-                        monPrice[4] += number * price;
-                    } else if (smonth == 6) {
-                        monPrice[5] += number * price;
-                    } else if (smonth == 7) {
-                        monPrice[6] += number * price;
-                    } else if (smonth == 8) {
-                        monPrice[7] += number * price;
-                    } else if (smonth == 9) {
-                        monPrice[8] += number * price;
-                    } else if (smonth == 10) {
-                        monPrice[9] += number * price;
-                    } else if (smonth == 11) {
-                        monPrice[10] += number * price;
-                    } else if (smonth == 12) {
-                        monPrice[11] += number * price;
+                        if (smonth == 1) {
+                            monPrice[0] = number * price;
+                        } else if (smonth == 2) {
+                            monPrice[1] += number * price;
+                        } else if (smonth == 3) {
+                            monPrice[2] += number * price;
+                        } else if (smonth == 4) {
+                            monPrice[3] += number * price;
+                        } else if (smonth == 5) {
+                            monPrice[4] += number * price;
+                        } else if (smonth == 6) {
+                            monPrice[5] += number * price;
+                        } else if (smonth == 7) {
+                            monPrice[6] += number * price;
+                        } else if (smonth == 8) {
+                            monPrice[7] += number * price;
+                        } else if (smonth == 9) {
+                            monPrice[8] += number * price;
+                        } else if (smonth == 10) {
+                            monPrice[9] += number * price;
+                        } else if (smonth == 11) {
+                            monPrice[10] += number * price;
+                        } else if (smonth == 12) {
+                            monPrice[11] += number * price;
+                        }
+                        if (stype.equals("文具")) {
+                            type_n[0] += number;
+                        } else if (stype.equals("书籍")) {
+                            type_n[1] += number;
+                        } else if (stype.equals("食品")) {
+                            type_n[2] += number;
+                        } else if (stype.equals("日用品")) {
+                            type_n[3] += number;
+                        } else if (stype.equals("电子产品")) {
+                            type_n[4] += number;
+                        } else if (stype.equals("其他")) {
+                            type_n[5] += number;
+                        }
                     }
-                    if (stype.equals("文具")) {
-                        type_n[0] += number;
-                    } else if (stype.equals("书籍")) {
-                        type_n[1] += number;
-                    } else if (stype.equals("食品")) {
-                        type_n[2] += number;
-                    } else if (stype.equals("日用品")) {
-                        type_n[3] += number;
-                    } else if (stype.equals("电子产品")) {
-                        type_n[4] += number;
-                    } else if (stype.equals("其他")) {
-                        type_n[5] += number;
-                    }
-                }
-                if (monPrice[0] != 0 || monPrice[1] != 0 || monPrice[2] != 0 || monPrice[3] != 0 || monPrice[4] != 0 || monPrice[5] != 0 || monPrice[6] != 0 || monPrice[7] != 0 || monPrice[8] != 0 || monPrice[9] != 0 || monPrice[10] != 0 || monPrice[11] != 0) {
+                    if (monPrice[0] != 0 || monPrice[1] != 0 || monPrice[2] != 0 || monPrice[3] != 0 || monPrice[4] != 0 || monPrice[5] != 0 || monPrice[6] != 0 || monPrice[7] != 0 || monPrice[8] != 0 || monPrice[9] != 0 || monPrice[10] != 0 || monPrice[11] != 0) {
     %>
     <div class="chart__container">
         <h3>每月销售额</h3>
@@ -206,14 +206,15 @@
 <input id="type_5" type="hidden" value="<%=type_n[4]%>"/>
 <input id="type_6" type="hidden" value="<%=type_n[5]%>"/>
 <%
+            }
         }
     } catch (Exception e) {
         e.printStackTrace();
     }
 %>
-<script type="text/javascript" src='<%=basePath%>/js/Chart.min.js'></script>
-<script type="text/javascript" src="<%=basePath%>/js/saleChart.js"></script>
-<script type="text/javascript" src="<%=basePath%>/js/canvas.js"></script>
+<script type="text/javascript" src='<%=basePath%>js/Chart.min.js'></script>
+<script type="text/javascript" src="<%=basePath%>js/saleChart.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/canvas.js"></script>
 <script type="text/javascript">
     var type_val = Array(6);
     type_val[0] = Number(document.getElementById("type_1").value);

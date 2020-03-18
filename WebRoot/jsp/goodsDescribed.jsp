@@ -19,45 +19,45 @@
         uid = Integer.parseInt(guid);
     }
 %>
-<%
-    try {
-        GoodsDao dao = null;
-        String goodslandtime = null;
-        dao = DAOFactory.getGoodsServiceInstance();
-        Goods goods = dao.queryById(gid);
-        String name = goods.getGname();
-        int number = goods.getNumber();
-        String[] photo = goods.getPhoto().split("&");
-        String type = goods.getType();
-        String uname = dao.queryUName(gid);
-        String usage = goods.getUsage();
-        float price = goods.getPrice();
-        float carriage = goods.getCarriage();
-        String pdate = goods.getPdate();
-        String paddress = goods.getPaddress();
-        String described = goods.getDescribed();
-        int sale_uid = goods.getUid();
-        VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
-        UserDao udao = DAOFactory.getUserServiceInstance();
-        String uname_t = udao.queryUName(uid);
-        vmdao.addLandTimeMes(uid, gid, uname_t, name, type);
-        goodslandtime = vmdao.getVisitlandtime(uid, gid);
-%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>商品详情</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<%=basePath%>/css/goods.css" rel="stylesheet" type="text/css"
-          media="screen"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/imagezoom.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
-    <script defer src="<%=basePath%>/js/jquery.flexslider.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<%=basePath%>css/goods.css" rel="stylesheet" type="text/css" media="screen"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/imagezoom.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
+    <script defer src="<%=basePath%>js/jquery.flexslider.js"></script>
 </head>
 <body>
+<%
+    try {
+        String goodslandtime = null;
+        GoodsDao dao = DAOFactory.getGoodsServiceInstance();
+        if (dao.queryById(gid) != null) {
+            Goods goods = dao.queryById(gid);
+            String name = goods.getGname();
+            int number = goods.getNumber();
+            String[] photo = goods.getPhoto().split("&");
+            String type = goods.getType();
+            String uname = dao.queryUName(gid);
+            String usage = goods.getUsage();
+            float price = goods.getPrice();
+            float carriage = goods.getCarriage();
+            String paddress = goods.getPaddress();
+            String described = goods.getDescribed();
+            int sale_uid = goods.getUid();
+            VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
+            UserDao udao = DAOFactory.getUserServiceInstance();
+            String uname_t = udao.queryUName(uid);
+            if (uid != 8) {
+                vmdao.addLandTimeMes(uid, gid, uname_t, name, type);
+                goodslandtime = vmdao.getVisitlandtime(uid, gid);
+            }
+%>
 <jsp:include page="head.jsp"></jsp:include>
 <div class="single">
     <div class="container">
@@ -69,7 +69,7 @@
                             if (photo.length > 0) {
                                 for (int i = 0; i < photo.length; i++) {
                         %>
-                        <li data-thumb="<%=basePath%>/images/<%=photo[i]%>">
+                        <li data-thumb="<%=basePath%>images/<%=photo[i]%>">
                             <div class="thumb-image">
                                 <img src="images/<%=photo[i]%>" data-imagezoom="true"
                                      class="img-responsive" alt="商品图片">
@@ -104,7 +104,7 @@
                     <%
                         if (sale_uid == uid) {
                     %>
-                    <a id="carthref" href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>"
+                    <a id="carthref" href="<%=basePath%>jsp/editGoods.jsp?gid=<%=gid%>"
                        class="cart item_add">修改商品</a>
                     <%
                     } else if (uid != 8) {
@@ -114,7 +114,7 @@
                         <input id="buyNumber" name="buyNumber" type="number" min="1"
                                max=<%=number%> value="1"/>
                     </div>
-                    <a id="carthref" href="<%=basePath%>/jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
+                    <a id="carthref" href="<%=basePath%>jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
                        class="cart item_add" onclick="return editHref()">加入购物车</a>
                     <%
                         }
@@ -130,13 +130,14 @@
                 <h3 class="cate">最新商品</h3>
                 <%
                     List<Goods> latestGoods = dao.getLatestGoods(gid, type);
-                    if (latestGoods != null & latestGoods.size() > 0) {
-                        for (int i = 0; i < latestGoods.size(); i++) {
-                            String goodsName = latestGoods.get(i).getGname();
-                            String goodsHref = basePath + "/jsp/goodsDescribed.jsp?gid=" + latestGoods.get(i).getGid();
-                            String[] newest_photo = latestGoods.get(i).getPhoto().split("&");
-                            String goodsPhoto = basePath + "/images/" + newest_photo[0];
-                            float goodsPrice = latestGoods.get(i).getPrice();
+                    if (latestGoods != null) {
+                        if (latestGoods.size() > 0) {
+                            for (int i = 0; i < latestGoods.size(); i++) {
+                                String goodsName = latestGoods.get(i).getGname();
+                                String goodsHref = basePath + "jsp/goodsDescribed.jsp?gid=" + latestGoods.get(i).getGid();
+                                String[] newest_photo = latestGoods.get(i).getPhoto().split("&");
+                                String goodsPhoto = basePath + "images/" + newest_photo[0];
+                                float goodsPrice = latestGoods.get(i).getPrice();
                 %>
                 <div class="product-go">
                     <div class=" fashion-grid">
@@ -154,6 +155,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <%
+                            }
                         }
                     }
                 %>
@@ -214,6 +216,13 @@
     }
 </script>
 <%
+} else {
+%>
+<div class="delete_1"><br/>
+    商品已不存在，请关闭重试！
+</div>
+<%
+        }
     } catch (Exception e) {
         e.printStackTrace();
     }

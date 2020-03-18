@@ -24,9 +24,8 @@
     }
     int gid = Integer.parseInt(request.getParameter("gid"));
     int number = Integer.parseInt(request.getParameter("buyNumber"));
-    ShoppingCartDao dao = null;
     try {
-        dao = DAOFactory.getShoppingCartServiceInstance();
+        ShoppingCartDao dao = DAOFactory.getShoppingCartServiceInstance();
         GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
         if (goodsDao.querySaleUid(gid) != uid) {
             boolean flag = dao.addGoods(uid, gid, number);

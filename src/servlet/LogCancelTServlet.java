@@ -31,7 +31,7 @@ public class LogCancelTServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        if(request.getSession().getAttribute("uid")==null)return;
+        if (request.getSession().getAttribute("uid") == null) return;
         int uid = Integer.parseInt(String.valueOf(request.getSession().getAttribute("uid")));
         String userip = String.valueOf(request.getSession().getAttribute("userip"));
         String landtime = String.valueOf(request.getSession().getAttribute("landtime"));

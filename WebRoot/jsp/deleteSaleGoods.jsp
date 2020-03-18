@@ -1,8 +1,7 @@
+<%@ page import="dao.*" %>
 <%@ page import="factory.DAOFactory" %>
 <%@ page import="java.net.Inet4Address" %>
-<%@ page import="java.net.InetAddress" %>
-<%@ page import="java.util.*" pageEncoding="UTF-8" %>
-<%@ page import="dao.*" %>
+<%@ page import="java.net.InetAddress" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -21,6 +20,7 @@
 <head>
     <base href="<%=basePath%>">
     <title>删除商品</title>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -28,8 +28,7 @@
 <body>
 <%
     try {
-        GoodsDao goodsDao = null;
-        goodsDao = DAOFactory.getGoodsServiceInstance();
+        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
         AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
         AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
         abDao.deleteBuyGoods(gid);
@@ -47,7 +46,7 @@
             }
         } else {
 %>
-<div align="center"><br/>
+<div class="delete_1"><br/>
     删除商品失败，请重试。
 </div>
 <%

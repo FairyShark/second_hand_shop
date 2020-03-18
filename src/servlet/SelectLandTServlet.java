@@ -18,7 +18,7 @@ import dao.OperationMesDao;
 import factory.DAOFactory;
 
 @WebServlet("/SelectLandTServlet")
-public class SelectLandTServlet  extends HttpServlet {
+public class SelectLandTServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -41,15 +41,15 @@ public class SelectLandTServlet  extends HttpServlet {
         String landtime = request.getParameter("LandTime");
 
         try {
-            if(uid==8) {
+            if (uid == 8) {
                 String userip_t = request.getParameter("Userip");
-                String opcontent = "查询登陆信息：会员ID（" + uid + "）,名字（" + uname + "）,IP地址（" + userip + "）,登陆时间（" + landtime +"）" ;
+                String opcontent = "查询登陆信息：会员ID（" + uid + "）,名字（" + uname + "）,IP地址（" + userip + "）,登陆时间（" + landtime + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 omdao.addOperationMes(uid, uname, userip_t, "查询", opcontent);
             }
             LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
-            List<LandMessage> list = lmdao.getLandMessage(uid,uname,userip,landtime);
-            PrintWriter out=response.getWriter();
+            List<LandMessage> list = lmdao.getLandMessage(uid, uname, userip, landtime);
+            PrintWriter out = response.getWriter();
             out.write(JSON.toJSONString(list));
         } catch (Exception e) {
             e.printStackTrace();

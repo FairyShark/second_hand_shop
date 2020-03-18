@@ -1,7 +1,6 @@
 <%@ page pageEncoding="utf-8" %>
-<%@ page import="util.OnlineCounter" %>
-<%@ page import="dao.GoodsDao" %>
 <%@ page import="bean.Goods" %>
+<%@ page import="dao.GoodsDao" %>
 <%@ page import="factory.DAOFactory" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
@@ -32,11 +31,11 @@
     <title>商品管理</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<%=basePath%>/css/box.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<%=basePath%>css/box.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $(".memenu").memenu();
@@ -47,7 +46,7 @@
         }
 
         function showtime() {
-            var myDate = new Date();
+            const myDate = new Date();
             document.getElementById("time").innerHTML = myDate.getHours() + "点"
                 + myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
             setTimeout("showtime()", 1000);
@@ -111,36 +110,36 @@
                     <th>使用情况</th>
                 </tr>
                 <%
-                    GoodsDao goodsDao = null;
                     try {
-                        goodsDao = DAOFactory.getGoodsServiceInstance();
+                        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
                         List<Goods> GoodsList = goodsDao.getAllGoods();
                         float allTotalPrice = 0;
-                        if (GoodsList != null & GoodsList.size() > 0) {
-                            Goods goods;
-                            String photoPath;
-                            String salename;
-                            String gtype;
-                            String gusage;
-                            int number;
-                            float price;
-                            float totalPrice;
-                            int gid;
-                            for (int i = 0; i < GoodsList.size(); i++) {
-                                goods = GoodsList.get(i);
-                                String[] photo = goods.getPhoto().split("&");
-                                photoPath = "images/" + photo[0];
-                                number = goods.getNumber();
-                                price = goods.getPrice();
-                                gid = goods.getGid();
-                                salename = goods.getUname();
-                                gtype = goods.getType();
-                                gusage = goods.getUsage();
-                                totalPrice = number * price;
-                                allTotalPrice = allTotalPrice + totalPrice;
+                        if (GoodsList != null) {
+                            if (GoodsList.size() > 0) {
+                                Goods goods;
+                                String photoPath;
+                                String salename;
+                                String gtype;
+                                String gusage;
+                                int number;
+                                float price;
+                                float totalPrice;
+                                int gid;
+                                for (int i = 0; i < GoodsList.size(); i++) {
+                                    goods = GoodsList.get(i);
+                                    String[] photo = goods.getPhoto().split("&");
+                                    photoPath = basePath + "images/" + photo[0];
+                                    number = goods.getNumber();
+                                    price = goods.getPrice();
+                                    gid = goods.getGid();
+                                    salename = goods.getUname();
+                                    gtype = goods.getType();
+                                    gusage = goods.getUsage();
+                                    totalPrice = number * price;
+                                    allTotalPrice = allTotalPrice + totalPrice;
                 %>
                 <tr>
-                    <td class="ring-in"><a href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                    <td class="ring-in"><a href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                                            class="at-in" target="_blank"> <img src="<%=photoPath%>"
                                                                                class="img-responsive" alt="">
                     </a>
@@ -165,11 +164,12 @@
                     </td>
                     <td><%=gusage%>
                     </td>
-                    <td><a href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>" target="_blank">修改</a></td>
-                    <td><a href="<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
+                    <td><a href="<%=basePath%>jsp/editGoods.jsp?gid=<%=gid%>" target="_blank">修改</a></td>
+                    <td><a href="<%=basePath%>jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
                            onclick="return confirmDelete()">删除</a></td>
                 </tr>
                 <%
+                                }
                             }
                         }
                     } catch (Exception e) {
@@ -210,8 +210,7 @@
                         .outerHeight(true);
                     const $windowHeight = $(window).innerHeight();
                     scrollTop > 50 ? $("#scrollUp").fadeIn(200)
-                        .css("display", "block") : $(
-                        "#scrollUp").fadeOut(200);
+                        .css("display", "block") : $("#scrollUp").fadeOut(200);
                     $bottomTools
                         .css(
                             "bottom",
@@ -285,13 +284,13 @@
                         const td1 = $("<td/>");
                         td1.addClass("ring-in");
                         const a1 = $("<a/>");
-                        a1.attr("href", "<%=basePath%>/jsp/goodsDescribed.jsp?gid=" + val.gid);
+                        a1.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid=" + val.gid);
                         a1.attr("target", "_blank");
                         a1.addClass("at-in");
                         const img1 = $("<img/>");
                         let image1 = new Array();
                         image1 = val.photo.split("&");
-                        img1.attr("src", "<%=basePath%>/images/" + image1[0]);
+                        img1.attr("src", "<%=basePath%>images/" + image1[0]);
                         img1.addClass("img-responsive");
                         img1.appendTo(a1);
                         const div1 = $("<div/>");
@@ -315,13 +314,13 @@
                         $("<td/>").html(val.usage).appendTo(tr);
                         const td2 = $("<td/>");
                         const a2 = $("<a/>");
-                        a2.attr("href", "<%=basePath%>/jsp/editGoods.jsp?gid=" + val.gid);
+                        a2.attr("href", "<%=basePath%>jsp/editGoods.jsp?gid=" + val.gid);
                         a2.attr("target", "_blank");
                         a2.html("修改").appendTo(td2);
                         td2.appendTo(tr);
                         const td3 = $("<td/>");
                         const a3 = $("<a/>");
-                        a3.attr("href", "<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=" + val.gid);
+                        a3.attr("href", "<%=basePath%>jsp/deleteSaleGoods.jsp?gid=" + val.gid);
                         a3.attr("onclick", "return confirmDelete()");
                         a3.html("删除").appendTo(td3);
                         td3.appendTo(tr);

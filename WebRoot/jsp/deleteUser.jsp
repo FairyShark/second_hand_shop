@@ -25,28 +25,30 @@
 <head>
     <base href="<%=basePath%>">
     <title>删除会员</title>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
 </head>
 <body>
 <%
-    UserDao userDao = null;
     try {
-        userDao = DAOFactory.getUserServiceInstance();
+        UserDao userDao = DAOFactory.getUserServiceInstance();
         GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
         AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
         AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
         List<Goods> uidGoodsList = goodsDao.getUidGoodsList(uid);
-        if (uidGoodsList != null & uidGoodsList.size() > 0) {
-            Goods goods;
-            int gid;
-            for (int i = 0; i < uidGoodsList.size(); i++) {
-                goods = uidGoodsList.get(i);
-                gid = goods.getGid();
-                goodsDao.deleteGoods(gid);
-                abDao.deleteBuyGoods(gid);
-                asDao.deleteSaleGoods(gid);
+        if (uidGoodsList != null) {
+            if (uidGoodsList.size() > 0) {
+                Goods goods;
+                int gid;
+                for (int i = 0; i < uidGoodsList.size(); i++) {
+                    goods = uidGoodsList.get(i);
+                    gid = goods.getGid();
+                    goodsDao.deleteGoods(gid);
+                    abDao.deleteBuyGoods(gid);
+                    asDao.deleteSaleGoods(gid);
+                }
             }
         }
         if (userDao.deleteUser(uid)) {
@@ -56,7 +58,7 @@
             response.sendRedirect("adminUser.jsp");
         } else {
 %>
-<div align="center"><br/>
+<div class="delete_1"><br/>
     删除会员失败，请重试。
 </div>
 <%

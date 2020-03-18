@@ -41,9 +41,9 @@ public class SelectOperationTServlet extends HttpServlet {
         String landtime = request.getParameter("LandTime");
 
         try {
-            if(uid==8) {
+            if (uid == 8) {
                 String userip_t = request.getParameter("Userip");
-                String opcontent = "查询操作日志：会员ID（" + uid + "）,名字（" + uname + "）,IP地址（" + userip + "）,操作类型（" + otype + "）,操作时间（" + landtime +"）" ;
+                String opcontent = "查询操作日志：会员ID（" + uid + "）,名字（" + uname + "）,IP地址（" + userip + "）,操作类型（" + otype + "）,操作时间（" + landtime + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 omdao.addOperationMes(uid, uname, userip_t, "查询", opcontent);
             }

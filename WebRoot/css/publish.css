@@ -1,237 +1,277 @@
 #regist-main {
-	width: 1200px;
-	font-size: 12px;
+    width: 1200px;
+    font-size: 12px;
 }
+
 ol {
-	list-style: none;
+    list-style: none;
 }
+
 #regist-main .cap {
-	
-	margin: 0;
-	padding: 0;
-	width: 400px;
+
+    margin: 0;
+    padding: 0;
+    width: 400px;
 }
+
 #regist-main label {
-	cursor: pointer;
-	margin-right: 1em;
+    cursor: pointer;
+    margin-right: 1em;
 }
+
 #regist-main table td {
-	font-size: 19px;
+    font-size: 19px;
 }
+
 #registForm {
-	width: 1000px;
-	height: 700px;
-	position: relative;
-	border: 1px solid #d7d7d7;
-	box-shadow: 0 0 10px #d7d7d7;
-	background-color: #fff;
-	color: #818181;
+    width: 1000px;
+    height: 700px;
+    position: relative;
+    border: 1px solid #d7d7d7;
+    box-shadow: 0 0 10px #d7d7d7;
+    background-color: #fff;
+    color: #818181;
 }
+
 #regist-main .cap h3 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 0;
-	padding: 0;
-	height: 40px;
-	line-height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
 }
+
 #regist-main .cap a {
-	position: absolute;
-	color: #818181;
-	left: 173px;
-	top: 27px;
+    position: absolute;
+    color: #818181;
+    left: 173px;
+    top: 27px;
 }
+
 .cap .login-error {
-	position: absolute;
-	top: 24px;
-	left: 91px;
+    position: absolute;
+    top: 24px;
+    left: 91px;
 }
+
 #regist-main a {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 #regist-main a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
+
 #registForm .pub_1 {
-	padding-top: 20px;
-	
+    padding-top: 20px;
+
 }
+
 #registForm li {
-	line-height: 30px;
-	float:left;
+    line-height: 30px;
+    float: left;
 }
+
 #registForm .pub_2 input {
-	width: 295px;
-	height: 33px;
-	line-height: 33px;
-	border: 1px solid #ccd1d5;
-	display: block;
-	border-radius: 5px;
+    width: 295px;
+    height: 33px;
+    line-height: 33px;
+    border: 1px solid #ccd1d5;
+    display: block;
+    border-radius: 5px;
 }
+
 #registForm .pub_2 textarea {
-	width: 760px;
-	height: 133px;
-	line-height: 33px;
-	border: 1px solid #ccd1d5;
-	display: block;
-	border-radius: 5px;
+    width: 760px;
+    height: 133px;
+    line-height: 33px;
+    border: 1px solid #ccd1d5;
+    display: block;
+    border-radius: 5px;
 }
+
 #registForm .pub_2 select {
-	width: 295px;
-	height: 33px;
-	line-height: 33px;
-	border: 1px solid #ccd1d5;
-	display: block;
-	border-radius: 5px;
+    width: 295px;
+    height: 33px;
+    line-height: 33px;
+    border: 1px solid #ccd1d5;
+    display: block;
+    border-radius: 5px;
 }
 
 
 #registForm input.btn-submit-reg {
-	margin:0 11.5%;
-	display: block;
-	overflow: hidden;
-	width: 27%;
-	height: 31px;
-	line-height: 31px;
-	cursor: pointer;
-	color: #fff;
-	border: 0;
-	border-radius:4px;
-	float:left;
-	background: #00aeef no-repeat 0 0;
+    margin: 0 11.5%;
+    display: block;
+    overflow: hidden;
+    width: 27%;
+    height: 31px;
+    line-height: 31px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    float: left;
+    background: #00aeef no-repeat 0 0;
 }
+
 #registForm input.btn-submit-reg:hover {
-	background-position: 0 -31px;
+    background-position: 0 -31px;
 }
+
 #registForm input.btn-submit-reg:active {
-	background-position: 0 -62px;
+    background-position: 0 -62px;
 }
 
 #registForm .registError {
-	position: absolute;
-	width: 298px;
-	top: 301px;
-	left: 40px;
-	color: #BF1623;
+    position: absolute;
+    width: 298px;
+    top: 301px;
+    left: 40px;
+    color: #BF1623;
 }
+
 .field-validation-error {
-	color: #BF1623;
+    color: #BF1623;
 }
+
 .kitjs-validator {
-	color: #BF1623;
+    color: #BF1623;
 }
 
 body {
-	width: 980px;
-	margin: 30 auto;
-	font-family: "Î¢ÈíÑÅºÚ";
-	color: #7d7d7d;
+    width: 980px;
+    margin: 30 auto;
+    font-family: "Î¢ÈíÑÅºÚ";
+    color: #7d7d7d;
 }
+
 img {
-	border: 0;
+    border: 0;
 }
+
 h1, h2 {
-	text-align: center;
-	position: relative;
+    text-align: center;
+    position: relative;
 }
+
 h1 {
-	color: #0092d3;
+    color: #0092d3;
 }
+
 h2 {
-	color: #53bde8;
+    color: #53bde8;
 }
+
 h3, h4, h5, h6 {
-	margin: 0;
+    margin: 0;
 }
+
 ul, ol, li {
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	vertical-align: top;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
 }
+
 li * {
-	vertical-align: middle;
+    vertical-align: middle;
 }
+
 a {
-	color: #7d7d7d;
+    color: #7d7d7d;
 }
+
 a:hover {
-	color: #000;
+    color: #000;
 }
+
 .indent {
-	margin-left: 2em;
+    margin-left: 2em;
 }
+
 .footer {
-	text-align: right;
-	font-size: 12px;
+    text-align: right;
+    font-size: 12px;
 }
+
 h1 img {
-	vertical-align: middle;
+    vertical-align: middle;
 }
+
 .code {
-	margin-left: 2em;
-	background-color: #aaa;
-	border-radius: 5px;
-	padding: 5px;
-	font-size: 14px;
-	color: #fff;
+    margin-left: 2em;
+    background-color: #aaa;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #fff;
 }
 
 .kitjs-validator {
-	display: none;
-	margin-left: 1em;
-}
-.validator-show {
-	display: inline;
-	-webkit-animation: validator-show-anim 300ms 1 ease-in;
+    display: none;
+    margin-left: 1em;
 }
 
-.pub_1{
-	width:800px;
-	margin: 20px auto;
-}.
-.pub_2{
-	float: none;
-	clear: both;
-	width:800px;
-	margin:10px 0;
-	
+.validator-show {
+    display: inline;
+    -webkit-animation: validator-show-anim 300ms 1 ease-in;
 }
-.pub_3{
-	float:left;
-	line-height: 30px;
-	padding:10px 20px;
+
+.pub_1 {
+    width: 800px;
+    margin: 20px auto;
 }
-.pub_4{
-	float:right;
-	line-height: 30px;
-	padding:10px 20px;
+
+.
+.pub_2 {
+    float: none;
+    clear: both;
+    width: 800px;
+    margin: 10px 0;
+
 }
-.pub_5{
-	float:none;
-	clear: both;
-	position: relative;	
-	margin:560px auto;
-	text-align:center;
-	width:80%;
+
+.pub_3 {
+    float: left;
+    line-height: 30px;
+    padding: 10px 20px;
 }
-.pub_6{
-	text-align:center;
-	margin:0 auto;
-	overflow:hidden;
-	display:inliine-block;
+
+.pub_4 {
+    float: right;
+    line-height: 30px;
+    padding: 10px 20px;
 }
-.necessary{
-	
-	color:red;
+
+.pub_5 {
+    float: none;
+    clear: both;
+    position: relative;
+    margin: 560px auto;
+    text-align: center;
+    width: 80%;
+}
+
+.pub_6 {
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+    display: inliine-block;
+}
+
+.necessary {
+
+    color: red;
 }
 
 @-webkit-keyframes validator-show-anim {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

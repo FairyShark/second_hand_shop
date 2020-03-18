@@ -16,12 +16,12 @@
     <base href="<%=basePath%>">
     <title>用户注册</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="<%=basePath%>/css/user.css"/>
-    <script src="<%=basePath%>/js/kit.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/dom.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/form.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/validator.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/autowired.validator.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<%=basePath%>css/user.css"/>
+    <script src="<%=basePath%>js/kit.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/dom.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/form.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/validator.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/autowired.validator.js" type="text/javascript"></script>
     <script type="text/javascript">
         const _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-30210234-1']);

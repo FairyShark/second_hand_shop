@@ -1,10 +1,8 @@
-<%@page import="bean.Goods" %>
-<%@page import="dao.GoodsDao" %>
-<%@page import="service.GoodsService" %>
-<%@page import="bean.ShoppingCart" %>
-<%@page import="java.util.List" %>
-<%@page import="factory.DAOFactory" %>
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page import="bean.Goods" %>
+<%@ page import="dao.GoodsDao" %>
+<%@ page import="factory.DAOFactory" %>
+<%@ page import="java.util.List" %>
+<%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -23,11 +21,11 @@
     <title>出售二手</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<%=basePath%>/css/box.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/simpleCart.min.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<%=basePath%>css/box.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/simpleCart.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 </head>
 <body>
@@ -86,35 +84,35 @@
                     <th>使用情况</th>
                 </tr>
                 <%
-                    GoodsDao goodsDao = null;
                     try {
-                        goodsDao = DAOFactory.getGoodsServiceInstance();
+                        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
                         List<Goods> uidGoodsList = goodsDao.getUidGoodsList(uid);
                         float allTotalPrice = 0;
-                        if (uidGoodsList != null & uidGoodsList.size() > 0) {
-                            Goods goods;
-                            String photoPath;
-                            String gtype;
-                            int number;
-                            float price;
-                            float totalPrice;
-                            int gid;
-                            String gusage;
-                            for (int i = 0; i < uidGoodsList.size(); i++) {
-                                goods = uidGoodsList.get(i);
-                                String[] photo = goods.getPhoto().split("&");
-                                photoPath = "images/" + photo[0];
-                                number = goods.getNumber();
-                                price = goods.getPrice();
-                                gid = goods.getGid();
-                                gtype = goods.getType();
-                                totalPrice = number * price;
-                                allTotalPrice = allTotalPrice + totalPrice;
-                                gusage = goods.getUsage();
+                        if (uidGoodsList != null) {
+                            if (uidGoodsList.size() > 0) {
+                                Goods goods;
+                                String photoPath;
+                                String gtype;
+                                int number;
+                                float price;
+                                float totalPrice;
+                                int gid;
+                                String gusage;
+                                for (int i = 0; i < uidGoodsList.size(); i++) {
+                                    goods = uidGoodsList.get(i);
+                                    String[] photo = goods.getPhoto().split("&");
+                                    photoPath = basePath + "images/" + photo[0];
+                                    number = goods.getNumber();
+                                    price = goods.getPrice();
+                                    gid = goods.getGid();
+                                    gtype = goods.getType();
+                                    totalPrice = number * price;
+                                    allTotalPrice = allTotalPrice + totalPrice;
+                                    gusage = goods.getUsage();
                 %>
                 <tr>
                     <td class="ring-in"><a
-                            href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                            href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                             class="at-in" target="_blank"> <img src="<%=photoPath%>"
                                                                 class="img-responsive" alt="">
                     </a>
@@ -139,12 +137,13 @@
                     </td>
                     <td>
                         <a
-                                href="<%=basePath%>/jsp/editGoods.jsp?gid=<%=gid%>">修改</a></td>
+                                href="<%=basePath%>jsp/editGoods.jsp?gid=<%=gid%>">修改</a></td>
                     <td>
-                        <a href="<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
+                        <a href="<%=basePath%>jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
                            onclick="return confirmDelete()">删除</a></td>
                 </tr>
                 <%
+                            }
                         }
                     }
                 %>
@@ -155,8 +154,8 @@
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="addgoods" href="<%=basePath%>/jsp/addGoods.jsp" title="发布商品" target="_blank">发布商品</a>
-    <a id="feedback" href="<%=basePath%>/jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="addgoods" href="<%=basePath%>jsp/addGoods.jsp" title="发布商品" target="_blank">发布商品</a>
+    <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 
@@ -247,14 +246,14 @@
                         const td1 = $("<td/>");
                         td1.addClass("ring-in");
                         const a1 = $("<a/>");
-                        a1.attr("href", "<%=basePath%>/jsp/goodsDescribed.jsp?gid="
+                        a1.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid="
                             + val.gid);
                         a1.attr("target", "_blank");
                         a1.addClass("at-in");
                         const img1 = $("<img/>");
                         let image1 = new Array();
                         image1 = val.photo.split("&");
-                        img1.attr("src", "<%=basePath%>/images/" + image1[0]);
+                        img1.attr("src", "<%=basePath%>images/" + image1[0]);
                         img1.addClass("img-responsive");
                         img1.appendTo(a1);
                         const div1 = $("<div/>");
@@ -277,12 +276,12 @@
                         $("<td/>").html(val.usage).appendTo(tr);
                         const td2 = $("<td/>");
                         const a2 = $("<a/>");
-                        a2.attr("href", "<%=basePath%>/jsp/editGoods.jsp?gid=" + val.gid);
+                        a2.attr("href", "<%=basePath%>jsp/editGoods.jsp?gid=" + val.gid);
                         a2.html("修改").appendTo(td2);
                         td2.appendTo(tr);
                         const td3 = $("<td/>");
                         const a3 = $("<a/>");
-                        a3.attr("href", "<%=basePath%>/jsp/deleteSaleGoods.jsp?gid=" + val.gid);
+                        a3.attr("href", "<%=basePath%>jsp/deleteSaleGoods.jsp?gid=" + val.gid);
                         a3.attr("onclick", "return confirmDelete()");
                         a3.html("删除").appendTo(td3);
                         td3.appendTo(tr);

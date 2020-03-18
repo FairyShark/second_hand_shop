@@ -37,11 +37,13 @@
         String paddress = goods.getPaddress();
         String described = goods.getDescribed();
         int sale_uid = goods.getUid();
-        VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
-        UserDao udao = DAOFactory.getUserServiceInstance();
-        String uname_t = udao.queryUName(uid);
-        vmdao.addLandTimeMes(uid, gid, uname_t, name, type);
-        goodslandtime = vmdao.getVisitlandtime(uid, gid);
+            VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
+            UserDao udao = DAOFactory.getUserServiceInstance();
+            String uname_t = udao.queryUName(uid);
+        if(uid != 8) {
+            vmdao.addLandTimeMes(uid, gid, uname_t, name, type);
+            goodslandtime = vmdao.getVisitlandtime(uid, gid);
+        }
 %>
 <!DOCTYPE html>
 <html>

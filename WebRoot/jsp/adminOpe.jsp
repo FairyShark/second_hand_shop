@@ -1,11 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="util.OnlineCounter" %>
 <%@ page import="bean.OperationMes" %>
-<%@ page import="java.util.List" %>
-<%@ page import="factory.DAOFactory" %>
 <%@ page import="dao.OperationMesDao" %>
+<%@ page import="factory.DAOFactory" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
+<%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();
@@ -15,41 +14,38 @@
     InetAddress ip4 = Inet4Address.getLocalHost();
     String userip = ip4.getHostAddress();
 %>
-<%
-    String uid = String.valueOf(session.getAttribute("uid"));
-%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>操作日志</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<%=basePath%>/css/popup.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="<%=basePath%>css/popup.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/responsiveslides.min.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function($) {
-        
-            $('.theme-poptit .close').click(function(){
+        jQuery(document).ready(function ($) {
+
+            $('.theme-poptit .close').click(function () {
                 $('.theme-popover-mask').fadeOut(100);
                 $('.theme-popover').slideUp(200);
             });
 
         });
-        
-        function loginclick(name,content,time){
-        	 $('.theme-popover-mask').fadeIn(100);
-             $('.theme-popover').slideDown(200);
-             $('#htitle').html("查看 " + name + " 的操作内容");
-             $('#ocontent').html(content);
-             $('#htime').html("操作时间： " + time);
+
+        function loginclick(name, content, time) {
+            $('.theme-popover-mask').fadeIn(100);
+            $('.theme-popover').slideDown(200);
+            $('#htitle').html("查看 " + name + " 的操作内容");
+            $('#ocontent').html(content);
+            $('#htime').html("操作时间： " + time);
         }
-        
-        function closeclick(){
-        	$('.theme-popover-mask').fadeOut(100);
+
+        function closeclick() {
+            $('.theme-popover-mask').fadeOut(100);
             $('.theme-popover').slideUp(200);
-       }
+        }
 
     </script>
 </head>
@@ -134,7 +130,7 @@
                     <td><%
                         if (uid_t != 8) {
                     %>
-                        <a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%>
+                        <a href="<%=basePath%>jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%>
                         </a>
                         <%
                         } else {
@@ -151,12 +147,15 @@
                     <%
                         if (opcontent_t.length() < 23) {
                     %>
-                    <td><a class="theme-login" href="javascript:void(0)" onclick="return loginclick('<%=uname_t%>','<%=opcontent_t%>','<%=landtime_t%>')"><%=opcontent_t%>
+                    <td><a class="theme-login" href="javascript:void(0)"
+                           onclick="return loginclick('<%=uname_t%>','<%=opcontent_t%>','<%=landtime_t%>')"><%=opcontent_t%>
                     </a></td>
                     <%
                     } else {
                     %>
-                    <td><a class="theme-login" href="javascript:void(0)" onclick="return loginclick('<%=uname_t%>','<%=opcontent_t%>','<%=landtime_t%>')"><%=opcontent_t.substring(0, 20)%>···</a></td>
+                    <td><a class="theme-login" href="javascript:void(0)"
+                           onclick="return loginclick('<%=uname_t%>','<%=opcontent_t%>','<%=landtime_t%>')"><%=opcontent_t.substring(0, 20)%>
+                        ···</a></td>
                     <%
                         }
                     %>
@@ -181,11 +180,11 @@
     </div>
     <div class="theme-popbod dform">
         <div class="theme-signin" id="loginform">
-            <ol>
-                <li><h4 id="htime"></h4></li>
-                <li><strong id="ocontent"></strong></li>
-            </ol>
-            <button class="btn btn-primary" onclick="return closeclick()">确  定</button>
+            <div><h4 id="htime"></h4></div>
+            <div><strong id="ocontent"></strong></div>
+            <div>
+                <button class="btn btn-primary" onclick="return closeclick()">确 定</button>
+            </div>
         </div>
     </div>
 </div>
@@ -321,7 +320,7 @@
                             } else {
                                 const td1 = $("<td/>");
                                 const a1 = $("<a/>");
-                                a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
+                                a1.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
                                 a1.attr("target", "_blank");
                                 a1.html(val.uname).appendTo(td1);
                                 td1.appendTo(tr);

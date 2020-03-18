@@ -4,6 +4,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="factory.DAOFactory" %>
 <%@ page import="dao.VisitMessageDao" %>
+<%@ page import="dao.UserDao" %>
+<%@ page import="dao.GoodsDao" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
 <%@ page pageEncoding="utf-8" %>
@@ -24,10 +26,10 @@
     <title>浏览记录</title>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
     <script>
         $(document).ready(function () {
             $(".memenu").memenu();
@@ -131,11 +133,12 @@
                     <td><%=uid_t%>
                     </td>
                     <td><%
-                        if(uid_t != 8){
+                        if (uid_t != 8) {
                     %>
-                        <a href="<%=basePath%>/jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%></a>
+                        <a href="<%=basePath%>jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank"><%=uname_t%>
+                        </a>
                         <%
-                        }else{
+                        } else {
                         %>
                         admin
                         <%
@@ -144,7 +147,7 @@
                     </td>
                     <td><%=gid_t%>
                     </td>
-                    <td><a href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=gid_t%>" target="_blank"><%=gname_t%>
+                    <td><a href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=gid_t%>" target="_blank"><%=gname_t%>
                     </a>
                     </td>
                     <td><%=gtype_t%>
@@ -295,12 +298,12 @@
                             const tr = $("<tr/>");
                             $("<td/>").html(temp + ".").appendTo(tr);
                             $("<td/>").html(val.uid).appendTo(tr);
-                            if(val.uid == 8){
+                            if (val.uid == 8) {
                                 $("<td/>").html(val.uname).appendTo(tr);
-                            }else {
+                            } else {
                                 const td1 = $("<td/>");
                                 const a1 = $("<a/>");
-                                a1.attr("href", "<%=basePath%>/jsp/showMessage.jsp?uid=" + val.uid);
+                                a1.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
                                 a1.attr("target", "_blank");
                                 a1.html(val.uname).appendTo(td1);
                                 td1.appendTo(tr);
@@ -308,7 +311,7 @@
                             $("<td/>").html(val.gid).appendTo(tr);
                             const td2 = $("<td/>");
                             const a2 = $("<a/>");
-                            a2.attr("href", "<%=basePath%>/jsp/goodsDescribed.jsp?gid=" + val.gid);
+                            a2.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid=" + val.gid);
                             a2.attr("target", "_blank");
                             a2.html(val.gname).appendTo(td2);
                             td2.appendTo(tr);

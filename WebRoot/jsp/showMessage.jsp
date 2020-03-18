@@ -13,7 +13,6 @@
     String userip = ip4.getHostAddress();
 %>
 <%
-    String uname = (String) session.getAttribute("uname");
     int uid = Integer.parseInt(request.getParameter("uid"));
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -22,13 +21,13 @@
     <base href="<%=basePath%>">
     <title>个人信息</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="<%=basePath%>/css/user.css"/>
-    <script src="<%=basePath%>/js/kit.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/dom.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/form.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/validator.js" type="text/javascript"></script>
-    <script src="<%=basePath%>/js/autowired.validator.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>css/user.css"/>
+    <script src="<%=basePath%>js/kit.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/dom.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/form.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/validator.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/autowired.validator.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-30210234-1']);
@@ -56,6 +55,12 @@
     </script>
 </head>
 <body>
+<%
+
+    try {
+        UserDao udao = DAOFactory.getUserServiceInstance();
+        if (udao.queryByUid(uid) != null) {
+%>
 <h1>个人信息</h1>
 <div id="regist-main">
     <form id="registForm" action="servlet/EditInfoServlet" method="get">
@@ -63,10 +68,8 @@
         <input id="userid" name="userid" value="<%=uid%>" type="hidden"/>
         <ol>
             <%
-                UserDao dao = null;
                 try {
-                    dao = DAOFactory.getUserServiceInstance();
-                    User user = dao.queryByUid(uid);
+                    User user = udao.queryByUid(uid);
                     if (user != null) {
             %>
 
@@ -121,5 +124,17 @@
         navigator.sendBeacon("servlet/LogCancelTServlet");
     }
 </script>
+<%
+} else {
+%>
+<div class="delete_1"><br/>
+    用户已不存在，请关闭重试！
+</div>
+<%
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
 </body>
 </html>

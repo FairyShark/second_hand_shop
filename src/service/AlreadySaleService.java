@@ -10,53 +10,53 @@ import db.DBConnection;
 
 public class AlreadySaleService implements AlreadySaleDao {
 
-	private DBConnection dbconn = null;
+    private DBConnection dbconn = null;
 
-	private AlreadySaleDao dao = null;
+    private AlreadySaleDao dao = null;
 
-	public AlreadySaleService() throws SQLException {
-		this.dbconn = new DBConnection();
-		this.dao = new AlreadySaleDaoImpl(this.dbconn.getConnection());
-	}
+    public AlreadySaleService() throws SQLException {
+        this.dbconn = new DBConnection();
+        this.dao = new AlreadySaleDaoImpl(this.dbconn.getConnection());
+    }
 
-	@Override
-	public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, int number) throws Exception {
-		if (isInt(uid) && isInt(buy_uid) && buy_name!=null && isInt(gid) && isInt(number)) {
-			return this.dao.addSaleGoods(uid, buy_uid, buy_name, gid, number);
-		}
-		return false;
-	}
-	
-	@Override
-	public boolean deleteSaleGoods(int gid) throws Exception {
-		if (isInt(gid)) {
-			return this.dao.deleteSaleGoods(gid);
-		}
-		return false;
-	}
+    @Override
+    public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, int number) throws Exception {
+        if (isInt(uid) && isInt(buy_uid) && buy_name != null && isInt(gid) && isInt(number)) {
+            return this.dao.addSaleGoods(uid, buy_uid, buy_name, gid, number);
+        }
+        return false;
+    }
 
-	@Override
-	public List<AlreadySale> getAllSaleGoods(int uid) throws Exception {
-		if (isInt(uid)) {
-			return this.dao.getAllSaleGoods(uid);
-		}
-		return null;
-	}
-	
-	@Override
-	public List<AlreadySale> getAllSaleGoodsByGid(int gid) throws Exception {
-		if (isInt(gid)) {
-			return this.dao.getAllSaleGoods(gid);
-		}
-		return null;
-	}
+    @Override
+    public boolean deleteSaleGoods(int gid) throws Exception {
+        if (isInt(gid)) {
+            return this.dao.deleteSaleGoods(gid);
+        }
+        return false;
+    }
 
-	public boolean isInt(int index) {
-		if (index == 0) {
-			return false;
-		}
-		String str = String.valueOf(index);
-		return str.matches("[0-9]+$");
-	}
+    @Override
+    public List<AlreadySale> getAllSaleGoods(int uid) throws Exception {
+        if (isInt(uid)) {
+            return this.dao.getAllSaleGoods(uid);
+        }
+        return null;
+    }
+
+    @Override
+    public List<AlreadySale> getAllSaleGoodsByGid(int gid) throws Exception {
+        if (isInt(gid)) {
+            return this.dao.getAllSaleGoods(gid);
+        }
+        return null;
+    }
+
+    public boolean isInt(int index) {
+        if (index == 0) {
+            return false;
+        }
+        String str = String.valueOf(index);
+        return str.matches("[0-9]+$");
+    }
 
 }

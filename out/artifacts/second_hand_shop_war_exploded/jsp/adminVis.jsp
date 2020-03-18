@@ -268,7 +268,7 @@
                     url: 'SelectVisitTServlet',
                     type: 'GET',
                     data: {
-                        Userip: <%=userip%>,
+                        Userip: '<%=userip%>',
                         UserID: UserID,
                         UserName: UserName,
                         GoodsID: GoodsID,

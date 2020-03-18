@@ -8,44 +8,44 @@ import dao.OperationMesDao;
 import db.DBConnection;
 import db.OperationMesDaoImpl;
 
-public class OperationMesService implements OperationMesDao{
-	
-	private DBConnection dbconn = null;
+public class OperationMesService implements OperationMesDao {
 
-	private OperationMesDao dao = null;
+    private DBConnection dbconn = null;
 
-	public OperationMesService() throws SQLException {
-		this.dbconn = new DBConnection();
-		this.dao = new OperationMesDaoImpl(this.dbconn.getConnection());
-	}
-	
-	//添加操作信息
-	@Override
-	public boolean addOperationMes(int uid, String uname, String userip, String otype, String opcontent) throws Exception{
-		if (isInt(uid) && uname!=null && userip!=null && otype!=null && opcontent!=null) {
-			return this.dao.addOperationMes(uid, uname, userip, otype, opcontent);
-		}
-		return false;
-	}
+    private OperationMesDao dao = null;
 
-	//查询操作日志
-	@Override
-	public List<OperationMes> getAllOperationMes() throws Exception{
-		return this.dao.getAllOperationMes();
-	}
+    public OperationMesService() throws SQLException {
+        this.dbconn = new DBConnection();
+        this.dao = new OperationMesDaoImpl(this.dbconn.getConnection());
+    }
 
-	//查询浏览信息
-	@Override
-	public List<OperationMes> getOperationMes(int uid, String uname, String userip, String otype, String landtime) throws Exception{
-		return this.dao.getOperationMes(uid, uname, userip, otype, landtime);
-	}
-	
-	public boolean isInt(int index) {
-		if (index == 0) {
-			return false;
-		}
-		String str = String.valueOf(index);
-		return str.matches("[0-9]+$");
-	}
+    //添加操作信息
+    @Override
+    public boolean addOperationMes(int uid, String uname, String userip, String otype, String opcontent) throws Exception {
+        if (isInt(uid) && uname != null && userip != null && otype != null && opcontent != null) {
+            return this.dao.addOperationMes(uid, uname, userip, otype, opcontent);
+        }
+        return false;
+    }
+
+    //查询操作日志
+    @Override
+    public List<OperationMes> getAllOperationMes() throws Exception {
+        return this.dao.getAllOperationMes();
+    }
+
+    //查询浏览信息
+    @Override
+    public List<OperationMes> getOperationMes(int uid, String uname, String userip, String otype, String landtime) throws Exception {
+        return this.dao.getOperationMes(uid, uname, userip, otype, landtime);
+    }
+
+    public boolean isInt(int index) {
+        if (index == 0) {
+            return false;
+        }
+        String str = String.valueOf(index);
+        return str.matches("[0-9]+$");
+    }
 
 }

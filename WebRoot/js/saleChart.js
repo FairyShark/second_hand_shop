@@ -10,11 +10,11 @@ gradientBkgrd.addColorStop(1, "rgba(249,135,94,0)");
 
 let draw = Chart.controllers.line.prototype.draw;
 Chart.controllers.line = Chart.controllers.line.extend({
-    draw: function() {
+    draw: function () {
         draw.apply(this, arguments);
         let ctx = this.chart.chart.ctx;
         let _stroke = ctx.stroke;
-        ctx.stroke = function() {
+        ctx.stroke = function () {
             ctx.save();
             ctx.shadowColor = 'rgba(244,94,132,0.8)';
             ctx.shadowBlur = 8;
@@ -65,25 +65,25 @@ var chart = new Chart(ctx, {
 
     // Configuration options go here
     options: {
-      tooltips: {
-        backgroundColor:'#fff',
-        displayColors:false,
-           titleFontColor: '#000',
-        bodyFontColor: '#000'
-        
-        },      
-      legend: {
+        tooltips: {
+            backgroundColor: '#fff',
+            displayColors: false,
+            titleFontColor: '#000',
+            bodyFontColor: '#000'
+
+        },
+        legend: {
             display: false
-      },
+        },
         scales: {
             xAxes: [{
                 gridLines: {
-                    display:false
+                    display: false
                 }
             }],
             yAxes: [{
                 ticks: {
-                    callback: function(value, index, values) {
+                    callback: function (value, index, values) {
                         return value;
                     }
                 }

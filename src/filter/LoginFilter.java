@@ -13,40 +13,40 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(description = "µÇÂ¼¹ýÂËÆ÷", filterName = "loginFilter", urlPatterns = { "/*" }, initParams = {
-		@WebInitParam(name = "loginPage", value = "login.jsp") })
+@WebFilter(description = "µÇÂ¼¹ýÂËÆ÷", filterName = "loginFilter", urlPatterns = {"/*"}, initParams = {
+        @WebInitParam(name = "loginPage", value = "login.jsp")})
 public class LoginFilter implements Filter {
 
-	private FilterConfig config;
+    private FilterConfig config;
 
-	@Override
-	public void destroy() {
+    @Override
+    public void destroy() {
 
-	}
+    }
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		String loginPage = config.getInitParameter("loginPage");
-		HttpSession session = ((HttpServletRequest) request).getSession();
-		String requestPath = ((HttpServletRequest) request).getServletPath();
-		if (session.getAttribute("uname") == null
-				&& (requestPath.endsWith("alreadyBuy.jsp") || requestPath.endsWith("shoppingCart.jsp")
-						|| requestPath.endsWith("addGoods.jsp") || requestPath.endsWith("addPhoto.jsp")
-						|| requestPath.endsWith("saleGoods.jsp") || requestPath.endsWith("alreadySale.jsp")
-						|| requestPath.endsWith("addToCart.jsp") || requestPath.endsWith("showMessage.jsp")
-						|| requestPath.endsWith("adminGoods.jsp") || requestPath.endsWith("adminUser.jsp")
-						|| requestPath.endsWith("adminOpe.jsp") || requestPath.endsWith("adminLog.jsp")
-						|| requestPath.endsWith("adminVis.jsp"))) {
-			request.getRequestDispatcher(loginPage).forward(request, response);
-		} else {
-			chain.doFilter(request, response);
-		}
-	}
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        String loginPage = config.getInitParameter("loginPage");
+        HttpSession session = ((HttpServletRequest) request).getSession();
+        String requestPath = ((HttpServletRequest) request).getServletPath();
+        if (session.getAttribute("uname") == null
+                && (requestPath.endsWith("alreadyBuy.jsp") || requestPath.endsWith("shoppingCart.jsp")
+                || requestPath.endsWith("addGoods.jsp") || requestPath.endsWith("addPhoto.jsp")
+                || requestPath.endsWith("saleGoods.jsp") || requestPath.endsWith("alreadySale.jsp")
+                || requestPath.endsWith("addToCart.jsp") || requestPath.endsWith("showMessage.jsp")
+                || requestPath.endsWith("adminGoods.jsp") || requestPath.endsWith("adminUser.jsp")
+                || requestPath.endsWith("adminOpe.jsp") || requestPath.endsWith("adminLog.jsp")
+                || requestPath.endsWith("adminVis.jsp"))) {
+            request.getRequestDispatcher(loginPage).forward(request, response);
+        } else {
+            chain.doFilter(request, response);
+        }
+    }
 
-	@Override
-	public void init(FilterConfig config) throws ServletException {
-		this.config = config;
-	}
+    @Override
+    public void init(FilterConfig config) throws ServletException {
+        this.config = config;
+    }
 
 }

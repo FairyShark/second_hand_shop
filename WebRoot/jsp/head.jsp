@@ -28,10 +28,10 @@
 <head>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=basePath%>/css/main.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/responsiveslides.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>/js/memenu.js"></script>
+    <link href="<%=basePath%>css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $(".memenu").memenu();
@@ -59,7 +59,7 @@
                 </ul>
             </div>
             <div class="col-sm-4 logo">
-                <a href="<%=basePath%>/jsp/index.jsp"><img src="<%=basePath%>/images/logo.png" alt=""></a>
+                <a href="<%=basePath%>jsp/index.jsp"><img src="<%=basePath%>images/logo.png" alt=""></a>
             </div>
             <div class="col-sm-4 header-left">
                 <p class="log">
@@ -67,15 +67,15 @@
                         if (uname != null) {
                             if (c == 1) {
                                 out.print("<a>" + uname + ",欢迎登录" + "</a>");
-                                out.print("<a href=\"" + basePath + "/jsp/showMessage.jsp?uid=" + uid + "\" target=\"_blank\">" + "个人信息" + "</a>");
+                                out.print("<a href=\"" + basePath + "jsp/showMessage.jsp?uid=" + uid + "\" target=\"_blank\">" + "个人信息" + "</a>");
                             } else {
                                 out.print("<a>" + "你好管理员,欢迎登录" + "</a>");
                             }
                             out.print("<a href=\"servlet/LogoutServlet\" onClick=\"return key()\">" + "注销" + "</a>");
                         } else {
-                            out.print("<a href=\"" + basePath + "/jsp/login.jsp\">请  登录</a>");
+                            out.print("<a href=\"" + basePath + "jsp/login.jsp\">请  登录</a>");
                             out.print("<a>or</a>");
-                            out.print("<a href=\"" + basePath + "/jsp/register.jsp\">注册</a>");
+                            out.print("<a href=\"" + basePath + "jsp/register.jsp\">注册</a>");
                         }
                     %>
                     <a id="time">
@@ -96,23 +96,23 @@
                     <%
                         if (c == 1) {
                     %>
-                    <li class=" grid"><a href="<%=basePath%>/jsp/index.jsp">首页</a></li>
+                    <li class=" grid"><a href="<%=basePath%>jsp/index.jsp">首页</a></li>
                     <li><a>分类</a>
                         <div class="mepanel">
                             <div class="row">
                                 <%
-                                    GoodsDao dao = null;
                                     try {
-                                        dao = DAOFactory.getGoodsServiceInstance();
+                                        GoodsDao dao = DAOFactory.getGoodsServiceInstance();
                                         String[] types = dao.queryTypes();
-                                        if (types != null & types.length > 0) {
-                                            String type;
-                                            List<Goods> goodsList;
-                                            Goods goods;
-                                            for (int i = 0; i < types.length; i++) {
-                                                if (types[i] != null & !"".equals(types[i])) {
-                                                    type = types[i];
-                                                    goodsList = dao.getTypeGoodsList(type);
+                                        if (types != null) {
+                                            if (types.length > 0) {
+                                                String type;
+                                                List<Goods> goodsList;
+                                                Goods goods;
+                                                for (int i = 0; i < types.length; i++) {
+                                                    if (types[i] != null & !"".equals(types[i])) {
+                                                        type = types[i];
+                                                        goodsList = dao.getTypeGoodsList(type);
                                 %>
                                 <div class="col1">
                                     <div class="h_nav">
@@ -120,15 +120,17 @@
                                         </h4>
                                         <ul>
                                             <%
-                                                if (goodsList != null & goodsList.size() > 0) {
-                                                    for (int j = 0; j < goodsList.size(); j++) {
-                                                        goods = goodsList.get(j);
+                                                if (goodsList != null) {
+                                                    if (goodsList.size() > 0) {
+                                                        for (int j = 0; j < goodsList.size(); j++) {
+                                                            goods = goodsList.get(j);
                                             %>
                                             <li><a
-                                                    href="<%=basePath%>/jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
+                                                    href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
                                                     target="_blank"><%=goods.getGname()%>
                                             </a></li>
                                             <%
+                                                        }
                                                     }
                                                 }
                                             %>
@@ -136,6 +138,7 @@
                                     </div>
                                 </div>
                                 <%
+                                                    }
                                                 }
                                             }
                                         }
@@ -146,18 +149,18 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="<%=basePath%>/jsp/saleGoods.jsp">出售二手</a></li>
-                    <li><a href="<%=basePath%>/jsp/shoppingCart.jsp">购物车</a></li>
-                    <li><a href="<%=basePath%>/jsp/alreadyBuy.jsp">购买记录</a></li>
-                    <li><a href="<%=basePath%>/jsp/alreadySale.jsp">销售记录</a></li>
+                    <li><a href="<%=basePath%>jsp/saleGoods.jsp">出售二手</a></li>
+                    <li><a href="<%=basePath%>jsp/shoppingCart.jsp">购物车</a></li>
+                    <li><a href="<%=basePath%>jsp/alreadyBuy.jsp">购买记录</a></li>
+                    <li><a href="<%=basePath%>jsp/alreadySale.jsp">销售记录</a></li>
                     <%
                     } else {
                     %>
-                    <li class=" grid"><a href="<%=basePath%>/jsp/adminUser.jsp" class="a_active">会员管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminGoods.jsp">商品管理</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminLog.jsp">登陆信息</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminVis.jsp">浏览记录</a></li>
-                    <li><a href="<%=basePath%>/jsp/adminOpe.jsp">操作日志</a></li>
+                    <li class=" grid"><a href="<%=basePath%>jsp/adminUser.jsp" class="a_active">会员管理</a></li>
+                    <li><a href="<%=basePath%>jsp/adminGoods.jsp">商品管理</a></li>
+                    <li><a href="<%=basePath%>jsp/adminLog.jsp">登陆信息</a></li>
+                    <li><a href="<%=basePath%>jsp/adminVis.jsp">浏览记录</a></li>
+                    <li><a href="<%=basePath%>jsp/adminOpe.jsp">操作日志</a></li>
                     <%
                         }
                     %>
