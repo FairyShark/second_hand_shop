@@ -124,7 +124,7 @@
                         InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "\\" + P2);
                         data = new byte[in.available()];
                         in.read(data);
-                        in.close();
+                         in.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

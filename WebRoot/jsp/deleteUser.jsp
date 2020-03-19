@@ -38,21 +38,25 @@
         AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
         AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
         List<Goods> uidGoodsList = goodsDao.getUidGoodsList(uid);
-        if (uidGoodsList != null) {
-            if (uidGoodsList.size() > 0) {
-                Goods goods;
-                int gid;
-                for (int i = 0; i < uidGoodsList.size(); i++) {
-                    goods = uidGoodsList.get(i);
-                    gid = goods.getGid();
-                    goodsDao.deleteGoods(gid);
-                    abDao.deleteBuyGoods(gid);
-                    asDao.deleteSaleGoods(gid);
-                }
-            }
-        }
         if (userDao.deleteUser(uid)) {
             String opcontent = "删除会员及其所有商品:会员ID（" + uid + "）";
+
+            if (uidGoodsList != null) {
+                if (uidGoodsList.size() > 0) {
+                    Goods goods;
+                    int gid;
+                    opcontent += "。 同时删除的商品：";
+                    for (int i = 0; i < uidGoodsList.size(); i++) {
+                        goods = uidGoodsList.get(i);
+                        gid = goods.getGid();
+                        goodsDao.deleteGoods(gid);
+                        abDao.deleteBuyGoods(gid);
+                        asDao.deleteSaleGoods(gid);
+                        opcontent += "商品ID（" + gid + ");";
+                    }
+                }
+            }
+
             OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
             omdao.addOperationMes(8, "admin", userip, "删除", opcontent);
             response.sendRedirect("adminUser.jsp");
