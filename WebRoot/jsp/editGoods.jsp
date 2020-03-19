@@ -54,7 +54,7 @@
         })();
 
         function submit_sure() {
-            const gnl = confirm("确定修改吗?");
+            const gnl = confirm("下一步编辑图片，确定修改吗?");
             return gnl === true;
         }
     </script>
@@ -182,7 +182,7 @@
         <div class="registError"></div>
         <div class="pub_5">
             <div class="pub_6">
-                <input type="submit" value="修改" class="btn-submit-reg"> <input
+                <input type="submit" value="下一步" class="btn-submit-reg"> <input
                     type="button" value="取消" class="btn-submit-reg" onclick="goback()">
             </div>
         </div>

@@ -68,49 +68,40 @@ public class AddGoodsServlet extends HttpServlet {
             String uname = userDao.queryUName(Integer.parseInt(uid));
             if (addgoods(Integer.parseInt(uid), uname, gname, Integer.parseInt(number), photo, type, usage,
                     Float.parseFloat(price), Float.parseFloat(carriage), paddress, described)) {
-                message = 1;
                 int gid = qugid(Integer.parseInt(uid), uname, gname, Integer.parseInt(number), photo, type, usage,
                         Float.parseFloat(price), Float.parseFloat(carriage), paddress, described);
-                request.getSession().setAttribute("uid", uid);
-                request.getSession().setAttribute("gid", gid);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (message == 0) {
-            String truePath = request.getContextPath() + "/" + "jsp/addGoods.jsp";
-            PrintWriter out = response.getWriter();
-            out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-            out.println("<HTML>");
-            out.println("  <HEAD><TITLE>发布商品</TITLE>");
-            out.println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath
-                    + "\">");
-            out.println("</HEAD>");
-            out.println("  <BODY>");
-            out.print("<div align=\"center\">");
-            out.print("发布商品失败，请重试！");
-            out.print("<br/>");
-            out.print("将自动跳转到相应页面");
-            out.print("<br/>");
-            out.print("或点击这里：");
-            out.print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
-            out.print("</div>");
-            out.println("  </BODY>");
-            out.println("</HTML>");
-            out.flush();
-            out.close();
 
-        } else {
-            try {
-                UserDao udao = DAOFactory.getUserServiceInstance();
-                String uname = udao.queryUName(Integer.parseInt(uid));
                 String opcontent = "添加商品：商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（" + usage + "）,发货地（" + paddress + "）,描述（" + described + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 omdao.addOperationMes(Integer.parseInt(uid), uname, userip, "添加", opcontent);
-            } catch (Exception e) {
-                e.printStackTrace();
+
+                response.sendRedirect(request.getContextPath() + "/" + "jsp/addPhoto.jsp?gid=" + gid);
+
+            }else {
+                String truePath = request.getContextPath() + "/" + "jsp/addGoods.jsp";
+                PrintWriter out = response.getWriter();
+                out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+                out.println("<HTML>");
+                out.println("  <HEAD><TITLE>发布商品</TITLE>");
+                out.println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath
+                        + "\">");
+                out.println("</HEAD>");
+                out.println("  <BODY>");
+                out.print("<div align=\"center\">");
+                out.print("发布商品失败，请重试！");
+                out.print("<br/>");
+                out.print("将自动跳转到相应页面");
+                out.print("<br/>");
+                out.print("或点击这里：");
+                out.print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
+                out.print("</div>");
+                out.println("  </BODY>");
+                out.println("</HTML>");
+                out.flush();
+                out.close();
             }
-            response.sendRedirect(request.getContextPath() + "/" + "jsp/addPhoto.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

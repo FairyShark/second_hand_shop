@@ -79,11 +79,7 @@ public class EditGoodsServlet extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if (Integer.parseInt(uid) == 8) {
-                    response.sendRedirect(request.getContextPath() + "/jsp/adminGoods.jsp");
-                } else {
-                    response.sendRedirect(request.getContextPath() + "/jsp/saleGoods.jsp");
-                }
+                response.sendRedirect(request.getContextPath() + "/jsp/editPhoto.jsp?gid=" + gid);
                 return;
             }
         } catch (Exception e) {

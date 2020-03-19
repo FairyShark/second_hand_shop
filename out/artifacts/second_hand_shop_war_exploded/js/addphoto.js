@@ -1,8 +1,8 @@
-﻿var IMG_LENGTH = 1;//图片最大1MB
-var IMG_MAXCOUNT = 3;//最多选中图片张数
+﻿const IMG_LENGTH = 1;//图片最大1MB
+const IMG_MAXCOUNT = 3;//最多选中图片张数
 
 
-var UP_IMGCOUNT = 0;//上传图片张数记录
+let UP_IMGCOUNT = Number($("#COUNTER").val());//上传图片张数记录
 
 //打开文件选择对话框
 $("#div_imgfile").click(function () {
@@ -11,7 +11,7 @@ $("#div_imgfile").click(function () {
         return;
     }
 
-    var _CRE_FILE = document.createElement("input");
+    let _CRE_FILE = document.createElement("input");
     if ($(".imgfile").length <= $(".lookimg").length) {//个数不足则新创建对象
         _CRE_FILE.setAttribute("type", "file");
         _CRE_FILE.setAttribute("class", "imgfile");
@@ -29,32 +29,32 @@ $(".imgfile").live("change", function () {
     if ($(this).val().length > 0) {//判断是否有选中图片
 
         //判断图片格式是否正确
-        var FORMAT = $(this).val().substr($(this).val().length - 3, 3);
+        const FORMAT = $(this).val().substr($(this).val().length - 3, 3);
         if (FORMAT != "png" && FORMAT != "jpg" && FORMAT != "peg") {
             alert("文件格式不正确！！！");
             return;
         }
 
         //判断图片是否过大，当前设置1MB
-        var file = this.files[0];//获取file文件对象
+        const file = this.files[0];//获取file文件对象
         if (file.size > (IMG_LENGTH * 1024 * 1024)) {
             alert("图片大小不能超过" + IMG_LENGTH + "MB");
             $(this).val("");
             return;
         }
         //创建预览外层
-        var _prevdiv = document.createElement("div");
+        const _prevdiv = document.createElement("div");
         _prevdiv.setAttribute("class", "lookimg");
         //创建内层img对象
-        var preview = document.createElement("img");
+        const preview = document.createElement("img");
         $(_prevdiv).append(preview);
         //创建删除按钮
-        var IMG_DELBTN = document.createElement("div");
+        const IMG_DELBTN = document.createElement("div");
         IMG_DELBTN.setAttribute("class", "lookimg_delBtn");
         IMG_DELBTN.innerHTML = "移除";
         $(_prevdiv).append(IMG_DELBTN);
         //创建进度条
-        var IMG_PROGRESS = document.createElement("div");
+        const IMG_PROGRESS = document.createElement("div");
         IMG_PROGRESS.setAttribute("class", "lookimg_progress");
         $(IMG_PROGRESS).append(document.createElement("div"));
         $(_prevdiv).append(IMG_PROGRESS);
@@ -65,10 +65,10 @@ $(".imgfile").live("change", function () {
         UP_IMGCOUNT++;//编号增长防重复
 
         //预览功能 start
-        var reader = new FileReader();//创建读取对象
+        const reader = new FileReader();//创建读取对象
         reader.onloadend = function () {
             preview.src = reader.result;//读取加载，将图片编码绑定到元素
-        }
+        };
         if (file) {//如果对象正确
             reader.readAsDataURL(file);//获取图片编码
         } else {
@@ -88,11 +88,9 @@ $(".lookimg_delBtn").live("click", function () {
 $(".lookimg").live("mouseover", function () {
     if ($(this).attr("ISUP") != "1")
         $(this).children(".lookimg_delBtn").eq(0).css("display", "block");
-    ;
 });
 $(".lookimg").live("mouseout", function () {
     $(this).children(".lookimg_delBtn").eq(0).css("display", "none");
-    ;
 });
 
 //确定上传按钮
@@ -109,23 +107,23 @@ $("#btn_ImgUpStart").click(function () {
         return;
     }
 
-    var GID = 0;
+    let GID = 0;
     GID = $("#Gid").val();
 
     //循环所有已存在的图片对象，准备上传
-    for (var i = 0; i < $(".lookimg").length; i++) {
-        var NOWLOOK = $(".lookimg").eq(i);//当前操作的图片预览对象
+    for (let i = 0; i < $(".lookimg").length; i++) {
+        const NOWLOOK = $(".lookimg").eq(i);//当前操作的图片预览对象
         NOWLOOK.index = i;
         //如果当前图片已经上传，则不再重复上传
-        // if (NOWLOOK.attr("ISUP") == "1")
-        //     continue;
+        if (NOWLOOK.attr("ISUP") == "1")
+             continue;
 
         //上传图片准备
-        var IMG_BASE = NOWLOOK.children("img").eq(0).attr("src"); //要上传的图片的base64编码
-        var IMG_IND = NOWLOOK.attr("num");
-        var IMG_ROUTE = $(".imgfile[num=" + IMG_IND + "]").eq(0).val();//获取上传图片路径，为获取图片类型使用
-        var IMG_ENDFOUR = IMG_ROUTE.substr(IMG_ROUTE.length - 4, 4);//截取路径后四位，判断图片类型
-        var IMG_FOMATE = "jpeg"; //图片类型***
+        const IMG_BASE = NOWLOOK.children("img").eq(0).attr("src"); //要上传的图片的base64编码
+        const IMG_IND = NOWLOOK.attr("num");
+        const IMG_ROUTE = $(".imgfile[num=" + IMG_IND + "]").eq(0).val();//获取上传图片路径，为获取图片类型使用
+        const IMG_ENDFOUR = IMG_ROUTE.substr(IMG_ROUTE.length - 4, 4);//截取路径后四位，判断图片类型
+        let IMG_FOMATE = "jpeg"; //图片类型***
         if (IMG_ENDFOUR.trim() == ".jpg")
             IMG_FOMATE = "jpg";
         else if (IMG_ENDFOUR.trim() == ".png")
@@ -135,24 +133,24 @@ $("#btn_ImgUpStart").click(function () {
         $.ajax({
             type: "POST",
             url: "AddPhotoServlet",
-            data: {'imgBase': IMG_BASE, 'imgFormat': IMG_FOMATE, 'lookIndex': NOWLOOK.index, 'Gid': GID},//图片base64编码，图片格式（当前仅支持jpg,png,jpeg三种），图片对象索引
+            data: {imgBase: IMG_BASE, imgFormat: IMG_FOMATE, lookIndex: NOWLOOK.index, Gid: GID},//图片base64编码，图片格式（当前仅支持jpg,png,jpeg三种），图片对象索引
             dataType: "json",
+            async: false,
             success: function (data) {
 
-                if (data.isok == "1") {
-                    //图片上传成功回调
+                if (data.isok === "1") {
 
-                    var UPTIME = Math.ceil(Math.random() * 400) + 400;//生成一个400-800的随机数，假设进条加载时间不一致
+                    const UPTIME = Math.ceil(Math.random() * 800) + 800;//生成一个400-800的随机数，假设进条加载时间不一致
                     $(".lookimg").eq([data.ind]).attr("ISUP", "1");//记录此图片已经上传
                     $(".lookimg").eq([data.ind]).children(".lookimg_progress").eq(0).children("div").eq(0).animate({width: "100%"}, UPTIME, function () {
                         $(this).css("background-color", "#00FF00").text('上传成功');
                     });
                     //alert("成功");
 
-                } else {//图片未上传成功回调
+                } else {
                     $(".lookimg")[data.ind].children(".lookimg_progress").eq(0).children("div").eq(0).css("width", "100%").css("background-color", "red").text("上传失败");
+                    //alert("失败");
                 }
-
 
             },
             error: function (err) {
@@ -163,9 +161,10 @@ $("#btn_ImgUpStart").click(function () {
             beforeSend: function () {
                 //图片上传之前执行的操作，当前为进度条显示
                 NOWLOOK.children(".lookimg_progress").eq(0).css("display", "block");//进度条显示
+                //alert("yes");
             }
+
         });
-        for (var t = Date.now(); Date.now() - t <= 1000;) ;
     }
     var succ = document.getElementById("succ");
     succ.innerHTML = "上传成功！请点击\'完成\'以继续......";
