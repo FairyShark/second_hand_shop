@@ -5,8 +5,7 @@
             + path + "/";
 %>
 <%
-    String gid = String.valueOf(session.getAttribute("gid"));
-    int GID = Integer.parseInt(gid);
+    int GID = Integer.parseInt(request.getParameter("gid"));
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -42,6 +41,7 @@
     </div>
 </div>
 <label for="Gid"><input id="Gid" value=<%=GID%> type="hidden"/></label>
+<label for="COUNTER"><input id="COUNTER" value="0" type="hidden"/></label>
 <script src="<%=basePath%>js/addphoto.js" type="text/javascript"></script>
 <script type="text/javascript">
     window.onunload = function () {
