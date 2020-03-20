@@ -140,7 +140,7 @@ $("#btn_ImgUpStart").click(function () {
 
                 if (data.isok === "1") {
 
-                    const UPTIME = Math.ceil(Math.random() * 800) + 800;//生成一个400-800的随机数，假设进条加载时间不一致
+                    const UPTIME = Math.ceil(Math.random() * 500) + 500;//生成一个400-800的随机数，假设进条加载时间不一致
                     $(".lookimg").eq([data.ind]).attr("ISUP", "1");//记录此图片已经上传
                     $(".lookimg").eq([data.ind]).children(".lookimg_progress").eq(0).children("div").eq(0).animate({width: "100%"}, UPTIME, function () {
                         $(this).css("background-color", "#00FF00").text('上传成功');
@@ -165,7 +165,7 @@ $("#btn_ImgUpStart").click(function () {
             }
 
         });
+        var succ = document.getElementById("succ");
+        succ.innerHTML = "上传成功！请点击\'完成\'以继续......";
     }
-    var succ = document.getElementById("succ");
-    succ.innerHTML = "上传成功！请点击\'完成\'以继续......";
 });
