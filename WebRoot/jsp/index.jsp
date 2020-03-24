@@ -65,6 +65,7 @@
                     List<Goods> goodsList = dao.getAllGoods();
                     if (goodsList != null && goodsList.size() > 0) {
                         for (int i = 0; i < goodsList.size(); i++) {
+                            if(goodsList.get(i).getDel()==1){
                             if (i % 4 == 0) {
             %>
             <div class="content-top1">
@@ -116,6 +117,7 @@
             </div>
             <%
                             }
+                        }
                         }
                     }
                 } catch (Exception e) {

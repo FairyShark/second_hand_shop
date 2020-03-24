@@ -1,13 +1,9 @@
 <%@ page import="factory.DAOFactory" %>
-<%@ page import="dao.UserDao" %>
 <%@ page import="bean.Goods" %>
-<%@ page import="dao.GoodsDao" %>
-<%@ page import="dao.AlreadyBuyDao" %>
-<%@ page import="dao.AlreadySaleDao" %>
-<%@ page import="dao.OperationMesDao" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
 <%@ page import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="dao.*" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"

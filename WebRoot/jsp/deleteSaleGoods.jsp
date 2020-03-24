@@ -28,13 +28,9 @@
 <body>
 <%
     try {
-        GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-        AlreadyBuyDao abDao = DAOFactory.getAlreadyBuyServiceInstance();
-        AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
-        abDao.deleteBuyGoods(gid);
-        asDao.deleteSaleGoods(gid);
-        if (goodsDao.deleteGoods(gid)) {
-            String opcontent = "删除商品:商品ID（" + gid + "）";
+        GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
+        if (gdao.deleteGoods(gid)) {
+            String opcontent = "删除在售商品:商品ID（" + gid + "）";
             OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
             UserDao udao = DAOFactory.getUserServiceInstance();
             String uname = udao.queryUName(Integer.parseInt(uid));

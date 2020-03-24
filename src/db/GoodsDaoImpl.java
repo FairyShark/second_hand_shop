@@ -86,7 +86,7 @@ public class GoodsDaoImpl implements GoodsDao {
 
     @Override
     public boolean deleteGoods(int gid) throws Exception {
-        String sql = "delete from goods where gid=?";
+        String sql = "update goods set del=0 where gid=?";
         int result = 0;
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, gid);
@@ -120,6 +120,7 @@ public class GoodsDaoImpl implements GoodsDao {
             goods.setPdate(rs.getString("pdate"));
             goods.setPaddress(rs.getString("paddress"));
             goods.setDescribed(rs.getString("described"));
+            goods.setDel(rs.getInt("del"));
         }
         pstmt.close();
         rs.close();
@@ -148,6 +149,7 @@ public class GoodsDaoImpl implements GoodsDao {
             goods.setPdate(rs.getString("pdate"));
             goods.setPaddress(rs.getString("paddress"));
             goods.setDescribed(rs.getString("described"));
+            goods.setDel(rs.getInt("del"));
         }
         pstmt.close();
         rs.close();
@@ -289,6 +291,7 @@ public class GoodsDaoImpl implements GoodsDao {
             String described = rs.getString("described");
             goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
             goods.setGid(gid);
+            goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
         }
         return goodsList;
@@ -368,6 +371,7 @@ public class GoodsDaoImpl implements GoodsDao {
             String described = rs.getString("described");
             goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
             goods.setGid(gid);
+            goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
         }
         return goodsList;
@@ -407,6 +411,7 @@ public class GoodsDaoImpl implements GoodsDao {
             String described = rs.getString("described");
             goods = new Goods(uid_t, uname, gname_t, number, photo, type_t, usage_t, price, carriage, pdate, paddress, described);
             goods.setGid(gid);
+            goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
         }
         return goodsList;

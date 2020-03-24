@@ -28,6 +28,8 @@ public class Goods {
     private String paddress;
     // 商品描述
     private String described;
+    // 商品下架
+    private int del;
 
     public Goods() {
 
@@ -201,6 +203,14 @@ public class Goods {
 
     public void setDescribed(String described) {
         this.described = described;
+    }
+
+    public int getDel() {
+        return del;
+    }
+
+    public void setDel(int del) {
+        this.del = del;
     }
 
 }

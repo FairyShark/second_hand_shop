@@ -102,6 +102,9 @@
                     </div>
                     <label class="add-to item_price"><%=price%>元</label>
                     <%
+                        if (dao.queryById(gid).getDel()==1) {
+                    %>
+                    <%
                         if (sale_uid == uid) {
                     %>
                     <a id="carthref" href="<%=basePath%>jsp/editGoods.jsp?gid=<%=gid%>"
@@ -116,6 +119,13 @@
                     </div>
                     <a id="carthref" href="<%=basePath%>jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
                        class="cart item_add" onclick="return editHref()">加入购物车</a>
+                    <%
+                        }
+                        }else{
+                    %>
+                    <div class="available">
+                        <h6>此商品已下架！</h6>
+                    </div>
                     <%
                         }
                     %>
@@ -133,6 +143,7 @@
                     if (latestGoods != null) {
                         if (latestGoods.size() > 0) {
                             for (int i = 0; i < latestGoods.size(); i++) {
+                                if(latestGoods.get(i).getDel()==1){
                                 String goodsName = latestGoods.get(i).getGname();
                                 String goodsHref = basePath + "jsp/goodsDescribed.jsp?gid=" + latestGoods.get(i).getGid();
                                 String[] newest_photo = latestGoods.get(i).getPhoto().split("&");
@@ -155,6 +166,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <%
+                            }
                             }
                         }
                     }

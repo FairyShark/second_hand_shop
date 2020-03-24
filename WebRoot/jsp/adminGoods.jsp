@@ -126,6 +126,7 @@
                                 float totalPrice;
                                 int gid;
                                 for (int i = 0; i < GoodsList.size(); i++) {
+                                    if(GoodsList.get(i).getDel()==1){
                                     goods = GoodsList.get(i);
                                     String[] photo = goods.getPhoto().split("&");
                                     photoPath = basePath + "images/" + photo[0];
@@ -170,6 +171,7 @@
                 </tr>
                 <%
                                 }
+                            }
                             }
                         }
                     } catch (Exception e) {
@@ -280,6 +282,7 @@
                     $("#resultTable").append(tr);
                     let temp = 0;
                     $.each(json, function (i, val) {
+                        if(val.del===1){
                         const tr = $("<tr/>");
                         const td1 = $("<td/>");
                         td1.addClass("ring-in");
@@ -326,7 +329,9 @@
                         td3.appendTo(tr);
                         $("#resultTable").append(tr);
                         temp++;
+                    }
                     });
+
                     if (temp == 0) {
                         $("#resultTable").empty();
                         $("#tempP").empty();
@@ -341,6 +346,7 @@
                         p3.html("共找到" + temp + "个该类型的商品！").appendTo(p3);
                         $("#tempP").append(p3);
                     }
+
                 },
                 error: function () {
                     $("#test").append("条件查询错误！");

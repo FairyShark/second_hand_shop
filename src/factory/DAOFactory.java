@@ -1,21 +1,7 @@
 package factory;
 
-import dao.AlreadyBuyDao;
-import dao.AlreadySaleDao;
-import dao.GoodsDao;
-import dao.LandMessageDao;
-import dao.OperationMesDao;
-import dao.ShoppingCartDao;
-import dao.UserDao;
-import dao.VisitMessageDao;
-import service.AlreadyBuyService;
-import service.AlreadySaleService;
-import service.GoodsService;
-import service.LandMessageService;
-import service.OperationMesService;
-import service.ShoppingCartService;
-import service.UserService;
-import service.VisitMessageService;
+import dao.*;
+import service.*;
 
 public class DAOFactory {
 
@@ -27,8 +13,7 @@ public class DAOFactory {
         return new GoodsService();
     }
 
-    public static ShoppingCartDao getShoppingCartServiceInstance()
-            throws Exception {
+    public static ShoppingCartDao getShoppingCartServiceInstance() throws Exception {
         return new ShoppingCartService();
     }
 
