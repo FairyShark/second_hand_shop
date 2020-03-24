@@ -94,6 +94,7 @@
                                 float totalPrice;
                                 int gid;
                                 for (int i = 0; i < GoodsList.size(); i++) {
+                                    if(GoodsList.get(i).getDel()==1){
                                     goods = GoodsList.get(i);
                                     String[] photo = goods.getPhoto().split("&");
                                     photoPath = basePath + "images/" + photo[0];
@@ -136,6 +137,7 @@
                 </tr>
                 <%
                                 }
+                            }
                             }
                         }
                     } catch (Exception e) {

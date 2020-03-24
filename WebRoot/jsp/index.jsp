@@ -64,13 +64,16 @@
                     GoodsDao dao = DAOFactory.getGoodsServiceInstance();
                     List<Goods> goodsList = dao.getAllGoods();
                     if (goodsList != null && goodsList.size() > 0) {
+                        int temp = 0;
                         for (int i = 0; i < goodsList.size(); i++) {
-                            if(goodsList.get(i).getDel()==1){
-                            if (i % 4 == 0) {
+
+                            if (temp % 4 == 0) {
             %>
             <div class="content-top1">
                 <%
                     }
+                            if(goodsList.get(i).getDel()==1){
+                                temp++;
                 %>
                 <div class="col-md-3 col-md2">
                     <div class="col-md1 simpleCart_shelfItem">
@@ -111,13 +114,15 @@
                     </div>
                 </div>
                 <%
-                    if (i % 4 == 3) {
+                    }
+                            if (temp != 0) {
+                                if ((temp-1) % 4 == 3) {
                 %>
                 <div class="clearfix"></div>
             </div>
             <%
                             }
-                        }
+                            }
                         }
                     }
                 } catch (Exception e) {

@@ -124,7 +124,7 @@
                         }else{
                     %>
                     <div class="available">
-                        <h6>此商品已下架！</h6>
+                        <h6 id="delete_2">此商品已下架！</h6>
                     </div>
                     <%
                         }
