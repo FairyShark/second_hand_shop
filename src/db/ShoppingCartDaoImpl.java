@@ -43,7 +43,6 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         String message = this.getDesignateGoodsMs(uid, gid);
         if (!"".equals(message)) {
             int sid = Integer.valueOf(message.split("&")[0]);
-            System.out.println("SID:" + sid);
             int goodsCount = Integer.valueOf(message.split("&")[1]);
             String sql = "update shoppingcart set number=?,sdate=now() where sid=?";
             pstmt = this.conn.prepareStatement(sql);

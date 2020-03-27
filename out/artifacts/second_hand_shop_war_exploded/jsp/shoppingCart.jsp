@@ -10,6 +10,8 @@
     String basePath = request.getScheme() + "://"
             + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+
+    int del = 1;
 %>
 <!DOCTYPE html>
 <html>
@@ -80,6 +82,17 @@
                         <p>
                             加入购物车时间：<%=cart.getSdate()%>
                         </p>
+                        <%
+                        if(goods.getDel()==0){
+                            del = 0;
+                        %>
+                        <br>
+                        <p id="delete_2">
+                            商品已失效，请删除！
+                        </p>
+                        <%
+                            }
+                        %>
                     </div>
                     <div class="clearfix"></div>
                 </td>
@@ -88,9 +101,21 @@
                 <td><%=price%>元</td>
                 <td><%=goods.getCarriage()%>元</td>
                 <td><%=totalPrice%>元</td>
+                <%
+                    if(goods.getDel()==0){
+                %>
+                <td><a
+                        href="<%=basePath%>jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>">删除</a></td>
+                <%
+                    }else{
+                %>
                 <td><a
                         href="<%=basePath%>jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>"
                         onclick="return confirmDelete()">删除</a></td>
+                <%
+                    }
+                %>
+
             </tr>
             <%
                     }
@@ -100,7 +125,11 @@
         <a>总计：<%=allTotalPrice%>元
         </a>
         <%
-            if (cartList.size() > 0) {
+            if (del == 0) {
+        %>
+        <a class="to-buy" onclick="nogoods()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
+        <%
+        }else if (cartList.size() > 0) {
         %>
         <a href="<%=basePath%>jsp/buyGoods.jsp" class="to-buy"
            onclick="return confirmBuy()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
@@ -123,6 +152,10 @@
 </div>
 
 <script type="text/javascript">
+    function nogoods() {
+        alert("请删除失效的商品！");
+    }
+
     function confirmBuy() {
         return confirm("确定支付吗？");
     }

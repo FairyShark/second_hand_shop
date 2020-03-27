@@ -250,7 +250,7 @@ public class GoodsDaoImpl implements GoodsDao {
         List<Goods> goodsList = new ArrayList<Goods>();
         Goods goods;
         ResultSet rs = null;
-        String sql = "select gid,gname,price,gphoto from goods where gid != ? and types=? order by gid desc limit 4";
+        String sql = "select gid,gname,price,gphoto,del from goods where gid != ? and types=? order by gid desc limit 4";
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, gid);
         pstmt.setString(2, type);
@@ -261,6 +261,7 @@ public class GoodsDaoImpl implements GoodsDao {
             goods.setGname(rs.getString("gname"));
             goods.setPrice(rs.getFloat("price"));
             goods.setPhoto(rs.getString("gphoto"));
+            goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
         }
         return goodsList;
@@ -334,7 +335,7 @@ public class GoodsDaoImpl implements GoodsDao {
         List<Goods> goodsList = new ArrayList<Goods>();
         Goods goods;
         ResultSet rs = null;
-        String sql = "select gid,gname from goods where types=? order by gid desc;";
+        String sql = "select gid,gname,del from goods where types=? order by gid desc;";
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setString(1, type);
         rs = pstmt.executeQuery();
@@ -342,6 +343,7 @@ public class GoodsDaoImpl implements GoodsDao {
             goods = new Goods();
             goods.setGid(rs.getInt("gid"));
             goods.setGname(rs.getString("gname"));
+            goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
         }
         return goodsList;

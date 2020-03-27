@@ -1,13 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="util.OnlineCounter" %>
 <%@ page import="bean.VisitMessage" %>
-<%@ page import="java.util.List" %>
-<%@ page import="factory.DAOFactory" %>
 <%@ page import="dao.VisitMessageDao" %>
-<%@ page import="dao.UserDao" %>
-<%@ page import="dao.GoodsDao" %>
+<%@ page import="factory.DAOFactory" %>
 <%@ page import="java.net.Inet4Address" %>
 <%@ page import="java.net.InetAddress" %>
+<%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" %>
 <%
     String path = request.getContextPath();

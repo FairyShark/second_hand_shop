@@ -10352,3 +10352,7 @@ ul.memenu.skyblue {
 .delete_1 {
     text-align: center;
 }
+
+#delete_2 {
+    color: red;
+}

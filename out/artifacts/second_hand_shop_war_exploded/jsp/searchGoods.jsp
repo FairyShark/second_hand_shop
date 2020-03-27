@@ -94,6 +94,7 @@
                                 float totalPrice;
                                 int gid;
                                 for (int i = 0; i < GoodsList.size(); i++) {
+                                    if(GoodsList.get(i).getDel()==1){
                                     goods = GoodsList.get(i);
                                     String[] photo = goods.getPhoto().split("&");
                                     photoPath = basePath + "images/" + photo[0];
@@ -136,6 +137,7 @@
                 </tr>
                 <%
                                 }
+                            }
                             }
                         }
                     } catch (Exception e) {
@@ -246,39 +248,41 @@
                     $("#resultTable").append(tr);
                     let temp = 0;
                     $.each(json, function (i, val) {
-                        const tr = $("<tr/>");
-                        const td1 = $("<td/>");
-                        td1.addClass("ring-in");
-                        const a1 = $("<a/>");
-                        a1.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid="
-                            + val.gid);
-                        a1.attr("target", "_blank");
-                        a1.addClass("at-in");
-                        const img1 = $("<img/>");
-                        let image1 = new Array();
-                        image1 = val.photo.split("&");
-                        img1.attr("src", "<%=basePath%>images/" + image1[0]);
-                        img1.addClass("img-responsive");
-                        img1.appendTo(a1);
-                        const div1 = $("<div/>");
-                        div1.addClass("sed");
-                        $("<h5/>").html("商品名：" + val.gname).appendTo(div1);
-                        $("<br/>").appendTo(div1);
-                        $("<p/>").html("发布时间：" + val.pdate).appendTo(div1);
-                        const div2 = $("<div/>");
-                        div2.addClass("clearfix");
-                        a1.appendTo(td1);
-                        div1.appendTo(td1);
-                        div2.appendTo(td1);
-                        td1.appendTo(tr);
-                        $("<td/>").html(val.paddress).appendTo(tr);
-                        $("<td/>").html(val.number).appendTo(tr);
-                        $("<td/>").html(val.price).appendTo(tr);
-                        $("<td/>").html(val.carriage).appendTo(tr);
-                        $("<td/>").html(val.type).appendTo(tr);
-                        $("<td/>").html(val.usage).appendTo(tr);
-                        $("#resultTable").append(tr);
-                        temp++;
+                        if(val.del===1) {
+                            const tr = $("<tr/>");
+                            const td1 = $("<td/>");
+                            td1.addClass("ring-in");
+                            const a1 = $("<a/>");
+                            a1.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid="
+                                + val.gid);
+                            a1.attr("target", "_blank");
+                            a1.addClass("at-in");
+                            const img1 = $("<img/>");
+                            let image1 = new Array();
+                            image1 = val.photo.split("&");
+                            img1.attr("src", "<%=basePath%>images/" + image1[0]);
+                            img1.addClass("img-responsive");
+                            img1.appendTo(a1);
+                            const div1 = $("<div/>");
+                            div1.addClass("sed");
+                            $("<h5/>").html("商品名：" + val.gname).appendTo(div1);
+                            $("<br/>").appendTo(div1);
+                            $("<p/>").html("发布时间：" + val.pdate).appendTo(div1);
+                            const div2 = $("<div/>");
+                            div2.addClass("clearfix");
+                            a1.appendTo(td1);
+                            div1.appendTo(td1);
+                            div2.appendTo(td1);
+                            td1.appendTo(tr);
+                            $("<td/>").html(val.paddress).appendTo(tr);
+                            $("<td/>").html(val.number).appendTo(tr);
+                            $("<td/>").html(val.price).appendTo(tr);
+                            $("<td/>").html(val.carriage).appendTo(tr);
+                            $("<td/>").html(val.type).appendTo(tr);
+                            $("<td/>").html(val.usage).appendTo(tr);
+                            $("#resultTable").append(tr);
+                            temp++;
+                        }
                     });
                     if (temp == 0) {
                         $("#resultTable").empty();

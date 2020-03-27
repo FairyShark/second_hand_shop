@@ -104,6 +104,7 @@
                                 int gid;
                                 String gusage;
                                 for (int i = 0; i < uidGoodsList.size(); i++) {
+                                    if(uidGoodsList.get(i).getDel()==1){
                                     goods = uidGoodsList.get(i);
                                     String[] photo = goods.getPhoto().split("&");
                                     photoPath = basePath + "images/" + photo[0];
@@ -148,6 +149,7 @@
                            onclick="return confirmDelete()">删除</a></td>
                 </tr>
                 <%
+                            }
                             }
                         }
                     }
@@ -249,54 +251,56 @@
                     let totalPrice = 0;
                     let allTotalPrice = 0;
                     $.each(json, function (i, val) {
-                        const tr = $("<tr/>");
-                        const td1 = $("<td/>");
-                        td1.addClass("ring-in");
-                        const a1 = $("<a/>");
-                        a1.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid="
-                            + val.gid);
-                        a1.attr("target", "_blank");
-                        a1.addClass("at-in");
-                        const img1 = $("<img/>");
-                        let image1 = new Array();
-                        image1 = val.photo.split("&");
-                        img1.attr("src", "<%=basePath%>images/" + image1[0]);
-                        img1.addClass("img-responsive");
-                        img1.appendTo(a1);
-                        const div1 = $("<div/>");
-                        div1.addClass("sed");
-                        $("<h5/>").html("商品名：" + val.gname).appendTo(
-                            div1);
-                        $("<br/>").appendTo(div1);
-                        $("<p/>").html("发布时间：" + val.pdate).appendTo(
-                            div1);
-                        const div2 = $("<div/>");
-                        div2.addClass("clearfix");
-                        a1.appendTo(td1);
-                        div1.appendTo(td1);
-                        div2.appendTo(td1);
-                        td1.appendTo(tr);
-                        $("<td/>").html(val.number).appendTo(tr);
-                        $("<td/>").html(val.price).appendTo(tr);
-                        $("<td/>").html(val.carriage).appendTo(tr);
-                        $("<td/>").html(val.type).appendTo(tr);
-                        $("<td/>").html(val.usage).appendTo(tr);
-                        const td2 = $("<td/>");
-                        const a2 = $("<a/>");
-                        a2.attr("href", "<%=basePath%>jsp/editGoods.jsp?gid=" + val.gid);
-                        a2.html("修改").appendTo(td2);
-                        td2.appendTo(tr);
-                        const td3 = $("<td/>");
-                        const a3 = $("<a/>");
-                        a3.attr("href", "<%=basePath%>jsp/deleteSaleGoods.jsp?gid=" + val.gid);
-                        a3.attr("onclick", "return confirmDelete()");
-                        a3.html("删除").appendTo(td3);
-                        td3.appendTo(tr);
-                        $("#resultTable").append(tr);
-                        totalPrice = val.number * val.price;
-                        allTotalPrice = allTotalPrice + totalPrice;
-                        temp++;
-                    })
+                        if(val.del===1) {
+                            const tr = $("<tr/>");
+                            const td1 = $("<td/>");
+                            td1.addClass("ring-in");
+                            const a1 = $("<a/>");
+                            a1.attr("href", "<%=basePath%>jsp/goodsDescribed.jsp?gid="
+                                + val.gid);
+                            a1.attr("target", "_blank");
+                            a1.addClass("at-in");
+                            const img1 = $("<img/>");
+                            let image1 = new Array();
+                            image1 = val.photo.split("&");
+                            img1.attr("src", "<%=basePath%>images/" + image1[0]);
+                            img1.addClass("img-responsive");
+                            img1.appendTo(a1);
+                            const div1 = $("<div/>");
+                            div1.addClass("sed");
+                            $("<h5/>").html("商品名：" + val.gname).appendTo(
+                                div1);
+                            $("<br/>").appendTo(div1);
+                            $("<p/>").html("发布时间：" + val.pdate).appendTo(
+                                div1);
+                            const div2 = $("<div/>");
+                            div2.addClass("clearfix");
+                            a1.appendTo(td1);
+                            div1.appendTo(td1);
+                            div2.appendTo(td1);
+                            td1.appendTo(tr);
+                            $("<td/>").html(val.number).appendTo(tr);
+                            $("<td/>").html(val.price).appendTo(tr);
+                            $("<td/>").html(val.carriage).appendTo(tr);
+                            $("<td/>").html(val.type).appendTo(tr);
+                            $("<td/>").html(val.usage).appendTo(tr);
+                            const td2 = $("<td/>");
+                            const a2 = $("<a/>");
+                            a2.attr("href", "<%=basePath%>jsp/editGoods.jsp?gid=" + val.gid);
+                            a2.html("修改").appendTo(td2);
+                            td2.appendTo(tr);
+                            const td3 = $("<td/>");
+                            const a3 = $("<a/>");
+                            a3.attr("href", "<%=basePath%>jsp/deleteSaleGoods.jsp?gid=" + val.gid);
+                            a3.attr("onclick", "return confirmDelete()");
+                            a3.html("删除").appendTo(td3);
+                            td3.appendTo(tr);
+                            $("#resultTable").append(tr);
+                            totalPrice = val.number * val.price;
+                            allTotalPrice = allTotalPrice + totalPrice;
+                            temp++;
+                        }
+                    });
                     if (temp == 0) {
                         $("#tempA").empty();
                         $("#resultTable").empty();
