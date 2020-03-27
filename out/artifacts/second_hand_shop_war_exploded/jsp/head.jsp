@@ -122,7 +122,9 @@
                                             <%
                                                 if (goodsList != null) {
                                                     if (goodsList.size() > 0) {
-                                                        for (int j = 0; j < goodsList.size(); j++) {
+                                                        int tem = goodsList.size();
+                                                        if(tem > 5)tem = 5;
+                                                        for (int j = 0; j < tem ; j++) {
                                                             goods = goodsList.get(j);
                                             %>
                                             <li><a
