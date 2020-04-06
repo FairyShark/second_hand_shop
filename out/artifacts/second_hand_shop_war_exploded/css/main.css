@@ -10054,6 +10054,17 @@ ul.memenu.skyblue {
     background-position: -60px 60px;
 }
 
+#collectiongoods {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    background-image: url(../images/scx.png);
+}
+
+#collectiongoods:hover {
+    background-image: url(../images/scx_act.png);
+}
+
 #salegoods {
     width: 60px;
     height: 60px;
@@ -10355,4 +10366,22 @@ ul.memenu.skyblue {
 
 #delete_2 {
     color: red;
+}
+
+.scdiv{
+	margin-top: 25px;
+	width: 250px;
+	height: 30px;
+}
+
+.sca{
+	font-size: 16px;
+	line-height: 30px;
+	text-decoration:none;
+	color: #7a7574;
+}
+
+.sca:hover{
+	text-decoration:none;
+	color: #5a5656;
 }

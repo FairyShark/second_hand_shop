@@ -61,8 +61,6 @@ public class AddGoodsServlet extends HttpServlet {
         if (described == "" || described == null)
             described = "‘›ŒﬁœÍœ∏–≈œ¢";
 
-        int message = 0;
-
         try {
             UserDao userDao = DAOFactory.getUserServiceInstance();
             String uname = userDao.queryUName(Integer.parseInt(uid));

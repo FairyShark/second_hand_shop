@@ -5,9 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/*
- * 已经销售的商品
- */
 public class AlreadySale {
 
     // 主键
@@ -77,6 +74,10 @@ public class AlreadySale {
         return saleTime;
     }
 
+    public void setSaleTime(String saleTime) {
+        this.saleTime = saleTime;
+    }
+
     public int getMonth() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = null;
@@ -89,10 +90,6 @@ public class AlreadySale {
         c.setTime(date);
         int smonth = c.get(Calendar.MONTH) + 1;
         return smonth;
-    }
-
-    public void setSaleTime(String saleTime) {
-        this.saleTime = saleTime;
     }
 
 }

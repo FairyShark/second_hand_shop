@@ -37,7 +37,7 @@ public class LoginFilter implements Filter {
                 || requestPath.endsWith("addToCart.jsp") || requestPath.endsWith("showMessage.jsp")
                 || requestPath.endsWith("adminGoods.jsp") || requestPath.endsWith("adminUser.jsp")
                 || requestPath.endsWith("adminOpe.jsp") || requestPath.endsWith("adminLog.jsp")
-                || requestPath.endsWith("adminVis.jsp"))) {
+                || requestPath.endsWith("adminVis.jsp") || requestPath.endsWith("collectionGoods.jsp"))) {
             request.getRequestDispatcher(loginPage).forward(request, response);
         } else {
             chain.doFilter(request, response);

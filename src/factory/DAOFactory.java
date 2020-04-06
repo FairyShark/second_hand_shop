@@ -17,6 +17,10 @@ public class DAOFactory {
         return new ShoppingCartService();
     }
 
+    public static CollectionDao getCollectionServiceInstance() throws Exception {
+        return new CollectionService();
+    }
+
     public static AlreadyBuyDao getAlreadyBuyServiceInstance() throws Exception {
         return new AlreadyBuyService();
     }
@@ -35,6 +39,10 @@ public class DAOFactory {
 
     public static OperationMesDao getOperationMesServiceInstance() throws Exception {
         return new OperationMesService();
+    }
+
+    public static UserTagDao getUserTagServiceInstance() throws Exception {
+        return new UserTagService();
     }
 
 }

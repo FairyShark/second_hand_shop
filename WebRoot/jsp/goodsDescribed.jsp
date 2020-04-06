@@ -5,6 +5,7 @@
 <%@ page import="bean.Goods" %>
 <%@ page import="java.util.List" %>
 <%@ page import="factory.DAOFactory" %>
+<%@ page import="dao.CollectionDao" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -119,6 +120,7 @@
                     </div>
                     <a id="carthref" href="<%=basePath%>jsp/addToCart.jsp?gid=<%=gid%>&buyNumber="
                        class="cart item_add" onclick="return editHref()">加入购物车</a>
+                       
                     <%
                         }
                         }else{
@@ -172,6 +174,22 @@
                     }
                 %>
             </div>
+            <div class="scdiv">
+                <%
+                    if(uid != 8 && sale_uid != uid){
+                    CollectionDao cd = DAOFactory.getCollectionServiceInstance();
+                    if(uid == 0 || !cd.judgeCollection(uid, gid)){
+                %>
+            <a class="sca"><img class="scimg" id="collectgoods" src="<%=basePath%>images/scj.png" onmouseover="scjimgover(this)" onmouseout="scjimgout(this)" onclick="collectiongoods(<%=uid%>)"/>（10000人气）</a>
+            <%
+                }else{
+            %>
+                <a class="sca"><img class="scimg" src="<%=basePath%>images/ysc.png"/>（10000人气）</a>
+                <%
+                    }
+                    }
+                %>
+            </div>
         </div>
         <%
             }
@@ -199,6 +217,14 @@
         });
     });
 
+    function scjimgover(x){
+    	x.src="<%=basePath%>images/scj_act.png";
+    }
+    
+    function scjimgout(x){
+    	x.src="<%=basePath%>images/scj.png";
+    }
+
     $(function () {
         const menu_ul = $('.menu-drop > li > ul'), menu_a = $('.menu-drop > li > a');
         menu_ul.hide();
@@ -225,6 +251,38 @@
         }
         var car = document.getElementById("carthref");
         car.href = car.href + number;
+    }
+
+    function collectiongoods(uid){
+        if(uid==0){
+            alert('请先登录！');
+        }else {
+            $.ajax({
+                type: "POST",
+                url: "AddCollectionServlet",
+                data: {
+                    Uid: <%=uid%>,
+                    Gid: <%=gid%>
+                },
+                dataType: "json",
+                async: false,
+                success: function (data) {
+
+                    if (data.isok === "1") {
+                        $('#collectgoods').removeAttr('onmouseover');
+                        $('#collectgoods').removeAttr('onmouseout');
+                        $('#collectgoods').removeAttr('src');
+                        $('#collectgoods').attr("src", "<%=basePath%>images/ysc.png");
+                        alert("收藏商品成功！");
+                    } else {
+                        alert("收藏失败！");
+                    }
+                },
+                error: function (err) {
+                    alert("error");
+                }
+            });
+        }
     }
 </script>
 <%

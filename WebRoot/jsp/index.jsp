@@ -136,6 +136,7 @@
     <a id="searchgoods" href="<%=basePath%>jsp/searchGoods.jsp" title="搜索">搜索</a>
     <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a> <a
         id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a> <a
+        id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a> <a
         id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 <script>

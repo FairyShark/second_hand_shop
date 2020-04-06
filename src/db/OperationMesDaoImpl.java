@@ -88,7 +88,7 @@ public class OperationMesDaoImpl implements OperationMesDao {
         pstmt.setInt(1, uid);
         pstmt.setInt(2, uid);
         pstmt.setString(3, uname);
-        pstmt.setString(4, uname);
+        pstmt.setString(4, '%' + uname + '%');
         pstmt.setString(5, userip);
         pstmt.setString(6, userip);
         pstmt.setString(7, otype);
