@@ -250,7 +250,7 @@ public class GoodsDaoImpl implements GoodsDao {
         List<Goods> goodsList = new ArrayList<Goods>();
         Goods goods;
         ResultSet rs = null;
-        String sql = "select gid,gname,price,gphoto,del from goods where gid != ? and types=? order by gid desc limit 4";
+        String sql = "select gid,gname,price,gphoto,del from goods where gid != ? and types=? order by gid desc";
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, gid);
         pstmt.setString(2, type);

@@ -217,7 +217,7 @@
                     if (data.isok === "1") {
                         clickSearch();
                     }else {
-                        alert("删除失败！");
+                        alert("删除失败，请重试！");
                     }
                     location.reload();
                 },

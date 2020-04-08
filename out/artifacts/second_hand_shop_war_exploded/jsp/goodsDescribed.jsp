@@ -141,7 +141,11 @@
                     List<Goods> latestGoods = dao.getLatestGoods(gid, type);
                     if (latestGoods != null) {
                         if (latestGoods.size() > 0) {
-                            for (int i = 0; i < latestGoods.size(); i++) {
+                            int flag = 4;
+                            if(latestGoods.size() < 4){
+                                flag = latestGoods.size();
+                            }
+                            for (int i = 0; i < flag; i++) {
                                 if (latestGoods.get(i).getDel() == 1) {
                                     String goodsName = latestGoods.get(i).getGname();
                                     String goodsHref = basePath + "jsp/goodsDescribed.jsp?gid=" + latestGoods.get(i).getGid();
@@ -165,6 +169,8 @@
                     <div class="clearfix"></div>
                 </div>
                 <%
+                                }else {
+                                    flag++;
                                 }
                             }
                         }
@@ -270,7 +276,7 @@
                         span.appendTo($(".sca"));
                         alert("收藏商品成功！");
                     } else {
-                        alert("收藏失败！");
+                        alert("收藏失败，请重试！");
                     }
                 },
                 error: function (err) {
@@ -305,7 +311,7 @@
                         span.html("(" + data.counts + "人气)");
                         span.appendTo($(".sca"));
                     } else {
-                        alert("取消收藏失败！");
+                        alert("取消收藏失败，请重试！");
                     }
                 },
                 error: function (err) {
@@ -335,7 +341,7 @@
                     }else if(data.isok === "2") {
                         alert("库存仅为" + data.number + ",请重新输入数量！");
                     }else {
-                        alert("添加失败！");
+                        alert("添加失败，请重试！");
                     }
                 },
                 error: function (err) {

@@ -16,6 +16,9 @@ public interface ShoppingCartDao {
     // 为指定id用户删除购物车内商品
     public boolean deleteGoods(int uid, int gid, int number) throws Exception;
 
+    // 为指定id用户修改购物车内商品数量
+    public boolean editGoods(int uid, int gid, int number) throws Exception;
+
     // 为指定id用户查询购物车所有商品
     public List<ShoppingCart> getAllGoods(int uid) throws Exception;
 

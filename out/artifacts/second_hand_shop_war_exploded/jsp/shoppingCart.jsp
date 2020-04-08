@@ -103,7 +103,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </td>
-                <td><%=number%>
+                <td><input id="goodsNumber<%=gid%>" class="goodsnumber" type="number" value="<%=number%>" disabled="disabled"/>
                 </td>
                 <td><%=price%>元</td>
                 <td><%=goods.getCarriage()%>元</td>
@@ -111,10 +111,12 @@
                 <%
                     if (goods.getDel() == 0) {
                 %>
+                <td><a href="javascript:">编辑</a></td>
                 <td><a href="javascript:" onclick="deletecartgoods(1, <%=gid%>, <%=number%>)">删除</a></td>
                 <%
                 } else {
                 %>
+                <td><a id="editGoods<%=gid%>" href="javascript:" onclick="editcartgoods(<%=gid%>)">编辑</a></td>
                 <td><a href="javascript:" onclick="deletecartgoods(0, <%=gid%>, <%=number%>)">删除</a></td>
                 <%
                     }
@@ -126,20 +128,19 @@
                 }
             %>
         </table>
-        <a>总计：<%=allTotalPrice%>元
-        </a>
         <%
+        if(cartList.size() != 0){
+        %>
+        <a>总计：<%=allTotalPrice%>元</a>
+        <%
+        }
             if (del == 0) {
         %>
-        <a class="to-buy" href="javascript:" onclick="nogoods()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
+        <a class="to-buy" href="javascript:" onclick="nogoods()">支付</a>
         <%
         } else if (cartList.size() > 0) {
         %>
-        <a class="to-buy" href="javascript:" onclick="buygoods()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
-        <%
-        } else {
-        %>
-        <a class="to-buy">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
+        <a class="to-buy" href="javascript:" onclick="buygoods()">支付</a>
         <%
                 }
             } catch (Exception e) {
@@ -178,7 +179,38 @@
                     }else if(data.isok === "2") {
                         alert("所购买的商品超出了现有库存，请修改后再进行支付！");
                     }else {
-                        alert("支付失败！");
+                        alert("支付失败，请重试！");
+                    }
+                    location.reload();
+                },
+                error: function (err) {
+                    alert("error");
+                }
+            });
+        }
+    }
+    
+    function editcartgoods(gid){
+    	if (document.getElementById(String("editGoods" + gid)).innerHTML ==="编辑") {
+            document.getElementById(String("goodsNumber" + gid)).disabled = false;
+            document.getElementById(String("editGoods" + gid)).innerHTML = "完成";
+        }else {
+            $.ajax({
+                type: "POST",
+                url: "EditCartGoodsServlet",
+                data: {
+                    Uid: <%=uid%>,
+                    Gid: Number(gid),
+                    Number: Number($(String("#goodsNumber" + gid)).val())
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.isok === "1") {
+                        alert("修改成功！");
+                    }else if(data.isok === "2") {
+                        alert("修改失败！该商品库存仅为：" + data.number + "件，请重试！");
+                    }else {
+                        alert("修改失败，请重试！");
                     }
                     location.reload();
                 },
@@ -203,7 +235,7 @@
                     dataType: "json",
                     success: function (data) {
                         if (data.isok === "0") {
-                            alert("删除失败！");
+                            alert("删除失败，请重试！");
                         }
                         location.reload();
                     },
@@ -224,7 +256,7 @@
                 dataType: "json",
                 success: function (data) {
                     if (data.isok === "0") {
-                        alert("删除失败！");
+                        alert("删除失败，请重试！");
                     }
                     location.reload();
                 },

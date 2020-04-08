@@ -169,7 +169,7 @@
                     }else if(data.isok === "2") {
                         alert("库存为0,无法添加！");
                     }else {
-                        alert("添加失败！");
+                        alert("添加失败，请重试！");
                     }
                 },
                 error: function (err) {

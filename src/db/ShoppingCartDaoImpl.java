@@ -92,13 +92,31 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         return false;
     }
 
+    // 修改购物车中的商品数量
+    @Override
+    public boolean editGoods(int uid, int gid, int number) throws Exception {
+        pstmt = null;
+        String sql = "update shoppingcart set number=? where uid=? and gid=?";
+        int result = 0;
+        pstmt = this.conn.prepareStatement(sql);
+        pstmt.setInt(1, number);
+        pstmt.setInt(2, uid);
+        pstmt.setInt(3, gid);
+        result = pstmt.executeUpdate();
+        pstmt.close();
+        if (result == 1) {
+            return true;
+        }
+        return false;
+    }
+
     // 获取购物车中的所有商品
     @Override
     public List<ShoppingCart> getAllGoods(int uid) throws Exception {
         pstmt = null;
         ResultSet rs = null;
         List<ShoppingCart> scList = null;
-        String sql = "select * from shoppingcart where uid=?";
+        String sql = "select * from shoppingcart where uid=? order by sdate desc";
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         rs = pstmt.executeQuery();

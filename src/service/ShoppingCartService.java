@@ -39,6 +39,14 @@ public class ShoppingCartService implements ShoppingCartDao {
     }
 
     @Override
+    public boolean editGoods(int uid, int gid, int number) throws Exception {
+        if (isInt(uid) && isInt(gid) && isInt(number)) {
+            return this.dao.editGoods(uid, gid, number);
+        }
+        return false;
+    }
+
+    @Override
     public List<ShoppingCart> getAllGoods(int uid) throws Exception {
         if (isInt(uid)) {
             return this.dao.getAllGoods(uid);
