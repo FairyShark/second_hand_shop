@@ -104,17 +104,17 @@
                                 int gid;
                                 String gusage;
                                 for (int i = 0; i < uidGoodsList.size(); i++) {
-                                    if(uidGoodsList.get(i).getDel()==1){
-                                    goods = uidGoodsList.get(i);
-                                    String[] photo = goods.getPhoto().split("&");
-                                    photoPath = basePath + "images/" + photo[0];
-                                    number = goods.getNumber();
-                                    price = goods.getPrice();
-                                    gid = goods.getGid();
-                                    gtype = goods.getType();
-                                    totalPrice = number * price;
-                                    allTotalPrice = allTotalPrice + totalPrice;
-                                    gusage = goods.getUsage();
+                                    if (uidGoodsList.get(i).getDel() == 1) {
+                                        goods = uidGoodsList.get(i);
+                                        String[] photo = goods.getPhoto().split("&");
+                                        photoPath = basePath + "images/" + photo[0];
+                                        number = goods.getNumber();
+                                        price = goods.getPrice();
+                                        gid = goods.getGid();
+                                        gtype = goods.getType();
+                                        totalPrice = number * price;
+                                        allTotalPrice = allTotalPrice + totalPrice;
+                                        gusage = goods.getUsage();
                 %>
                 <tr>
                     <td class="ring-in"><a
@@ -141,15 +141,11 @@
                     </td>
                     <td><%=gusage%>
                     </td>
-                    <td>
-                        <a
-                                href="<%=basePath%>jsp/editGoods.jsp?gid=<%=gid%>">修改</a></td>
-                    <td>
-                        <a href="<%=basePath%>jsp/deleteSaleGoods.jsp?gid=<%=gid%>"
-                           onclick="return confirmDelete()">删除</a></td>
+                    <td> <a href="<%=basePath%>jsp/editGoods.jsp?gid=<%=gid%>">修改</a></td>
+                    <td> <a href="javascript:" onclick="deletesalegoods(<%=gid%>)">删除</a></td>
                 </tr>
                 <%
-                            }
+                                }
                             }
                         }
                     }
@@ -163,6 +159,7 @@
 <div class="bottom_tools">
     <a id="addgoods" href="<%=basePath%>jsp/addGoods.jsp" title="发布商品" target="_blank">发布商品</a>
     <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 
@@ -204,6 +201,32 @@
             qrImg.fadeOut();
         });
     });
+
+    function  deletesalegoods(gid) {
+        if(confirm("确认删除该商品吗?")){
+            $.ajax({
+                type: "POST",
+                url: "DeleteSaleGoodsServlet",
+                data: {
+                    Uid: <%=uid%>,
+                    Gid: Number(gid),
+                    UserIP: '<%=userip%>'
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.isok === "1") {
+                        clickSearch();
+                    }else {
+                        alert("删除失败！");
+                    }
+                    location.reload();
+                },
+                error: function (err) {
+                    alert("error");
+                }
+            });
+        }
+    }
 
     function clickSearch() {
         const GoodsType = $("#Types").val();
@@ -251,7 +274,7 @@
                     let totalPrice = 0;
                     let allTotalPrice = 0;
                     $.each(json, function (i, val) {
-                        if(val.del===1) {
+                        if (val.del === 1) {
                             const tr = $("<tr/>");
                             const td1 = $("<td/>");
                             td1.addClass("ring-in");
@@ -291,8 +314,8 @@
                             td2.appendTo(tr);
                             const td3 = $("<td/>");
                             const a3 = $("<a/>");
-                            a3.attr("href", "<%=basePath%>jsp/deleteSaleGoods.jsp?gid=" + val.gid);
-                            a3.attr("onclick", "return confirmDelete()");
+                            a3.attr("href", "javascript:");
+                            a3.attr("onclick", "deletesalegoods(" + val.gid + ")");
                             a3.html("删除").appendTo(td3);
                             td3.appendTo(tr);
                             $("#resultTable").append(tr);

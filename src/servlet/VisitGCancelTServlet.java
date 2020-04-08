@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.GoodsDao;
+import dao.UserDao;
+import dao.UserTagDao;
 import dao.VisitMessageDao;
 import factory.DAOFactory;
 
@@ -35,6 +38,23 @@ public class VisitGCancelTServlet extends HttpServlet {
             if (uid != 8) {
                 VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
                 vmdao.addCancelTimeMes(uid, gid, landtime);
+                int visittime = vmdao.queryLasttime(uid, gid, landtime);
+                int weight = 0;
+                if(visittime<10){
+                    weight = 1;
+                }else if(visittime<30){
+                    weight = 2;
+                }else if(visittime<60){
+                    weight = 3;
+                }else {
+                    weight = 4;
+                }
+                UserDao ud = DAOFactory.getUserServiceInstance();
+                GoodsDao gd = DAOFactory.getGoodsServiceInstance();
+                String uname = ud.queryUName(uid);
+                String gtype = gd.queryTypesByGid(gid);
+                UserTagDao utd = DAOFactory.getUserTagServiceInstance();
+                utd.addUserTag(uid, uname, "ä¯ÀÀ", gtype, weight);
             }
         } catch (Exception e) {
             e.printStackTrace();

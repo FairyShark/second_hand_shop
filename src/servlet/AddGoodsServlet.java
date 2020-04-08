@@ -75,7 +75,7 @@ public class AddGoodsServlet extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath() + "/" + "jsp/addPhoto.jsp?gid=" + gid);
 
-            }else {
+            } else {
                 String truePath = request.getContextPath() + "/" + "jsp/addGoods.jsp";
                 PrintWriter out = response.getWriter();
                 out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");

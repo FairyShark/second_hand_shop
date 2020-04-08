@@ -12,6 +12,9 @@ public interface VisitMessageDao {
     //添加退出时间
     public boolean addCancelTimeMes(int uid, int gid, String landtime) throws Exception;
 
+    //查询停留时间
+    public int queryLasttime(int uid, int gid, String landtime) throws Exception;
+
     //查询登陆时间
     public String getVisitlandtime(int uid, int gid) throws Exception;
 

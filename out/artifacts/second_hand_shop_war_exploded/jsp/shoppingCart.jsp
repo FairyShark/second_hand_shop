@@ -83,15 +83,22 @@
                             加入购物车时间：<%=cart.getSdate()%>
                         </p>
                         <%
-                        if(goods.getDel()==0){
-                            del = 0;
+                            if (goods.getDel() == 0) {
+                                del = 0;
                         %>
                         <br>
                         <p id="delete_2">
-                            商品已失效，请删除！
+                            该商品已失效，请删除！
                         </p>
                         <%
-                            }
+                            }else if(goods.getNumber() < number){
+                        %>
+                        <br>
+                        <p id="delete_2">
+                            所选商品数量已超过库存，请修改购买数量或删除商品！
+                        </p>
+                        <%
+                        }
                         %>
                     </div>
                     <div class="clearfix"></div>
@@ -102,16 +109,13 @@
                 <td><%=goods.getCarriage()%>元</td>
                 <td><%=totalPrice%>元</td>
                 <%
-                    if(goods.getDel()==0){
+                    if (goods.getDel() == 0) {
                 %>
-                <td><a
-                        href="<%=basePath%>jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>">删除</a></td>
+                <td><a href="javascript:" onclick="deletecartgoods(1, <%=gid%>, <%=number%>)">删除</a></td>
                 <%
-                    }else{
+                } else {
                 %>
-                <td><a
-                        href="<%=basePath%>jsp/deleteCartGoods.jsp?gid=<%=gid%>&number=<%=number%>"
-                        onclick="return confirmDelete()">删除</a></td>
+                <td><a href="javascript:" onclick="deletecartgoods(0, <%=gid%>, <%=number%>)">删除</a></td>
                 <%
                     }
                 %>
@@ -127,12 +131,11 @@
         <%
             if (del == 0) {
         %>
-        <a class="to-buy" onclick="nogoods()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
+        <a class="to-buy" href="javascript:" onclick="nogoods()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
         <%
-        }else if (cartList.size() > 0) {
+        } else if (cartList.size() > 0) {
         %>
-        <a href="<%=basePath%>jsp/buyGoods.jsp" class="to-buy"
-           onclick="return confirmBuy()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
+        <a class="to-buy" href="javascript:" onclick="buygoods()">&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;</a>
         <%
         } else {
         %>
@@ -147,7 +150,7 @@
 </div>
 <div class="bottom_tools">
     <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a>
-    <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 
@@ -156,13 +159,82 @@
         alert("请删除失效的商品！");
     }
 
-    function confirmBuy() {
-        return confirm("确定支付吗？");
+    function confirmDelete() {
+        return confirm("确认删除商品吗");
     }
 
-    function confirmDelete() {
-        return confirm("确认删除订单吗");
+    function buygoods() {
+        if(confirm("确认支付吗？")){
+            $.ajax({
+                type: "POST",
+                url: "BuyGoodsServlet",
+                data: {
+                    Uid: <%=uid%>
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.isok === "1") {
+                        alert("支付成功！");
+                    }else if(data.isok === "2") {
+                        alert("所购买的商品超出了现有库存，请修改后再进行支付！");
+                    }else {
+                        alert("支付失败！");
+                    }
+                    location.reload();
+                },
+                error: function (err) {
+                    alert("error");
+                }
+            });
+        }
     }
+
+    function deletecartgoods(flag, gid, number){
+        if(flag===0) {
+            if(confirm("确认要删除此商品吗？")){
+                $.ajax({
+                    type: "POST",
+                    url: "DeleteCartGoodsServlet",
+                    data: {
+                        Uid: <%=uid%>,
+                        Gid: Number(gid),
+                        Number: Number(number)
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.isok === "0") {
+                            alert("删除失败！");
+                        }
+                        location.reload();
+                    },
+                    error: function (err) {
+                        alert("error");
+                    }
+                });
+            }
+        }else {
+            $.ajax({
+                type: "POST",
+                url: "DeleteCartGoodsServlet",
+                data: {
+                    Uid: <%=uid%>,
+                    Gid: Number(gid),
+                    Number: Number(number)
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.isok === "0") {
+                        alert("删除失败！");
+                    }
+                    location.reload();
+                },
+                error: function (err) {
+                    alert("error");
+                }
+            });
+        }
+    }
+
 
     $(function () {
         var $body = $(document.body);

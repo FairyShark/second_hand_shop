@@ -94,18 +94,18 @@
                                 float totalPrice;
                                 int gid;
                                 for (int i = 0; i < GoodsList.size(); i++) {
-                                    if(GoodsList.get(i).getDel()==1){
-                                    goods = GoodsList.get(i);
-                                    String[] photo = goods.getPhoto().split("&");
-                                    photoPath = basePath + "images/" + photo[0];
-                                    number = goods.getNumber();
-                                    price = goods.getPrice();
-                                    gid = goods.getGid();
-                                    gAdress = goods.getPaddress();
-                                    gtype = goods.getType();
-                                    gusage = goods.getUsage();
-                                    totalPrice = number * price;
-                                    allTotalPrice = allTotalPrice + totalPrice;
+                                    if (GoodsList.get(i).getDel() == 1) {
+                                        goods = GoodsList.get(i);
+                                        String[] photo = goods.getPhoto().split("&");
+                                        photoPath = basePath + "images/" + photo[0];
+                                        number = goods.getNumber();
+                                        price = goods.getPrice();
+                                        gid = goods.getGid();
+                                        gAdress = goods.getPaddress();
+                                        gtype = goods.getType();
+                                        gusage = goods.getUsage();
+                                        totalPrice = number * price;
+                                        allTotalPrice = allTotalPrice + totalPrice;
                 %>
                 <tr>
                     <td class="ring-in"><a
@@ -136,8 +136,8 @@
                     </td>
                 </tr>
                 <%
+                                    }
                                 }
-                            }
                             }
                         }
                     } catch (Exception e) {
@@ -248,7 +248,7 @@
                     $("#resultTable").append(tr);
                     let temp = 0;
                     $.each(json, function (i, val) {
-                        if(val.del===1) {
+                        if (val.del === 1) {
                             const tr = $("<tr/>");
                             const td1 = $("<td/>");
                             td1.addClass("ring-in");

@@ -78,7 +78,7 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
                 lasttime = Integer.parseInt(String.valueOf((date2.getTime() - date1.getTime()) / 1000));
 
                 pstmt = null;
-                sql = "update visitmessage set lasttime=?  where uid=? and gid=? and landtime=?;";
+                sql = "update visitmessage set lasttime=? where uid=? and gid=? and landtime=?;";
                 result = 0;
                 pstmt = this.conn.prepareStatement(sql);
                 pstmt.setInt(1, lasttime);
@@ -96,6 +96,22 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
             }
         }
         return false;
+    }
+
+    //查询停留时间
+    @Override
+    public int queryLasttime(int uid, int gid, String landtime) throws Exception {
+        int lasttime = 0;
+        ResultSet rs = null;
+        String sql = "select * from visitmessage where uid=? and gid=? and landtime=?;";
+        pstmt = this.conn.prepareStatement(sql);
+        pstmt.setInt(1, uid);
+        pstmt.setInt(2, gid);
+        pstmt.setString(3, landtime);
+        rs = pstmt.executeQuery();
+        rs.next();
+        lasttime = rs.getInt("lasttime");
+        return lasttime;
     }
 
     //查询登陆时间

@@ -97,64 +97,11 @@
                         if (c == 1) {
                     %>
                     <li class=" grid"><a href="<%=basePath%>jsp/index.jsp">首页</a></li>
-                    <li><a>分类</a>
-                        <div class="mepanel">
-                            <div class="row">
-                                <%
-                                    try {
-                                        GoodsDao dao = DAOFactory.getGoodsServiceInstance();
-                                        String[] types = dao.queryTypes();
-                                        if (types != null) {
-                                            if (types.length > 0) {
-                                                String type;
-                                                List<Goods> goodsList;
-                                                Goods goods;
-                                                for (int i = 0; i < types.length; i++) {
-                                                    if (types[i] != null & !"".equals(types[i])) {
-                                                        type = types[i];
-                                                        goodsList = dao.getTypeGoodsList(type);
-                                %>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4><%=type%>
-                                        </h4>
-                                        <ul>
-                                            <%
-                                                if (goodsList != null) {
-                                                    if (goodsList.size() > 0) {
-                                                        int tem = goodsList.size();
-                                                        if(tem > 5)tem = 5;
-                                                        for (int j = 0; j < tem ; j++) {
-                                                            goods = goodsList.get(j);
-                                            %>
-                                            <li><a
-                                                    href="<%=basePath%>jsp/goodsDescribed.jsp?gid=<%=goods.getGid()%>"
-                                                    target="_blank"><%=goods.getGname()%>
-                                            </a></li>
-                                            <%
-                                                        }
-                                                    }
-                                                }
-                                            %>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <%
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                %>
-                            </div>
-                        </div>
-                    </li>
                     <li><a href="<%=basePath%>jsp/saleGoods.jsp">出售二手</a></li>
                     <li><a href="<%=basePath%>jsp/shoppingCart.jsp">购物车</a></li>
                     <li><a href="<%=basePath%>jsp/alreadyBuy.jsp">购买记录</a></li>
                     <li><a href="<%=basePath%>jsp/alreadySale.jsp">销售记录</a></li>
+                    <li><a href="<%=basePath%>jsp/collectionGoods.jsp">收藏夹</a></li>
                     <%
                     } else {
                     %>

@@ -23,15 +23,16 @@ public class UserTagDaoImpl implements UserTagDao {
 
     //添加操作信息
     @Override
-    public boolean addUserTag(int uid, String uname, String acttype, String tagtype) throws Exception {
+    public boolean addUserTag(int uid, String uname, String acttype, String tagtype, int tagweight) throws Exception {
         pstmt = null;
-        String sql = "insert into usertag(uid,uname,acttype,tagtype,tagtime) value(?,?,?,?,now());";
+        String sql = "insert into usertag(uid,uname,acttype,tagtype,tagtime,tagweight) value(?,?,?,?,now(),?);";
         int result = 0;
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         pstmt.setString(2, uname);
         pstmt.setString(3, acttype);
         pstmt.setString(4, tagtype);
+        pstmt.setInt(5, tagweight);
         result = pstmt.executeUpdate();
         pstmt.close();
         if (result == 1) {

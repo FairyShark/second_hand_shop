@@ -48,44 +48,44 @@
 <h1>修改商品图片</h1>
 <div id="regist-main">
     <div id="registForm">
-<%
-    try {
-        GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
-        String photoPath = gdao.queryPho(GID);
-        String P1 = null;
-        String P2 = null;
-        String P3 = null;
-        if(!photoPath.equals("nophoto.jpg")) {
-            String[] GP = photoPath.split("&");
-            if (GP.length == 1) {
-                P1 = GP[0];
-                COUNTER = 1;
-            } else if (GP.length == 2) {
-                P1 = GP[0];
-                P2 = GP[1];
-                COUNTER = 2;
-            } else {
-                P1 = GP[0];
-                P2 = GP[1];
-                P3 = GP[2];
-                COUNTER = 3;
-            }
-        }
-%>
+        <%
+            try {
+                GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
+                String photoPath = gdao.queryPho(GID);
+                String P1 = null;
+                String P2 = null;
+                String P3 = null;
+                if (!photoPath.equals("nophoto.jpg")) {
+                    String[] GP = photoPath.split("&");
+                    if (GP.length == 1) {
+                        P1 = GP[0];
+                        COUNTER = 1;
+                    } else if (GP.length == 2) {
+                        P1 = GP[0];
+                        P2 = GP[1];
+                        COUNTER = 2;
+                    } else {
+                        P1 = GP[0];
+                        P2 = GP[1];
+                        P3 = GP[2];
+                        COUNTER = 3;
+                    }
+                }
+        %>
         <div id="div_imgfile">选择图片</div>
         <%
-            if(P3!=null){
+            if (P3 != null) {
 
         %>
         <input type="file" class="imgfile" accept=".png,.jpg,.jpeg" num="2">
         <%
             }
-            if(P2!=null){
+            if (P2 != null) {
         %>
         <input type="file" class="imgfile" accept=".png,.jpg,.jpeg" num="1">
         <%
             }
-            if(P1!=null){
+            if (P1 != null) {
         %>
         <input type="file" class="imgfile" accept=".png,.jpg,.jpeg" num="0">
         <%
@@ -93,7 +93,7 @@
         %>
         <div id="div_imglook">
             <%
-                if(P1!=null){
+                if (P1 != null) {
                     byte[] data = null;
                     try {
                         InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "\\" + P1);
@@ -106,7 +106,7 @@
                     BASE64Encoder encoder = new BASE64Encoder();
                     String chart = "\\.";
                     String IMGtype = P1.split(chart)[1];
-                    if(IMGtype.equals("jpg"))IMGtype="jpeg";
+                    if (IMGtype.equals("jpg")) IMGtype = "jpeg";
 
             %>
             <div class="lookimg" num="0"><img
@@ -118,20 +118,20 @@
             </div>
             <%
                 }
-                if(P2!=null){
+                if (P2 != null) {
                     byte[] data = null;
                     try {
                         InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "\\" + P2);
                         data = new byte[in.available()];
                         in.read(data);
-                         in.close();
+                        in.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     BASE64Encoder encoder = new BASE64Encoder();
                     String chart = "\\.";
                     String IMGtype = P2.split(chart)[1];
-                    if(IMGtype.equals("jpg"))IMGtype="jpeg";
+                    if (IMGtype.equals("jpg")) IMGtype = "jpeg";
             %>
             <div class="lookimg" num="1"><img
                     src="data:image/<%=IMGtype%>;base64,<%=encoder.encode(Objects.requireNonNull(data))%>">
@@ -142,7 +142,7 @@
             </div>
             <%
                 }
-                if(P3!=null){
+                if (P3 != null) {
                     byte[] data = null;
                     try {
                         InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "\\" + P3);
@@ -155,7 +155,7 @@
                     BASE64Encoder encoder = new BASE64Encoder();
                     String chart = "\\.";
                     String IMGtype = P3.split(chart)[1];
-                    if(IMGtype.equals("jpg"))IMGtype="jpeg";
+                    if (IMGtype.equals("jpg")) IMGtype = "jpeg";
             %>
             <div class="lookimg" num="2"><img
                     src="data:image/<%=IMGtype%>;base64,<%=encoder.encode(Objects.requireNonNull(data))%>">
@@ -173,11 +173,11 @@
         <div>
             <a type="button" href="javascript:void(0)" id="btn_ImgUpStart">确定上传</a>
             <%
-            if(uid==8){
+                if (uid == 8) {
             %>
             <a type="button" id="btn_T" href="<%=basePath%>jsp/adminGoods.jsp">完成</a>
             <%
-                }else{
+            } else {
             %>
             <a type="button" id="btn_T" href="<%=basePath%>jsp/saleGoods.jsp">完成</a>
             <%

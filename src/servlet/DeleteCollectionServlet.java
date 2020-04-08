@@ -13,14 +13,14 @@ import dao.UserDao;
 import dao.UserTagDao;
 import factory.DAOFactory;
 
-@WebServlet("/AddCollectionServlet")
-public class AddCollectionServlet extends HttpServlet {
+@WebServlet("/DeleteCollectionServlet")
+public class DeleteCollectionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddCollectionServlet() {
+    public DeleteCollectionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +34,13 @@ public class AddCollectionServlet extends HttpServlet {
         int gid = Integer.parseInt(request.getParameter("Gid"));
         try {
             CollectionDao cd = DAOFactory.getCollectionServiceInstance();
-            if (cd.addCollectionGoods(uid, gid)) {
+            if (cd.deleteCollectionGoods(uid, gid)) {
                 UserDao ud = DAOFactory.getUserServiceInstance();
                 GoodsDao gd = DAOFactory.getGoodsServiceInstance();
                 String uname = ud.queryUName(uid);
                 String gtype = gd.queryTypesByGid(gid);
                 UserTagDao utd = DAOFactory.getUserTagServiceInstance();
-                utd.addUserTag(uid, uname, "收藏", gtype, 5);
+                utd.addUserTag(uid, uname, "取消收藏", gtype, -5);
                 String jsonStr = "{\"isok\":\"1\", \"counts\": \"" + cd.getCount(gid) + "\"}";
                 response.getWriter().print(jsonStr);
             } else {

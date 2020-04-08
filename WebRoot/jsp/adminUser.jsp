@@ -50,10 +50,6 @@
                 + myDate.getMinutes() + "分" + myDate.getSeconds() + "秒";
             setTimeout("showtime()", 1000);
         }
-
-        function confirmDelete() {
-            return confirm("确认删除该会员吗，同时会清空该会员的售卖商品？");
-        }
     </script>
 </head>
 <body>
@@ -124,8 +120,7 @@
                     <td><%=lastlogin_t%>
                     </td>
                     <td><a href="<%=basePath%>jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
-                    <td><a href="<%=basePath%>jsp/deleteUser.jsp?uid=<%=uid_t%>"
-                           onclick="return confirmDelete()">删除</a></td>
+                    <td><a href="javascript:" onclick="deleteuser(<%=uid_t%>)">删除</a></td>
                 </tr>
                 <%
                             }
@@ -192,6 +187,31 @@
         });
     });
 
+    function  deleteuser(uid) {
+        if(confirm("确认删除该会员吗，同时会清空该会员的售卖商品？")){
+            $.ajax({
+                type: "GET",
+                url: "DeleteUserServlet",
+                data: {
+                    Uid: Number(uid),
+                    UserIP: '<%=userip%>'
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.isok === "1") {
+                        alert("删除成功！");
+                    }else {
+                        alert("删除失败！");
+                    }
+                    location.reload();
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        }
+    }
+
     function clickSearch() {
         let UserID = $("#user_id").val();
         let UserName = $("#user_name").val();
@@ -245,8 +265,8 @@
                             td1.appendTo(tr);
                             const td2 = $("<td/>");
                             const a2 = $("<a/>");
-                            a2.attr("href", "<%=basePath%>jsp/deleteUser.jsp?uid=" + val.uid);
-                            a2.attr("onclick", "return confirmDelete()");
+                            a2.attr("href", "javascript:");
+                            a2.attr("onclick", "deleteuser(" + val.uid + ")");
                             a2.html("删除").appendTo(td2);
                             td2.appendTo(tr);
                             $("#resultTable").append(tr);

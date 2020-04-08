@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Goods;
 import dao.UserDao;
+import dao.UserTagDao;
 import factory.DAOFactory;
 import dao.GoodsDao;
 import dao.OperationMesDao;
@@ -47,13 +48,17 @@ public class SelectGoodsServlet extends HttpServlet {
         GoodsDao goodsDao;
         List<Goods> list;
         try {
+            UserDao udao = DAOFactory.getUserServiceInstance();
+            String opuname = udao.queryUName(opuid);
             if (opuid == 8 || request.getParameter("OPT") != null) {
                 String userip = request.getParameter("Userip");
                 String opcontent = "查询商品信息：类型（" + gtype + "）,使用情况（" + usage + "）,价格（" + lowp + "~" + highp + "），关键词（" + gname + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-                UserDao udao = DAOFactory.getUserServiceInstance();
-                String opuname = udao.queryUName(opuid);
                 omdao.addOperationMes(opuid, opuname, userip, "查询", opcontent);
+            }
+            if(opuid != 8 && !gtype.equals("全部")) {
+                UserTagDao ud = DAOFactory.getUserTagServiceInstance();
+                ud.addUserTag(opuid, opuname, "搜索", gtype, 3);
             }
             goodsDao = DAOFactory.getGoodsServiceInstance();
             list = goodsDao.selectGoodsList(opuid, gtype, usage, lowp, highp, gname);

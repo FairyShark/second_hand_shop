@@ -34,7 +34,7 @@ public class LoginFilter implements Filter {
                 && (requestPath.endsWith("alreadyBuy.jsp") || requestPath.endsWith("shoppingCart.jsp")
                 || requestPath.endsWith("addGoods.jsp") || requestPath.endsWith("addPhoto.jsp")
                 || requestPath.endsWith("saleGoods.jsp") || requestPath.endsWith("alreadySale.jsp")
-                || requestPath.endsWith("addToCart.jsp") || requestPath.endsWith("showMessage.jsp")
+                || requestPath.endsWith("showMessage.jsp")
                 || requestPath.endsWith("adminGoods.jsp") || requestPath.endsWith("adminUser.jsp")
                 || requestPath.endsWith("adminOpe.jsp") || requestPath.endsWith("adminLog.jsp")
                 || requestPath.endsWith("adminVis.jsp") || requestPath.endsWith("collectionGoods.jsp"))) {

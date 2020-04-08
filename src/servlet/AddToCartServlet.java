@@ -1,26 +1,23 @@
 package servlet;
 
-import java.io.IOException;
+import dao.*;
+import factory.DAOFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-import dao.CollectionDao;
-import dao.GoodsDao;
-import dao.UserDao;
-import dao.UserTagDao;
-import factory.DAOFactory;
-
-@WebServlet("/AddCollectionServlet")
-public class AddCollectionServlet extends HttpServlet {
+@WebServlet("/AddToCartServlet")
+public class AddToCartServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddCollectionServlet() {
+    public AddToCartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +29,28 @@ public class AddCollectionServlet extends HttpServlet {
         // TODO Auto-generated method stub
         int uid = Integer.parseInt(request.getParameter("Uid"));
         int gid = Integer.parseInt(request.getParameter("Gid"));
+        int number = Integer.parseInt(request.getParameter("Number"));
         try {
-            CollectionDao cd = DAOFactory.getCollectionServiceInstance();
-            if (cd.addCollectionGoods(uid, gid)) {
-                UserDao ud = DAOFactory.getUserServiceInstance();
-                GoodsDao gd = DAOFactory.getGoodsServiceInstance();
-                String uname = ud.queryUName(uid);
-                String gtype = gd.queryTypesByGid(gid);
-                UserTagDao utd = DAOFactory.getUserTagServiceInstance();
-                utd.addUserTag(uid, uname, "收藏", gtype, 5);
-                String jsonStr = "{\"isok\":\"1\", \"counts\": \"" + cd.getCount(gid) + "\"}";
+            GoodsDao gd = DAOFactory.getGoodsServiceInstance();
+            if(gd.queryById(gid).getNumber() < number){
+                String jsonStr = "{\"isok\":\"2\", \"number\": \"" + gd.queryById(gid).getNumber() + "\"}";
                 response.getWriter().print(jsonStr);
-            } else {
-                String jsonStr = "{\"isok\":\"0\"}";
-                response.getWriter().print(jsonStr);
+            }else {
+                ShoppingCartDao dao = DAOFactory.getShoppingCartServiceInstance();
+                if (dao.addGoods(uid, gid, number)) {
+                    UserDao ud = DAOFactory.getUserServiceInstance();
+                    String uname = ud.queryUName(uid);
+                    String gtype = gd.queryTypesByGid(gid);
+                    UserTagDao utd = DAOFactory.getUserTagServiceInstance();
+                    utd.addUserTag(uid, uname, "加入购物车", gtype, 3);
+                    String jsonStr = "{\"isok\":\"1\"}";
+                    response.getWriter().print(jsonStr);
+                } else {
+                    String jsonStr = "{\"isok\":\"0\"}";
+                    response.getWriter().print(jsonStr);
+                }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,3 +65,4 @@ public class AddCollectionServlet extends HttpServlet {
     }
 
 }
+

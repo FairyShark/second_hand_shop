@@ -46,6 +46,15 @@ public class VisitMessageService implements VisitMessageDao {
         return null;
     }
 
+    //查询停留时间
+    @Override
+    public int queryLasttime(int uid, int gid, String landtime) throws Exception {
+        if (isInt(uid) && isInt(gid) && landtime != null) {
+            return this.dao.queryLasttime(uid, gid, landtime);
+        }
+        return 0;
+    }
+
     // 查询所有浏览信息
     @Override
     public List<VisitMessage> getAllVisitMessage() throws Exception {

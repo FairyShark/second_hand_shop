@@ -97,6 +97,48 @@
         <servlet-name>VisitGCancelTServlet</servlet-name>
         <servlet-class>servlet.VisitGCancelTServlet</servlet-class>
     </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>AddCollectionServlet</servlet-name>
+        <servlet-class>servlet.AddCollectionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>DeleteCollectionServlet</servlet-name>
+        <servlet-class>servlet.DeleteCollectionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>servlet.AddToCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>BuyGoodsServlet</servlet-name>
+        <servlet-class>servlet.BuyGoodsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>DeleteCartGoodsServlet</servlet-name>
+        <servlet-class>servlet.DeleteCartGoodsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>DeleteSaleGoodsServlet</servlet-name>
+        <servlet-class>servlet.DeleteSaleGoodsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>servlet.DeleteUserServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -153,6 +195,34 @@
     <servlet-mapping>
         <servlet-name>VisitGCancelTServlet</servlet-name>
         <url-pattern>/servlet/VisitGCancelTServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCollectionServlet</servlet-name>
+        <url-pattern>/servlet/AddCollectionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCollectionServlet</servlet-name>
+        <url-pattern>/servlet/DeleteCollectionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/servlet/AddToCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyGoodsServlet</servlet-name>
+        <url-pattern>/servlet/BuyGoodsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCartGoodsServlet</servlet-name>
+        <url-pattern>/servlet/DeleteCartGoodsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSaleGoodsServlet</servlet-name>
+        <url-pattern>/servlet/DeleteSaleGoodsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/servlet/DeleteUserServlet</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

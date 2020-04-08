@@ -72,8 +72,8 @@
             <div class="content-top1">
                 <%
                     }
-                            if(goodsList.get(i).getDel()==1){
-                                temp++;
+                    if (goodsList.get(i).getDel() == 1) {
+                        temp++;
                 %>
                 <div class="col-md-3 col-md2">
                     <div class="col-md1 simpleCart_shelfItem">
@@ -105,23 +105,23 @@
                             <%
                             } else {
                             %>
-                            <a
-                                    href="<%=basePath%>jsp/addToCart.jsp?gid=<%=goodsList.get(i).getGid()%>&buyNumber=1"
-                                    class="item_add">加入购物车</a>
-                            <%} %>
+                            <a href="javascript:" onclick="addtocart(<%=goodsList.get(i).getGid()%>)" class="item_add">加入购物车</a>
+                            <%
+                                }
+                            %>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
                 <%
                     }
-                            if (temp != 0) {
-                                if ((temp-1) % 4 == 3) {
+                    if (temp != 0) {
+                        if ((temp - 1) % 4 == 3) {
                 %>
                 <div class="clearfix"></div>
             </div>
             <%
-                            }
+                                }
                             }
                         }
                     }
@@ -134,10 +134,10 @@
 </div>
 <div class="bottom_tools">
     <a id="searchgoods" href="<%=basePath%>jsp/searchGoods.jsp" title="搜索">搜索</a>
-    <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a> <a
-        id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a> <a
-        id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a> <a
-        id="scrollUp" href="javascript:" title="回到顶部"></a>
+    <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a>
+    <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
+    <a id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a>
+    <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
 <script>
     $(function () {
@@ -148,6 +148,36 @@
             pager: true,
         });
     });
+
+    function addtocart(gid) {
+        let flag = <%=uid%>;
+        if(flag === 0){
+            alert("请先登录！");
+        }else {
+            $.ajax({
+                type: "POST",
+                url: "AddToCartServlet",
+                data: {
+                    Uid: <%=uid%>,
+                    Gid: Number(gid),
+                    Number: 1
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.isok === "1") {
+                        alert("添加到购物车成功！");
+                    }else if(data.isok === "2") {
+                        alert("库存为0,无法添加！");
+                    }else {
+                        alert("添加失败！");
+                    }
+                },
+                error: function (err) {
+                    alert("error");
+                }
+            });
+        }
+    }
 
     function showtime() {
         const myDate = new Date();

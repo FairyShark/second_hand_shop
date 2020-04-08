@@ -59,9 +59,9 @@ public class CollectionDaoImpl implements CollectionDao {
         pstmt.setInt(1, uid);
         pstmt.setInt(2, gid);
         rs = pstmt.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -86,6 +86,20 @@ public class CollectionDaoImpl implements CollectionDao {
             cList.add(ct);
         }
         return cList;
+    }
+
+    @Override
+    public int getCount(int gid) throws Exception {
+        pstmt = null;
+        ResultSet rs = null;
+        String sql = "select count(*) from collection where gid=?";
+        pstmt = this.conn.prepareStatement(sql);
+        pstmt.setInt(1, gid);
+        rs = pstmt.executeQuery();
+        int counts = 0;
+        rs.next();
+        counts = rs.getInt(1);
+        return counts;
     }
 
 }

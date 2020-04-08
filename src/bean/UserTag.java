@@ -12,6 +12,8 @@ public class UserTag {
     private String acttype;
     //标签类型
     private String tagtype;
+    //权重
+    private int tagweight;
     //标签时间
     private String tagtime;
 
@@ -53,6 +55,14 @@ public class UserTag {
 
     public String getTagtype() {
         return tagtype;
+    }
+
+    public void setTagweight(int tagweight) {
+        this.tagweight = tagweight;
+    }
+
+    public int getTagweight() {
+        return tagweight;
     }
 
     public void setTagtime(String tagtime) {

@@ -59,7 +59,7 @@
             <div class="content-top1">
                 <%
                     }
-                    if(goods.getDel()==1){
+                    if (goods.getDel() == 1) {
                         temp++;
                 %>
                 <div class="col-md-3 col-md2">
@@ -103,7 +103,7 @@
                 <%
                     }
                     if (temp != 0) {
-                        if ((temp-1) % 4 == 3) {
+                        if ((temp - 1) % 4 == 3) {
                 %>
                 <div class="clearfix"></div>
             </div>

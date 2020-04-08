@@ -2111,7 +2111,7 @@ pre code {
     }
 
     .col-sm-8 {
-        width: 66.66666667%;
+        width: 76.66666667%;
     }
 
     .col-sm-7 {
@@ -8733,7 +8733,7 @@ ul.nav.nav-pills {
 
     .h_menu4 {
         float: left;
-        width: 66.66%;
+        width: 76.66%;
     }
 
     .logo img {
@@ -8891,7 +8891,7 @@ ul.nav.nav-pills {
     }
 
     .h_menu4 {
-        width: 63%;
+        width: 73%;
     }
 
     .search {
@@ -9027,7 +9027,7 @@ ul.nav.nav-pills {
     }
 
     .h_menu4 {
-        width: 67%;
+        width: 77%;
     }
 
     .number {
@@ -9259,7 +9259,7 @@ ul.nav.nav-pills {
 
 @media ( max-width: 414px) {
     .h_menu4 {
-        width: 60%;
+        width: 70%;
     }
 
     .number {
@@ -9315,7 +9315,7 @@ ul.nav.nav-pills {
     }
 
     .h_menu4 {
-        width: 62%;
+        width: 92%;
     }
 
     .number {
@@ -10370,8 +10370,9 @@ ul.memenu.skyblue {
 
 .scdiv{
 	margin-top: 25px;
-	width: 250px;
+	width: 300px;
 	height: 30px;
+    display:block;
 }
 
 .sca{
@@ -10384,4 +10385,10 @@ ul.memenu.skyblue {
 .sca:hover{
 	text-decoration:none;
 	color: #5a5656;
+}
+.scimg{
+    float: left;
+}
+.rq{
+    float: left;
 }

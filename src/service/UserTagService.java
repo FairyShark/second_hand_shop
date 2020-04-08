@@ -21,9 +21,9 @@ public class UserTagService implements UserTagDao {
 
     //添加操作信息
     @Override
-    public boolean addUserTag(int uid, String uname, String acttype, String tagtype) throws Exception {
+    public boolean addUserTag(int uid, String uname, String acttype, String tagtype, int tagweight) throws Exception {
         if (isInt(uid) && uname != null && acttype != null && tagtype != null) {
-            return this.dao.addUserTag(uid, uname, acttype, tagtype);
+            return this.dao.addUserTag(uid, uname, acttype, tagtype, tagweight);
         }
         return false;
     }

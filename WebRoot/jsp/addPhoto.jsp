@@ -35,7 +35,7 @@
         </div>
         <p id="succ" class="ph_succ"></p>
         <div>
-            <a type="button" id="btn_ImgUpStart">确定上传</a>
+            <a type="button" id="btn_ImgUpStart" href="javascript:">确定上传</a>
             <a type="button" id="btn_T" href="<%=basePath%>jsp/saleGoods.jsp">完成</a>
         </div>
     </div>

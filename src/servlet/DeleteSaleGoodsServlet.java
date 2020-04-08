@@ -7,20 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CollectionDao;
-import dao.GoodsDao;
-import dao.UserDao;
-import dao.UserTagDao;
+import dao.*;
 import factory.DAOFactory;
 
-@WebServlet("/AddCollectionServlet")
-public class AddCollectionServlet extends HttpServlet {
+@WebServlet("/DeleteSaleGoodsServlet")
+public class DeleteSaleGoodsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddCollectionServlet() {
+    public DeleteSaleGoodsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +29,16 @@ public class AddCollectionServlet extends HttpServlet {
         // TODO Auto-generated method stub
         int uid = Integer.parseInt(request.getParameter("Uid"));
         int gid = Integer.parseInt(request.getParameter("Gid"));
+        String userip = request.getParameter("UserIP");
         try {
-            CollectionDao cd = DAOFactory.getCollectionServiceInstance();
-            if (cd.addCollectionGoods(uid, gid)) {
-                UserDao ud = DAOFactory.getUserServiceInstance();
-                GoodsDao gd = DAOFactory.getGoodsServiceInstance();
-                String uname = ud.queryUName(uid);
-                String gtype = gd.queryTypesByGid(gid);
-                UserTagDao utd = DAOFactory.getUserTagServiceInstance();
-                utd.addUserTag(uid, uname, "收藏", gtype, 5);
-                String jsonStr = "{\"isok\":\"1\", \"counts\": \"" + cd.getCount(gid) + "\"}";
+            GoodsDao gdao = DAOFactory.getGoodsServiceInstance();
+            if (gdao.deleteGoods(gid)) {
+                String opcontent = "删除在售商品:商品ID（" + gid + "）";
+                OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+                UserDao udao = DAOFactory.getUserServiceInstance();
+                String uname = udao.queryUName(uid);
+                omdao.addOperationMes(uid, uname, userip, "删除", opcontent);
+                String jsonStr = "{\"isok\":\"1\"}";
                 response.getWriter().print(jsonStr);
             } else {
                 String jsonStr = "{\"isok\":\"0\"}";

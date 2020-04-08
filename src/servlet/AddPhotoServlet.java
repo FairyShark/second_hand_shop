@@ -41,11 +41,11 @@ public class AddPhotoServlet extends HttpServlet {
 
         try {
             GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-            if(lookIndex.equals("0")) goodsDao.addPho(Integer.parseInt(gid), "nophoto.jpg");
+            if (lookIndex.equals("0")) goodsDao.addPho(Integer.parseInt(gid), "nophoto.jpg");
 
             String Path = request.getSession().getServletContext().getRealPath("/images");
 
-            if(imgFormat.equals("jpeg"))imgFormat="jpg";
+            if (imgFormat.equals("jpeg")) imgFormat = "jpg";
             String imgName = gid + lookIndex + "." + imgFormat;
             String imgFilePath = Path + "\\" + imgName;
             String partSeparator = ",";
@@ -80,7 +80,7 @@ public class AddPhotoServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(out != null) {
+            if (out != null) {
                 out.flush();
                 out.close();
             }

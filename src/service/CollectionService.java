@@ -51,6 +51,14 @@ public class CollectionService implements CollectionDao {
         return null;
     }
 
+    @Override
+    public int getCount(int gid) throws Exception {
+        if (isInt(gid)) {
+            return this.dao.getCount(gid);
+        }
+        return 0;
+    }
+
     public boolean isInt(int index) {
         if (index == 0) {
             return false;
