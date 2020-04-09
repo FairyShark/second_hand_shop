@@ -1,9 +1,9 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
+import java.util.Objects;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,34 +13,30 @@ import bean.Goods;
 import dao.GoodsDao;
 import dao.OperationMesDao;
 import dao.UserDao;
+
 import factory.DAOFactory;
 
+@WebServlet("/EditGoodsServlet")
 public class EditGoodsServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public EditGoodsServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-    public void destroy() {
-        super.destroy();
-
-    }
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        this.doPost(request, response);
-    }
-
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
         HttpSession session = request.getSession();
         String uid = String.valueOf(session.getAttribute("uid"));
 
         String userip = request.getParameter("userip");
-
         String gid = request.getParameter("Gid");
         String gname = request.getParameter("Gname");
         String number = request.getParameter("Number");
@@ -51,17 +47,17 @@ public class EditGoodsServlet extends HttpServlet {
         String paddress = request.getParameter("Paddress");
         String described = request.getParameter("Described");
 
-        if (number == "" || number == null)
+        if (Objects.equals(number, "") || number == null)
             number = "1";
-        if (carriage == "" || carriage == null)
+        if (Objects.equals(carriage, "") || carriage == null)
             carriage = "0";
-        if (type == "" || type == null)
+        if (Objects.equals(type, "") || type == null)
             type = "其它";
-        if (usage == "" || usage == null)
+        if (Objects.equals(usage, "") || usage == null)
             usage = "未知";
-        if (paddress == "" || paddress == null)
+        if (Objects.equals(paddress, "") || paddress == null)
             paddress = "未知";
-        if (described == "" || described == null)
+        if (Objects.equals(described, "") || described == null)
             described = "暂无详细信息";
 
         GoodsDao goodsDao;
@@ -71,45 +67,28 @@ public class EditGoodsServlet extends HttpServlet {
             String uname = goodsDao.queryById(Integer.parseInt(gid)).getUname();
             Goods goods = new Goods(Integer.parseInt(gid), Integer.parseInt(uid), uname, gname, Integer.parseInt(number), type, usage, Float.parseFloat(price), Float.parseFloat(carriage), paddress, described);
             if (goodsDao.editInfo(goods)) {
-                try {
-                    String uname_t = userDao.queryUName(Integer.parseInt(uid));
-                    String opcontent = "修改商品：商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（" + usage + "）,发货地（" + paddress + "）,描述（" + described + "）";
-                    OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-                    omdao.addOperationMes(Integer.parseInt(uid), uname_t, userip, "修改", opcontent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                response.sendRedirect(request.getContextPath() + "/jsp/editPhoto.jsp?gid=" + gid);
-                return;
+                String uname_t = userDao.queryUName(Integer.parseInt(uid));
+                String opcontent = "修改商品：商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（" + usage + "）,发货地（" + paddress + "）,描述（" + described + "）";
+                OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+                omdao.addOperationMes(Integer.parseInt(uid), uname_t, userip, "修改", opcontent);
+                String jsonStr = "{\"isok\":\"1\", \"gid\": \"" + gid + "\"}";
+                response.getWriter().print(jsonStr);
+            }else {
+                String jsonStr = "{\"isok\":\"0\"}";
+                response.getWriter().print(jsonStr);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String truePath = request.getContextPath() + "/" + "jsp/saleGoods.jsp";
-        PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-        out.println("<HTML>");
-        out.println("  <HEAD><TITLE>修改商品</TITLE>");
-        out.println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath
-                + "\">");
-        out.println("</HEAD>");
-        out.println("  <BODY>");
-        out.print("<div align=\"center\">");
-        out.print("修改商品失败，请重试！");
-        out.print("<br/>");
-        out.print("将自动跳转到相应页面");
-        out.print("<br/>");
-        out.print("或点击这里：");
-        out.print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
-        out.print("</div>");
-        out.println("  </BODY>");
-        out.println("</HTML>");
-        out.flush();
-        out.close();
     }
 
-    public void init() throws ServletException {
-
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doPost(request, response);
     }
 
 }
+

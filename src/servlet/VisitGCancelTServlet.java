@@ -39,14 +39,14 @@ public class VisitGCancelTServlet extends HttpServlet {
                 VisitMessageDao vmdao = DAOFactory.getVisitMessageServiceInstance();
                 vmdao.addCancelTimeMes(uid, gid, landtime);
                 int visittime = vmdao.queryLasttime(uid, gid, landtime);
-                int weight = 0;
-                if(visittime<10){
+                int weight;
+                if (visittime < 10) {
                     weight = 1;
-                }else if(visittime<30){
+                } else if (visittime < 30) {
                     weight = 2;
-                }else if(visittime<60){
+                } else if (visittime < 60) {
                     weight = 3;
-                }else {
+                } else {
                     weight = 4;
                 }
                 UserDao ud = DAOFactory.getUserServiceInstance();

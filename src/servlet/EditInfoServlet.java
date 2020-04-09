@@ -1,9 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,32 +10,28 @@ import javax.servlet.http.HttpSession;
 
 import dao.OperationMesDao;
 import dao.UserDao;
+
 import factory.DAOFactory;
 
+@WebServlet("/EditInfoServlet")
 public class EditInfoServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public EditInfoServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-    public void destroy() {
-        super.destroy();
-
-    }
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        this.doPost(request, response);
-    }
-
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-
         HttpSession session = request.getSession();
-
         String uid = request.getParameter("userid");
         String userip = request.getParameter("userip");
         String email = request.getParameter("Email");
@@ -47,46 +42,27 @@ public class EditInfoServlet extends HttpServlet {
             userDao = DAOFactory.getUserServiceInstance();
             if (userDao.editEmail(Integer.parseInt(uid), email)
                     && userDao.editPasswd(Integer.parseInt(uid), passwd)) {
-                try {
-                    String uname = userDao.queryUName(Integer.parseInt(String.valueOf(session.getAttribute("uid"))));
-                    String opcontent = "修改会员信息：名字（" + userDao.queryUName(Integer.parseInt(uid)) + "）,邮箱（" + email + "）,密码（" + passwd + "）";
-                    OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-                    omdao.addOperationMes(Integer.parseInt(String.valueOf(session.getAttribute("uid"))), uname, userip, "修改", opcontent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                response.sendRedirect(request.getContextPath() + "/" + "jsp/showMessage.jsp?uid=" + uid);
-
+                String uname = userDao.queryUName(Integer.parseInt(String.valueOf(session.getAttribute("uid"))));
+                String opcontent = "修改会员信息：名字（" + userDao.queryUName(Integer.parseInt(uid)) + "）,邮箱（" + email + "）,密码（" + passwd + "）";
+                OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
+                omdao.addOperationMes(Integer.parseInt(String.valueOf(session.getAttribute("uid"))), uname, userip, "修改", opcontent);
+                String jsonStr = "{\"isok\":\"1\"}";
+                response.getWriter().print(jsonStr);
             } else {
-                String truePath = request.getContextPath() + "/" + "jsp/showMessage.jsp?uid=" + uid;
-                PrintWriter out = response.getWriter();
-                out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-                out.println("<HTML>");
-                out.println("  <HEAD><TITLE>修改个人信息</TITLE>");
-                out.println("<meta http-equiv=\"refresh\" content=\"5;url=" + truePath
-                        + "\">");
-                out.println("</HEAD>");
-                out.println("  <BODY>");
-                out.print("<div align=\"center\">");
-                out.print("修改个人信息失败,邮箱地址已使用！");
-                out.print("<br/>");
-                out.print("将自动跳转到相应页面");
-                out.print("<br/>");
-                out.print("或点击这里：");
-                out.print("<a href=\"" + truePath + "\"" + ">返回" + "</a>");
-                out.print("</div>");
-                out.println("  </BODY>");
-                out.println("</HTML>");
-                out.flush();
-                out.close();
+                String jsonStr = "{\"isok\":\"0\"}";
+                response.getWriter().print(jsonStr);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void init() throws ServletException {
-
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doPost(request, response);
     }
 
 }

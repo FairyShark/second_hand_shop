@@ -7,28 +7,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72f6ea3-cc90-47f6-a687-29fd0b06cdd2" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/src/servlet/EditCartGoodsServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/GoodsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/GoodsDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/VisitMessageDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/VisitMessageDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/adminGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/adminGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/ShoppingCartDaoImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/ShoppingCartDaoImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/ShoppingCartDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/db/ShoppingCartDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/ShoppingCartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/classes/service/ShoppingCartService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/css/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/css/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/addGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/addGoods.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebRoot/jsp/adminUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/adminUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/goodsDescribed.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/goodsDescribed.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/saleGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/saleGoods.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/shoppingCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/shoppingCart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/GoodsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/GoodsDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/VisitMessageDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/VisitMessageDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/addPhoto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/addPhoto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/goodsDescribed.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/goodsDescribed.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/shoppingCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/shoppingCart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/ShoppingCartDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ShoppingCartDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/GoodsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/GoodsDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/ShoppingCartDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/ShoppingCartDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/ShoppingCartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/ShoppingCartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/editGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/editGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/jsp/showMessage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/jsp/showMessage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/ShoppingCartDaoImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/ShoppingCartDaoImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/ShoppingCartDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/db/ShoppingCartDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/ShoppingCartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/classes/service/ShoppingCartService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/adminUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleGoods.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/second_hand_shop_war_exploded/jsp/saleGoods.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/AddGoodsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/AddGoodsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/BuyGoodsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/BuyGoodsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/DeleteUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/DeleteUserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/EditGoodsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/EditGoodsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/EditInfoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/EditInfoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/LogCancelTServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/LogCancelTServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/RegisterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servlet/VisitGCancelTServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlet/VisitGCancelTServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +127,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.29" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.29" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -341,7 +348,9 @@
       <workItem from="1586274049960" duration="8000" />
       <workItem from="1586314207940" duration="14562000" />
       <workItem from="1586341075780" duration="9965000" />
-      <workItem from="1586356027864" duration="5043000" />
+      <workItem from="1586356027864" duration="5169000" />
+      <workItem from="1586361227081" duration="177000" />
+      <workItem from="1586405831299" duration="18141000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1584091990833</created>
@@ -490,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586352685218</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="commit">
+      <created>1586361134149</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1586361134149</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,10 +580,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="198" key="#项目结构/0.0.1920.1080@0.0.1920.1080" timestamp="1584101031994" />
-    <state x="309" y="124" key="CommitChangelistDialog2" timestamp="1586352674768">
+    <state x="309" y="124" key="CommitChangelistDialog2" timestamp="1586361131162">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="309" y="124" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1586352674768" />
+    <state x="309" y="124" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1586361131162" />
     <state x="609" y="295" key="DetectedRootsChooserDialog" timestamp="1584100514073">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -580,54 +596,54 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="654" y="453" key="Github.ShareDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584079026472" />
-    <state width="1293" height="229" key="GridCell.Tab.0.bottom" timestamp="1586360933795">
+    <state width="1293" height="229" key="GridCell.Tab.0.bottom" timestamp="1586444148721">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933795" />
-    <state width="1293" height="229" key="GridCell.Tab.0.center" timestamp="1586360933795">
+    <state width="1293" height="229" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148721" />
+    <state width="1293" height="229" key="GridCell.Tab.0.center" timestamp="1586444148721">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933795" />
-    <state width="1293" height="229" key="GridCell.Tab.0.left" timestamp="1586360933795">
+    <state width="1293" height="229" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148721" />
+    <state width="1293" height="229" key="GridCell.Tab.0.left" timestamp="1586444148721">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933795" />
-    <state width="1293" height="229" key="GridCell.Tab.0.right" timestamp="1586360933795">
+    <state width="1293" height="229" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148721" />
+    <state width="1293" height="229" key="GridCell.Tab.0.right" timestamp="1586444148721">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933795" />
-    <state width="1293" height="229" key="GridCell.Tab.1.bottom" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148721" />
+    <state width="1293" height="229" key="GridCell.Tab.1.bottom" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
-    <state width="1293" height="229" key="GridCell.Tab.1.center" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
+    <state width="1293" height="229" key="GridCell.Tab.1.center" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
-    <state width="1293" height="229" key="GridCell.Tab.1.left" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
+    <state width="1293" height="229" key="GridCell.Tab.1.left" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
-    <state width="1293" height="229" key="GridCell.Tab.1.right" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
+    <state width="1293" height="229" key="GridCell.Tab.1.right" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
-    <state width="1293" height="229" key="GridCell.Tab.2.bottom" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
+    <state width="1293" height="229" key="GridCell.Tab.2.bottom" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
-    <state width="1293" height="229" key="GridCell.Tab.2.center" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
+    <state width="1293" height="229" key="GridCell.Tab.2.center" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
-    <state width="1293" height="229" key="GridCell.Tab.2.left" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
+    <state width="1293" height="229" key="GridCell.Tab.2.left" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
-    <state width="1293" height="229" key="GridCell.Tab.2.right" timestamp="1586360933738">
+    <state width="1293" height="229" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
+    <state width="1293" height="229" key="GridCell.Tab.2.right" timestamp="1586444148604">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1293" height="229" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586360933738" />
+    <state width="1293" height="229" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586444148604" />
     <state width="1293" height="275" key="GridCell.Tab.3.bottom" timestamp="1584371765611">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -664,14 +680,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1584341406356" />
-    <state x="335" y="155" key="SettingsEditor" timestamp="1586142067417">
+    <state x="335" y="155" key="SettingsEditor" timestamp="1586361205406">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="335" y="155" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586142067417" />
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1586352735119">
+    <state x="335" y="155" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586361205406" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1586361404480">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1586352735119" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1586361404480" />
     <state x="553" y="474" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584100695196">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

@@ -206,7 +206,7 @@
                     location.reload();
                 },
                 error: function (err) {
-                    alert(JSON.stringify(err));
+                    alert("error");
                 }
             });
         }
@@ -296,7 +296,7 @@
     }
 
     document.onkeydown = function (event) {
-        e = event ? event : (window.event ? window.event : null);
+        const e = event ? event : (window.event ? window.event : null);
         if (e.keyCode === 13) {
             clickSearch();
         }

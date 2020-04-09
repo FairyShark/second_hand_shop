@@ -38,25 +38,25 @@ public class DeleteUserServlet extends HttpServlet {
             AlreadySaleDao asDao = DAOFactory.getAlreadySaleServiceInstance();
             List<Goods> uidGoodsList = goodsDao.getUidGoodsList(uid);
             if (userDao.deleteUser(uid)) {
-                String opcontent = "删除会员及其所有商品:会员ID（" + uid + "）";
+                StringBuilder opcontent = new StringBuilder("删除会员及其所有商品:会员ID（" + uid + "）");
 
                 if (uidGoodsList != null) {
                     if (uidGoodsList.size() > 0) {
                         Goods goods;
                         int gid;
-                        opcontent += "。 同时删除的商品：";
-                        for (int i = 0; i < uidGoodsList.size(); i++) {
-                            goods = uidGoodsList.get(i);
+                        opcontent.append("。 同时删除的商品：");
+                        for (Goods value : uidGoodsList) {
+                            goods = value;
                             gid = goods.getGid();
                             goodsDao.deleteGoods(gid);
                             abDao.deleteBuyGoods(gid);
                             asDao.deleteSaleGoods(gid);
-                            opcontent += "商品ID（" + gid + ");";
+                            opcontent.append("商品ID（").append(gid).append(");");
                         }
                     }
                 }
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
-                omdao.addOperationMes(8, "admin", userip, "删除", opcontent);
+                omdao.addOperationMes(8, "admin", userip, "删除", opcontent.toString());
                 String jsonStr = "{\"isok\":\"1\"}";
                 response.getWriter().print(jsonStr);
             } else {

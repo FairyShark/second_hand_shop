@@ -201,12 +201,12 @@
                     if (data.isok === "1") {
                         alert("删除成功！");
                     }else {
-                        alert("删除失败！");
+                        alert("删除失败，请重试！");
                     }
                     location.reload();
                 },
                 error: function (err) {
-                    alert(JSON.stringify(err));
+                    alert("error");
                 }
             });
         }
@@ -296,7 +296,7 @@
     }
 
     document.onkeydown = function (event) {
-        e = event ? event : (window.event ? window.event : null);
+        const e = event ? event : (window.event ? window.event : null);
         if (e.keyCode === 13) {
             clickSearch();
         }

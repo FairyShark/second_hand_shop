@@ -38,14 +38,14 @@ public class BuyGoodsServlet extends HttpServlet {
             UserTagDao utd = DAOFactory.getUserTagServiceInstance();
             String uname = ud.queryUName(uid);
             List<ShoppingCart> sclist = scDao.getAllGoods(uid);
-            for(int i = 0; i < sclist.size(); i++){
-                if(gd.queryById(sclist.get(i).getGid()).getNumber() < sclist.get(i).getNumber()){
+            for (ShoppingCart shoppingCart : sclist) {
+                if (gd.queryById(shoppingCart.getGid()).getNumber() < shoppingCart.getNumber()) {
                     flag = 1;
                 }
             }
             if(flag==0) {
-                for (int i = 0; i < sclist.size(); i++) {
-                    String gtype = gd.queryTypesByGid(sclist.get(i).getGid());
+                for (ShoppingCart shoppingCart : sclist) {
+                    String gtype = gd.queryTypesByGid(shoppingCart.getGid());
                     utd.addUserTag(uid, uname, "¹ºÂò", gtype, 8);
                 }
                 if (scDao.payAllGoods(uid)) {

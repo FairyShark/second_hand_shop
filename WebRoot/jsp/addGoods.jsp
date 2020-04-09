@@ -23,6 +23,7 @@
     <script src="<%=basePath%>js/form.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/validator.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/autowired.validator.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
     <script type="text/javascript">
 
         const _gaq = _gaq || [];
@@ -43,8 +44,7 @@
 <body>
 <h1>发布二手商品</h1>
 <div id="regist-main">
-    <form id="registForm" action="servlet/AddGoodsServlet" method="post">
-        <input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
+    <div id="registForm">
         <div class="pub_1">
             <div class="pub_2">
                 <div class="pub_3">
@@ -117,13 +117,70 @@
         <div class="registError"></div>
         <div class="pub_5">
             <div class="pub_6">
-                <input type="submit" value="下一步" class="btn-submit-reg"> <input
-                    type="button" value="取消" class="btn-submit-reg" onclick="goback()">
+                <input type="button" value="下一步" class="btn-submit-reg" onclick="addgoods()">
+                <input type="button" value="取消" class="btn-submit-reg" onclick="goback()">
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <script type="text/javascript">
+    function addgoods() {
+        const Gname = String($('#Gname').val());
+        const Price = String($('#Price').val());
+        const Number = String($('#Number').val());
+        const Carriage = String($('#Carriage').val());
+        const Usage = String($('#Usage').val());
+        const Paddress = String($('#Paddress').val());
+        const Types = String($('#Types').val());
+        const Described = String($('#Described').val());
+        if (Gname !== "" && Price !== "") {
+            const re = /(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/;
+            if(re.test(Price)) {
+                $.ajax({
+                    type: "POST",
+                    url: "AddGoodsServlet",
+                    data: {
+                        Gname: Gname,
+                        Price: Price,
+                        Number: Number,
+                        Carriage: Carriage,
+                        Usage: Usage,
+                        Paddress: Paddress,
+                        Types: Types,
+                        Described: Described,
+                        userip: '<%=userip%>'
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.isok === "1") {
+                            alert("发布商品成功，快来给你的商品添加图片吧!");
+                            window.location.href = "<%=basePath%>jsp/addPhoto.jsp?gid=" + data.gid;
+                        } else {
+                            alert("发布商品失败，请重试!");
+                            window.location.href = "<%=basePath%>jsp/saleGoods.jsp";
+                        }
+                    },
+                    error: function (err) {
+                        alert("error");
+                    }
+                });
+            }else {
+                alert("请输入正确的商品价格:整数或者保留两位小数");
+            }
+        } else if (Gname === "") {
+            alert("请输入发布的商品名！");
+        } else if (Price === "") {
+            alert("请输入商品价格！");
+        }
+    }
+
+    document.onkeydown = function (event) {
+        const e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode === 13) {
+            addgoods();
+        }
+    };
+
     function goback() {
         location.href = document.referrer;
     }
