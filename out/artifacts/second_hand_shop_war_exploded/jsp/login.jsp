@@ -5,6 +5,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
+
     InetAddress ip4 = Inet4Address.getLocalHost();
     String userip = ip4.getHostAddress();
 %>
@@ -40,8 +41,7 @@
 <body>
 <h1>登录</h1>
 <div id="regist-main">
-    <form id="registForm" action="servlet/LoginServlet" method="post">
-        <input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
+    <div id="registForm">
         <ol>
             <li class="re_li0"><label for="uname">用户名： <span class="kitjs-validator" for="@uname"
                                                              rules="[{notNull:true, message:'用户名不能为空'}]"></span></label>
@@ -58,14 +58,60 @@
         <div class="registError"></div>
         <div class="outer_log">
             <div class="but_log">
-                <input type="submit" value="登录" class="btn-submit-log"/>
-                <a type="button" class="btn-submit-log" href="<%=basePath%>jsp/register.jsp">注册</a>
-                <input type="button" value="取消" class="btn-submit-log" onclick="goback()"/>
+                <a href="javascript:" class="btn-submit-log" onclick="userlogin()">登陆</a>
+                <a class="btn-submit-log" href="<%=basePath%>jsp/register.jsp">注册</a>
+                <a href="javascript:" class="btn-submit-log" onclick="goback()">取消</a>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <script type="text/javascript">
+    function userlogin() {
+        const uname = String($('#uname').val());
+        const passwd = String($('#passwd').val());
+        if(uname !== "" && passwd !== "") {
+            if(passwd.length >= 6) {
+                $.ajax({
+                    type: "POST",
+                    url: "LoginServlet",
+                    data: {
+                        uname: uname,
+                        passwd: passwd,
+                        userip: '<%=userip%>'
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.isok === "1") {
+                            alert("不存在该用户，请重新输入!");
+                            location.reload();
+                        } else if (data.isok === "2") {
+                            alert("密码错误，请重新输入!");
+                            $('#passwd').val("");
+                        } else if (data.isok === "3") {
+                            window.location.href = "<%=basePath%>jsp/index.jsp";
+                        } else {
+                            window.location.href = "<%=basePath%>jsp/adminUser.jsp";
+                        }
+                    },
+                    error: function (err) {
+                        alert("error");
+                    }
+                });
+            }
+        }else if(uname === ""){
+            alert("请输入用户名！");
+        }else{
+            alert("请输入密码！");
+        }
+    }
+
+    document.onkeydown = function (event) {
+        const e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode === 13) {
+            userlogin();
+        }
+    };
+
     function goregister() {
         window.location.href = "<%=basePath%>jsp/register.jsp";
     }

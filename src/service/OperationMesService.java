@@ -10,13 +10,11 @@ import db.OperationMesDaoImpl;
 
 public class OperationMesService implements OperationMesDao {
 
-    private DBConnection dbconn = null;
-
-    private OperationMesDao dao = null;
+    private OperationMesDao dao;
 
     public OperationMesService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new OperationMesDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new OperationMesDaoImpl(dbconn.getConnection());
     }
 
     //添加操作信息

@@ -10,13 +10,11 @@ import db.GoodsDaoImpl;
 
 public class GoodsService implements GoodsDao {
 
-    private DBConnection dbconn = null;
-
-    private GoodsDao dao = null;
+    private GoodsDao dao;
 
     public GoodsService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new GoodsDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new GoodsDaoImpl(dbconn.getConnection());
     }
 
     @Override
@@ -150,7 +148,7 @@ public class GoodsService implements GoodsDao {
     }
 
     @Override
-    public List<Goods> selectGoodsList(int uid, String type, String usage, int lowp, int highp, String gname) throws Exception {
+    public List<Goods> selectGoodsList(int uid, String type, String usage, float lowp, float highp, String gname) throws Exception {
         return this.dao.selectGoodsList(uid, type, usage, lowp, highp, gname);
 
     }

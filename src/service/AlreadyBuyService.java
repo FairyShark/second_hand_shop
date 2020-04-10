@@ -10,19 +10,17 @@ import db.DBConnection;
 
 public class AlreadyBuyService implements AlreadyBuyDao {
 
-    private DBConnection dbconn = null;
-
-    private AlreadyBuyDao dao = null;
+    private AlreadyBuyDao dao;
 
     public AlreadyBuyService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new AlreadyBuyDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new AlreadyBuyDaoImpl(dbconn.getConnection());
     }
 
     @Override
-    public boolean addBuyGoods(int uid, String sale_name, int gid, int number) throws Exception {
-        if (isInt(uid) && sale_name != null && isInt(gid) && isInt(number)) {
-            return this.dao.addBuyGoods(uid, sale_name, gid, number);
+    public boolean addBuyGoods(int uid, String sale_name, int gid, String gtype, int number, float price, float carriage) throws Exception {
+        if (isInt(uid) && sale_name != null && isInt(gid) && gtype!=null && isInt(number)) {
+            return this.dao.addBuyGoods(uid, sale_name, gid, gtype, number, price, carriage);
         }
         return false;
     }

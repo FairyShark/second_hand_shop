@@ -58,6 +58,6 @@ public interface GoodsDao {
     public List<Goods> getUidGoodsList(int uid) throws Exception;
 
     // 返回指定类型的所有商品
-    public List<Goods> selectGoodsList(int uid, String type, String usage, int lowp, int highp, String gname) throws Exception;
+    public List<Goods> selectGoodsList(int uid, String type, String usage, float lowp, float highp, String gname) throws Exception;
 
 }

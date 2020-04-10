@@ -32,7 +32,8 @@ public class EditCartGoodsServlet extends HttpServlet {
         int number = Integer.parseInt(request.getParameter("Number"));
         try {
             ShoppingCartDao sd = DAOFactory.getShoppingCartServiceInstance();
-            int goods_number = Integer.parseInt(sd.getDesignateGoodsMs(uid, gid).split("&")[1]);
+            GoodsDao gd = DAOFactory.getGoodsServiceInstance();
+            int goods_number = gd.queryNumberById(gid);
             if(goods_number < number){
                 String jsonStr = "{\"isok\":\"2\", \"number\": \"" + goods_number + "\"}";
                 response.getWriter().print(jsonStr);

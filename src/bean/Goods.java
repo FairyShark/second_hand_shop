@@ -30,77 +30,7 @@ public class Goods {
     private String described;
     // ÉÌÆ·ÏÂ¼Ü
     private int del;
-
-    public Goods() {
-
-    }
-
-    public Goods(int uid, String uname, String gname, int number, String photo, String type,
-                 String usage, float price, float carriage,
-                 String paddress, String described) {
-        this.uid = uid;
-        this.uname = uname;
-        this.gname = gname;
-        this.number = number;
-        this.photo = photo;
-        this.type = type;
-        this.usage = usage;
-        this.price = price;
-        this.carriage = carriage;
-        this.paddress = paddress;
-        this.described = described;
-    }
-
-    public Goods(int uid, String uname, String gname, int number, String photo, String type,
-                 String usage, float price, float carriage, String pdate,
-                 String paddress, String described) {
-        this.uid = uid;
-        this.uname = uname;
-        this.gname = gname;
-        this.number = number;
-        this.photo = photo;
-        this.type = type;
-        this.usage = usage;
-        this.price = price;
-        this.carriage = carriage;
-        this.pdate = pdate;
-        this.paddress = paddress;
-        this.described = described;
-    }
-
-    public Goods(int gid, int uid, String uname, String gname, int number, String photo, String type,
-                 String usage, float price, float carriage,
-                 String paddress, String described) {
-        this.gid = gid;
-        this.uid = uid;
-        this.uname = uname;
-        this.gname = gname;
-        this.number = number;
-        this.photo = photo;
-        this.type = type;
-        this.usage = usage;
-        this.price = price;
-        this.carriage = carriage;
-        this.paddress = paddress;
-        this.described = described;
-    }
-
-    public Goods(int gid, int uid, String uname, String gname, int number, String type,
-                 String usage, float price, float carriage,
-                 String paddress, String described) {
-        this.gid = gid;
-        this.uid = uid;
-        this.uname = uname;
-        this.gname = gname;
-        this.number = number;
-        this.type = type;
-        this.usage = usage;
-        this.price = price;
-        this.carriage = carriage;
-        this.paddress = paddress;
-        this.described = described;
-    }
-
+    
     public int getGid() {
         return gid;
     }

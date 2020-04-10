@@ -1,10 +1,5 @@
 package bean;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class AlreadySale {
 
     // 主键
@@ -17,8 +12,14 @@ public class AlreadySale {
     private String buy_name;
     // 商品id
     private int gid;
+    // 商品类型
+    private String gtype;
     // 销售的商品数量
     private int number;
+    // 单价
+    private float price;
+    // 运费
+    private float carriage;
     // 销售时间
     private String saleTime;
 
@@ -62,6 +63,14 @@ public class AlreadySale {
         this.gid = gid;
     }
 
+    public String getGtype() {
+        return gtype;
+    }
+
+    public void setGtype(String gtype) {
+        this.gtype = gtype;
+    }
+
     public int getNumber() {
         return number;
     }
@@ -70,26 +79,28 @@ public class AlreadySale {
         this.number = number;
     }
 
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public float getCarriage() {
+        return carriage;
+    }
+
+    public void setCarriage(float carriage) {
+        this.carriage = carriage;
+    }
+
     public String getSaleTime() {
         return saleTime;
     }
 
     public void setSaleTime(String saleTime) {
         this.saleTime = saleTime;
-    }
-
-    public int getMonth() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = null;
-        try {
-            date = sdf.parse(saleTime.toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        int smonth = c.get(Calendar.MONTH) + 1;
-        return smonth;
     }
 
 }

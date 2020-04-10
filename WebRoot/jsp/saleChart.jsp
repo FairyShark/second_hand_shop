@@ -1,8 +1,6 @@
 <%@ page pageEncoding="utf-8" %>
 <%@ page import="bean.AlreadySale" %>
-<%@ page import="bean.Goods" %>
 <%@ page import="dao.AlreadySaleDao" %>
-<%@ page import="dao.GoodsDao" %>
 <%@ page import="factory.DAOFactory" %>
 <%@ page import="java.util.List" %>
 <%
@@ -34,10 +32,7 @@
             List<AlreadySale> asList = dao.getAllSaleGoods(uid);
             if (asList != null) {
                 if (asList.size() > 0) {
-                    GoodsDao goodsDao = DAOFactory.getGoodsServiceInstance();
-                    Goods goods;
                     AlreadySale as;
-                    int gid;
                     int number;
                     int smonth;
                     float price;
@@ -49,14 +44,12 @@
                     for (int i = 0; i < 6; i++) {
                         type_n[i] = 0;
                     }
-                    for (int i = 0; i < asList.size(); i++) {
-                        as = asList.get(i);
-                        gid = as.getGid();
+                    for (AlreadySale alreadySale : asList) {
+                        as = alreadySale;
                         number = as.getNumber();
-                        smonth = as.getMonth();
-                        goods = goodsDao.queryById(gid);
-                        price = goods.getPrice();
-                        String stype = goods.getType();
+                        smonth = dao.getMonth(as.getSaleTime());
+                        price = as.getPrice();
+                        String stype = as.getGtype();
 
                         if (smonth == 1) {
                             monPrice[0] = number * price;
@@ -216,7 +209,7 @@
 <script type="text/javascript" src="<%=basePath%>js/saleChart.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/canvas.js"></script>
 <script type="text/javascript">
-    var type_val = Array(6);
+    const type_val = Array(6);
     type_val[0] = Number(document.getElementById("type_1").value);
     type_val[1] = Number(document.getElementById("type_2").value);
     type_val[2] = Number(document.getElementById("type_3").value);

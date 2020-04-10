@@ -15,7 +15,8 @@ import bean.VisitMessage;
 import dao.VisitMessageDao;
 
 public class VisitMessageDaoImpl implements VisitMessageDao {
-    private Connection conn = null;
+
+    private Connection conn;
 
     private PreparedStatement pstmt = null;
 

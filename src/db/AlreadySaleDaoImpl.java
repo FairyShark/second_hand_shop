@@ -3,7 +3,11 @@ package db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -21,16 +25,19 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
     }
 
     @Override
-    public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, int number) throws Exception {
+    public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, String gtype, int number, float price, float carriage) throws Exception {
         pstmt = null;
-        String sql = "insert into alreadysale(uid,buy_uid,buy_name,gid,number,saletime)value(?,?,?,?,?,now());";
+        String sql = "insert into alreadysale(uid,buy_uid,buy_name,gid,types,number,price,carriage,saletime)value(?,?,?,?,?,?,?,?,now());";
         int result = 0;
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         pstmt.setInt(2, buy_uid);
         pstmt.setString(3, buy_name);
         pstmt.setInt(4, gid);
-        pstmt.setInt(5, number);
+        pstmt.setString(5, gtype);
+        pstmt.setInt(6, number);
+        pstmt.setFloat(7, price);
+        pstmt.setFloat(8, carriage);
         result = pstmt.executeUpdate();
         pstmt.close();
         if (result == 1) {
@@ -62,19 +69,22 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         rs = pstmt.executeQuery();
-        AlreadySale ab;
+        AlreadySale as;
         abList = new ArrayList<AlreadySale>();
         while (rs.next()) {
-            ab = new AlreadySale();
-            ab.setUid(uid);
-            ab.setAsid(rs.getInt("asid"));
-            ab.setGid(rs.getInt("gid"));
-            ab.setBUid(rs.getInt("buy_uid"));
-            ab.setNumber(rs.getInt("number"));
+            as = new AlreadySale();
+            as.setUid(uid);
+            as.setAsid(rs.getInt("asid"));
+            as.setGid(rs.getInt("gid"));
+            as.setGtype(rs.getString("types"));
+            as.setPrice(rs.getFloat("price"));
+            as.setCarriage(rs.getFloat("carriage"));
+            as.setBUid(rs.getInt("buy_uid"));
+            as.setNumber(rs.getInt("number"));
             String date = rs.getDate("saletime").toString();
             String time = rs.getTime("saletime").toString();
-            ab.setSaleTime(date + " " + time);
-            abList.add(ab);
+            as.setSaleTime(date + " " + time);
+            abList.add(as);
         }
         return abList;
     }
@@ -88,21 +98,41 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, gid);
         rs = pstmt.executeQuery();
-        AlreadySale ab;
+        AlreadySale as;
         abList = new ArrayList<AlreadySale>();
         while (rs.next()) {
-            ab = new AlreadySale();
-            ab.setUid(gid);
-            ab.setAsid(rs.getInt("asid"));
-            ab.setGid(rs.getInt("uid"));
-            ab.setBUid(rs.getInt("buy_uid"));
-            ab.setNumber(rs.getInt("number"));
+            as = new AlreadySale();
+            as.setUid(gid);
+            as.setAsid(rs.getInt("asid"));
+            as.setGid(rs.getInt("uid"));
+            as.setBUid(rs.getInt("buy_uid"));
+            as.setGtype(rs.getString("types"));
+            as.setPrice(rs.getFloat("price"));
+            as.setCarriage(rs.getFloat("carriage"));
+            as.setNumber(rs.getInt("number"));
             String date = rs.getDate("saletime").toString();
             String time = rs.getTime("saletime").toString();
-            ab.setSaleTime(date + " " + time);
-            abList.add(ab);
+            as.setSaleTime(date + " " + time);
+            abList.add(as);
         }
         return abList;
+    }
+
+    @Override
+    public int getMonth(String sale_date) {
+        int smonth = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = null;
+        try {
+            date = sdf.parse(sale_date);
+            Calendar c = Calendar.getInstance();
+            c.setTime(date);
+            smonth = c.get(Calendar.MONTH) + 1;
+            return smonth;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 }

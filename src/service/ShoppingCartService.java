@@ -13,13 +13,11 @@ import db.ShoppingCartDaoImpl;
 
 public class ShoppingCartService implements ShoppingCartDao {
 
-    private DBConnection dbconn = null;
-
-    private ShoppingCartDao dao = null;
+    private ShoppingCartDao dao;
 
     public ShoppingCartService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new ShoppingCartDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new ShoppingCartDaoImpl(dbconn.getConnection());
     }
 
     @Override

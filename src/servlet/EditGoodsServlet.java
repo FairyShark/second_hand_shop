@@ -65,7 +65,19 @@ public class EditGoodsServlet extends HttpServlet {
             UserDao userDao = DAOFactory.getUserServiceInstance();
             goodsDao = DAOFactory.getGoodsServiceInstance();
             String uname = goodsDao.queryById(Integer.parseInt(gid)).getUname();
-            Goods goods = new Goods(Integer.parseInt(gid), Integer.parseInt(uid), uname, gname, Integer.parseInt(number), type, usage, Float.parseFloat(price), Float.parseFloat(carriage), paddress, described);
+            Goods goods = new Goods();
+            //(Integer.parseInt(gid), Integer.parseInt(uid), uname, gname, Integer.parseInt(number), type, usage, Float.parseFloat(price), Float.parseFloat(carriage), paddress, described);
+            goods.setGid(Integer.parseInt(gid));
+            goods.setUid(Integer.parseInt(uid));
+            goods.setUname(uname);
+            goods.setGname(gname);
+            goods.setNumber(Integer.parseInt(number));
+            goods.setType(type);
+            goods.setUsage(usage);
+            goods.setPrice(Float.parseFloat(price));
+            goods.setCarriage(Float.parseFloat(carriage));
+            goods.setPaddress(paddress);
+            goods.setDescribed(described);
             if (goodsDao.editInfo(goods)) {
                 String uname_t = userDao.queryUName(Integer.parseInt(uid));
                 String opcontent = "修改商品：商品名（" + gname + "）,价格（" + price + "）,库存（" + number + "）,运费（" + carriage + "）,类型（" + type + "）,使用情况（" + usage + "）,发货地（" + paddress + "）,描述（" + described + "）";

@@ -1,5 +1,6 @@
 package db;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -290,7 +291,7 @@ public class GoodsDaoImpl implements GoodsDao {
             String pdate = rs.getDate("pdate").toString();
             String paddress = rs.getString("paddress");
             String described = rs.getString("described");
-            goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
+            goods = setGoods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
             goods.setGid(gid);
             goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
@@ -371,7 +372,7 @@ public class GoodsDaoImpl implements GoodsDao {
             String pdate = rs.getDate("pdate").toString();
             String paddress = rs.getString("paddress");
             String described = rs.getString("described");
-            goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
+            goods = setGoods(uid, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
             goods.setGid(gid);
             goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
@@ -380,8 +381,8 @@ public class GoodsDaoImpl implements GoodsDao {
     }
 
     @Override
-    public List<Goods> selectGoodsList(int uid, String type, String usage, int lowp, int highp, String gname) throws Exception {
-        List<Goods> goodsList = new ArrayList<Goods>();
+    public List<Goods> selectGoodsList(int uid, String type, String usage, float lowp, float highp, String gname) throws Exception {
+        List<Goods> goodsList = new ArrayList<>();
         Goods goods;
         ResultSet rs = null;
         String sql = "select * from goods where if(?=8,1=1,uid=?) and if(?='全部',1=1,types=?) and if(?='全部',1=1,gusage=?) and if(?='%&ALL&%',1=1,gname like ?) and (price between ? and ?);";
@@ -394,8 +395,8 @@ public class GoodsDaoImpl implements GoodsDao {
         pstmt.setString(6, usage);
         pstmt.setString(7, gname);
         pstmt.setString(8, '%' + gname + '%');
-        pstmt.setInt(9, lowp);
-        pstmt.setInt(10, highp);
+        pstmt.setFloat(9, lowp);
+        pstmt.setFloat(10, highp);
         rs = pstmt.executeQuery();
         while (rs.next()) {
             int uid_t = rs.getInt("uid");
@@ -411,11 +412,28 @@ public class GoodsDaoImpl implements GoodsDao {
             String pdate = rs.getDate("pdate").toString();
             String paddress = rs.getString("paddress");
             String described = rs.getString("described");
-            goods = new Goods(uid_t, uname, gname_t, number, photo, type_t, usage_t, price, carriage, pdate, paddress, described);
+            goods = setGoods(uid_t, uname, gname_t, number, photo, type_t, usage_t, price, carriage, pdate, paddress, described);
             goods.setGid(gid);
             goods.setDel(rs.getInt("del"));
             goodsList.add(goods);
         }
         return goodsList;
+    }
+
+    public Goods setGoods(int uid, String uname, String gname, int number, String photo, String type, String usage, float price, float carriage, String pdate, String paddress, String described) {
+        Goods goods = new Goods();
+        goods.setUid(uid);
+        goods.setUname(uname);
+        goods.setGname(gname);
+        goods.setNumber(number);
+        goods.setPhoto(photo);
+        goods.setType(type);
+        goods.setUsage(usage);
+        goods.setPrice(price);
+        goods.setCarriage(carriage);
+        goods.setPaddress(paddress);
+        goods.setPdate(pdate);
+        goods.setDescribed(described);
+        return goods;
     }
 }

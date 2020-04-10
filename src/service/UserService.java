@@ -9,13 +9,11 @@ import db.UserDaoImpl;
 
 public class UserService implements UserDao {
 
-    private DBConnection dbconn = null;
-
-    private UserDao dao = null;
+    private UserDao dao;
 
     public UserService() throws Exception {
-        this.dbconn = new DBConnection();
-        this.dao = new UserDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new UserDaoImpl(dbconn.getConnection());
     }
 
     @Override

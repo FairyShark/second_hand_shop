@@ -42,8 +42,8 @@ public class SelectGoodsServlet extends HttpServlet {
         int opuid = Integer.parseInt(request.getParameter("Uid"));
         String gtype = request.getParameter("GoodsType");
         String usage = request.getParameter("GoodsUsage");
-        int lowp = Integer.parseInt(request.getParameter("GoodsLowP"));
-        int highp = Integer.parseInt(request.getParameter("GoodsHighP"));
+        float lowp = Float.parseFloat(request.getParameter("GoodsLowP"));
+        float highp = Float.parseFloat(request.getParameter("GoodsHighP"));
         String gname = request.getParameter("GoodsName");
         GoodsDao goodsDao;
         List<Goods> list;

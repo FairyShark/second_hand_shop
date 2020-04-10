@@ -95,7 +95,7 @@ ol {
     border-radius: 5px;
 }
 
-#registForm input.btn-submit-log {
+#registForm a.btn-submit-log {
     margin: 0 3%;
     display: block;
     overflow: hidden;
@@ -110,11 +110,11 @@ ol {
     background: #00aeef no-repeat 0 0;
 }
 
-#registForm input.btn-submit-log:hover {
+#registForm a.btn-submit-log:hover {
     background-position: 0 -31px;
 }
 
-#registForm input.btn-submit-log:active {
+#registForm a.btn-submit-log:active {
     background-position: 0 -62px;
 }
 
@@ -142,7 +142,7 @@ ol {
     background-position: 0 -62px;
 }
 
-#registForm input.btn-submit-reg {
+#registForm a.btn-submit-reg {
     margin: 0 11.5%;
     display: block;
     overflow: hidden;
@@ -157,15 +157,38 @@ ol {
     background: #00aeef no-repeat 0 0;
 }
 
-#registForm input.btn-submit-reg:hover {
+#registForm a.btn-submit-reg:hover {
     background-position: 0 -31px;
 }
 
-#registForm input.btn-submit-reg:active {
+#registForm a.btn-submit-reg:active {
+    background-position: 0 -62px;
+}
+#registForm a.btn-submit-reg {
+    margin: 0 3%;
+    display: block;
+    overflow: hidden;
+    width: 27%;
+    height: 31px;
+    line-height: 31px;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    text-decoration: none;
+    float: left;
+    background: #00aeef no-repeat 0 0;
+}
+
+#registForm a.btn-submit-reg:hover {
+    background-position: 0 -31px;
+}
+
+#registForm a.btn-submit-reg:active {
     background-position: 0 -62px;
 }
 
-#registForm input.btn-submit-mes {
+#registForm a.btn-submit-mes {
     margin: 0 30%;
     display: block;
     overflow: hidden;
@@ -180,11 +203,11 @@ ol {
     background: #00aeef no-repeat 0 0;
 }
 
-#registForm input.btn-submit-mes:hover {
+#registForm a.btn-submit-mes:hover {
     background-position: 0 -31px;
 }
 
-#registForm input.btn-submit-mes:active {
+#registForm a.btn-submit-mes:active {
     background-position: 0 -62px;
 }
 
@@ -204,7 +227,6 @@ ol {
     text-align: center;
     margin: 0 auto;
     overflow: hidden;
-    display: inliine-block;
 }
 
 #registForm .registError {
@@ -233,7 +255,6 @@ ol {
 
 body {
     width: 980px;
-    margin: 30 auto;
     font-family: "Î¢ÈíÑÅºÚ";
     color: #7d7d7d;
 }

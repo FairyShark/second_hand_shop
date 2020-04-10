@@ -10,13 +10,11 @@ import db.VisitMessageDaoImpl;
 
 public class VisitMessageService implements VisitMessageDao {
 
-    private DBConnection dbconn = null;
-
-    private VisitMessageDao dao = null;
+    private VisitMessageDao dao;
 
     public VisitMessageService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new VisitMessageDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new VisitMessageDaoImpl(dbconn.getConnection());
     }
 
     //添加打开时间

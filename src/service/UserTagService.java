@@ -10,13 +10,11 @@ import java.util.List;
 
 public class UserTagService implements UserTagDao {
 
-    private DBConnection dbconn = null;
-
-    private UserTagDao dao = null;
+    private UserTagDao dao;
 
     public UserTagService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new UserTagDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new UserTagDaoImpl(dbconn.getConnection());
     }
 
     //添加操作信息

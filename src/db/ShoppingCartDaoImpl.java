@@ -168,8 +168,11 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 UserDao ud = DAOFactory.getUserServiceInstance();
                 String sale_name = ud.queryUName(sale_uid);
                 String buy_name = ud.queryUName(uid);
-                flag = (ab.addBuyGoods(uid, sale_name, gid, number) & dao.editInfo(goods));
-                saleDao.addSaleGoods(sale_uid, uid, buy_name, gid, number);
+                String gtype = dao.queryTypesByGid(gid);
+                float goodsprice = dao.queryById(gid).getPrice();
+                float goodscarriage = dao.queryById(gid).getCarriage();
+                flag = (ab.addBuyGoods(uid, sale_name, gid, gtype, number, goodsprice, goodscarriage) & dao.editInfo(goods));
+                saleDao.addSaleGoods(sale_uid, uid, buy_name, gid, gtype, number, goodsprice, goodscarriage);
                 //this.sendEmail(uid, gid, number);
             }
         } else {

@@ -10,19 +10,17 @@ import db.DBConnection;
 
 public class AlreadySaleService implements AlreadySaleDao {
 
-    private DBConnection dbconn = null;
-
-    private AlreadySaleDao dao = null;
+    private AlreadySaleDao dao;
 
     public AlreadySaleService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new AlreadySaleDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new AlreadySaleDaoImpl(dbconn.getConnection());
     }
 
     @Override
-    public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, int number) throws Exception {
-        if (isInt(uid) && isInt(buy_uid) && buy_name != null && isInt(gid) && isInt(number)) {
-            return this.dao.addSaleGoods(uid, buy_uid, buy_name, gid, number);
+    public boolean addSaleGoods(int uid, int buy_uid, String buy_name, int gid, String gtype, int number, float price, float carriage) throws Exception {
+        if (isInt(uid) && isInt(buy_uid) && buy_name != null && isInt(gid) && gtype!=null && isInt(number)) {
+            return this.dao.addSaleGoods(uid, buy_uid, buy_name, gid, gtype, number, price, carriage);
         }
         return false;
     }
@@ -49,6 +47,14 @@ public class AlreadySaleService implements AlreadySaleDao {
             return this.dao.getAllSaleGoods(gid);
         }
         return null;
+    }
+
+    @Override
+    public int getMonth(String date) throws Exception {
+        if (date != null) {
+            return this.dao.getMonth(date);
+        }
+        return 0;
     }
 
     public boolean isInt(int index) {

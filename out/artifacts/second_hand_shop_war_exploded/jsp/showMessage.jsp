@@ -42,16 +42,6 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
-
-        function editInfo() {
-            if (document.getElementById("submit").value === "编辑个人信息") {
-                document.getElementById("Email").disabled = false;
-                document.getElementById("Password").disabled = false;
-                document.getElementById("submit").value = "确认修改";
-                return false;
-            }
-            return true;
-        }
     </script>
 </head>
 <body>
@@ -63,9 +53,7 @@
 %>
 <h1>个人信息</h1>
 <div id="regist-main">
-    <form id="registForm" action="servlet/EditInfoServlet" method="get">
-        <input id="userip" name="userip" value="<%=userip%>" type="hidden"/>
-        <input id="userid" name="userid" value="<%=uid%>" type="hidden"/>
+    <div id="registForm">
         <ol>
             <%
                 try {
@@ -113,13 +101,63 @@
         <div class="registError"></div>
         <div class="outer_log0">
             <div class="but_log">
-                <input id="submit" type="submit" value="编辑个人信息"
-                       class="btn-submit-mes" onclick="return editInfo()">
+                <input id="submit" type="button" value="编辑个人信息"
+                       class="btn-submit-mes" onclick="edituserinf()"/>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <script type="text/javascript">
+    function edituserinf() {
+        if (document.getElementById("submit").value === "编辑个人信息") {
+            document.getElementById("Email").disabled = false;
+            document.getElementById("Password").disabled = false;
+            document.getElementById("submit").value = "确认修改";
+        } else {
+            const Password = String($('#Password').val());
+            const Email = String($('#Email').val());
+            if (Password !== "" && Email !== "") {
+                const re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+                if (re.test(Email)) {
+                    if (Password.length >= 6) {
+                        if (confirm("确定修改吗?")) {
+                            $.ajax({
+                                type: "POST",
+                                url: "EditInfoServlet",
+                                data: {
+                                    userid: <%=uid%>,
+                                    Password: Password,
+                                    Email: Email,
+                                    userip: '<%=userip%>'
+                                },
+                                dataType: "json",
+                                success: function (data) {
+                                    if (data.isok === "1") {
+                                        alert("修改成功!");
+                                    } else {
+                                        alert("修改失败，该邮箱已被占用，请重试!");
+                                    }
+                                    location.reload();
+                                },
+                                error: function (err) {
+                                    alert("error");
+                                }
+                            });
+                        }
+                    }
+                }
+            } else if (uname === "") {
+                alert("请输入注册的用户名！");
+            } else if (Email === "") {
+                alert("请输入注册的邮箱！");
+            } else if (passwd === "") {
+                alert("请输入密码！");
+            } else if (confirmpasswd === "") {
+                alert("请再次输入密码！");
+            }
+        }
+    }
+
     window.onunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");
     }

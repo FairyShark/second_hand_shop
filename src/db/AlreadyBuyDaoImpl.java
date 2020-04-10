@@ -20,15 +20,18 @@ public class AlreadyBuyDaoImpl implements AlreadyBuyDao {
     }
 
     @Override
-    public boolean addBuyGoods(int uid, String sale_name, int gid, int number) throws Exception {
+    public boolean addBuyGoods(int uid, String sale_name, int gid, String gtype, int number, float price, float carriage) throws Exception {
         pstmt = null;
-        String sql = "insert into alreadybuy(uid,sale_name,gid,number,buytime) value(?,?,?,?,now());";
+        String sql = "insert into alreadybuy(uid,sale_name,gid,types,number,price,carriage,buytime) value(?,?,?,?,?,?,?,now());";
         int result = 0;
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         pstmt.setString(2, sale_name);
         pstmt.setInt(3, gid);
-        pstmt.setInt(4, number);
+        pstmt.setString(4, gtype);
+        pstmt.setInt(5, number);
+        pstmt.setFloat(6, price);
+        pstmt.setFloat(7, carriage);
         result = pstmt.executeUpdate();
         pstmt.close();
         if (result == 1) {
@@ -67,6 +70,9 @@ public class AlreadyBuyDaoImpl implements AlreadyBuyDao {
             ab.setUid(uid);
             ab.setAid(rs.getInt("aid"));
             ab.setGid(rs.getInt("gid"));
+            ab.setGtype(rs.getString("types"));
+            ab.setPrice(rs.getFloat("price"));
+            ab.setCarriage(rs.getFloat("carriage"));
             ab.setNumber(rs.getInt("number"));
             String date = rs.getDate("buytime").toString();
             String time = rs.getTime("buytime").toString();
@@ -92,6 +98,9 @@ public class AlreadyBuyDaoImpl implements AlreadyBuyDao {
             ab.setUid(gid);
             ab.setAid(rs.getInt("aid"));
             ab.setGid(rs.getInt("uid"));
+            ab.setGtype(rs.getString("types"));
+            ab.setPrice(rs.getFloat("price"));
+            ab.setCarriage(rs.getFloat("carriage"));
             ab.setNumber(rs.getInt("number"));
             String date = rs.getDate("buytime").toString();
             String time = rs.getTime("buytime").toString();

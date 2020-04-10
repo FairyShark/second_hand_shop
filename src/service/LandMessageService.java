@@ -9,13 +9,12 @@ import db.LandMessageDaoImpl;
 import db.DBConnection;
 
 public class LandMessageService implements LandMessageDao {
-    private DBConnection dbconn = null;
 
-    private LandMessageDao dao = null;
+    private LandMessageDao dao;
 
     public LandMessageService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new LandMessageDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new LandMessageDaoImpl(dbconn.getConnection());
     }
 
     // Ìí¼ÓµÇÂ½Ê±¼ä

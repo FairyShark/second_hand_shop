@@ -31,10 +31,11 @@
             <tr>
                 <th>商品</th>
                 <th>卖家</th>
+                <th>类型</th>
                 <th>数量</th>
+                <th>单价</th>
                 <th>运费</th>
                 <th>总价</th>
-                <th>购买时间</th>
             </tr>
             <%
                 String strUid = (String) session.getAttribute("uid");
@@ -53,20 +54,51 @@
                             int gid;
                             int number;
                             String saleUname;
+                            String gtype;
                             String buyTime;
                             String photoPath;
                             float price;
+                            float carriage;
                             float totalPrice;
-                            for (int i = 0; i < abList.size(); i++) {
-                                ab = abList.get(i);
+                            String goods_price;
+                            String goods_carriage;
+                            String goods_totalPrice;
+                            for (AlreadyBuy alreadyBuy : abList) {
+                                ab = alreadyBuy;
                                 gid = ab.getGid();
+                                gtype = ab.getGtype();
                                 number = ab.getNumber();
                                 buyTime = ab.getBuyTime();
                                 goods = goodsDao.queryById(gid);
                                 String[] Gphoto = goods.getPhoto().split("&");
                                 photoPath = basePath + "images/" + Gphoto[0];
-                                price = goods.getPrice();
-                                totalPrice = number * price + goods.getCarriage();
+                                price = ab.getPrice();
+                                carriage = ab.getCarriage();
+                                totalPrice = number * price + carriage;
+                                goods_price = String.valueOf(price);
+                                goods_carriage = String.valueOf(carriage);
+                                goods_totalPrice = String.valueOf(totalPrice);
+                                if (!goods_price.contains(".")) {
+                                    goods_price += ".00";
+                                } else {
+                                    if (goods_price.split("\\.")[1].length() == 1) {
+                                        goods_price += "0";
+                                    }
+                                }
+                                if (!goods_carriage.contains(".")) {
+                                    goods_carriage += ".00";
+                                } else {
+                                    if (goods_carriage.split("\\.")[1].length() == 1) {
+                                        goods_carriage += "0";
+                                    }
+                                }
+                                if (!goods_totalPrice.contains(".")) {
+                                    goods_totalPrice += ".00";
+                                } else {
+                                    if (goods_totalPrice.split("\\.")[1].length() == 1) {
+                                        goods_totalPrice += "0";
+                                    }
+                                }
                                 saleUname = goodsDao.queryUName(gid);
             %>
             <tr>
@@ -80,20 +112,22 @@
                             <%=goods.getGname()%>
                         </h5>
                         <br>
+                        <br>
+                        <p>
+                            购买时间：<%=buyTime%>
+                        </p>
                     </div>
                     <div class="clearfix"></div>
                 </td>
                 <td><%=saleUname%>
                 </td>
+                <td><%=gtype%>
+                </td>
                 <td><%=number%>
                 </td>
-                <td><%=goods.getCarriage()%>元</td>
-                <%
-
-                %>
-                <td><%=totalPrice%>元</td>
-                <td><%=buyTime%>
-                </td>
+                <td><%=goods_price%>元</td>
+                <td><%=goods_carriage%>元</td>
+                <td><%=goods_totalPrice%>元</td>
             </tr>
             <%
                             }

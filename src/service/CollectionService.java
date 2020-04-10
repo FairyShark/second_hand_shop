@@ -10,13 +10,11 @@ import java.util.List;
 
 public class CollectionService implements CollectionDao {
 
-    private DBConnection dbconn = null;
-
-    private CollectionDao dao = null;
+    private CollectionDao dao;
 
     public CollectionService() throws SQLException {
-        this.dbconn = new DBConnection();
-        this.dao = new CollectionDaoImpl(this.dbconn.getConnection());
+        DBConnection dbconn = new DBConnection();
+        this.dao = new CollectionDaoImpl(dbconn.getConnection());
     }
 
     @Override

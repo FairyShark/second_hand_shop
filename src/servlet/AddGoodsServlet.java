@@ -82,13 +82,37 @@ public class AddGoodsServlet extends HttpServlet {
 
     public boolean addgoods(int uid, String uname, String gname, int number, String photo, String type, String usage, float price,
                             float carriage, String paddress, String described) throws Exception {
-        Goods goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, paddress, described);
+        Goods goods = new Goods();
+        //(uid, uname, gname, number, photo, type, usage, price, carriage, paddress, described);
+        goods.setUid(uid);
+        goods.setUname(uname);
+        goods.setGname(gname);
+        goods.setNumber(number);
+        goods.setPhoto(photo);
+        goods.setType(type);
+        goods.setUsage(usage);
+        goods.setPrice(price);
+        goods.setCarriage(carriage);
+        goods.setPaddress(paddress);
+        goods.setDescribed(described);
         return DAOFactory.getGoodsServiceInstance().addGoods(goods);
     }
 
     public int qugid(int uid, String uname, String gname, int number, String photo, String type, String usage, float price,
                      float carriage, String paddress, String described) throws Exception {
-        Goods goods = new Goods(uid, uname, gname, number, photo, type, usage, price, carriage, paddress, described);
+        Goods goods = new Goods();
+        //(uid, uname, gname, number, photo, type, usage, price, carriage, paddress, described);
+        goods.setUid(uid);
+        goods.setUname(uname);
+        goods.setGname(gname);
+        goods.setNumber(number);
+        goods.setPhoto(photo);
+        goods.setType(type);
+        goods.setUsage(usage);
+        goods.setPrice(price);
+        goods.setCarriage(carriage);
+        goods.setPaddress(paddress);
+        goods.setDescribed(described);
         return DAOFactory.getGoodsServiceInstance().queryGid(goods);
     }
 

@@ -44,15 +44,15 @@ public class LoginServlet extends HttpServlet {
                     request.getSession().setAttribute("uid", String.valueOf(user.getUid()));
                     request.getSession().setAttribute("lastLoginTime", lastLoginTime);
                     uid = user.getUid();
+                    LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
+                    lmdao.addLandTimeMes(uid, uname, userip);
+                    String landtime = lmdao.getLandtime(uid, userip);
+                    request.getSession().setAttribute("userip", userip);
+                    request.getSession().setAttribute("landtime", landtime);
                     if (user.getUname().equals("admin")) {
                         String jsonStr = "{\"isok\":\"4\"}";
                         response.getWriter().print(jsonStr);
                     }else {
-                        LandMessageDao lmdao = DAOFactory.getLandMessageServiceInstance();
-                        lmdao.addLandTimeMes(uid, uname, userip);
-                        String landtime = lmdao.getLandtime(uid, userip);
-                        request.getSession().setAttribute("userip", userip);
-                        request.getSession().setAttribute("landtime", landtime);
                         String jsonStr = "{\"isok\":\"3\"}";
                         response.getWriter().print(jsonStr);
                     }
