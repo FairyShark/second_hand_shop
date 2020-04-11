@@ -22,32 +22,6 @@
     <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/memenu.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/simpleCart.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            const $body = $(document.body);
-            const $bottomTools = $('.bottom_tools');
-            const $qrTools = $('.qr_tool');
-            const qrImg = $('.qr_img');
-            $(window).scroll(function () {
-                const scrollHeight = $(document).height();
-                const scrollTop = $(window).scrollTop();
-                const $footerHeight = $('.page-footer').outerHeight(true);
-                const $windowHeight = $(window).innerHeight();
-                scrollTop > 50 ? $("#scrollUp").fadeIn(200).css("display", "block") : $("#scrollUp").fadeOut(200);
-                $bottomTools.css("bottom", scrollHeight - scrollTop - $footerHeight > $windowHeight ? 40 : $windowHeight + scrollTop + $footerHeight + 40 - scrollHeight);
-            });
-            $('#scrollUp').click(function (e) {
-                e.preventDefault();
-                $('html,body').animate({scrollTop: 0});
-            });
-            $qrTools.hover(function () {
-                qrImg.fadeIn();
-            }, function () {
-                qrImg.fadeOut();
-            });
-        });
-
-    </script>
 </head>
 <body>
 <jsp:include page="head.jsp"></jsp:include>
@@ -176,6 +150,32 @@
     <a id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
+<script type="text/javascript">
+    $(function () {
+        const $body = $(document.body);
+        const $bottomTools = $('.bottom_tools');
+        const $qrTools = $('.qr_tool');
+        const qrImg = $('.qr_img');
+        $(window).scroll(function () {
+            const scrollHeight = $(document).height();
+            const scrollTop = $(window).scrollTop();
+            const $footerHeight = $('.page-footer').outerHeight(true);
+            const $windowHeight = $(window).innerHeight();
+            scrollTop > 50 ? $("#scrollUp").fadeIn(200).css("display", "block") : $("#scrollUp").fadeOut(200);
+            $bottomTools.css("bottom", scrollHeight - scrollTop - $footerHeight > $windowHeight ? 40 : $windowHeight + scrollTop + $footerHeight + 40 - scrollHeight);
+        });
+        $('#scrollUp').click(function (e) {
+            e.preventDefault();
+            $('html,body').animate({scrollTop: 0});
+        });
+        $qrTools.hover(function () {
+            qrImg.fadeIn();
+        }, function () {
+            qrImg.fadeOut();
+        });
+    });
+
+</script>
 <script type="text/javascript">
     window.onunload = function () {
         navigator.sendBeacon("servlet/LogCancelTServlet");

@@ -147,12 +147,7 @@
     <a id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a>
     <a id="scrollUp" href="javascript:" title="回到顶部"></a>
 </div>
-
 <script type="text/javascript">
-    function confirmBuy() {
-        return confirm("确定支付订单吗？");
-    }
-
     $(function () {
         const $body = $(document.body);
         const $bottomTools = $('.bottom_tools');
@@ -176,6 +171,7 @@
             qrImg.fadeOut();
         });
     });
+
 </script>
 <script type="text/javascript">
     window.onunload = function () {

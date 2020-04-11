@@ -198,8 +198,8 @@
                                         if(Tel===""){
                                             Tel="未知";
                                         }
-                                        if(Birth==="1990-01-01"){
-                                            Birth="未知";
+                                        if(Birth===""){
+                                            Birth="1900-01-01";
                                         }
                                         if(Addr===""){
                                             Addr="未知";
