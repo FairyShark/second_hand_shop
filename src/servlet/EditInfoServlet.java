@@ -36,14 +36,18 @@ public class EditInfoServlet extends HttpServlet {
         String userip = request.getParameter("userip");
         String email = request.getParameter("Email");
         String passwd = request.getParameter("Password");
+        String sex = request.getParameter("Sex");
+        String birth = request.getParameter("Birth");
+        String tel = request.getParameter("Tel");
+        String address = request.getParameter("Addr");
 
         UserDao userDao;
         try {
             userDao = DAOFactory.getUserServiceInstance();
             if (userDao.editEmail(Integer.parseInt(uid), email)
-                    && userDao.editPasswd(Integer.parseInt(uid), passwd)) {
+                    && userDao.editPasswd(Integer.parseInt(uid), passwd) && userDao.editUser(Integer.parseInt(uid), sex, tel, birth, address)) {
                 String uname = userDao.queryUName(Integer.parseInt(String.valueOf(session.getAttribute("uid"))));
-                String opcontent = "修改会员信息：名字（" + userDao.queryUName(Integer.parseInt(uid)) + "）,邮箱（" + email + "）,密码（" + passwd + "）";
+                String opcontent = "修改会员信息：名字（" + userDao.queryUName(Integer.parseInt(uid)) + "）,邮箱（" + email + "）,密码（" + passwd + "）,性别（"+ sex + "）,出生日期（"+ birth + "）,手机（"+ tel + "）,地址（" + address + "）";
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 omdao.addOperationMes(Integer.parseInt(String.valueOf(session.getAttribute("uid"))), uname, userip, "修改", opcontent);
                 String jsonStr = "{\"isok\":\"1\"}";

@@ -1,7 +1,5 @@
 package bean;
 
-import java.util.function.BiConsumer;
-
 public class ConsumptionAbility {
 
     // Ö÷¼ü
@@ -21,7 +19,7 @@ public class ConsumptionAbility {
         return bid;
     }
 
-    public void setBid(int aid) {
+    public void setBid(int bid) {
         this.bid = bid;
     }
 

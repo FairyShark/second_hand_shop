@@ -241,6 +241,9 @@
                     UserIP = "%&ALL&%";
                 if (LandTime == null || LandTime === "")
                     LandTime = "%&ALL&%";
+                var re =  /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+                if(!isNaN(UserID)){
+                	if(UserIP === "%&ALL&%" || re.test(UserIP)){
                 $.ajax({
                     url: 'SelectLandTServlet',
                     type: 'GET',
@@ -305,6 +308,12 @@
                     }
 
                 });
+                	}else {
+                    	alert("IP地址格式不正确，请重新输入!")
+                    }
+                }else {
+                	alert("请输入正确的UID（整数）!")
+                }
             }
         }
     }

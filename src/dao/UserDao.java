@@ -39,4 +39,7 @@ public interface UserDao {
     // 搜索用户
     public List<User> selectUserList(int uid, String uname, String umail) throws Exception;
 
+    // 修改其他信息
+    public boolean editUser(int uid, String sex, String tel, String birth, String addr) throws Exception;
+
 }

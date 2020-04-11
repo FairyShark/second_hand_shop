@@ -37,7 +37,7 @@ public class UserTagService implements UserTagDao {
     public List<UserTag> getUserTag(int uid, String uname, String acttype, String tagtype, String tagtime) throws Exception {
         return this.dao.getUserTag(uid, uname, acttype, tagtype, tagtime);
     }
-
+    
     public boolean isInt(int index) {
         if (index == 0) {
             return false;

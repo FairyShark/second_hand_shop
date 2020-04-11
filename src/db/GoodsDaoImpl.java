@@ -1,6 +1,5 @@
 package db;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -385,7 +384,7 @@ public class GoodsDaoImpl implements GoodsDao {
         List<Goods> goodsList = new ArrayList<>();
         Goods goods;
         ResultSet rs = null;
-        String sql = "select * from goods where if(?=8,1=1,uid=?) and if(?='全部',1=1,types=?) and if(?='全部',1=1,gusage=?) and if(?='%&ALL&%',1=1,gname like ?) and (price between ? and ?);";
+        String sql = "select * from goods where if(?=8,1=1,uid=?) and if(?='全部',1=1,types=?) and if(?='全部',1=1,gusage=?) and if(?='%&ALL&%',1=1,gname like ?) and (price between ? and ?) order by gid desc;";
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         pstmt.setInt(2, uid);

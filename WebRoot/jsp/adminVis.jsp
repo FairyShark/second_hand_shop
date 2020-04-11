@@ -273,6 +273,7 @@
                     GoodsName = "%&ALL&%";
                 if (LandTime == null || LandTime === "")
                     LandTime = "%&ALL&%";
+                if(!isNaN(UserID) && !isNaN(GoodsID)){
                 $.ajax({
                     url: 'SelectVisitTServlet',
                     type: 'GET',
@@ -348,6 +349,9 @@
                     }
 
                 });
+                }else {
+                	alert("请输入正确的ID（整数）!")
+                }
             }
         }
     }

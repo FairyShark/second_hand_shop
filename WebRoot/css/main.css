@@ -8452,6 +8452,16 @@ a.cart:hover {
     padding: 2em 0 1em;
 }
 
+.available_del h6 {
+    color: red;
+    font-size: 1.4em;
+    padding: 0 0 1em;
+}
+
+.available_del {
+    padding: 2em 0 1em;
+}
+
 /*--checkout--*/
 .check-out {
     padding: 4em 0em;
@@ -9566,6 +9576,10 @@ ul.nav.nav-pills {
         padding: 1em 0 1em;
     }
 
+    .available_del {
+        padding: 1em 0 1em;
+    }
+
     label.add-to {
         font-size: 1.5em;
     }
@@ -10365,7 +10379,15 @@ ul.memenu.skyblue {
     text-align: center;
 }
 
-#delete_2 {
+#delete_2{
+    color: red;
+}
+
+#delete_3{
+    color: red;
+}
+
+#delete_4{
     color: red;
 }
 

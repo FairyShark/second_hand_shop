@@ -352,4 +352,12 @@ button::-moz-focus-inner {
         width: 70%;
         font-size: 1em;
     }
-} 
+}
+
+#delete_3{
+    color: red;
+}
+
+#delete_4{
+    color: red;
+}

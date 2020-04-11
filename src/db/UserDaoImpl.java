@@ -155,10 +155,18 @@ public class UserDaoImpl implements UserDao {
             String uname = rs.getString("uname");
             String passwd = rs.getString("passwd");
             String email = rs.getString("email");
+            String sex = rs.getString("sex");
+            String addr = rs.getString("addr");
+            String tel = rs.getString("tel");
+            String birth = rs.getString("birth");
             user.setUid(uid);
             user.setUname(uname);
             user.setPasswd(passwd);
             user.setEmail(email);
+            user.setSex(sex);
+            user.setBirth(birth);
+            user.setTel(tel);
+            user.setAddr(addr);
             String date = rs.getDate("lastlogin").toString();
             String time = rs.getTime("lastlogin").toString();
             user.setLastLogin(date + " " + time);
@@ -249,6 +257,24 @@ public class UserDaoImpl implements UserDao {
             userList.add(user);
         }
         return userList;
+    }
+    
+    @Override
+    public boolean editUser(int uid, String sex, String tel, String birth, String addr) throws Exception {
+        String sql = "update users set sex=?,tel=?,birth=?,addr=? where uid=?";
+        int result = 0;
+        pstmt = this.conn.prepareStatement(sql);
+        pstmt.setString(1, sex);
+        pstmt.setString(2, tel);
+        pstmt.setString(3, birth);
+        pstmt.setString(4, addr);
+        pstmt.setInt(5, uid);
+        result = pstmt.executeUpdate();
+        pstmt.close();
+        if (result == 1) {
+            return true;
+        }
+        return false;
     }
 
 }

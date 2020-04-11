@@ -145,10 +145,19 @@
                                 商品名：<%=goods.getGname()%>
                             </h5>
                             <br>
-                            <br>
                             <p>
                                 发布时间：<%=goods.getPdate()%>
                             </p>
+                            <%
+                            if (number == 0) {
+                            %>
+                            <br>
+                            <p id="delete_2">
+                                该商品已无库存，请及时补充！
+                            </p>
+                            <%
+                                }
+                            %>
                         </div>
                         <div class="clearfix"></div>
                     </td>

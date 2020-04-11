@@ -115,6 +115,7 @@
                             商品名：<%=goods.getGname()%>
                         </h5>
                         <br>
+                        <br>
                         <p>
                             加入购物车时间：<%=cart.getSdate()%>
                         </p>
@@ -123,12 +124,14 @@
                                 del = 0;
                         %>
                         <br>
+                        <br>
                         <p id="delete_2">
                             该商品已失效，请删除！
                         </p>
                         <%
                         } else if (goods.getNumber() < number) {
                         %>
+                        <br>
                         <br>
                         <p id="delete_2">
                             所选商品数量已超过库存，请修改购买数量或删除商品！

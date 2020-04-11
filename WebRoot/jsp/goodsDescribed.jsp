@@ -109,6 +109,13 @@
                     <a id="carthref" href="<%=basePath%>jsp/editGoods.jsp?gid=<%=gid%>"
                        class="cart item_add">修改商品</a>
                     <%
+                        if (number == 0) {
+                    %>
+                    <div class="available_del">
+                        <h6 id="delete_4">该商品已无库存，请及时补充！</h6>
+                    </div>
+                    <%
+                        }
                     } else if (uid != 8) {
                     %>
                     <div class="available">
@@ -117,12 +124,18 @@
                                max=<%=number%> value="1"/>
                     </div>
                     <a id="carthref" href="javascript:" class="cart item_add" onclick="addtocart()">加入购物车</a>
-
                     <%
+                        if (number == 0) {
+                    %>
+                    <div class="available_del">
+                        <h6 id="delete_3">该商品已无库存！</h6>
+                    </div>
+                    <%
+                            }
                         }
                     } else {
                     %>
-                    <div class="available">
+                    <div class="available_del">
                         <h6 id="delete_2">此商品已下架！</h6>
                     </div>
                     <%
@@ -142,7 +155,7 @@
                     if (latestGoods != null) {
                         if (latestGoods.size() > 0) {
                             int flag = 4;
-                            if(latestGoods.size() < 4){
+                            if (latestGoods.size() < 4) {
                                 flag = latestGoods.size();
                             }
                             for (int i = 0; i < flag; i++) {
@@ -169,7 +182,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <%
-                                }else {
+                                } else {
                                     flag++;
                                 }
                             }
@@ -185,12 +198,15 @@
                         if (uid == 0 || !cd.judgeCollection(uid, gid)) {
                 %>
                 <a class="sca" href="javascript:"><img class="scimg" src="<%=basePath%>images/scj.png"
-                                    onmouseover="scjimgover(this)" onmouseout="scjimgout(this)"
-                                    onclick="collectiongoods(<%=uid%>)"/><span class="rq">（<%=counts%>人气）</span></a>
+                                                       onmouseover="scjimgover(this)" onmouseout="scjimgout(this)"
+                                                       onclick="collectiongoods(<%=uid%>)"/><span
+                        class="rq">（<%=counts%>人气）</span></a>
                 <%
                 } else {
                 %>
-                <a class="sca" href="javascript:"><img class="scimg" src="<%=basePath%>images/ysc.png" onclick="cancelcollection()"/><span class="rq">（<%=counts%>人气）</span></a>
+                <a class="sca" href="javascript:"><img class="scimg" src="<%=basePath%>images/ysc.png"
+                                                       onclick="cancelcollection()"/><span
+                        class="rq">（<%=counts%>人气）</span></a>
                 <%
                         }
                     }
@@ -286,8 +302,8 @@
         }
     }
 
-    function cancelcollection(){
-        if(confirm("确定要取消收藏吗？")){
+    function cancelcollection() {
+        if (confirm("确定要取消收藏吗？")) {
             $.ajax({
                 type: "POST",
                 url: "DeleteCollectionServlet",
@@ -323,9 +339,9 @@
 
     function addtocart() {
         let flag = <%=uid%>;
-        if(flag === 0){
+        if (flag === 0) {
             alert("请先登录！");
-        }else {
+        } else {
             $.ajax({
                 type: "POST",
                 url: "AddToCartServlet",
@@ -338,9 +354,13 @@
                 success: function (data) {
                     if (data.isok === "1") {
                         alert("添加到购物车成功！");
-                    }else if(data.isok === "2") {
+                    } else if (data.isok === "2") {
+                    	if(data.number === "0"){
+                    		alert("库存为0,无法加入购物车！");
+                    	}else{
                         alert("库存仅为" + data.number + ",请重新输入数量！");
-                    }else {
+                    	}
+                    } else {
                         alert("添加失败，请重试！");
                     }
                 },

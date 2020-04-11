@@ -227,6 +227,9 @@
                 UserName = "%&ALL&%";
             if (UserMail == null || UserMail === "")
                 UserMail = "%&ALL&%";
+            const re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+            if(!isNaN(UserID)){
+            	if(UserMail === "%&ALL&%" || re.test(UserMail)){
             $.ajax({
                 url: 'SelectUserServlet',
                 type: 'GET',
@@ -292,6 +295,12 @@
                 }
 
             });
+            }else {
+            	alert("邮箱格式不正确，请重新输入!")
+            }
+        }else {
+        	alert("请输入正确的UID（整数）!")
+        }
         }
     }
 

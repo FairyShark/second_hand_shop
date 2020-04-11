@@ -14,6 +14,5 @@ public interface UserTagDao {
 
     //查询操作日志
     public List<UserTag> getUserTag(int uid, String uname, String acttype, String tagtype, String tagtime) throws Exception;
-
-
+    
 }

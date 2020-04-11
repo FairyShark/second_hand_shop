@@ -1,7 +1,7 @@
 #regist-main {
     width: 980px;
     height: 0px;
-    position: relative;
+    padding-bottom: 30px;
     font-size: 12px;
 }
 
@@ -29,15 +29,24 @@ ol {
 
 #registForm {
     height: 416px;
-    position: relative;
     border: 1px solid #d7d7d7;
     box-shadow: 0 0 10px #d7d7d7;
     background-color: #fff;
-    position: absolute;
     width: 382px;
-    top: 10px;
-    left: 300px;
+    margin: 10px auto;
+
     color: #818181;
+}
+
+#InfoForm {
+    height: 730px;
+    border: 1px solid #d7d7d7;
+    box-shadow: 0 0 10px #d7d7d7;
+    background-color: #fff;
+    width: 382px;
+    margin: 10px auto 30px;
+    color: #818181;
+    
 }
 
 #regist-main .cap h3 {
@@ -76,6 +85,11 @@ ol {
     padding-left: 40px;
 }
 
+#InfoForm ol {
+    padding-top: 20px;
+    padding-left: 40px;
+}
+
 .re_li0 {
     padding-top: 15%;
     line-height: 30px;
@@ -87,6 +101,15 @@ ol {
 }
 
 #registForm li input {
+    width: 295px;
+    height: 33px;
+    line-height: 33px;
+    border: 1px solid #ccd1d5;
+    display: block;
+    border-radius: 5px;
+}
+
+#InfoForm li input {
     width: 295px;
     height: 33px;
     line-height: 33px;
@@ -143,7 +166,7 @@ ol {
 }
 
 #registForm a.btn-submit-reg {
-    margin: 0 11.5%;
+    margin: 0 15.5%;
     display: block;
     overflow: hidden;
     width: 27%;
@@ -165,10 +188,10 @@ ol {
     background-position: 0 -62px;
 }
 #registForm a.btn-submit-reg {
-    margin: 0 3%;
+    margin: 0 9.5%;
     display: block;
     overflow: hidden;
-    width: 27%;
+    width: 30%;
     height: 31px;
     line-height: 31px;
     cursor: pointer;
@@ -188,7 +211,7 @@ ol {
     background-position: 0 -62px;
 }
 
-#registForm a.btn-submit-mes {
+#InfoForm input.btn-submit-mes {
     margin: 0 30%;
     display: block;
     overflow: hidden;
@@ -203,11 +226,11 @@ ol {
     background: #00aeef no-repeat 0 0;
 }
 
-#registForm a.btn-submit-mes:hover {
+#InfoForm input.btn-submit-mes:hover {
     background-position: 0 -31px;
 }
 
-#registForm a.btn-submit-mes:active {
+#InfoForm input.btn-submit-mes:active {
     background-position: 0 -62px;
 }
 
@@ -237,6 +260,14 @@ ol {
     color: #BF1623;
 }
 
+#InfoForm .registError {
+    position: absolute;
+    width: 298px;
+    top: 301px;
+    left: 40px;
+    color: #BF1623;
+}
+
 #registForm_s .registError {
     position: absolute;
     width: 298px;
@@ -254,6 +285,7 @@ ol {
 }
 
 body {
+	margin: 0 auto;
     width: 980px;
     font-family: "Î¢ÈíÑÅºÚ";
     color: #7d7d7d;
@@ -266,10 +298,12 @@ img {
 h1, h2 {
     text-align: center;
     position: relative;
+
 }
 
 h1 {
     color: #0092d3;
+    margin: 35px auto;
 }
 
 h2 {
@@ -342,4 +376,12 @@ h1 img {
 
 .delete_1 {
     text-align: center;
+}
+
+.error_mes{
+	color: #bf1623;
+	font-size: 11px;
+}
+.necessary {
+    color: red;
 }

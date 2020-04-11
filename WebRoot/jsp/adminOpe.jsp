@@ -74,13 +74,13 @@
                 <label>会员ID：</label><input id="user_id" class="inp_11">
             </div>
             <div class="typ_16">
-                <label>会员名：</label><input id="user_name" class="inp_12">
+                <label>会员名：</label><input id="user_name" class="inp_8">
             </div>
             <div class="typ_16">
-                <label>会员IP地址：</label><input id="user_ip" class="inp_13">
+                <label>IP地址：</label><input id="user_ip" class="inp_13">
             </div>
             <div class="typ_18">
-                <label>操作类型：</label> <select id="operation_type" name="Types">
+                <label>类型：</label> <select id="operation_type" name="Types">
                 <option value="注册">注册</option>
                 <option value="添加">添加</option>
                 <option value="删除">删除</option>
@@ -298,6 +298,9 @@
                     UserIP = "%&ALL&%";
                 if (LandTime == null || LandTime === "")
                     LandTime = "%&ALL&%";
+                var re =  /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+                if(!isNaN(UserID)){
+                	if(UserIP === "%&ALL&%" || re.test(UserIP)){
                 $.ajax({
                     url: 'SelectOperationTServlet',
                     type: 'GET',
@@ -374,6 +377,12 @@
                     }
 
                 });
+            }else {
+            	alert("IP地址格式不正确，请重新输入!")
+            }
+        }else {
+        	alert("请输入正确的UID（整数）!")
+        }
             }
         }
     }

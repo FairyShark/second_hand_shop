@@ -60,7 +60,7 @@
             <div class="but_log">
                 <a href="javascript:" class="btn-submit-log" onclick="userlogin()">登陆</a>
                 <a class="btn-submit-log" href="<%=basePath%>jsp/register.jsp">注册</a>
-                <a href="javascript:" class="btn-submit-log" onclick="goback()">取消</a>
+                <a href="<%=basePath%>jsp/index.jsp" class="btn-submit-log">取消</a>
             </div>
         </div>
     </div>
@@ -111,14 +111,6 @@
             userlogin();
         }
     };
-
-    function goregister() {
-        window.location.href = "<%=basePath%>jsp/register.jsp";
-    }
-
-    function goback() {
-        window.location.href = "<%=basePath%>jsp/index.jsp";
-    }
 </script>
 </body>
 </html>

@@ -75,8 +75,8 @@
         <div class="registError"></div>
         <div class="outer_log0">
             <div class="but_log">
-                <input type="button" class="btn-submit-reg" onclick="userregister()" value="注册" />
-                <input type="button" class="btn-submit-reg" onclick="goback()" value="取消" />
+                <a href="javascript:" class="btn-submit-reg" onclick="userregister()">注册</a>
+                <a href="javascript:" class="btn-submit-reg" onclick="goback()">取消</a>
             </div>
         </div>
     </div>
@@ -87,8 +87,8 @@
         const passwd = String($('#passwd').val());
         const confirmpasswd = String($('#Confirmpasswd').val());
         const Email = String($('#Email').val());
+        const re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
         if(uname !== "" && passwd !== "" && confirmpasswd !== "" && Email !== "") {
-            const re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
             if(re.test(Email)) {
                 if (passwd.length >= 6 && confirmpasswd.length >= 6) {
                     if (passwd === confirmpasswd) {
@@ -121,9 +121,9 @@
             alert("请输入注册的用户名！");
         }else if(Email === ""){
             alert("请输入注册的邮箱！");
-        }else if(passwd === ""){
+        }else if(passwd === "" && re.test(Email)){
             alert("请输入密码！");
-        }else if(confirmpasswd === ""){
+        }else if(confirmpasswd === "" && re.test(Email) && passwd.length >= 6){
             alert("请再次输入密码！");
         }
     }

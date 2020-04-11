@@ -8,8 +8,16 @@ public class User {
     private String uname;
     // 密码
     private String passwd;
-    // 邮箱地址
+    // 邮箱
     private String email;
+    // 性别
+    private String sex;
+    // 出生日期
+    private String birth;
+    // 手机
+    private String tel;
+    // 地址
+    private String addr;
     // 最后登录时间
     private String lastLogin;
 
@@ -43,6 +51,38 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+    
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+    
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
     public String getLastLogin() {

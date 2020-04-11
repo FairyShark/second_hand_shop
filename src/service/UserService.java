@@ -100,6 +100,14 @@ public class UserService implements UserDao {
         return this.dao.selectUserList(uid, uname, umail);
     }
 
+    @Override
+    public boolean editUser(int uid, String sex, String tel, String birth, String addr) throws Exception {
+        if (isInt(uid) && sex != null && tel != null && birth != null && addr != null) {
+            return this.dao.editUser(uid, sex, tel, birth, addr);
+        }
+        return false;
+    }
+
     public boolean isInt(int index) {
         if (index == 0) {
             return false;
