@@ -10,6 +10,8 @@ import java.util.List;
 import bean.User;
 import dao.UserDao;
 
+import javax.xml.transform.Result;
+
 public class UserDaoImpl implements UserDao {
 
     private Connection conn = null;
@@ -159,6 +161,8 @@ public class UserDaoImpl implements UserDao {
             String addr = rs.getString("addr");
             String tel = rs.getString("tel");
             String birth = rs.getString("birth");
+            int frequency = rs.getInt("frequency");
+            user.setFrequency(frequency);
             user.setUid(uid);
             user.setUname(uname);
             user.setPasswd(passwd);
@@ -217,12 +221,14 @@ public class UserDaoImpl implements UserDao {
             String umail_t = rs.getString("email");
             String passwd_t = rs.getString("passwd");
             String lastlogin_t = rs.getString("lastLogin");
+            int frequency = rs.getInt("frequency");
             user = new User();
             user.setUid(uid_t);
             user.setUname(uname_t);
             user.setPasswd(passwd_t);
             user.setEmail(umail_t);
             user.setLastLogin(lastlogin_t);
+            user.setFrequency(frequency);
             userList.add(user);
         }
         return userList;
@@ -248,17 +254,44 @@ public class UserDaoImpl implements UserDao {
             String umail_t = rs.getString("email");
             String passwd_t = rs.getString("passwd");
             String lastlogin_t = rs.getString("lastlogin");
+            int frequency = rs.getInt("frequency");
             user = new User();
             user.setUid(uid_t);
             user.setUname(uname_t);
             user.setPasswd(passwd_t);
             user.setEmail(umail_t);
             user.setLastLogin(lastlogin_t);
+            user.setFrequency(frequency);
             userList.add(user);
         }
         return userList;
     }
     
+    @Override
+    public boolean editFrequency(int uid) throws Exception {
+        pstmt = null;
+        String sql = "select count(*) from landmessage where DATE_SUB(CURDATE(), INTERVAL  1 MONTH) <= date(landtime) and uid=?";
+        pstmt = this.conn.prepareStatement(sql);
+        pstmt.setInt(1, uid);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            int frequency = rs.getInt(1);
+
+            pstmt = null;
+            sql = "update users set frequency=? where uid=?";
+            pstmt = this.conn.prepareStatement(sql);
+            pstmt.setInt(1, frequency);
+            pstmt.setInt(2, uid);
+            int result = pstmt.executeUpdate();
+            pstmt.close();
+            if (result == 1) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
     @Override
     public boolean editUser(int uid, String sex, String tel, String birth, String addr) throws Exception {
         String sql = "update users set sex=?,tel=?,birth=?,addr=? where uid=?";

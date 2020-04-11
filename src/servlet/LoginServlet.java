@@ -49,6 +49,8 @@ public class LoginServlet extends HttpServlet {
                     String landtime = lmdao.getLandtime(uid, userip);
                     request.getSession().setAttribute("userip", userip);
                     request.getSession().setAttribute("landtime", landtime);
+                    dao.editFrequency(uid);
+
                     if (user.getUname().equals("admin")) {
                         String jsonStr = "{\"isok\":\"4\"}";
                         response.getWriter().print(jsonStr);

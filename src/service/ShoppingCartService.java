@@ -77,7 +77,7 @@ public class ShoppingCartService implements ShoppingCartDao {
     }
 
     @Override
-    public boolean sendEmail(int uid, int gid, int number) throws MessagingException, GeneralSecurityException, Exception {
+    public boolean sendEmail(int uid, int gid, int number) throws Exception {
         if (isInt(uid) && isInt(gid) && isInt(number)) {
             return this.dao.sendEmail(uid, gid, number);
         }

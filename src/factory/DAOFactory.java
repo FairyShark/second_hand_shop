@@ -45,4 +45,8 @@ public class DAOFactory {
         return new UserTagService();
     }
 
+    public static ConsumptionAbilityDao getConsumptionAbilityServiceInstance() throws Exception {
+        return new ConsumptionAbilityService();
+    }
+
 }

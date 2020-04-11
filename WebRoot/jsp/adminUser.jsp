@@ -85,6 +85,7 @@
                     <th>会员ID</th>
                     <th>会员名</th>
                     <th>邮箱</th>
+                    <th>登录次数(近30天)</th>
                     <th>最后登录时间</th>
                 </tr>
                 <%
@@ -97,6 +98,7 @@
                                 User user;
                                 int num = 0;
                                 int uid_t;
+                                int frequency;
                                 String uname_t;
                                 String umail_t;
                                 String lastlogin_t;
@@ -107,6 +109,7 @@
                                     uname_t = user.getUname();
                                     umail_t = user.getEmail();
                                     lastlogin_t = user.getLastLogin();
+                                    frequency = user.getFrequency();
                                     num++;
                 %>
                 <tr>
@@ -116,6 +119,8 @@
                     <td><%=uname_t%>
                     </td>
                     <td><%=umail_t%>
+                    </td>
+                    <td><%=frequency%>
                     </td>
                     <td><%=lastlogin_t%>
                     </td>
@@ -248,6 +253,7 @@
                     $("<th/>").html("会员ID").appendTo(tr);
                     $("<th/>").html("会员名").appendTo(tr);
                     $("<th/>").html("邮箱").appendTo(tr);
+                    $("<th/>").html("登录次数(近30天)").appendTo(tr);
                     $("<th/>").html("最后登陆时间").appendTo(tr);
                     $("#resultTable").append(tr);
                     let temp = 0;
@@ -259,6 +265,7 @@
                             $("<td/>").html(val.uid).appendTo(tr);
                             $("<td/>").html(val.uname).appendTo(tr);
                             $("<td/>").html(val.email).appendTo(tr);
+                            $("<td/>").html(val.frequency).appendTo(tr);
                             $("<td/>").html(val.lastLogin).appendTo(tr);
                             const td1 = $("<td/>");
                             const a1 = $("<a/>");

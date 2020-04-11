@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CollectionDaoImpl implements CollectionDao {
 
-    private Connection conn = null;
+    private Connection conn;
 
     private PreparedStatement pstmt = null;
 

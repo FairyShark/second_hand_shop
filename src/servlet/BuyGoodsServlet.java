@@ -36,6 +36,7 @@ public class BuyGoodsServlet extends HttpServlet {
             GoodsDao gd = DAOFactory.getGoodsServiceInstance();
             UserDao ud = DAOFactory.getUserServiceInstance();
             UserTagDao utd = DAOFactory.getUserTagServiceInstance();
+            ConsumptionAbilityDao cad = DAOFactory.getConsumptionAbilityServiceInstance();
             String uname = ud.queryUName(uid);
             List<ShoppingCart> sclist = scDao.getAllGoods(uid);
             for (ShoppingCart shoppingCart : sclist) {
@@ -46,7 +47,10 @@ public class BuyGoodsServlet extends HttpServlet {
             if(flag==0) {
                 for (ShoppingCart shoppingCart : sclist) {
                     String gtype = gd.queryTypesByGid(shoppingCart.getGid());
+                    int number = shoppingCart.getNumber();
+                    float totalprice = gd.queryById(shoppingCart.getGid()).getPrice() * number;
                     utd.addUserTag(uid, uname, "¹ºÂò", gtype, 8);
+                    cad.addConsumptionAbility(uid, uname, number, totalprice);
                 }
                 if (scDao.payAllGoods(uid)) {
                     String jsonStr = "{\"isok\":\"1\"}";

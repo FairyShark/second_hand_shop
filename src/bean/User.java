@@ -18,6 +18,8 @@ public class User {
     private String tel;
     // 地址
     private String addr;
+    // 最近一个月登陆次数
+    private int frequency;
     // 最后登录时间
     private String lastLogin;
 
@@ -83,6 +85,14 @@ public class User {
 
     public void setAddr(String addr) {
         this.addr = addr;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
     public String getLastLogin() {

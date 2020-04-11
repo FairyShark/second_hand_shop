@@ -206,7 +206,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     // 发送确认邮件
     @Override
     public boolean sendEmail(int uid, int gid, int number)
-            throws MessagingException, GeneralSecurityException, Exception {
+            throws Exception {
 
         UserDao user = DAOFactory.getUserServiceInstance();
         GoodsDao goods = DAOFactory.getGoodsServiceInstance();

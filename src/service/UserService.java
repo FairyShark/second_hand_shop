@@ -101,6 +101,14 @@ public class UserService implements UserDao {
     }
 
     @Override
+    public boolean editFrequency(int uid) throws Exception {
+        if (isInt(uid)) {
+            return this.dao.editFrequency(uid);
+        }
+        return false;
+    }
+
+    @Override
     public boolean editUser(int uid, String sex, String tel, String birth, String addr) throws Exception {
         if (isInt(uid) && sex != null && tel != null && birth != null && addr != null) {
             return this.dao.editUser(uid, sex, tel, birth, addr);
