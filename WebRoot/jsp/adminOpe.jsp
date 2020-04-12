@@ -273,8 +273,8 @@
                 $("#land_time").value = "";
             } else {
                 const b_d = new Date(bagin_r[1], bagin_r[3] - 1, bagin_r[5]);
-                const b_num = (b_d.getFullYear() == bagin_r[1] && (b_d.getMonth() + 1) == bagin_r[3] && b_d.getDate() == bagin_r[5]);
-                if (b_num == 0) {
+                const b_num = (b_d.getFullYear() === bagin_r[1] && (b_d.getMonth() + 1) === bagin_r[3] && b_d.getDate() === bagin_r[5]);
+                if (b_num === 0) {
                     alert("时间不合法,请输入正确的时间！");
                     $("#land_time").value = "";
                 } else {

@@ -29,24 +29,23 @@
     <script src="<%=basePath%>js/autowired.validator.js" type="text/javascript"></script>
     <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
     <script type="text/javascript">
-        var _gaq = _gaq || [];
+        const _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-30210234-1']);
         _gaq.push(['_trackPageview']);
         (function () {
-            var ga = document.createElement('script');
+            const ga = document.createElement('script');
             ga.type = 'text/javascript';
             ga.async = true;
             ga.src = ('https:' === document.location.protocol ? 'https://ssl'
                 : 'http://www')
                 + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
+            const s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
     </script>
 </head>
 <body>
 <%
-
     try {
         UserDao udao = DAOFactory.getUserServiceInstance();
         if (udao.queryByUid(uid) != null) {
@@ -59,22 +58,22 @@
                 try {
                     User user = udao.queryByUid(uid);
                     if (user != null) {
-                    	String user_sex = "";
-                    	String user_birth = "";
-                    	String user_tel = "";
-                    	String user_addr = "";
-                    	if(!user.getSex().equals("未知")){
-                    		user_sex = user.getSex();
-                    	}
-                    	if(!user.getBirth().equals("1900-01-01")){
-                    		user_birth = user.getBirth();
-                    	}
-                    	if(!user.getTel().equals("未知")){
-                    		user_tel = user.getTel();
-                    	}
-                    	if(!user.getAddr().equals("未知")){
-                    		user_addr = user.getAddr();
-                    	}
+                        String user_sex = "";
+                        String user_birth = "";
+                        String user_tel = "";
+                        String user_addr = "";
+                        if (!user.getSex().equals("未知")) {
+                            user_sex = user.getSex();
+                        }
+                        if (!user.getBirth().equals("1900-01-01")) {
+                            user_birth = user.getBirth();
+                        }
+                        if (!user.getTel().equals("未知")) {
+                            user_tel = user.getTel();
+                        }
+                        if (!user.getAddr().equals("未知")) {
+                            user_addr = user.getAddr();
+                        }
             %>
 
             <li class="re_li"><label for="UserName"><span class="necessary">*</span>用户名： <span
@@ -85,17 +84,17 @@
                                                                      name="UserName" type="text"
                                                                      value="<%=user.getUname()%>"
                                                                      disabled="disabled"></li>
-                                                                     
-            <li class="re_li"><label for="UserSex">性别： 
+
+            <li class="re_li"><label for="UserSex">性别：
             </label> <span class="error_mes" id="sex_mes"></span> <input id="UserSex"
-                                                                     name="UserSex" type="text"
-                                                                     value="<%=user_sex%>"
-                                                                     disabled="disabled"></li>
-            <li class="re_li"><label for="UserBirth">出生日期： 
+                                                                         name="UserSex" type="text"
+                                                                         value="<%=user_sex%>"
+                                                                         disabled="disabled"></li>
+            <li class="re_li"><label for="UserBirth">出生日期：
             </label> <span class="error_mes" id="birth_mes"></span> <input id="UserBirth"
-                                                                     name="UserBirth" type="text"
-                                                                     value="<%=user_birth%>"
-                                                                     disabled="disabled"></li>
+                                                                           name="UserBirth" type="text"
+                                                                           value="<%=user_birth%>"
+                                                                           disabled="disabled"></li>
 
             <li class="re_li"><label for="Email"><span class="necessary">*</span>邮箱： <span
                     class="kitjs-validator" for="@Email"
@@ -104,18 +103,18 @@
                            data-valmsg-replace="true"></span> <input id="Email" name="Email"
                                                                      type="text" value="<%=user.getEmail()%>"
                                                                      disabled="disabled"></li>
-                                                                     
-            <li class="re_li"><label for="Tel">手机： 
+
+            <li class="re_li"><label for="Tel">手机：
             </label> <span class="error_mes" id="tel_mes"></span> <input id="Tel"
-                                                                     name="Tel" type="text"
-                                                                     value="<%=user_tel%>"
-                                                                     disabled="disabled"></li>
-                                                                     
+                                                                         name="Tel" type="text"
+                                                                         value="<%=user_tel%>"
+                                                                         disabled="disabled"></li>
+
             <li class="re_li"><label for="Address">地址：
             </label> <span class="error_mes" id="addr_mes"></span> <input id="Address"
-                                                                     name="Address" type="text"
-                                                                     value="<%=user_addr%>"
-                                                                     disabled="disabled"></li>
+                                                                          name="Address" type="text"
+                                                                          value="<%=user_addr%>"
+                                                                          disabled="disabled"></li>
 
 
             <li class="re_li"><label for="Password"><span class="necessary">*</span>密码： <span
@@ -166,43 +165,58 @@
             let Birth = String($('#UserBirth').val());
             const re_tel = /^[1][3,4,5,7,8,9][0-9]{9}$/;
             const re_email = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
-            const re_date = /^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
             $('#sex_mes').html("");
             $('#tel_mes').html("");
             $('#birth_mes').html("");
-            if(Sex!==""){
-            	if(Sex!=="男" && Sex!=="女"){
-            		$('#sex_mes').html("性别只能是 “男” 或 “女”");
-            	}
+            if (Sex !== "") {
+                if (Sex !== "男" && Sex !== "女") {
+                    $('#sex_mes').html("性别只能是 “男” 或 “女”");
+                }
             }
-            if(Tel!==""){
-            	if(!re_tel.test(Tel)){
-            		$('#tel_mes').html("请输入11位有效的手机号码");
-            	}
+            if (Tel !== "") {
+                if (!re_tel.test(Tel)) {
+                    $('#tel_mes').html("请输入11位有效的手机号码");
+                }
             }
-            if(Birth!==""){
-            	if(!re_date.test(Birth)){
-            		$('#birth_mes').html("日期格式为 “YYYY-MM-DD”");
-            	}
+            let c = 0;
+            if (Birth !== "") {
+                const bagin_r = Birth.match(/^(\d{4})(-)(\d{2})(-)(\d{2})$/);
+                if (bagin_r == null) {
+                    $('#birth_mes').html("出生日期必须为“yyyy-mm-dd”");
+                } else {
+                    const b_d = new Date(bagin_r[1], bagin_r[3] - 1, bagin_r[5]);
+                    const b_num = (b_d.getFullYear() === bagin_r[1] && (b_d.getMonth() + 1) === bagin_r[3] && b_d.getDate() === bagin_r[5]);
+                    if (b_num === 0) {
+                        $('#birth_mes').html("出生日期不合法");
+                    } else {
+                        const today = new Date();
+                        const mydate = new Date(Birth);
+                        if (mydate > today) {
+                            $('#birth_mes').html("出生日期不合法");
+                        }else {
+                            c = 1;
+                        }
+                    }
+                }
             }
             if (Password !== "" && Email !== "") {
-                if(Sex==="男" ||  Sex==="女"  || Sex === ""){
-                    if(re_date.test(Birth) || Birth === "") {
+                if (Sex === "男" || Sex === "女" || Sex === "") {
+                    if (c === 1 || Birth === "") {
                         if (re_email.test(Email)) {
-                            if(re_tel.test(Tel) || Tel === "") {
+                            if (re_tel.test(Tel) || Tel === "") {
                                 if (Password.length >= 6) {
                                     if (confirm("确定修改吗?")) {
-                                        if(Sex===""){
-                                            Sex="未知";
+                                        if (Sex === "") {
+                                            Sex = "未知";
                                         }
-                                        if(Tel===""){
-                                            Tel="未知";
+                                        if (Tel === "") {
+                                            Tel = "未知";
                                         }
-                                        if(Birth===""){
-                                            Birth="1900-01-01";
+                                        if (Birth === "") {
+                                            Birth = "1900-01-01";
                                         }
-                                        if(Addr===""){
-                                            Addr="未知";
+                                        if (Addr === "") {
+                                            Addr = "未知";
                                         }
                                         $.ajax({
                                             type: "POST",

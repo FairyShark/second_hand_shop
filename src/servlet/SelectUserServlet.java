@@ -47,7 +47,19 @@ public class SelectUserServlet extends HttpServlet {
             udao = DAOFactory.getUserServiceInstance();
             if (opuid == 8) {
                 String userip = request.getParameter("Userip");
-                String opcontent = "查询会员信息：会员ID（" + uid + "）,名字（" + uname + "）,邮箱（" + umail + "）";
+                String opcontent = "查询会员信息";
+                if (uid != -1 || !uname.equals("%&ALL&%") || !umail.equals("%&ALL&%")) {
+                    opcontent += "：";
+                }
+                if (uid != -1) {
+                    opcontent += "会员ID(" + uid + ") ";
+                }
+                if (!uname.equals("%&ALL&%")) {
+                    opcontent += "会员名(" + uname + ") ";
+                }
+                if (!umail.equals("%&ALL&%")) {
+                    opcontent += "邮箱(" + umail + ") ";
+                }
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 String opuname = udao.queryUName(opuid);
                 omdao.addOperationMes(opuid, opuname, userip, "查询", opcontent);

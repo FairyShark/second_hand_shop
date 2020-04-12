@@ -45,7 +45,28 @@ public class SelectVisitTServlet extends HttpServlet {
         try {
             if (opuid == 8) {
                 String userip = request.getParameter("Userip");
-                String opcontent = "查询浏览记录：会员ID（" + uid + "）,会员名（" + uname + "）,商品ID（" + gid + "）,商品名（" + gname + "）,IP地址（" + userip + "）,操作类型（" + gtype + "）,操作时间（" + landtime + "）";
+                String opcontent = "查询浏览记录";
+                if (uid != -1 || gid != -1 || !uname.equals("%&ALL&%")|| !gname.equals("%&ALL&%") || !gtype.equals("全部") || !landtime.equals("%&ALL&%")) {
+                    opcontent += "：";
+                }
+                if (uid != -1) {
+                    opcontent += "会员ID(" + uid + ") ";
+                }
+                if (!uname.equals("%&ALL&%")) {
+                    opcontent += "会员名(" + uname + ") ";
+                }
+                if (gid != -1) {
+                    opcontent += "商品ID(" + gid + ") ";
+                }
+                if (!gname.equals("%&ALL&%")) {
+                    opcontent += "商品名(" + gname + ") ";
+                }
+                if (!gtype.equals("全部")) {
+                    opcontent += "商品类型(" + gtype + ") ";
+                }
+                if (!landtime.equals("%&ALL&%")) {
+                    opcontent += "浏览时间(" + landtime + ")";
+                }
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 UserDao udao = DAOFactory.getUserServiceInstance();
                 String opuname = udao.queryUName(opuid);

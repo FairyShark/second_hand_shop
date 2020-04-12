@@ -45,7 +45,25 @@ public class SelectOperationTServlet extends HttpServlet {
         try {
             if (opuid == 8) {
                 String userip_t = request.getParameter("Userip");
-                String opcontent = "查询操作日志：会员ID（" + uid + "）,名字（" + uname + "）,IP地址（" + userip + "）,操作类型（" + otype + "）,操作时间（" + landtime + "）";
+                String opcontent = "查询操作日志";
+                if (uid != -1 || !uname.equals("%&ALL&%") || !userip.equals("%&ALL&%") || !otype.equals("%&ALL&%") || !landtime.equals("%&ALL&%")) {
+                    opcontent += "：";
+                }
+                if (uid != -1) {
+                    opcontent += "会员ID(" + uid + ") ";
+                }
+                if (!uname.equals("%&ALL&%")) {
+                    opcontent += "会员名(" + uname + ") ";
+                }
+                if (!userip.equals("%&ALL&%")) {
+                    opcontent += "IP地址(" + userip + ") ";
+                }
+                if (!otype.equals("%&ALL&%")) {
+                    opcontent += "操作类型(" + otype + ") ";
+                }
+                if (!landtime.equals("%&ALL&%")) {
+                    opcontent += "操作时间(" + landtime + ")";
+                }
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 UserDao udao = DAOFactory.getUserServiceInstance();
                 String opuname = udao.queryUName(opuid);

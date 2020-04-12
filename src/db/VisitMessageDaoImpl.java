@@ -50,17 +50,16 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
         int lasttime = 0;
         pstmt = null;
         String sql = "update visitmessage set canceltime=now()  where uid=? and gid=? and landtime=?;";
-        int result = 0;
+        int result;
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         pstmt.setInt(2, gid);
         pstmt.setString(3, landtime);
         result = pstmt.executeUpdate();
-        pstmt.close();
         if (result == 1) {
             pstmt = null;
             sql = "select * from visitmessage where uid=? and gid=? and landtime=?;";
-            ResultSet rs = null;
+            ResultSet rs;
             pstmt = this.conn.prepareStatement(sql);
             pstmt.setInt(1, uid);
             pstmt.setInt(2, gid);
@@ -68,24 +67,21 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
             rs = pstmt.executeQuery();
             rs.next();
             String canceltime = rs.getString("canceltime");
-            pstmt.close();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date date1 = null;
-            Date date2 = null;
+            Date date1;
+            Date date2;
             try {
-                date1 = sdf.parse(landtime.toString());
-                date2 = sdf.parse(canceltime.toString());
+                date1 = sdf.parse(landtime);
+                date2 = sdf.parse(canceltime);
                 lasttime = Integer.parseInt(String.valueOf((date2.getTime() - date1.getTime()) / 1000));
 
                 pstmt = null;
-                sql = "update visitmessage set lasttime=? where uid=? and gid=? and landtime=?;";
-                result = 0;
+                sql = "update visitmessage set lasttime=? where uid=? and gid=? and landtime=" + landtime;
                 pstmt = this.conn.prepareStatement(sql);
                 pstmt.setInt(1, lasttime);
                 pstmt.setInt(2, uid);
                 pstmt.setInt(3, gid);
-                pstmt.setString(4, landtime);
                 result = pstmt.executeUpdate();
                 pstmt.close();
                 if (result == 1) {
@@ -167,10 +163,10 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
     //查询登陆信息
     @Override
     public List<VisitMessage> getVisitMessage(int uid, int gid, String uname, String gname, String gtype, String landtime) throws Exception {
-        List<VisitMessage> visitmessageList = new ArrayList<VisitMessage>();
-        VisitMessage visitmessage = null;
-        ResultSet rs = null;
-        String sql = null;
+        List<VisitMessage> visitmessageList = new ArrayList<>();
+        VisitMessage visitmessage;
+        ResultSet rs;
+        String sql;
         if (Objects.equals(landtime, "%&ALL&%")) {
             sql = "select * from visitmessage where if(?=-1,1=1,uid=?) and if(?='%&ALL&%',1=1,uname like ?) and if(?=-1,1=1,gid=?) and if(?='%&ALL&%',1=1,gname like ?) and if(?='全部',1=1,types=?) order by vmid desc;";
             pstmt = this.conn.prepareStatement(sql);
@@ -179,7 +175,6 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
             pstmt = this.conn.prepareStatement(sql);
             pstmt.setString(11, landtime);
         }
-        pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         pstmt.setInt(2, uid);
         pstmt.setString(3, uname);

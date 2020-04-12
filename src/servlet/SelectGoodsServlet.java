@@ -52,7 +52,25 @@ public class SelectGoodsServlet extends HttpServlet {
             String opuname = udao.queryUName(opuid);
             if (opuid == 8 || request.getParameter("OPT") != null) {
                 String userip = request.getParameter("Userip");
-                String opcontent = "查询商品信息：类型（" + gtype + "）,使用情况（" + usage + "）,价格（" + lowp + "~" + highp + "），关键词（" + gname + "）";
+                String opcontent = "查询商品信息";
+                if (!gtype.equals("全部") || !usage.equals("全部") || lowp != 0 || highp != 214748364 || !gname.equals("%&ALL&%")) {
+                    opcontent += "：";
+                }
+                if (!gtype.equals("全部")) {
+                    opcontent += "类型（" + gtype + "） ";
+                }
+                if (!usage.equals("全部")) {
+                    opcontent += "使用情况（" + usage + "） ";
+                }
+                if (lowp != 0) {
+                    opcontent += "最低价格（" + lowp + "） ";
+                }
+                if (highp != 214748364) {
+                    opcontent += "最高价格（" + highp + "） ";
+                }
+                if (!gname.equals("%&ALL&%")) {
+                    opcontent += "关键词（" + gname + "）";
+                }
                 OperationMesDao omdao = DAOFactory.getOperationMesServiceInstance();
                 omdao.addOperationMes(opuid, opuname, userip, "查询", opcontent);
             }
