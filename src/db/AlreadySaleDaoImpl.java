@@ -48,7 +48,7 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
 
     @Override
     public boolean deleteSaleGoods(int gid) throws Exception {
-        String sql = "delete from alreadySale where gid=?";
+        String sql = "delete from alreadysale where gid=?";
         int result = 0;
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, gid);
@@ -65,7 +65,7 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
         pstmt = null;
         ResultSet rs = null;
         List<AlreadySale> abList = null;
-        String sql = "select * from alreadySale where uid=? order by saletime desc";
+        String sql = "select * from alreadysale where uid=? order by saletime desc";
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, uid);
         rs = pstmt.executeQuery();
@@ -94,7 +94,7 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
         pstmt = null;
         ResultSet rs = null;
         List<AlreadySale> abList = null;
-        String sql = "select * from alreadySale where uid=? order by saletime desc";
+        String sql = "select * from alreadysale where uid=? order by saletime desc";
         pstmt = this.conn.prepareStatement(sql);
         pstmt.setInt(1, gid);
         rs = pstmt.executeQuery();

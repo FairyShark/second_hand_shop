@@ -121,10 +121,8 @@
                 </td>
                 <td><%=saleUname%>
                 </td>
-                <td><%=gtype%>
-                </td>
-                <td><%=number%>
-                </td>
+                <td><%=gtype%></td>
+                <td><%=number%></td>
                 <td><%=goods_price%>元</td>
                 <td><%=goods_carriage%>元</td>
                 <td><%=goods_totalPrice%>元</td>
