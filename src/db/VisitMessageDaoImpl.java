@@ -49,18 +49,18 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
     public boolean addCancelTimeMes(int uid, int gid, String landtime) throws Exception {
         int lasttime = 0;
         pstmt = null;
-        String sql = "update visitmessage set canceltime=now()  where uid=? and gid=? and landtime=?;";
+        String sql1 = "update visitmessage set canceltime=now()  where uid=? and gid=? and landtime=?;";
         int result;
-        pstmt = this.conn.prepareStatement(sql);
+        pstmt = this.conn.prepareStatement(sql1);
         pstmt.setInt(1, uid);
         pstmt.setInt(2, gid);
         pstmt.setString(3, landtime);
         result = pstmt.executeUpdate();
         if (result == 1) {
             pstmt = null;
-            sql = "select * from visitmessage where uid=? and gid=? and landtime=?;";
+            String sql2 = "select * from visitmessage where uid=? and gid=? and landtime=?;";
             ResultSet rs;
-            pstmt = this.conn.prepareStatement(sql);
+            pstmt = this.conn.prepareStatement(sql2);
             pstmt.setInt(1, uid);
             pstmt.setInt(2, gid);
             pstmt.setString(3, landtime);
@@ -77,13 +77,14 @@ public class VisitMessageDaoImpl implements VisitMessageDao {
                 lasttime = Integer.parseInt(String.valueOf((date2.getTime() - date1.getTime()) / 1000));
 
                 pstmt = null;
-                sql = "update visitmessage set lasttime=? where uid=? and gid=? and landtime=" + landtime;
-                pstmt = this.conn.prepareStatement(sql);
+                String sql3 = "update visitmessage set lasttime=? where uid=? and gid=? and landtime=?";
+                pstmt = this.conn.prepareStatement(sql3);
                 pstmt.setInt(1, lasttime);
                 pstmt.setInt(2, uid);
                 pstmt.setInt(3, gid);
+                pstmt.setString(4, landtime);
                 result = pstmt.executeUpdate();
-                pstmt.close();
+
                 if (result == 1) {
                     return true;
                 }

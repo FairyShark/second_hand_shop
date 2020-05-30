@@ -12,6 +12,9 @@ public interface GoodsDao {
     // 返回指定类型的最近添加的四件商品
     List<Goods> getLatestGoods(int gid, String type) throws Exception;
 
+    // 返回指定用户可能喜欢的商品
+    List<Goods> getLikeGoods(int uid) throws Exception;
+
     // 返回所有商品
     List<Goods> getAllGoods() throws Exception;
 

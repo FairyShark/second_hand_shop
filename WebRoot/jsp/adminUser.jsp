@@ -192,8 +192,8 @@
         });
     });
 
-    function  deleteuser(uid) {
-        if(confirm("确认删除该会员吗，同时会清空该会员的售卖商品？")){
+    function deleteuser(uid) {
+        if (confirm("确认删除该会员吗，同时会清空该会员的售卖商品？")) {
             $.ajax({
                 type: "GET",
                 url: "DeleteUserServlet",
@@ -205,7 +205,7 @@
                 success: function (data) {
                     if (data.isok === "1") {
                         alert("删除成功！");
-                    }else {
+                    } else {
                         alert("删除失败，请重试！");
                     }
                     location.reload();
@@ -233,81 +233,81 @@
             if (UserMail == null || UserMail === "")
                 UserMail = "%&ALL&%";
             const re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
-            if(!isNaN(UserID)){
-            	if(UserMail === "%&ALL&%" || re.test(UserMail)){
-            $.ajax({
-                url: 'SelectUserServlet',
-                type: 'GET',
-                data: {
-                    Userip: '<%=userip%>',
-                    Uid: <%=uid%>,
-                    UserID: UserID,
-                    UserName: UserName,
-                    UserMail: UserMail,
-                },
-                dataType: 'json',
-                success: function (json) {
-                    $("#resultTable").empty();
-                    const tr = $("<tr/>");
-                    $("<th/>").html("序号").appendTo(tr);
-                    $("<th/>").html("会员ID").appendTo(tr);
-                    $("<th/>").html("会员名").appendTo(tr);
-                    $("<th/>").html("邮箱").appendTo(tr);
-                    $("<th/>").html("登录次数(近30天)").appendTo(tr);
-                    $("<th/>").html("最后登陆时间").appendTo(tr);
-                    $("#resultTable").append(tr);
-                    let temp = 0;
-                    $.each(json, function (i, val) {
-                        if (val.uid != "8") {
-                            temp++;
+            if (!isNaN(UserID)) {
+                if (UserMail === "%&ALL&%" || re.test(UserMail)) {
+                    $.ajax({
+                        url: 'SelectUserServlet',
+                        type: 'GET',
+                        data: {
+                            Userip: '<%=userip%>',
+                            Uid: <%=uid%>,
+                            UserID: UserID,
+                            UserName: UserName,
+                            UserMail: UserMail,
+                        },
+                        dataType: 'json',
+                        success: function (json) {
+                            $("#resultTable").empty();
                             const tr = $("<tr/>");
-                            $("<td/>").html(temp + ".").appendTo(tr);
-                            $("<td/>").html(val.uid).appendTo(tr);
-                            $("<td/>").html(val.uname).appendTo(tr);
-                            $("<td/>").html(val.email).appendTo(tr);
-                            $("<td/>").html(val.frequency).appendTo(tr);
-                            $("<td/>").html(val.lastLogin).appendTo(tr);
-                            const td1 = $("<td/>");
-                            const a1 = $("<a/>");
-                            a1.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
-                            a1.attr("target", "_blank");
-                            a1.html("查看").appendTo(td1);
-                            td1.appendTo(tr);
-                            const td2 = $("<td/>");
-                            const a2 = $("<a/>");
-                            a2.attr("href", "javascript:");
-                            a2.attr("onclick", "deleteuser(" + val.uid + ")");
-                            a2.html("删除").appendTo(td2);
-                            td2.appendTo(tr);
+                            $("<th/>").html("序号").appendTo(tr);
+                            $("<th/>").html("会员ID").appendTo(tr);
+                            $("<th/>").html("会员名").appendTo(tr);
+                            $("<th/>").html("邮箱").appendTo(tr);
+                            $("<th/>").html("登录次数(近30天)").appendTo(tr);
+                            $("<th/>").html("最后登陆时间").appendTo(tr);
                             $("#resultTable").append(tr);
+                            let temp = 0;
+                            $.each(json, function (i, val) {
+                                if (val.uid != "8") {
+                                    temp++;
+                                    const tr = $("<tr/>");
+                                    $("<td/>").html(temp + ".").appendTo(tr);
+                                    $("<td/>").html(val.uid).appendTo(tr);
+                                    $("<td/>").html(val.uname).appendTo(tr);
+                                    $("<td/>").html(val.email).appendTo(tr);
+                                    $("<td/>").html(val.frequency).appendTo(tr);
+                                    $("<td/>").html(val.lastLogin).appendTo(tr);
+                                    const td1 = $("<td/>");
+                                    const a1 = $("<a/>");
+                                    a1.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
+                                    a1.attr("target", "_blank");
+                                    a1.html("查看").appendTo(td1);
+                                    td1.appendTo(tr);
+                                    const td2 = $("<td/>");
+                                    const a2 = $("<a/>");
+                                    a2.attr("href", "javascript:");
+                                    a2.attr("onclick", "deleteuser(" + val.uid + ")");
+                                    a2.html("删除").appendTo(td2);
+                                    td2.appendTo(tr);
+                                    $("#resultTable").append(tr);
+                                }
+                            });
+                            if (temp == 0) {
+                                $("#resultTable").empty();
+                                $("#tempP").empty();
+                                const p2 = $("<p/>");
+                                p2.addClass("tempmess");
+                                p2.html("暂时没有该类型的会员，换一个试试！").appendTo(p2);
+                                $("#tempP").append(p2);
+                            } else {
+                                $("#tempP").empty();
+                                const p3 = $("<p/>");
+                                p3.addClass("tempmess");
+                                p3.html("共找到" + temp + "个该类型的会员！").appendTo(p3);
+                                $("#tempP").append(p3);
+                            }
+                        },
+                        error: function () {
+                            $("#test").append("条件查询错误！");
                         }
-                    });
-                    if (temp == 0) {
-                        $("#resultTable").empty();
-                        $("#tempP").empty();
-                        const p2 = $("<p/>");
-                        p2.addClass("tempmess");
-                        p2.html("暂时没有该类型的会员，换一个试试！").appendTo(p2);
-                        $("#tempP").append(p2);
-                    } else {
-                        $("#tempP").empty();
-                        const p3 = $("<p/>");
-                        p3.addClass("tempmess");
-                        p3.html("共找到" + temp + "个该类型的会员！").appendTo(p3);
-                        $("#tempP").append(p3);
-                    }
-                },
-                error: function () {
-                    $("#test").append("条件查询错误！");
-                }
 
-            });
-            }else {
-            	alert("邮箱格式不正确，请重新输入!")
+                    });
+                } else {
+                    alert("邮箱格式不正确，请重新输入!")
+                }
+            } else {
+                alert("请输入正确的UID（整数）!")
             }
-        }else {
-        	alert("请输入正确的UID（整数）!")
-        }
         }
     }
 

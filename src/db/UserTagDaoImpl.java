@@ -56,12 +56,14 @@ public class UserTagDaoImpl implements UserTagDao {
             String uname_t = rs.getString("uname");
             String acttype_t = rs.getString("acttype");
             String tagtype_t = rs.getString("tagtype");
+            int tagweight_t = rs.getInt("tagweight");
             String tagtime_t = rs.getString("tagtime");
             usertag.setTid(tid_t);
             usertag.setUid(uid_t);
             usertag.setUname(uname_t);
             usertag.setActtype(acttype_t);
             usertag.setTagtype(tagtype_t);
+            usertag.setTagweight(tagweight_t);
             usertag.setTagtime(tagtime_t);
             usertaglist.add(usertag);
         }
@@ -99,6 +101,7 @@ public class UserTagDaoImpl implements UserTagDao {
             usertag.setUname(rs.getString("uname"));
             usertag.setActtype(rs.getString("acttype"));
             usertag.setTagtype(rs.getString("tagtype"));
+            usertag.setTagweight(rs.getInt("tagweight"));
             usertag.setTagtime(rs.getString("tagtime"));
             usertaglist.add(usertag);
         }

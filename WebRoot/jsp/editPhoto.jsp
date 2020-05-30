@@ -96,7 +96,7 @@
                 if (P1 != null) {
                     byte[] data = null;
                     try {
-                        InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "\\" + P1);
+                        InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "/" + P1);
                         data = new byte[in.available()];
                         in.read(data);
                         in.close();
@@ -121,7 +121,7 @@
                 if (P2 != null) {
                     byte[] data = null;
                     try {
-                        InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "\\" + P2);
+                        InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "/" + P2);
                         data = new byte[in.available()];
                         in.read(data);
                         in.close();
@@ -145,7 +145,7 @@
                 if (P3 != null) {
                     byte[] data = null;
                     try {
-                        InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "\\" + P3);
+                        InputStream in = new FileInputStream(request.getSession().getServletContext().getRealPath("/images") + "/" + P3);
                         data = new byte[in.available()];
                         in.read(data);
                         in.close();
@@ -170,8 +170,8 @@
             <div style="clear: both;"></div>
         </div>
         <p id="succ" class="ph_succ"></p>
-        <div>
-            <a type="button" href="javascript:void(0)" id="btn_ImgUpStart">确定上传</a>
+        <div class="sub_but">
+            <a type="button" href="javascript:" id="btn_ImgUpStart">确定上传</a>
             <%
                 if (uid == 8) {
             %>

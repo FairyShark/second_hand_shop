@@ -91,6 +91,7 @@
                         <div class="review">
                             <a>卖家：<%=uname%>
                             </a><br/> <a>使用情况：<%=usage%>
+                        </a> <br/><a>商品类型：<%=type%>
                         </a> <br/> <a>发货地：<%=paddress%>
                         </a>
                             <br/> <a>运费：<%=carriage%>元
@@ -149,22 +150,32 @@
         %>
         <div class="col-md-3 product-bottom">
             <div class="product-bottom">
+                <%
+                    List<Goods> goods_list;
+                    if (uid == 0) {
+                        goods_list = dao.getLatestGoods(gid, type);
+                %>
                 <h3 class="cate">最新商品</h3>
                 <%
-                    List<Goods> latestGoods = dao.getLatestGoods(gid, type);
-                    if (latestGoods != null) {
-                        if (latestGoods.size() > 0) {
+                } else {
+                    goods_list = dao.getLikeGoods(uid);
+                %>
+                <h3 class="cate">猜你喜欢</h3>
+                <%
+                    }
+                    if (goods_list != null) {
+                        if (goods_list.size() > 0) {
                             int flag = 4;
-                            if (latestGoods.size() < 4) {
-                                flag = latestGoods.size();
+                            if (goods_list.size() < 4) {
+                                flag = goods_list.size();
                             }
                             for (int i = 0; i < flag; i++) {
-                                if (latestGoods.get(i).getDel() == 1) {
-                                    String goodsName = latestGoods.get(i).getGname();
-                                    String goodsHref = basePath + "jsp/goodsDescribed.jsp?gid=" + latestGoods.get(i).getGid();
-                                    String[] newest_photo = latestGoods.get(i).getPhoto().split("&");
+                                if (goods_list.get(i).getDel() == 1) {
+                                    String goodsName = goods_list.get(i).getGname();
+                                    String goodsHref = basePath + "jsp/goodsDescribed.jsp?gid=" + goods_list.get(i).getGid();
+                                    String[] newest_photo = goods_list.get(i).getPhoto().split("&");
                                     String goodsPhoto = basePath + "images/" + newest_photo[0];
-                                    float goodsPrice = latestGoods.get(i).getPrice();
+                                    float goodsPrice = goods_list.get(i).getPrice();
                 %>
                 <div class="product-go">
                     <div class=" fashion-grid">
@@ -192,7 +203,7 @@
             </div>
             <div class="scdiv">
                 <%
-                    if (uid != 8 && sale_uid != uid) {
+                    if (sale_uid != uid) {
                         CollectionDao cd = DAOFactory.getCollectionServiceInstance();
                         counts = cd.getCount(gid);
                         if (uid == 0 || !cd.judgeCollection(uid, gid)) {
@@ -355,11 +366,11 @@
                     if (data.isok === "1") {
                         alert("添加到购物车成功！");
                     } else if (data.isok === "2") {
-                    	if(data.number === "0"){
-                    		alert("库存为0,无法加入购物车！");
-                    	}else{
-                        alert("库存仅为" + data.number + ",请重新输入数量！");
-                    	}
+                        if (data.number === "0") {
+                            alert("库存为0,无法加入购物车！");
+                        } else {
+                            alert("库存仅为" + data.number + ",请重新输入数量！");
+                        }
                     } else {
                         alert("添加失败，请重试！");
                     }

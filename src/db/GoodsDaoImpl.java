@@ -3,8 +3,7 @@ package db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import bean.Goods;
 import dao.GoodsDao;
@@ -268,6 +267,135 @@ public class GoodsDaoImpl implements GoodsDao {
     }
 
     @Override
+    public List<Goods> getLikeGoods(int uid) throws Exception {
+        List<Goods> goodsList = new ArrayList<Goods>();
+        Map<Integer, String> map = new TreeMap<Integer, String>(
+                new Comparator<Integer>() {
+                    public int compare(Integer obj1, Integer obj2) {
+                        return obj2.compareTo(obj1);
+                    }
+                });
+        String[] goods_type = {"文具", "书籍", "食品", "日用品", "电子产品", "其他"};
+        int flag = 0;
+        for (int i = 0; i < 6; i++) {
+            int tag_weight = 0;
+            ResultSet rs = null;
+            String sql = "select tagweight from usertag where uid=? and tagtype=? ";
+            pstmt = this.conn.prepareStatement(sql);
+            pstmt.setInt(1, uid);
+            pstmt.setString(2, goods_type[i]);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                tag_weight += rs.getInt("tagweight");
+            }
+            map.put(tag_weight, goods_type[i]);
+            if (tag_weight > 0) {
+                flag = 1;
+            }
+        }
+        Set<Integer> set = map.keySet();
+        Iterator<Integer> it = set.iterator();
+
+        float p_min = 0;
+        float p_max = 0;
+        if (flag == 1) {
+            String lay = null;
+            ResultSet rs1 = null;
+            String sql1 = "select layered from consumptionability where uid=?";
+            pstmt = this.conn.prepareStatement(sql1);
+            pstmt.setInt(1, uid);
+            rs1 = pstmt.executeQuery();
+            if (rs1.next()) {
+                lay = rs1.getString("layered");
+                if (lay.equals("[0，30]")) {
+                    p_min = 0;
+                    p_max = 100;
+                } else if (lay.equals("[30，50]")) {
+                    p_min = 10;
+                    p_max = 150;
+                } else if (lay.equals("[50，100]")) {
+                    p_min = 20;
+                    p_max = 200;
+                } else if (lay.equals("[100，200]")) {
+                    p_min = 50;
+                    p_max = 300;
+                } else if (lay.equals("[200，300]")) {
+                    p_min = 100;
+                    p_max = 500;
+                } else {
+                    p_min = 200;
+                    p_max = 100000;
+                }
+
+            }
+            while (it.hasNext()) {
+                int key = it.next();
+                ResultSet rs2 = null;
+                if (p_max != 0) {
+                    String sql2 = "select * from goods where types=? and (price between ? and ?)";
+                    pstmt = this.conn.prepareStatement(sql2);
+                    pstmt.setString(1, map.get(key));
+                    pstmt.setFloat(2, p_min);
+                    pstmt.setFloat(3, p_max);
+                    rs2 = pstmt.executeQuery();
+                } else {
+                    String sql2 = "select * from goods where types=?";
+                    pstmt = this.conn.prepareStatement(sql2);
+                    pstmt.setString(1, map.get(key));
+                    rs2 = pstmt.executeQuery();
+                }
+                Goods goods;
+                while (rs2.next()) {
+                    int gid = rs2.getInt("gid");
+                    int uid_t = rs2.getInt("uid");
+                    String uname = rs2.getString("uname");
+                    String gname = rs2.getString("gname");
+                    int number = rs2.getInt("number");
+                    String photo = rs2.getString("gphoto");
+                    String type = rs2.getString("types");
+                    String usage = rs2.getString("gusage");
+                    float price = rs2.getFloat("price");
+                    float carriage = rs2.getFloat("carriage");
+                    String pdate = rs2.getDate("pdate").toString();
+                    String paddress = rs2.getString("paddress");
+                    String described = rs2.getString("described");
+                    goods = setGoods(uid_t, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
+                    goods.setGid(gid);
+                    goods.setDel(rs2.getInt("del"));
+                    goodsList.add(goods);
+                }
+            }
+        } else {
+            String sql = "select * from goods order by pdate desc";
+            Statement st = null;
+            ResultSet rs = null;
+            st = (Statement) conn.createStatement();
+            rs = st.executeQuery(sql);
+            Goods goods;
+            while (rs.next()) {
+                int gid = rs.getInt("gid");
+                int uid_t = rs.getInt("uid");
+                String uname = rs.getString("uname");
+                String gname = rs.getString("gname");
+                int number = rs.getInt("number");
+                String photo = rs.getString("gphoto");
+                String type = rs.getString("types");
+                String usage = rs.getString("gusage");
+                float price = rs.getFloat("price");
+                float carriage = rs.getFloat("carriage");
+                String pdate = rs.getDate("pdate").toString();
+                String paddress = rs.getString("paddress");
+                String described = rs.getString("described");
+                goods = setGoods(uid_t, uname, gname, number, photo, type, usage, price, carriage, pdate, paddress, described);
+                goods.setGid(gid);
+                goods.setDel(rs.getInt("del"));
+                goodsList.add(goods);
+            }
+        }
+        return goodsList;
+    }
+
+    @Override
     public List<Goods> getAllGoods() throws Exception {
         String sql = "select * from goods order by gid desc";
         Statement st = null;
@@ -435,4 +563,5 @@ public class GoodsDaoImpl implements GoodsDao {
         goods.setDescribed(described);
         return goods;
     }
+
 }

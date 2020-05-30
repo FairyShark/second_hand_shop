@@ -10291,6 +10291,25 @@ ul.memenu.skyblue {
     margin: 0 5px;
 }
 
+.typ_21 {
+    height: 30px;
+    float: left;
+    margin: 0 10px;
+}
+.typ_21 select {
+    line-height: 30px;
+    height: 30px;
+}
+.typ_22 {
+    height: 30px;
+    float: left;
+    margin: 0 10px;
+}
+.typ_22 select {
+    line-height: 30px;
+    height: 30px;
+}
+
 .inp_1 {
     width: 60px;
     height: 30px;

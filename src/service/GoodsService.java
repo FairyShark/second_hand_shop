@@ -119,6 +119,14 @@ public class GoodsService implements GoodsDao {
     }
 
     @Override
+    public List<Goods> getLikeGoods(int uid) throws Exception {
+        if (isInt(uid)) {
+            return this.dao.getLikeGoods(uid);
+        }
+        return null;
+    }
+
+    @Override
     public String queryTypesByGid(int gid) throws Exception {
         if (isInt(gid)) {
             return this.dao.queryTypesByGid(gid);

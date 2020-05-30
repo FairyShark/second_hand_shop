@@ -119,6 +119,7 @@
 }
 
 #btn_T {
+	
     text-align: center;
     width: 130px;
     display: block;
@@ -165,9 +166,7 @@
     text-decoration: none;
 }
 
-#regist-main a:hover {
-    text-decoration: underline;
-}
+
 
 a {
     text-decoration: none;
@@ -272,4 +271,8 @@ h1 img {
     opacity: 1
 ;
 }
+}
+
+.sub_but a{
+	text-decoration: none;
 }
