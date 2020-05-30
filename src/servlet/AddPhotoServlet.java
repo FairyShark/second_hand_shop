@@ -47,7 +47,7 @@ public class AddPhotoServlet extends HttpServlet {
 
             if (imgFormat.equals("jpeg")) imgFormat = "jpg";
             String imgName = gid + lookIndex + "." + imgFormat;
-            String imgFilePath = Path + "\\" + imgName;
+            String imgFilePath = Path + "/" + imgName;
             String partSeparator = ",";
 
             if (imgBase.contains(partSeparator)) {
@@ -76,7 +76,6 @@ public class AddPhotoServlet extends HttpServlet {
             String jsonStr = "{\"isok\":\"1\", \"ind\": \"" + lookIndex + "\"}";
             response.getWriter().print(jsonStr);
 
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -85,9 +84,7 @@ public class AddPhotoServlet extends HttpServlet {
                 out.close();
             }
         }
-
     }
-
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
