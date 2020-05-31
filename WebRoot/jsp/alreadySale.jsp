@@ -144,7 +144,7 @@
     </div>
 </div>
 <div class="bottom_tools">
-    <a id="quxian" href="<%=basePath%>jsp/saleChart.jsp" title="销售报表" target="_blank">销售报表</a>
+    <a id="quxian" href="javascript:" onclick="CheckSaleChart(<%=uid%>)" title="销售报表">销售报表</a>
     <a id="salegoods" href="<%=basePath%>jsp/saleGoods.jsp" title="出售二手">出售二手</a>
     <a id="feedback" href="<%=basePath%>jsp/shoppingCart.jsp" title="购物车">购物车</a>
     <a id="collectiongoods" href="<%=basePath%>jsp/collectionGoods.jsp" title="收藏夹">收藏夹</a>
@@ -174,6 +174,27 @@
             qrImg.fadeOut();
         });
     });
+
+    function CheckSaleChart(uid){
+        $.ajax({
+            url: 'CheckSaleServlet',
+            type: 'POST',
+            data: {
+                UID: uid
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.isok === "1") {
+                    window.location.href = "<%=basePath%>jsp/saleChart.jsp?uid=" + uid;
+                } else {
+                    alert("该会员没有销售记录！");
+                }
+            },
+            error: function () {
+                alert("error！");
+            }
+        });
+    }
 
 </script>
 <script type="text/javascript">

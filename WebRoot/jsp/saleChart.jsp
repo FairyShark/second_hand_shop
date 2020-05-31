@@ -3,6 +3,7 @@
 <%@ page import="dao.AlreadySaleDao" %>
 <%@ page import="factory.DAOFactory" %>
 <%@ page import="java.util.List" %>
+<%@ page import="dao.UserDao" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -19,79 +20,81 @@
     <link rel="stylesheet" href="<%=basePath%>css/chart.css"/>
 </head>
 <body>
-<h1>销售报表</h1>
-<div>
-    <%
-        String strUid = (String) session.getAttribute("uid");
-        int uid = 0;
-        if (strUid != null) {
-            uid = Integer.parseInt(strUid);
-        }
-        try {
-            AlreadySaleDao dao = DAOFactory.getAlreadySaleServiceInstance();
-            List<AlreadySale> asList = dao.getAllSaleGoods(uid);
-            if (asList != null) {
-                if (asList.size() > 0) {
-                    AlreadySale as;
-                    int number;
-                    int smonth;
-                    float price;
-                    float[] monPrice = new float[12];
-                    int[] type_n = new int[6];
-                    for (int i = 0; i < 12; i++) {
-                        monPrice[i] = 0;
-                    }
-                    for (int i = 0; i < 6; i++) {
-                        type_n[i] = 0;
-                    }
-                    for (AlreadySale alreadySale : asList) {
-                        as = alreadySale;
-                        number = as.getNumber();
-                        smonth = dao.getMonth(as.getSaleTime());
-                        price = as.getPrice();
-                        String stype = as.getGtype();
+<%
+    String strUid = (String) request.getParameter("uid");
+    int uid = 0;
+    if (strUid != null) {
+        uid = Integer.parseInt(strUid);
+    }
+    try {
+        AlreadySaleDao dao = DAOFactory.getAlreadySaleServiceInstance();
+        UserDao udao = DAOFactory.getUserServiceInstance();
+        List<AlreadySale> asList = dao.getAllSaleGoods(uid);
+        String uname = udao.queryUName(uid);
+        if (asList != null) {
+            if (asList.size() > 0) {
+                AlreadySale as;
+                int number;
+                int smonth;
+                float price;
+                float[] monPrice = new float[12];
+                int[] type_n = new int[6];
+                for (int i = 0; i < 12; i++) {
+                    monPrice[i] = 0;
+                }
+                for (int i = 0; i < 6; i++) {
+                    type_n[i] = 0;
+                }
+                for (AlreadySale alreadySale : asList) {
+                    as = alreadySale;
+                    number = as.getNumber();
+                    smonth = dao.getMonth(as.getSaleTime());
+                    price = as.getPrice();
+                    String stype = as.getGtype();
 
-                        if (smonth == 1) {
-                            monPrice[0] = number * price;
-                        } else if (smonth == 2) {
-                            monPrice[1] += number * price;
-                        } else if (smonth == 3) {
-                            monPrice[2] += number * price;
-                        } else if (smonth == 4) {
-                            monPrice[3] += number * price;
-                        } else if (smonth == 5) {
-                            monPrice[4] += number * price;
-                        } else if (smonth == 6) {
-                            monPrice[5] += number * price;
-                        } else if (smonth == 7) {
-                            monPrice[6] += number * price;
-                        } else if (smonth == 8) {
-                            monPrice[7] += number * price;
-                        } else if (smonth == 9) {
-                            monPrice[8] += number * price;
-                        } else if (smonth == 10) {
-                            monPrice[9] += number * price;
-                        } else if (smonth == 11) {
-                            monPrice[10] += number * price;
-                        } else if (smonth == 12) {
-                            monPrice[11] += number * price;
-                        }
-                        if (stype.equals("文具")) {
-                            type_n[0] += number;
-                        } else if (stype.equals("书籍")) {
-                            type_n[1] += number;
-                        } else if (stype.equals("食品")) {
-                            type_n[2] += number;
-                        } else if (stype.equals("日用品")) {
-                            type_n[3] += number;
-                        } else if (stype.equals("电子产品")) {
-                            type_n[4] += number;
-                        } else if (stype.equals("其他")) {
-                            type_n[5] += number;
-                        }
+                    if (smonth == 1) {
+                        monPrice[0] = number * price;
+                    } else if (smonth == 2) {
+                        monPrice[1] += number * price;
+                    } else if (smonth == 3) {
+                        monPrice[2] += number * price;
+                    } else if (smonth == 4) {
+                        monPrice[3] += number * price;
+                    } else if (smonth == 5) {
+                        monPrice[4] += number * price;
+                    } else if (smonth == 6) {
+                        monPrice[5] += number * price;
+                    } else if (smonth == 7) {
+                        monPrice[6] += number * price;
+                    } else if (smonth == 8) {
+                        monPrice[7] += number * price;
+                    } else if (smonth == 9) {
+                        monPrice[8] += number * price;
+                    } else if (smonth == 10) {
+                        monPrice[9] += number * price;
+                    } else if (smonth == 11) {
+                        monPrice[10] += number * price;
+                    } else if (smonth == 12) {
+                        monPrice[11] += number * price;
                     }
-                    if (monPrice[0] != 0 || monPrice[1] != 0 || monPrice[2] != 0 || monPrice[3] != 0 || monPrice[4] != 0 || monPrice[5] != 0 || monPrice[6] != 0 || monPrice[7] != 0 || monPrice[8] != 0 || monPrice[9] != 0 || monPrice[10] != 0 || monPrice[11] != 0) {
-    %>
+                    if (stype.equals("文具")) {
+                        type_n[0] += number;
+                    } else if (stype.equals("书籍")) {
+                        type_n[1] += number;
+                    } else if (stype.equals("食品")) {
+                        type_n[2] += number;
+                    } else if (stype.equals("日用品")) {
+                        type_n[3] += number;
+                    } else if (stype.equals("电子产品")) {
+                        type_n[4] += number;
+                    } else if (stype.equals("其他")) {
+                        type_n[5] += number;
+                    }
+                }
+                if (monPrice[0] != 0 || monPrice[1] != 0 || monPrice[2] != 0 || monPrice[3] != 0 || monPrice[4] != 0 || monPrice[5] != 0 || monPrice[6] != 0 || monPrice[7] != 0 || monPrice[8] != 0 || monPrice[9] != 0 || monPrice[10] != 0 || monPrice[11] != 0) {
+%>
+<h1><%=uname%> 的销售报表</h1>
+<div>
     <div class="chart__container">
         <h3>每月销售额</h3>
         <canvas id="chart" width="600" height="300"></canvas>

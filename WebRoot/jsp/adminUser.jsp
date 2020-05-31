@@ -125,6 +125,7 @@
                     <td><%=lastlogin_t%>
                     </td>
                     <td><a href="<%=basePath%>jsp/showMessage.jsp?uid=<%=uid_t%>" target="_blank">查看</a></td>
+                    <td><a href="javascript:" onclick="CheckSaleChart(<%=uid_t%>)">销售</a></td>
                     <td><a href="javascript:" onclick="deleteuser(<%=uid_t%>)">删除</a></td>
                 </tr>
                 <%
@@ -267,11 +268,17 @@
                                     $("<td/>").html(val.email).appendTo(tr);
                                     $("<td/>").html(val.frequency).appendTo(tr);
                                     $("<td/>").html(val.lastLogin).appendTo(tr);
+                                    const td0 = $("<td/>");
+                                    const a0 = $("<a/>");
+                                    a0.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
+                                    a0.attr("target", "_blank");
+                                    a0.html("查看").appendTo(td1);
+                                    td0.appendTo(tr);
                                     const td1 = $("<td/>");
                                     const a1 = $("<a/>");
-                                    a1.attr("href", "<%=basePath%>jsp/showMessage.jsp?uid=" + val.uid);
-                                    a1.attr("target", "_blank");
-                                    a1.html("查看").appendTo(td1);
+                                    a1.attr("href", "javascript:");
+                                    a1.attr("onclick", "CheckSaleChart(" + val.uid + ")");
+                                    a1.html("销售").appendTo(td1);
                                     td1.appendTo(tr);
                                     const td2 = $("<td/>");
                                     const a2 = $("<a/>");
@@ -309,6 +316,27 @@
                 alert("请输入正确的UID（整数）!")
             }
         }
+    }
+
+    function CheckSaleChart(uid){
+        $.ajax({
+            url: 'CheckSaleServlet',
+            type: 'POST',
+            data: {
+                UID: uid
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.isok === "1") {
+                    window.open("<%=basePath%>jsp/saleChart.jsp?uid=" + uid, "_blank");
+                } else {
+                    alert("该会员没有销售记录！");
+                }
+            },
+            error: function () {
+                alert("error！");
+            }
+        });
     }
 
     document.onkeydown = function (event) {
