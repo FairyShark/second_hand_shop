@@ -26,7 +26,7 @@ Chart.controllers.line = Chart.controllers.line.extend({
     }
 });
 
-var mon_val = Array(12);
+const mon_val = Array(12);
 mon_val[0] = Number(document.getElementById("mon_1").value);
 mon_val[1] = Number(document.getElementById("mon_2").value);
 mon_val[2] = Number(document.getElementById("mon_3").value);

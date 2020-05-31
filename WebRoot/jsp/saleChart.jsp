@@ -238,7 +238,7 @@
 </div>
 
 <input type="button" value="返回" class="btn-submit-reg"
-       onclick="goback()">
+       onclick="go_back()">
 
 <input id="now_year" type="hidden" value="<%=now_year%>"/>
 <%
@@ -269,6 +269,16 @@
 <input id="type_4" type="hidden" value="<%=type_n[3]%>"/>
 <input id="type_5" type="hidden" value="<%=type_n[4]%>"/>
 <input id="type_6" type="hidden" value="<%=type_n[5]%>"/>
+<%
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
+<script type="text/javascript" src='<%=basePath%>js/Chart.min.js'></script>
+<script type="text/javascript" src="<%=basePath%>js/saleChart.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/canvas.js"></script>
 <script type="text/javascript">
     $(window).load(function () {
         $("#select_year").empty();
@@ -301,6 +311,7 @@
     type_val[3] = Number(document.getElementById("type_4").value);
     type_val[4] = Number(document.getElementById("type_5").value);
     type_val[5] = Number(document.getElementById("type_6").value);
+
     new CanvasJS.Chart('chartContainer', {
         theme: 'light7',
         animationEnabled: true,
@@ -327,12 +338,8 @@
             }]
         }]
     }).render();
-</script>
-<script type="text/javascript" src='<%=basePath%>js/Chart.min.js'></script>
-<script type="text/javascript" src="<%=basePath%>js/saleChart.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/canvas.js"></script>
-<script type="text/javascript">
-    function goback() {
+
+    function go_back() {
         location.href = document.referrer;
     }
 
@@ -340,12 +347,5 @@
         navigator.sendBeacon("servlet/LogCancelTServlet");
     }
 </script>
-<%
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-%>
 </body>
 </html>

@@ -26,6 +26,10 @@ html {
     line-height: 30px;
     height: 30px;
 }
+.typ_1 option {
+    line-height: 30px;
+    height: 30px;
+}
 .typ_5 {
     height: 30px;
     float: left;
