@@ -21,4 +21,7 @@ public interface AlreadySaleDao {
     // 获取月份
     int getMonth(String date) throws Exception;
 
+    // 获取月份
+    int getYear(String date) throws Exception;
+
 }

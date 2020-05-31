@@ -135,4 +135,21 @@ public class AlreadySaleDaoImpl implements AlreadySaleDao {
         return 0;
     }
 
+    @Override
+    public int getYear(String sale_date) {
+        int syear = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = null;
+        try {
+            date = sdf.parse(sale_date);
+            Calendar c = Calendar.getInstance();
+            c.setTime(date);
+            syear = c.get(Calendar.YEAR);
+            return syear;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

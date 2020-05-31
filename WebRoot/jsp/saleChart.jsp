@@ -4,6 +4,7 @@
 <%@ page import="factory.DAOFactory" %>
 <%@ page import="java.util.List" %>
 <%@ page import="dao.UserDao" %>
+<%@ page import="java.util.Arrays" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -18,10 +19,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" href="<%=basePath%>css/chart.css"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
 </head>
 <body>
 <%
     String strUid = (String) request.getParameter("uid");
+    int now_year = 0;
+    if (request.getParameter("year") != null) {
+        now_year = Integer.parseInt((String) request.getParameter("year"));
+    }
     int uid = 0;
     if (strUid != null) {
         uid = Integer.parseInt(strUid);
@@ -31,10 +37,12 @@
         UserDao udao = DAOFactory.getUserServiceInstance();
         List<AlreadySale> asList = dao.getAllSaleGoods(uid);
         String uname = udao.queryUName(uid);
+        int[] years = new int[10];
         if (asList != null) {
             if (asList.size() > 0) {
                 AlreadySale as;
                 int number;
+                int syear;
                 int smonth;
                 float price;
                 float[] monPrice = new float[12];
@@ -45,55 +53,102 @@
                 for (int i = 0; i < 6; i++) {
                     type_n[i] = 0;
                 }
+                for (int i = 0; i < 10; i++) {
+                    years[i] = 0;
+                }
+                int flag_k = 0;
+                if (now_year != 0) {
+                    flag_k = 1;
+                }
+                for (AlreadySale alreadySale : asList) {
+                    syear = dao.getYear(alreadySale.getSaleTime());
+                    if (flag_k == 0) {
+                        if (now_year < syear) {
+                            now_year = syear;
+                        }
+                    }
+                    int flag = 0;
+                    for (int i = 0; i < 10 && years[i] != 0; i++) {
+                        if (syear == years[i]) {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag == 0) {
+                        for (int i = 0; i < 10; i++) {
+                            if (years[i] == 0) {
+                                years[i] = syear;
+                                break;
+                            }
+                        }
+                    }
+                }
+                Arrays.sort(years);
                 for (AlreadySale alreadySale : asList) {
                     as = alreadySale;
                     number = as.getNumber();
+                    syear = dao.getYear(as.getSaleTime());
                     smonth = dao.getMonth(as.getSaleTime());
                     price = as.getPrice();
                     String stype = as.getGtype();
-
-                    if (smonth == 1) {
-                        monPrice[0] = number * price;
-                    } else if (smonth == 2) {
-                        monPrice[1] += number * price;
-                    } else if (smonth == 3) {
-                        monPrice[2] += number * price;
-                    } else if (smonth == 4) {
-                        monPrice[3] += number * price;
-                    } else if (smonth == 5) {
-                        monPrice[4] += number * price;
-                    } else if (smonth == 6) {
-                        monPrice[5] += number * price;
-                    } else if (smonth == 7) {
-                        monPrice[6] += number * price;
-                    } else if (smonth == 8) {
-                        monPrice[7] += number * price;
-                    } else if (smonth == 9) {
-                        monPrice[8] += number * price;
-                    } else if (smonth == 10) {
-                        monPrice[9] += number * price;
-                    } else if (smonth == 11) {
-                        monPrice[10] += number * price;
-                    } else if (smonth == 12) {
-                        monPrice[11] += number * price;
-                    }
-                    if (stype.equals("文具")) {
-                        type_n[0] += number;
-                    } else if (stype.equals("书籍")) {
-                        type_n[1] += number;
-                    } else if (stype.equals("食品")) {
-                        type_n[2] += number;
-                    } else if (stype.equals("日用品")) {
-                        type_n[3] += number;
-                    } else if (stype.equals("电子产品")) {
-                        type_n[4] += number;
-                    } else if (stype.equals("其他")) {
-                        type_n[5] += number;
+                    if (syear == now_year) {
+                        if (smonth == 1) {
+                            monPrice[0] = number * price;
+                        } else if (smonth == 2) {
+                            monPrice[1] += number * price;
+                        } else if (smonth == 3) {
+                            monPrice[2] += number * price;
+                        } else if (smonth == 4) {
+                            monPrice[3] += number * price;
+                        } else if (smonth == 5) {
+                            monPrice[4] += number * price;
+                        } else if (smonth == 6) {
+                            monPrice[5] += number * price;
+                        } else if (smonth == 7) {
+                            monPrice[6] += number * price;
+                        } else if (smonth == 8) {
+                            monPrice[7] += number * price;
+                        } else if (smonth == 9) {
+                            monPrice[8] += number * price;
+                        } else if (smonth == 10) {
+                            monPrice[9] += number * price;
+                        } else if (smonth == 11) {
+                            monPrice[10] += number * price;
+                        } else if (smonth == 12) {
+                            monPrice[11] += number * price;
+                        }
+                        if (stype.equals("文具")) {
+                            type_n[0] += number;
+                        } else if (stype.equals("书籍")) {
+                            type_n[1] += number;
+                        } else if (stype.equals("食品")) {
+                            type_n[2] += number;
+                        } else if (stype.equals("日用品")) {
+                            type_n[3] += number;
+                        } else if (stype.equals("电子产品")) {
+                            type_n[4] += number;
+                        } else if (stype.equals("其他")) {
+                            type_n[5] += number;
+                        }
                     }
                 }
                 if (monPrice[0] != 0 || monPrice[1] != 0 || monPrice[2] != 0 || monPrice[3] != 0 || monPrice[4] != 0 || monPrice[5] != 0 || monPrice[6] != 0 || monPrice[7] != 0 || monPrice[8] != 0 || monPrice[9] != 0 || monPrice[10] != 0 || monPrice[11] != 0) {
 %>
 <h1><%=uname%> 的销售报表</h1>
+
+<div>
+    <div class="chart__container">
+        <div id="select_year" class="typ_1">
+            <label>年份：</label>
+            <select id="Year" name="Year"></select>
+        </div>
+        <div class="typ_5">
+            <button class="but_1" onclick="search_year()">查询</button>
+        </div>
+    </div>
+</div>
+
+
 <div>
     <div class="chart__container">
         <h3>每月销售额</h3>
@@ -103,6 +158,7 @@
         }
     %>
 </div>
+
 <div>
     <%
         if (type_n[0] != 0 || type_n[1] != 0 || type_n[2] != 0 || type_n[3] != 0 || type_n[4] != 0 || type_n[5] != 0) {
@@ -180,9 +236,20 @@
     </div>
     <%}%>
 </div>
+
 <input type="button" value="返回" class="btn-submit-reg"
        onclick="goback()">
 
+<input id="now_year" type="hidden" value="<%=now_year%>"/>
+<%
+    for (int i = 0; i < 10; i++) {
+        if (years[i] != 0) {
+%>
+<input name="years" type="hidden" value="<%=years[i]%>"/>
+<%
+        }
+    }
+%>
 <input id="mon_1" type="hidden" value="<%=monPrice[0]%>"/>
 <input id="mon_2" type="hidden" value="<%=monPrice[1]%>"/>
 <input id="mon_3" type="hidden" value="<%=monPrice[2]%>"/>
@@ -195,23 +262,38 @@
 <input id="mon_10" type="hidden" value="<%=monPrice[9]%>"/>
 <input id="mon_11" type="hidden" value="<%=monPrice[10]%>"/>
 <input id="mon_12" type="hidden" value="<%=monPrice[11]%>"/>
+
 <input id="type_1" type="hidden" value="<%=type_n[0]%>"/>
 <input id="type_2" type="hidden" value="<%=type_n[1]%>"/>
 <input id="type_3" type="hidden" value="<%=type_n[2]%>"/>
 <input id="type_4" type="hidden" value="<%=type_n[3]%>"/>
 <input id="type_5" type="hidden" value="<%=type_n[4]%>"/>
 <input id="type_6" type="hidden" value="<%=type_n[5]%>"/>
-<%
-            }
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-%>
-<script type="text/javascript" src='<%=basePath%>js/Chart.min.js'></script>
-<script type="text/javascript" src="<%=basePath%>js/saleChart.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/canvas.js"></script>
 <script type="text/javascript">
+    $(window).load(function () {
+        $("#select_year").empty();
+        const div = $("#select_year");
+        $("<label/>").html("年份：").appendTo(div);
+        const select = $("<select/>");
+        select.attr("id", "Year");
+        select.attr("name", "Year");
+        const years = document.getElementsByName("years");
+        for (let i = years.length - 1; i >= 0; i--) {
+            const option = $("<option/>");
+            option.attr("value", years[i].value.toString());
+            option.html(years[i].value.toString());
+            if (years[i].value.toString() == $('#now_year').val().toString()) {
+                option.attr("selected", "selected");
+            }
+            option.appendTo(select);
+        }
+        select.appendTo(div);
+    });
+
+    function search_year() {
+        window.location.href = "<%=basePath%>jsp/saleChart.jsp?uid=" + <%=uid%> +"&year=" + $("#Year").val().toString();
+    }
+
     const type_val = Array(6);
     type_val[0] = Number(document.getElementById("type_1").value);
     type_val[1] = Number(document.getElementById("type_2").value);
@@ -246,6 +328,9 @@
         }]
     }).render();
 </script>
+<script type="text/javascript" src='<%=basePath%>js/Chart.min.js'></script>
+<script type="text/javascript" src="<%=basePath%>js/saleChart.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/canvas.js"></script>
 <script type="text/javascript">
     function goback() {
         location.href = document.referrer;
@@ -255,5 +340,12 @@
         navigator.sendBeacon("servlet/LogCancelTServlet");
     }
 </script>
+<%
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
 </body>
 </html>

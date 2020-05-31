@@ -57,6 +57,14 @@ public class AlreadySaleService implements AlreadySaleDao {
         return 0;
     }
 
+    @Override
+    public int getYear(String date) throws Exception {
+        if (date != null) {
+            return this.dao.getYear(date);
+        }
+        return 0;
+    }
+
     public boolean isInt(int index) {
         if (index == 0) {
             return false;

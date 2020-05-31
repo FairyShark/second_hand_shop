@@ -1,6 +1,6 @@
 body {
     width: 100%;
-    margin: 30 auto;
+    margin: 30px auto;
     font-family: "Î¢ÈíÑÅºÚ";
     color: #7d7d7d;
     background-color: #fff;
@@ -14,6 +14,36 @@ body {
 html {
     width: 100%;
     height: 100%;
+}
+
+.typ_1 {
+    height: 30px;
+    float: left;
+    margin: 0 15px 0 240px;
+}
+.typ_1 select {
+	width: 100px;
+    line-height: 30px;
+    height: 30px;
+}
+.typ_5 {
+    height: 30px;
+    float: left;
+    margin: 0 15px;
+}
+.but_1 {
+    height: 30px;
+    width: 80px;
+    color: #ffffff;
+    border-radius: 8px;
+    background-color: #00aeef;
+    -webkit-transition: all linear 0.30s;
+    -moz-transition: all linear 0.30s;
+    transition: all linear 0.30s;
+}
+
+.but_1:hover {
+    background: #cae7eb;
 }
 
 .chart__container {
@@ -65,7 +95,6 @@ h1, h3 {
 table {
     border: 1px solid #6EA7FF;
     border-radius: 10px;
-    border-spacing: 1;
     box-shadow: 2px 2px 2px #ccc;
     border-spacing: 0;
     width: 60%;
@@ -101,25 +130,4 @@ tr td:last-child, tr th:last-child {
 
 tr:nth-child(even) {
     background: #fff;
-}
-
-@
--webkit-keyframes validator-show-anim {
-
-+
-
-0
-%
-{
-    opacity: 0
-;
-}
-100
-%
-{
-    opacity: 1
-;
-}
-+
-
 }
