@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ConsumptionAbilityDao {
 
-    // 添加收藏商品
+    // 添加用户的消费能力
     boolean addConsumptionAbility(int uid, String uname, int number, float price) throws Exception;
 
     // 获取所有用户的消费能力

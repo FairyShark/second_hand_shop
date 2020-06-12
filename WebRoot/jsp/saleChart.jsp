@@ -10,6 +10,18 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
 %>
+<%
+    String guid = null;
+    if (session.getAttribute("uid") != null) {
+        guid = String.valueOf(session.getAttribute("uid"));
+    }
+    int opuid;
+    if (guid == null) {
+    	opuid = 0;
+    } else {
+    	opuid = Integer.parseInt(guid);
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -237,9 +249,19 @@
     <%}%>
 </div>
 
+<%
+if(opuid==8){
+%>
 <input type="button" value="返回" class="btn-submit-reg"
-       onclick="go_back()">
-
+       onclick="go_back2()">
+<%
+}else{
+%>
+<input type="button" value="返回" class="btn-submit-reg"
+       onclick="go_back1()">
+<%
+}
+%>
 <input id="now_year" type="hidden" value="<%=now_year%>"/>
 <%
     for (int i = 0; i < 10; i++) {
@@ -339,8 +361,12 @@
         }]
     }).render();
 
-    function go_back() {
-        location.href = document.referrer;
+    function go_back1() {
+    	window.location.href = "<%=basePath%>jsp/alreadySale.jsp";
+    }
+    
+    function go_back2() {
+    	window.location.href = "<%=basePath%>jsp/adminUser.jsp";
     }
 
     window.onunload = function () {

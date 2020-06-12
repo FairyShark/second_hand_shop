@@ -173,7 +173,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 float goodscarriage = dao.queryById(gid).getCarriage();
                 flag = (ab.addBuyGoods(uid, sale_name, gid, gtype, number, goodsprice, goodscarriage) & dao.editInfo(goods));
                 saleDao.addSaleGoods(sale_uid, uid, buy_name, gid, gtype, number, goodsprice, goodscarriage);
-                //this.sendEmail(uid, gid, number);
+                this.sendEmail(uid, gid, number);
             }
         } else {
             this.deleteGoods(uid, gid, number);
@@ -250,7 +250,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
             Transport transport = session.getTransport();
 
             // 连接服务器
-            transport.connect("smtp.qq.com", "530734760@qq.com", "qxcwjwzhkbgjbhjc");
+            transport.connect("smtp.qq.com", "530734760@qq.com", "tbfsqzfhalorbjjd");
 
             // 创建邮件对象
             MimeMessage mimeMessage = new MimeMessage(session);
