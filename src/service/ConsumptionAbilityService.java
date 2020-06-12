@@ -2,7 +2,6 @@ package service;
 
 import bean.ConsumptionAbility;
 import dao.ConsumptionAbilityDao;
-import db.AlreadyBuyDaoImpl;
 import db.ConsumptionAbilityDaoImpl;
 import db.DBConnection;
 

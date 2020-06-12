@@ -10,8 +10,6 @@ import java.util.List;
 import bean.User;
 import dao.UserDao;
 
-import javax.xml.transform.Result;
-
 public class UserDaoImpl implements UserDao {
 
     private Connection conn = null;

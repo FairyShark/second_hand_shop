@@ -1,10 +1,7 @@
 package service;
 
-import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 import java.util.List;
-
-import javax.mail.MessagingException;
 
 import bean.ShoppingCart;
 import dao.ShoppingCartDao;
